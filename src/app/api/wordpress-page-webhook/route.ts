@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest): Promise<NextResponse> {
     const wpData = await request.formData()
     const postUrl = wpData.get("post_url") as string
-    const pageSlug = postUrl.replace("https://helligehallvard.blogspot.com", "")
+    const pageSlug = postUrl.replace("https://helligehallvard.wordpress.com", "")
     console.log(`Invalidating cache for path ${pageSlug}`)
     revalidatePath(pageSlug)
 
