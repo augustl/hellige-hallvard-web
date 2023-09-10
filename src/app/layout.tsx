@@ -1,3 +1,4 @@
+import Menu from '@/components/Menu'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -9,11 +10,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Hellige Hallvard ortodokse menighet',
   description: 'Erkebispedømmet av menigheter med russisk tradisjon i Vesteuropa',
-}
-
-
-const NavLink: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
-  return <a {...props} className={`${props.className} hover:underline`}>{props.children}</a>
 }
 
 export default async function RootLayout({
@@ -31,7 +27,7 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/favicon_151.gif" />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
-        <nav className='flex flex-col gap-10 items-center mb-10 px-5'>
+        <nav className='flex flex-col gap-10 items-center mb-10 px-5' role="navigation">
           <Image
               src="/orthodox_cross_logo_red.gif"
               alt=""
@@ -40,13 +36,9 @@ export default async function RootLayout({
               priority
            />
 
-          <a href="/" className='font-bold text-3xl font-serif'>Hellige Hallvard ortodokse menighet</a>
-          <ul className="flex flex-row gap-3">
-            <li><NavLink href="/">Velkommen</NavLink></li>
-            {wpPagesData.map(it => {
-              return <li key={it.id}><NavLink href={`/${it.slug}`} dangerouslySetInnerHTML={{__html: it.title.rendered}}></NavLink></li>
-            })}
-          </ul>
+          <a href="/" className='font-bold text-3xl font-serif text-center'>Hellige Hallvard ortodokse menighet</a>
+
+          <Menu wpPagesData={wpPagesData} />
         </nav>
         <main className='w-full px-5'>
           {children}
