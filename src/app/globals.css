@@ -8,20 +8,50 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+
+.wp-content h1, .wp-content h2, .wp-content h3, .wp-content h4 {
+  @apply font-bold font-serif;
+}
+
+.wp-content h2, .wp-content h3, .wp-content h4, .wp-content p, .wp-content figure {
+  @apply mt-8;
+}
+
+.wp-content figcaption {
+  @apply text-gray-500 italic;
+}
+
+.wp-content h1 {
+  @apply text-5xl my-14;
+}
+
+.wp-content h2 {
+  @apply text-4xl;
+}
+
+.wp-content h3 {
+  @apply text-3xl;
+}
+
+.wp-block-media-text {
+  @apply flex flex-col md:flex-row gap-10 items-center;
+}
+
+.wp-body > * {
+  @apply mx-auto;
+}
+
+.wp-body > :not(.alignwide) {
+  @apply max-w-2xl;
+}
+
+.wp-body > .alignwide {
+  @apply max-w-6xl;
+}
+
+.wp-content a {
+  @apply text-blue-500 underline;
 }

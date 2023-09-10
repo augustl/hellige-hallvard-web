@@ -1,6 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Image from 'next/image'
+import React from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -9,11 +11,18 @@ export const metadata: Metadata = {
   description: 'Erkebispedømmet av menigheter med russisk tradisjon i Vesteuropa',
 }
 
-export default function RootLayout({
+
+const NavLink: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (props) => {
+  return <a {...props} className={`${props.className} hover:underline`}>{props.children}</a>
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const wpPagesData: any[] = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&orderby=menu_order&order=asc&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`)).json()
+
   return (
     <html lang="en">
       <head>
@@ -21,7 +30,34 @@ export default function RootLayout({
         <link rel="icon" href="/favicon_142.gif" sizes="192x192" />
         <link rel="apple-touch-icon" href="/favicon_151.gif" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
+        <nav className='flex flex-col gap-10 items-center mb-10 px-5'>
+          <Image
+              src="/orthodox_cross_logo_red.gif"
+              alt=""
+              width={120}
+              height={152.283}
+              priority
+           />
+
+          <a href="/" className='font-bold text-3xl font-serif'>Hellige Hallvard ortodokse menighet</a>
+          <ul className="flex flex-row gap-3">
+            <li><NavLink href="/">Velkommen</NavLink></li>
+            {wpPagesData.map(it => {
+              return <li key={it.id}><NavLink href={`/${it.slug}`} dangerouslySetInnerHTML={{__html: it.title.rendered}}></NavLink></li>
+            })}
+          </ul>
+        </nav>
+        <main className='w-full px-5'>
+          {children}
+        </main>
+        <footer className="mt-40 w-full bg-gray-600">
+          <div className="mx-auto max-w-6xl py-20 text-white">
+            <p>Hellige Hallvard ortdokse menighet</p>
+            <p>Myrerveien 4, 0494 Oslo</p>
+          </div>
+        </footer>
+      </body>
     </html>
   )
 }
