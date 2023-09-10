@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 }
 
 export default async function WordpressPost({params}: { params: {year: string, month: string, slug: string}}) {
-    const wpData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&slug=${params.slug}`)
+    const wpData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&slug=${params.slug}`, {next: {tags: ["wp-posts"]}})
 
     if (wpData.status !== 200) {
         return notFound()

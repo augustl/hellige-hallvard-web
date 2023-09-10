@@ -12,7 +12,7 @@ export default async function NyheterArkiv({params}: {params: {pageNum: string}}
         redirect("/nyheter", RedirectType.replace)
     }
 
-    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=5&page=${currentPage}`)
+    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=5&page=${currentPage}`, {next: {tags: ["wp-posts"]}})
     const wpPostsData = await wpPostsDataRes.json()
 
     return <div>
