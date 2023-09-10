@@ -5,7 +5,7 @@ const NewsListing: React.FC<{wpPostsData: any[], currentPage: number, totalNumPa
 
 
             return <div key={wpPost.id} className="wp-body">
-                <h2><a dangerouslySetInnerHTML={{__html: wpPost.title.rendered}} href={`/nyheter/${y}/${m}/${wpPost.slug}`}></a></h2>
+                <h2><a dangerouslySetInnerHTML={{__html: wpPost.title.rendered}} href={`/nyheter/${y}/${m}/${wpPost.slug}`} className="hyphens-auto"></a></h2>
                 <div>{d}.{m}, {y}</div>
 
                 <div className="wp-rendered-content" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>

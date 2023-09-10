@@ -20,7 +20,7 @@ export default async function RootLayout({
   const wpPagesData: any[] = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&orderby=menu_order&order=asc&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`)).json()
 
   return (
-    <html lang="en">
+    <html lang="no">
       <head>
         <link rel="icon" href="/favicon_25.gif" sizes="32x32" />
         <link rel="icon" href="/favicon_142.gif" sizes="192x192" />
