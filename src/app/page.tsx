@@ -22,6 +22,8 @@ export default async function HomePage() {
                     </li>
                 })}
             </ul>
+
+            <p className="alignwide wp-rendered-content"><a href="/nyheter">Alle nyheter</a></p>
         </div>
         <div className="wp-content wp-body" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
     </div>
