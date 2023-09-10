@@ -52,6 +52,6 @@ body {
   @apply max-w-6xl;
 }
 
-.wp-content a {
+.wp-rendered-content a {
   @apply text-blue-500 underline;
 }

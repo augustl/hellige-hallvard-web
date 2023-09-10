@@ -11,11 +11,6 @@ type WordpressPost = {
 export async function generateStaticParams() {
     const wpPostsData = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=10`)).json()
 
-    console.log(wpPostsData.map((it: any) => {
-        const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
-        return {year: y, month: m, slug: it.slug}
-    }))
-
     return wpPostsData.map((it: any) => {
         const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
         return {year: y, month: m, slug: it.slug}
@@ -44,14 +39,11 @@ export default async function WordpressPost({params}: { params: {year: string, m
         return notFound()
     }
 
-
-    console.log(wpPost)
-
-
-    return <div>
-        <p>Wordpress post here! {params.year} - {params.month} - {params.slug}</p>
-        <h1 dangerouslySetInnerHTML={{__html: wpPost.title.rendered}}></h1>
-
-        <div className="wp-content" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>
+    return <div className="wp-content">
+        <div className="wp-body">
+            <h1 dangerouslySetInnerHTML={{__html: wpPost.title.rendered}}></h1>
+            <p>{wpPostParsedDate?.[3]}.{wpPostParsedDate?.[2]}, {wpPostParsedDate?.[1]}</p>
+        </div>
+        <div className="wp-body wp-rendered-content" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>
     </div>
 }

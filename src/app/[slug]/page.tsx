@@ -30,10 +30,10 @@ export default async function WordpressPage({params}: {params: {slug: string}}) 
 
     const wpPage = wpBody[0] as WordpressPage
 
-    return <div className="wp-content" >
+    return <div className="wp-content">
         <div className="wp-body">
             <h1 dangerouslySetInnerHTML={{__html: wpPage.title.rendered}}></h1>
         </div>
-        <div className="wp-body" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
+        <div className="wp-body wp-rendered-content" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
     </div>
 }
