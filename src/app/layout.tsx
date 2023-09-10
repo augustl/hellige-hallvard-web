@@ -28,13 +28,15 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
         <nav className='flex flex-col gap-10 items-center mb-10 px-5' role="navigation">
-          <Image
-              src="/orthodox_cross_logo_red.gif"
-              alt=""
-              width={120}
-              height={152.283}
-              priority
-           />
+          <a href="/">
+            <Image
+                src="/orthodox_cross_logo_red.gif"
+                alt=""
+                width={120}
+                height={152.283}
+                priority
+            />
+          </a>
 
           <a href="/" className='font-bold text-3xl font-serif text-center'>Hellige Hallvard ortodokse menighet</a>
 
