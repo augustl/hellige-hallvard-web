@@ -52,6 +52,15 @@ body {
   @apply max-w-6xl;
 }
 
+.wp-body img {
+  /* Noen ganger kan bilde ha blitt limt inn i wordpress fra ekstern kilde. Da
+     får bildet en width og height som gjør at det blir squishesquosha utenfor
+     aspect ratio. Når det skjer, vil vi heller skalere det ned til å passe inn
+     i stedet for å vise det med feil ar
+   */
+  object-fit: contain;
+}
+
 .wp-rendered-content a {
   @apply text-blue-500 underline;
 }
