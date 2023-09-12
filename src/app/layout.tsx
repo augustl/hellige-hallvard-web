@@ -34,7 +34,7 @@ export default async function RootLayout({
                 alt=""
                 width={120}
                 height={152.283}
-                tabIndex={0}
+                tabIndex={-1}
                 priority
             />
           </a>
