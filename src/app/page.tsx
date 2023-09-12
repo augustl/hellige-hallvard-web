@@ -21,11 +21,13 @@ const wordbreakify = (text: string) => {
 }
 
 export default async function HomePage() {
-    const wpPagesDataReq = fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=view&include=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-home-page"]}})
-    const wpPostsDataReq = fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=3`, {next: {tags: ["wp-home-page", "wp-posts"]}})
+    const [wpPagesDataRes, wpPostsDataRes] = await Promise.all([
+        fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=view&include=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-home-page"]}}),
+        fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=3`, {next: {tags: ["wp-home-page", "wp-posts"]}})
+    ])
 
-    const wpPagesData: any[] = await (await wpPagesDataReq).json()
-    const wpPostsData: any[] = await (await wpPostsDataReq).json()
+    const wpPagesData: any[] = await wpPagesDataRes.json()
+    const wpPostsData: any[] = await wpPostsDataRes.json()
 
     const wpPage = wpPagesData[0]
 
