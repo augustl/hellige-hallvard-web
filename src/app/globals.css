@@ -36,6 +36,14 @@ body {
   @apply text-3xl;
 }
 
+.hh-body-typography blockquote {
+  @apply border-l-2 border-gray-600 border-solid pl-4 text-gray-600;
+}
+
+.hh-body-typography ul li {
+  @apply list-disc ml-4;
+}
+
 .wp-block-media-text {
   @apply flex flex-col md:flex-row gap-10 items-center;
 }
