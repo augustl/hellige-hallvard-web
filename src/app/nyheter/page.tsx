@@ -1,7 +1,7 @@
 import NewsListing from "@/components/NewsListing"
 
 export default async function Nyheter() {
-    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=5`)
+    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=5`, {next: {tags: ["wp-posts"]}})
     const wpPostsData = await wpPostsDataRes.json()
 
     return <div>
