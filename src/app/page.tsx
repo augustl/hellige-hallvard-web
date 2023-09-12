@@ -40,7 +40,7 @@ export default async function HomePage() {
 
                     return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
                         <span>{d}.{m}.{y}</span>
-                        <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto">{wordbreakify(it.title.rendered)}</a>
+                        <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full">{wordbreakify(it.title.rendered)}</a>
                     </li>
                 })}
             </ul>
