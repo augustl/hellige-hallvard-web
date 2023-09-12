@@ -1,5 +1,3 @@
-import BodyTypography from "@/components/BodyTypography"
-
 const vowels = new Set(["a", "e", "i", "o", "u", "æ", "ø", "å", "A", "E", "I", "O", "U", "Æ", "Ø", "Å"])
 
 // Really super long words won't always break automatically in Safari, so we tell it to break before any vocal
