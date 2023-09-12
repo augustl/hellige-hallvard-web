@@ -28,7 +28,7 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
         <nav className='flex flex-col gap-10 items-center my-10 px-5' role="navigation">
-          <a href="/">
+          <a href="/" aria-hidden="true">
             <Image
                 src="/orthodox_cross_logo_red.gif"
                 alt=""
@@ -38,7 +38,7 @@ export default async function RootLayout({
             />
           </a>
 
-          <a href="/" className='font-bold text-3xl font-serif text-center'>Hellige Hallvard ortodokse menighet</a>
+          <a href="/" title="Hellige Halvard ortodokse menighet - forsiden" className='font-bold text-3xl font-serif text-center'>Hellige Hallvard ortodokse menighet</a>
 
           <Menu wpPagesData={wpPagesData} />
         </nav>
