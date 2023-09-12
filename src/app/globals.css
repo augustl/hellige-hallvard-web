@@ -48,6 +48,14 @@ body {
   @apply flex flex-col md:flex-row gap-10 items-center;
 }
 
+.wp-block-image.size-medium {
+  @apply max-w-wp-medium;
+}
+
+.wp-block-image.aligncenter {
+  @apply mx-auto;
+}
+
 .hh-content-blocks > * {
   @apply mx-auto;
 }
