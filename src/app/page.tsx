@@ -23,7 +23,7 @@ const wordbreakify = (text: string) => {
 export default async function HomePage() {
     const [wpPagesDataRes, wpPostsDataRes] = await Promise.all([
         fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=view&include=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-home-page"]}}),
-        fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=3`, {next: {tags: ["wp-home-page", "wp-posts"]}})
+        fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=5`, {next: {tags: ["wp-home-page", "wp-posts"]}})
     ])
 
     const wpPagesData: any[] = await wpPagesDataRes.json()
@@ -42,7 +42,7 @@ export default async function HomePage() {
 
                     return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
                         <span>{d}.{m}.{y}</span>
-                        <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full">{wordbreakify(it.title.rendered)}</a>
+                        <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
                     </li>
                 })}
             </ul>
