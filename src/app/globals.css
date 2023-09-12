@@ -12,27 +12,27 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
-.wp-content h1, .wp-content h2, .wp-content h3, .wp-content h4 {
+.hh-typography h1, .hh-typography h2, .hh-typography h3, .hh-typography h4 {
   @apply font-bold font-serif;
 }
 
-.wp-content h2, .wp-content h3, .wp-content h4, .wp-content p, .wp-content figure {
+.hh-typography h2, .hh-typography h3, .hh-typography h4, .hh-typography p, .hh-typography figure {
   @apply mt-8;
 }
 
-.wp-content figcaption {
+.hh-typography figcaption {
   @apply text-gray-500 italic;
 }
 
-.wp-content h1 {
+.hh-typography h1 {
   @apply text-5xl my-14;
 }
 
-.wp-content h2 {
+.hh-typography h2 {
   @apply text-4xl;
 }
 
-.wp-content h3 {
+.hh-typography h3 {
   @apply text-3xl;
 }
 
@@ -40,19 +40,19 @@ body {
   @apply flex flex-col md:flex-row gap-10 items-center;
 }
 
-.wp-body > * {
+.hh-content-blocks > * {
   @apply mx-auto;
 }
 
-.wp-body > :not(.alignwide) {
+.hh-content-blocks > :not(.alignwide) {
   @apply max-w-2xl;
 }
 
-.wp-body > .alignwide {
+.hh-content-blocks > .alignwide {
   @apply max-w-6xl;
 }
 
-.wp-body img {
+.hh-content-blocks img {
   /* Noen ganger kan bilde ha blitt limt inn i wordpress fra ekstern kilde. Da
      får bildet en width og height som gjør at det blir squishesquosha utenfor
      aspect ratio. Når det skjer, vil vi heller skalere det ned til å passe inn
@@ -61,6 +61,6 @@ body {
   object-fit: contain;
 }
 
-.wp-rendered-content a {
+.hh-body-typography a {
   @apply text-blue-500 underline;
 }

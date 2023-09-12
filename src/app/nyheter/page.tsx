@@ -5,7 +5,7 @@ export default async function Nyheter() {
     const wpPostsData = await wpPostsDataRes.json()
 
     return <div>
-        <div className="wp-content wp-body">
+        <div className="hh-typography hh-content-blocks">
             <h1>Nyheter</h1>
         </div>
         <NewsListing wpPostsData={wpPostsData} currentPage={1} totalNumPages={parseInt(wpPostsDataRes.headers.get("x-wp-totalpages") as string)} />

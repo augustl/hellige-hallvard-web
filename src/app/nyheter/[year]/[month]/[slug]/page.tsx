@@ -39,11 +39,11 @@ export default async function WordpressPost({params}: { params: {year: string, m
         return notFound()
     }
 
-    return <div className="wp-content">
-        <div className="wp-body">
+    return <div className="hh-typography hh-body-typography">
+        <div className="hh-content-blocks">
             <h1 className="hyphens-auto" dangerouslySetInnerHTML={{__html: wpPost.title.rendered}}></h1>
             <p>{wpPostParsedDate?.[3]}.{wpPostParsedDate?.[2]}, {wpPostParsedDate?.[1]}</p>
         </div>
-        <div className="wp-body wp-rendered-content" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>
+        <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>
     </div>
 }

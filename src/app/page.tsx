@@ -1,3 +1,5 @@
+import BodyTypography from "@/components/BodyTypography"
+
 const vowels = new Set(["a", "e", "i", "o", "u", "æ", "ø", "å", "A", "E", "I", "O", "U", "Æ", "Ø", "Å"])
 
 // Really super long words won't always break automatically in Safari, so we tell it to break before any vocal
@@ -29,9 +31,9 @@ export default async function HomePage() {
 
     const wpPage = wpPagesData[0]
 
-    return <div>
-        <div className="wp-body">
-            <div className="wp-content alignwide">
+    return <div className="hh-typography">
+        <div className="hh-content-blocks">
+            <div className="alignwide">
                 <h2 className="mb-4">Siste nytt</h2>
             </div>
             <ul className="alignwide">
@@ -45,8 +47,8 @@ export default async function HomePage() {
                 })}
             </ul>
 
-            <p className="alignwide wp-rendered-content"><a href="/nyheter">Alle nyheter</a></p>
+            <p className="alignwide hh-body-typography"><a href="/nyheter">Alle nyheter</a></p>
         </div>
-        <div className="wp-content wp-body" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
+        <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
     </div>
 }
