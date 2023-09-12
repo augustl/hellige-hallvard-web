@@ -4,7 +4,7 @@ const NewsListing: React.FC<{wpPostsData: any[], currentPage: number, totalNumPa
             const [_, y, m, d] = (wpPost.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/) as string[])
 
 
-            return <div key={wpPost.id} className="hh-content-blocks">
+            return <div key={wpPost.id} className="hh-content-blocks mb-40">
                 <h2><a dangerouslySetInnerHTML={{__html: wpPost.title.rendered}} href={`/nyheter/${y}/${m}/${wpPost.slug}`} className="hyphens-auto"></a></h2>
                 <div>{d}.{m}, {y}</div>
 
