@@ -35,19 +35,18 @@ export default async function HomePage() {
         <div className="hh-content-blocks">
             <div className="alignwide">
                 <h2 className="mb-4">Siste nytt</h2>
+                <ul>
+                    {wpPostsData.map(it => {
+                        const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
+
+                        return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
+                            <span>{d}.{m}.{y}</span>
+                            <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
+                        </li>
+                    })}
+                </ul>
+                <p className="hh-body-typography"><a href="/nyheter/side/1">Alle nyheter</a></p>
             </div>
-            <ul className="alignwide">
-                {wpPostsData.map(it => {
-                    const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
-
-                    return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
-                        <span>{d}.{m}.{y}</span>
-                        <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
-                    </li>
-                })}
-            </ul>
-
-            <p className="alignwide hh-body-typography"><a href="/nyheter/side/1">Alle nyheter</a></p>
         </div>
         <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
     </div>
