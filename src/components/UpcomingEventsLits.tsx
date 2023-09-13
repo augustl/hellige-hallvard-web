@@ -18,7 +18,7 @@ export default function UpcomingEventsList() {
     const [upcomingEventsData, setUpcomingEventsData] = useState<({id: number, start: {dateTime: string}, summary: string} | null)[]>(EMPTY_UPCOMING_EVENTS_DATA)
 
     useEffect(() => {
-        fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID)}/events?key=${process.env.NEXT_PUBLIC_GCAL_API_KEY}&maxResults=3&timeMin=${new Date().toISOString()}&timeZone=Europe/Oslo`)
+        fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_API_KEY!}&maxResults=3&timeMin=${new Date().toISOString()}&timeZone=Europe/Oslo`)
             .then((res) => res.json())
             .then((res) => res.items && setUpcomingEventsData(res.items))
 
