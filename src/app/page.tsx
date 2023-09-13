@@ -1,3 +1,5 @@
+import UpcomingEventsList from "@/components/UpcomingEventsLits"
+
 const vowels = new Set(["a", "e", "i", "o", "u", "æ", "ø", "å", "A", "E", "I", "O", "U", "Æ", "Ø", "Å"])
 
 // Really super long words won't always break automatically in Safari, so we tell it to break before any vocal
@@ -34,18 +36,27 @@ export default async function HomePage() {
     return <div className="hh-typography">
         <div className="hh-content-blocks">
             <div className="alignwide">
-                <h2 className="mb-4">Siste nytt</h2>
-                <ul>
-                    {wpPostsData.map(it => {
-                        const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
+                <div className="lg:grid gap-4" style={{gridTemplateColumns: "2fr 1.5fr"}}>
+                    <div style={{gridRow: 1, gridColumn: 2}}>
+                        <h2 className="mb-4">Neste i kalenderen</h2>
+                        <UpcomingEventsList />
+                    </div>
 
-                        return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
-                            <span>{d}.{m}.{y}</span>
-                            <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
-                        </li>
-                    })}
-                </ul>
-                <p className="hh-body-typography"><a href="/nyheter/side/1">Alle nyheter</a></p>
+                    <div style={{gridRow: 1, gridColumn: 1}}>
+                        <h2 className="mb-4">Siste nytt</h2>
+                        <ul>
+                            {wpPostsData.map(it => {
+                                const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
+
+                                return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
+                                    <span>{d}.{m}.{y}</span>
+                                    <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
+                                </li>
+                            })}
+                        </ul>
+                        <p className="hh-body-typography"><a href="/nyheter/side/1">Alle nyheter</a></p>
+                    </div>
+                </div>
             </div>
         </div>
         <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
