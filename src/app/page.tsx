@@ -33,24 +33,25 @@ export default async function HomePage() {
 
     const wpPage = wpPagesData[0]
 
-    return <div className="hh-typography">
+    return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
-                <div className="lg:grid gap-4" style={{gridTemplateColumns: "2fr 1.5fr"}}>
+                <div className="flex flex-col lg:grid gap-8" style={{gridTemplateColumns: "2fr 1.5fr"}}>
                     <div style={{gridRow: 1, gridColumn: 2}}>
-                        <h2 className="mb-4">Neste i kalenderen</h2>
+                        <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
                         <UpcomingEventsList />
+                        <p className="hh-body-typography"><a href="/gudstjenester">Hele kalenderen</a></p>
                     </div>
 
                     <div style={{gridRow: 1, gridColumn: 1}}>
-                        <h2 className="mb-4">Siste nytt</h2>
+                        <h2 className="mb-4 text-2xl font-bold font-serif">Siste nytt</h2>
                         <ul>
                             {wpPostsData.map(it => {
                                 const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
 
                                 return <li key={it.id} className="flex flex-row gap-4 mb-4 items-center">
                                     <span>{d}.{m}.{y}</span>
-                                    <a href={`/nyheter/${y}/${m}/${it.slug}`} className="uppercase font-bold text-2xl font-serif hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
+                                    <a href={`/nyheter/${y}/${m}/${it.slug}`} className="font-bold hyphens-auto w-full" dangerouslySetInnerHTML={{__html: wordbreakify(it.title.rendered)}}></a>
                                 </li>
                             })}
                         </ul>
@@ -59,6 +60,6 @@ export default async function HomePage() {
                 </div>
             </div>
         </div>
-        <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
+        <div className="hh-typography hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
     </div>
 }

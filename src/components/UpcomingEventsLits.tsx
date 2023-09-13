@@ -11,15 +11,18 @@ const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
     timeZone: "Europe/Oslo"
 })
 
-const semiRandomWidth: {[key: string]: number} = {0: 200, 1: 160, 2: 220}
+const semiRandomWidth: {[key: string]: number} = {0: 300, 1: 200, 2: 250}
+const EMPTY_UPCOMING_EVENTS_DATA = [null, null, null]
 
 export default function UpcomingEventsList() {
-    const [upcomingEventsData, setUpcomingEventsData] = useState<({id: number, start: {dateTime: string}, summary: string} | null)[]>([null, null, null])
+    const [upcomingEventsData, setUpcomingEventsData] = useState<({id: number, start: {dateTime: string}, summary: string} | null)[]>(EMPTY_UPCOMING_EVENTS_DATA)
 
     useEffect(() => {
         fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID)}/events?key=${process.env.NEXT_PUBLIC_GCAL_API_KEY}&maxResults=3&timeMin=${new Date().toISOString()}&timeZone=Europe/Oslo`)
             .then((res) => res.json())
             .then((res) => res.items && setUpcomingEventsData(res.items))
+
+        return () => setUpcomingEventsData(EMPTY_UPCOMING_EVENTS_DATA)
     }, [])
 
     return <ul>
@@ -27,11 +30,13 @@ export default function UpcomingEventsList() {
             return <li key={event ? event.id : `fake-${idx}`} className="mb-4">
                 {event
                     ? <div>
-                        <strong>{event.summary.replace(/\.[\s+]?$/, "")}</strong>,
-                        {` `}
-                        <span className="whitespace-nowrap">{calendarFormatter.format(new Date(event.start.dateTime))}</span>
+                        <div className="font-bold">{event.summary.replace(/\.[\s+]?$/, "")}</div>
+                        <div className="whitespace-nowrap">{calendarFormatter.format(new Date(event.start.dateTime))}</div>
                     </div>
-                    : <div style={{width: `${semiRandomWidth[idx]}px`}} className={`animate-pulse bg-gray-100 rounded-full dark:bg-gray-200`}>{String.fromCharCode(160)}</div>}
+                    : <div>
+                        <div style={{width: `${semiRandomWidth[idx]}px`}} className={`animate-pulse bg-gray-100 rounded-full dark:bg-gray-200`}>{String.fromCharCode(160)}</div>
+                        <div style={{width: `100px`}} className={`animate-pulse bg-gray-100 rounded-full dark:bg-gray-200`}>{String.fromCharCode(160)}</div>
+                    </div>}
             </li>
         })}
     </ul>
