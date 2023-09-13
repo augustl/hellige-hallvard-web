@@ -38,6 +38,7 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
                 const attachment = wpPost.attachments[Object.keys(wpPost.attachments)[0]]
                 return <div key={wpPost.id} className="hh-content-blocks mb-20">
                     <h2><a dangerouslySetInnerHTML={{__html: wpPost.title}} href={postPath} className="hyphens-auto"></a></h2>
+                    <div>{postDate.getDay().toString().padStart(2, "0")}.{(postDate.getMonth() + 1).toString().padStart(2, "0")}, {postDate.getFullYear()}</div>
 
                     <div className={attachment ? "md:grid gap-4" : ""} style={{gridTemplateColumns: "200px auto"}}>
                         <div className="hh-body-typography" style={{gridRow: 1, gridColumn: 2}} dangerouslySetInnerHTML={{__html: wpPost.excerpt}}></div>
