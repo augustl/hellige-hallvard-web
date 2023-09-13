@@ -36,14 +36,14 @@ export default async function HomePage() {
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
-                <div className="flex flex-col lg:grid gap-8" style={{gridTemplateColumns: "2fr 1.5fr"}}>
-                    <div style={{gridRow: 1, gridColumn: 2}}>
+                <div className="flex flex-col md:flex-row md:flex-row-reverse gap-10">
+                    <div className="flex-1">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
                         <UpcomingEventsList />
                         <p className="hh-body-typography"><a href="/gudstjenester">Hele kalenderen</a></p>
                     </div>
 
-                    <div style={{gridRow: 1, gridColumn: 1}}>
+                    <div className="flex-1">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Siste nytt</h2>
                         <ul>
                             {wpPostsData.map(it => {
