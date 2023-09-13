@@ -30,7 +30,7 @@ export default async function NyheterArkiv({params}: {params: {pageNum: string}}
         return notFound()
     }
 
-    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=${process.env.NEXT_PUBLIC_NEWS_ITEMS_PER_PAGE}&page=${currentPage}`, {next: {tags: ["wp-posts"]}})
+    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=5&page=${currentPage}`, {next: {tags: ["wp-posts"]}})
     const wpPostsData: any[] = await wpPostsDataRes.json()
     const totalNumPages = parseInt(wpPostsDataRes.headers.get("x-wp-totalpages") as string)
 
