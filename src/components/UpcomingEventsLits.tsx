@@ -19,7 +19,7 @@ export default function UpcomingEventsList() {
     useEffect(() => {
         fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID)}/events?key=${process.env.NEXT_PUBLIC_GCAL_API_KEY}&maxResults=3&timeMin=${new Date().toISOString()}&timeZone=Europe/Oslo`)
             .then((res) => res.json())
-            .then((res) => setUpcomingEventsData(res.items))
+            .then((res) => res.items && setUpcomingEventsData(res.items))
     }, [])
 
     return <ul>
