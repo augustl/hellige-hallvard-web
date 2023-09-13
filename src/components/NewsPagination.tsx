@@ -1,6 +1,3 @@
-import NewsListExcerptAndImage from "@/components/NewsListExcerptAndImage"
-import { notFound } from "next/navigation"
-
 const NewsPagination: React.FC<{currentPage: number, totalNumPages: number}> = ({currentPage, totalNumPages}) => {
     return <div className="hh-content-blocks hh-body-typography mt-10">
         <div className="grid gap-4" style={{gridTemplateColumns: "1fr auto 1fr"}}>
@@ -25,11 +22,4 @@ const NewsPagination: React.FC<{currentPage: number, totalNumPages: number}> = (
     </div>
 }
 
-export default async function NyheterArkiv({params}: {params: {pageNum: string}}) {
-    const currentPage = parseInt(params.pageNum)
-    if (isNaN(currentPage)) {
-        return notFound()
-    }
-
-    return <NewsListExcerptAndImage currentPage={currentPage} />
-}
+export default NewsPagination
