@@ -29,7 +29,7 @@ export default async function NyheterArkiv({params}: {params: {pageNum: string}}
 
             <div className="hh-content-blocks hh-body-typography mt-10">
                 <div className="flex flex-row">
-                    {currentPage !== 1 && <a href={currentPage === 2 ? `/nyheter` : `/nyheter/side/${currentPage - 1}`}>Forrige side</a>}
+                    {currentPage !== 1 && <a href={`/nyheter/side/${currentPage - 1}`}>Forrige side</a>}
                     <div className="flex-1 text-center italic text-gray-500">Side {currentPage} av {totalNumPages}</div>
                     {currentPage !== totalNumPages && <a href={`/nyheter/side/${currentPage + 1}`}>Neste side</a>}
                     
