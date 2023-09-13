@@ -1,5 +1,29 @@
 import { notFound } from "next/navigation"
 
+const NewsPagination: React.FC<{currentPage: number, totalNumPages: number}> = ({currentPage, totalNumPages}) => {
+    return <div className="hh-content-blocks hh-body-typography mt-10">
+        <div className="grid" style={{gridTemplateColumns: "1fr auto 1fr"}}>
+            <div className="flex flex-row gap-4">
+                {currentPage !== 1 && <>
+                    <a href={`/nyheter/side/1`}>Første side</a>
+                    <a href={`/nyheter/side/${currentPage - 1}`}>Forrige side</a>
+                </>}
+            </div>
+            
+            <div className="text-center flex-1 italic text-gray-500 flex flex-col gap-4">
+                <div>Side {currentPage} av {totalNumPages}</div>
+            </div>
+            <div className="flex flex-row gap-4 ml-auto">
+                {currentPage !== totalNumPages && <>
+                    <a href={`/nyheter/side/${currentPage + 1}`}>Neste side</a>
+                    <a href={`/nyheter/side/${totalNumPages}`}>Siste side</a>
+                </>}
+            </div>
+        </div>
+
+    </div>
+}
+
 export default async function NyheterArkiv({params}: {params: {pageNum: string}}) {
     const currentPage = parseInt(params.pageNum)
     if (isNaN(currentPage)) {
@@ -11,8 +35,13 @@ export default async function NyheterArkiv({params}: {params: {pageNum: string}}
     const totalNumPages = parseInt(wpPostsDataRes.headers.get("x-wp-totalpages") as string)
 
     return <div>
+        <NewsPagination currentPage={currentPage} totalNumPages={totalNumPages} />
+
         <div className="hh-typography hh-body-typography hh-content-blocks">
-            <h1>Nyheter</h1>
+            <div className="flex flex-row items-center gap-10">
+                <h1>Nyheter</h1>
+                <div className="text-xl"><a href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Arkiv</a></div>
+            </div>
         </div>
         <div className="hh-typography">
             {wpPostsData.map(wpPost => {
@@ -27,23 +56,7 @@ export default async function NyheterArkiv({params}: {params: {pageNum: string}}
                 </div>
             })}
 
-            <div className="hh-content-blocks hh-body-typography mt-10">
-                <div className="flex flex-row gap-4">
-                    {currentPage !== 1 && <>
-                        <a href={`/nyheter/side/1`}>Første side</a>
-                        <a href={`/nyheter/side/${currentPage - 1}`}>Forrige side</a>
-                    </>}
-                    <div className="flex-1 text-center italic text-gray-500 flex flex-col gap-4">
-                        <div>Side {currentPage} av {totalNumPages}</div>
-                        <div className=""><a href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Nyhetsarkiv</a></div>
-                    </div>
-                    {currentPage !== totalNumPages && <>
-                        <a href={`/nyheter/side/${currentPage + 1}`}>Neste side</a>
-                        <a href={`/nyheter/side/${totalNumPages}`}>Siste side</a>
-                    </>}
-                </div>
-
-            </div>
+            <NewsPagination currentPage={currentPage} totalNumPages={totalNumPages} />
         </div>
     </div>
 }
