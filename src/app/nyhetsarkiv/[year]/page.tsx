@@ -4,6 +4,10 @@ import React from "react"
 
 const monthNames = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
 
+export async function generateStaticParams() {
+    return [{year: new Date().getFullYear().toString()}]
+}
+
 export default async function Nyhetsarkiv({params}: {params: {year: string}}) {
     const year = parseInt(params.year)
     if (isNaN(year)) {
