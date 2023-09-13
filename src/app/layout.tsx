@@ -28,7 +28,7 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
         <nav className='flex flex-col gap-10 items-center mt-10 mb-20 px-5' role="navigation">
-          <a href="/" aria-hidden="true">
+          <a href="/" aria-hidden="true" tabIndex={-1}>
             <Image
                 src="/orthodox_cross_logo_red.gif"
                 alt=""
