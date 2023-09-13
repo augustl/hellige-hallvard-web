@@ -47,7 +47,7 @@ export default async function HomePage() {
                 })}
             </ul>
 
-            <p className="alignwide hh-body-typography"><a href="/nyheter">Alle nyheter</a></p>
+            <p className="alignwide hh-body-typography"><a href="/nyheter/side/1">Alle nyheter</a></p>
         </div>
         <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
     </div>

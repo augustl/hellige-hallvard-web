@@ -1,15 +1,10 @@
 import NewsListing from "@/components/NewsListing"
-import { RedirectType } from "next/dist/client/components/redirect"
-import { notFound, redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 
 export default async function NyheterArkiv({params}: {params: {pageNum: string}}) {
     const currentPage = parseInt(params.pageNum)
     if (isNaN(currentPage)) {
         return notFound()
-    }
-
-    if (currentPage === 1) {
-        redirect("/nyheter", RedirectType.replace)
     }
 
     const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=${process.env.NEXT_PUBLIC_NEWS_ITEMS_PER_PAGE}&page=${currentPage}`, {next: {tags: ["wp-posts"]}})
