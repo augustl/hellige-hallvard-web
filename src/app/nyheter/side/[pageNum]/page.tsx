@@ -1,6 +1,10 @@
 import NewsListExcerptAndImage from "@/components/NewsListExcerptAndImage"
 import { notFound } from "next/navigation"
 
+export async function generateStaticParams() {
+    return [{pageNum: "1"}]
+}
+
 const NewsPagination: React.FC<{currentPage: number, totalNumPages: number}> = ({currentPage, totalNumPages}) => {
     return <div className="hh-content-blocks hh-body-typography mt-10">
         <div className="grid gap-4" style={{gridTemplateColumns: "1fr auto 1fr"}}>
