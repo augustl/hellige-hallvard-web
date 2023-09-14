@@ -23,13 +23,9 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
     const totalNumPages = Math.floor(wpPostsAndMeta.found / perPage)
 
     return <div>
-        <NewsPagination currentPage={currentPage} totalNumPages={totalNumPages} />
-
-        <div className="hh-typography hh-body-typography hh-content-blocks">
-            <div className="flex flex-row items-center gap-10">
-                <h1>Nyheter</h1>
-                <div className="text-xl"><a href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Arkiv</a></div>
-            </div>
+        <div className="hh-typography hh-body-typography hh-content-blocks mb-20">
+            <h1>Nyheter</h1>
+            <p><a href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Nyhetsarkiv</a></p>
         </div>
         <div className="hh-typography">
             {wpPostsData.map(wpPost => {

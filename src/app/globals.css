@@ -25,7 +25,7 @@ body {
 }
 
 .hh-typography h1 {
-  @apply text-5xl my-14;
+  @apply text-5xl;
 }
 
 .hh-typography h2 {
