@@ -17,7 +17,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const wpPagesData: any[] = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&orderby=menu_order&order=asc&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-pages"]}})).json()
+  const wpPagesData: any[] = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&orderby=menu_order&order=asc&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=0`, {next: {tags: ["wp-pages"]}})).json()
+
+  console.log(wpPagesData)
 
   return (
     <html lang="no">
