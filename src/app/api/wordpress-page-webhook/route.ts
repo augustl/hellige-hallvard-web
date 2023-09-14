@@ -5,9 +5,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const wpData = await request.formData()
     const postUrl = wpData.get("post_url") as string
     const postParent = wpData.get("post_parent") as string
-    const pageKey = postUrl.replace(`https://${process.env.NEXT_PUBLIC_WORDPRESS_URL}/`, "").replace(/\/$/, "")
-    console.log(`Invalidating cache for path ${pageKey}`)
-    revalidateTag(`wp-page-${pageKey}`)
+    const pathSegments = postUrl.replace(`https://${process.env.NEXT_PUBLIC_WORDPRESS_URL}/`, "").replace(/\/$/, "").split("/")
+
+    for (const pageKey of pathSegments) {
+        console.log(`Invalidating cache for path ${pageKey}`)
+        revalidateTag(`wp-page-${pageKey}`)
+    }
     revalidateTag(`wp-pages`)
 
     if (postParent) {
