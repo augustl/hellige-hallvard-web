@@ -76,6 +76,14 @@ body {
   @apply mx-auto;
 }
 
+.wp-block-table table {
+  @apply border-collapse border-none;
+}
+
+.wp-block-table table, .wp-block-table td, .wp-block-table th {
+  @apply border-solid border-2 border-gray-500; 
+}
+
 .hh-content-blocks > * {
   @apply mx-auto;
 }
