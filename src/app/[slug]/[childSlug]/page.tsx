@@ -16,7 +16,7 @@ export default async function WordpressChildPage({params}: {params: {slug: strin
 
     const wpParentPage = wpParentPageBody[0]
 
-    const wpPageData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?slug=${params.childSlug}&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=${wpParentPage.id}`, {next: {tags: [`wp-page-${params.childSlug}`]}})
+    const wpPageData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?slug=${params.childSlug}&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=${wpParentPage.id}`, {next: {tags: [`wp-page-${params.childSlug}`, `wp-parent-page-${wpParentPage.id}`]}})
 
     if (wpPageData.status !== 200) {
         return notFound()

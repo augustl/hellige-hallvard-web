@@ -31,7 +31,7 @@ export default async function WordpressPage({params}: {params: {slug: string}}) 
 
     const wpPage = wpBody[0] as WordpressPage
 
-    const wpChildPages: any[] = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=${wpPage.id}`)).json()
+    const wpChildPages: any[] = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=${wpPage.id}`, {next: {tags: [`wp-page-${params.slug}`, `wp-parent-page-${wpPage.id}`]}})).json()
     
     return <div className="hh-typography hh-body-typography">
         <div className="hh-content-blocks">
