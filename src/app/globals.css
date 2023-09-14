@@ -40,8 +40,28 @@ body {
   @apply border-l-2 border-gray-600 border-solid pl-4 text-gray-600;
 }
 
-.hh-body-typography ul li {
-  @apply list-disc ml-4;
+.hh-body-typography ul, .hh-body-typography ol {
+  @apply mt-8 pl-4;
+}
+
+.hh-body-typography ul ul, .hh-body-typography ol ol, .hh-body-typography ul ol, .hh-body-typography ol ul {
+  @apply mt-0;
+}
+
+.hh-body-typography ul {
+  @apply list-disc;
+}
+
+.hh-body-typography ol {
+  @apply list-decimal;
+}
+
+.hh-body-typography ol ol {
+  list-style-type: lower-alpha;
+}
+
+.hh-body-typography ol ol ol {
+  list-style-type: lower-roman;
 }
 
 .wp-block-media-text {
