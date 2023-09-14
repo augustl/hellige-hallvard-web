@@ -32,7 +32,7 @@ export default async function WordpressChildPage({params}: {params: {slug: strin
 
     return <div className="hh-typography hh-body-typography">
         <div className="hh-content-blocks">
-            <p><a href={`/${wpParentPage.slug}`}>Tilbake til <span dangerouslySetInnerHTML={{__html: wpParentPage.title.rendered}}></span></a></p>
+            <p className="mb-10"><a href={`/${wpParentPage.slug}`}>Tilbake til <span dangerouslySetInnerHTML={{__html: wpParentPage.title.rendered}}></span></a></p>
             <h1 dangerouslySetInnerHTML={{__html: wpPage.title.rendered}}></h1>
         </div>
         <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
