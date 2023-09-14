@@ -20,7 +20,7 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
     const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?page=${currentPage}&number=${perPage}`, {next: {tags: ["wp-posts"]}})
     const wpPostsAndMeta: {posts: any[], found: number} = (await wpPostsDataRes.json())
     const wpPostsData = wpPostsAndMeta.posts
-    const totalNumPages = Math.floor(wpPostsAndMeta.found / perPage)
+    const totalNumPages = Math.ceil(wpPostsAndMeta.found / perPage)
 
     return <div>
         <div className="hh-typography hh-body-typography hh-content-blocks mb-20">
