@@ -36,14 +36,14 @@ export default async function HomePage() {
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
-                <div className="flex flex-col md:flex-row-reverse gap-10">
-                    <div className="flex-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="md:order-2">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
                         <UpcomingEventsList />
                         <p className="hh-body-typography"><a href="/gudstjenester">Hele kalenderen</a></p>
                     </div>
 
-                    <div className="flex-1">
+                    <div className="md:order-1">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Siste nytt</h2>
                         <ul>
                             {wpPostsData.map(it => {
