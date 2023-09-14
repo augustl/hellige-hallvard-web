@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest): Promise<NextResponse> {
     const wpData = await request.formData()
     const postUrl = wpData.get("post_url") as string
+    console.log(wpData.get("post_parent"))
     const pageKey = postUrl.replace(`https://${process.env.NEXT_PUBLIC_WORDPRESS_URL}/`, "").replace(/\/$/, "")
     console.log(`Invalidating cache for path ${pageKey}`)
     revalidateTag(`wp-page-${pageKey}`)
