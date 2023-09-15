@@ -23,7 +23,7 @@ export default async function HomePage() {
 
                     <div className="md:order-1">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Siste nytt</h2>
-                        <ul>
+                        <ul className="hh-body-typography">
                             {wpPostsData.map(it => {
                                 const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
 
