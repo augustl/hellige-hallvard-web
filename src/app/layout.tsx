@@ -8,7 +8,7 @@ import React from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Hellige Hallvard ortodokse menighet',
+  title: process.env.NEXT_PUBLIC_PAGE_TITLE,
   description: 'Erkebispedømmet av menigheter med russisk tradisjon i Vesteuropa',
 }
 

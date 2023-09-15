@@ -1,3 +1,4 @@
+import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 type WordpressPost = {
@@ -8,6 +9,8 @@ type WordpressPost = {
     content: {rendered: string}
 }
 
+type WordpressPostParams = { params: {year: string, month: string, slug: string}}
+
 export async function generateStaticParams() {
     const wpPostsData = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=10`)).json()
 
@@ -17,7 +20,27 @@ export async function generateStaticParams() {
     })
 }
 
-export default async function WordpressPost({params}: { params: {year: string, month: string, slug: string}}) {
+export async function generateMetadata(
+    {params}: WordpressPostParams,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.slug)}`)
+    const wpPost = await req.json()
+    const attachment = wpPost.attachments[Object.keys(wpPost.attachments)[0]]
+
+    return {
+        title: `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`,
+        openGraph: {
+            title: wpPost.title,
+            siteName: process.env.NEXT_PUBLIC_PAGE_TITLE,
+            images: [attachment.thumbnails.large],
+            type: "website",
+            locale: "nb_no"
+        }
+    }
+}
+
+export default async function WordpressPost({params}: WordpressPostParams) {
     const wpData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&slug=${params.slug}`, {next: {tags: ["wp-posts"]}})
 
     if (wpData.status !== 200) {
