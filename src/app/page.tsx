@@ -1,4 +1,4 @@
-import UpcomingEventsList from "@/components/UpcomingEventsLits"
+import UpcomingEventsListSSR from "@/components/UpcomingEventsListSSR"
 
 const vowels = new Set(["a", "e", "i", "o", "u", "æ", "ø", "å", "A", "E", "I", "O", "U", "Æ", "Ø", "Å"])
 
@@ -39,7 +39,7 @@ export default async function HomePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="md:order-2">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
-                        <UpcomingEventsList />
+                        <UpcomingEventsListSSR />
                         <p className="hh-body-typography"><a href="/gudstjenester">Hele kalenderen</a></p>
                     </div>
 
