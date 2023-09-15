@@ -1,3 +1,4 @@
+import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 type WordpressPage = {
@@ -9,6 +10,8 @@ type WordpressPage = {
     content: {rendered: string}
 }
 
+type WordpressPageParams = {params: {slug: string}}
+
 export async function generateStaticParams() {
     const wpPagesData = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`)).json()
 
@@ -16,7 +19,20 @@ export async function generateStaticParams() {
 
 }
 
-export default async function WordpressPage({params}: {params: {slug: string}}) {
+
+export async function generateMetadata(
+    {params}: WordpressPageParams,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.slug)}`, {next: {tags: [`wp-page-${params.slug}`]}})
+    const wpPost = await req.json()
+
+    return {
+        title: wpPost.title ? `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}` : process.env.NEXT_PUBLIC_PAGE_TITLE
+    }
+}
+
+export default async function WordpressPage({params}: WordpressPageParams) {
     const wpData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?slug=${params.slug}&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: [`wp-page-${params.slug}`]}})
 
     if (wpData.status !== 200) {

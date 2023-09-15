@@ -24,8 +24,13 @@ export async function generateMetadata(
     {params}: WordpressPostParams,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.slug)}`)
+    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.slug)}`, {next: {tags: ["wp-posts"]}})
     const wpPost = await req.json()
+
+    if (!req.ok) {
+        return {title: process.env.NEXT_PUBLIC_PAGE_TITLE}
+    }
+
     const attachment = wpPost.attachments[Object.keys(wpPost.attachments)[0]]
 
     const title = `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`

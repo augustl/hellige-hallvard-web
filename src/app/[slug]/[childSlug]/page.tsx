@@ -1,7 +1,22 @@
+import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
+type WordpressChildPageParams = {params: {slug: string, childSlug: string}}
+
+export async function generateMetadata(
+    {params}: WordpressChildPageParams,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.childSlug)}`, {next: {tags: [`wp-page-${params.childSlug}`]}})
+    const wpPost = await req.json()
+
+    return {
+        title: wpPost.title ? `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}` : process.env.NEXT_PUBLIC_PAGE_TITLE    
+    }
+}
+
 // We only support one level of nesting, for sake of simplicity
-export default async function WordpressChildPage({params}: {params: {slug: string, childSlug: string}}) {
+export default async function WordpressChildPage({params}: WordpressChildPageParams) {
     const wpParentPageData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?slug=${params.slug}&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: [`wp-page-${params.slug}`]}})
 
     if (wpParentPageData.status !== 200) {

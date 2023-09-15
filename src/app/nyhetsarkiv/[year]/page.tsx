@@ -1,14 +1,27 @@
 import { groupBy } from "@/utils"
+import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import React from "react"
 
 const monthNames = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
 
+type NyhetsarkivParams = {params: {year: string}}
+
 export async function generateStaticParams() {
     return [{year: new Date().getFullYear().toString()}]
 }
 
-export default async function Nyhetsarkiv({params}: {params: {year: string}}) {
+export async function generateMetadata(
+    {params}: NyhetsarkivParams,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+
+    return {
+        title: `Nyhetsarkiv ${params.year} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`
+    }
+}
+
+export default async function Nyhetsarkiv({params}: NyhetsarkivParams) {
     const year = parseInt(params.year)
     if (isNaN(year)) {
         return notFound()
