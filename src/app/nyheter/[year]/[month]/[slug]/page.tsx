@@ -28,10 +28,12 @@ export async function generateMetadata(
     const wpPost = await req.json()
     const attachment = wpPost.attachments[Object.keys(wpPost.attachments)[0]]
 
+    const title = `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`
+
     return {
-        title: `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`,
+        title: title,
         openGraph: {
-            title: wpPost.title,
+            title: title,
             siteName: process.env.NEXT_PUBLIC_PAGE_TITLE,
             description: process.env.NEXT_PUBLIC_PAGE_TITLE,
             images: attachment ? [attachment.thumbnails.large] : [],
