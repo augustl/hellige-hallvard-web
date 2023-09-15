@@ -33,7 +33,7 @@ export async function generateMetadata(
         openGraph: {
             title: wpPost.title,
             siteName: process.env.NEXT_PUBLIC_PAGE_TITLE,
-            images: [attachment.thumbnails.large],
+            images: attachment ? [attachment.thumbnails.large] : [],
             type: "website",
             locale: "nb_no"
         }
