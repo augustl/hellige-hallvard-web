@@ -27,7 +27,7 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/favicon_151.gif" />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
-        <nav className='flex flex-col gap-10 items-center mt-10 mb-20 px-5' role="navigation">
+        <nav className='flex flex-col gap-10 items-center mt-10 mb-20 px-5 print:hidden' role="navigation">
           <a href="/" aria-hidden="true" tabIndex={-1}>
             <Image
                 src="/orthodox_cross_logo_red.gif"
@@ -46,7 +46,7 @@ export default async function RootLayout({
         <main className='w-full px-5'>
           {children}
         </main>
-        <footer className="mt-40 w-full px-5 bg-gray-600">
+        <footer className="mt-40 w-full px-5 bg-gray-600 print:hidden">
           <div className="mx-auto max-w-6xl py-20 text-white">
             <p>Hellige Hallvard ortdokse menighet</p>
             <p>Myrerveien 4, 0494 Oslo</p>
