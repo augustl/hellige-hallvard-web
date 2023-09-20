@@ -27,18 +27,13 @@ export default async function WordpressPage({params}: WordpressPageParams) {
     let pages: WordpressRestV2Page[] = []
 
     for (const slugPart of params.slug) {
-        const params = new URLSearchParams({
-            slug: slugPart,
-            exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!
-        })
-
         const parentPage = pages[pages.length - 1]
-        if (parentPage) {
-            params.append("parent", parentPage.id.toString())
-        }
-
         const res = await fetch(
-            `https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?${params}`, 
+            `https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?${new URLSearchParams({
+                slug: slugPart,
+                exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
+                parent: parentPage ? parentPage.id.toString() : "0"
+            })}`, 
             {next: {tags: [`wp-page-${slugPart}`]}})
         if (!res.ok) {
             return notFound()
