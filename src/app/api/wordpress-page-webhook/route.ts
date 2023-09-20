@@ -8,7 +8,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const pathSegments = postUrl.replace(`https://${process.env.NEXT_PUBLIC_WORDPRESS_URL}/`, "").replace(/\/$/, "").split("/")
 
     for (const pageKey of pathSegments) {
-        console.log(`Invalidating cache for path ${pageKey}`)
+        console.log(`Invalidating cache for path "${pageKey}"`)
         revalidateTag(`wp-page-${pageKey}`)
     }
     revalidateTag(`wp-pages`)
