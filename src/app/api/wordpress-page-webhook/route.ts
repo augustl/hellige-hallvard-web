@@ -13,11 +13,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
     revalidateTag(`wp-pages`)
 
-    if (postParent) {
-        console.log(`Invalidating cache for parent page ${postParent}`)
-        revalidateTag(`wp-parent-page-${postParent}`)
-    }
-
     if (process.env.NEXT_PUBLIC_HOME_PAGE_ID === wpData.get("ID")) {
         console.log("Invalidating cache for root page")
         revalidateTag(`wp-home-page`)
