@@ -17,6 +17,12 @@ export async function generateMetadata(
     }
 }
 
+export async function generateStaticParams() {
+    const wpPagesData: WordpressRestV2PagesRes = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=0`)).json()
+
+    return wpPagesData.map((it: any) => ({slug: [it.slug]}))
+}
+
 export default async function WordpressPage({params}: WordpressPageParams) {
     let pages: WordpressRestV2Page[] = []
 
