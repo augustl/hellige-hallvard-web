@@ -26,7 +26,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon_142.gif" sizes="192x192" />
         <link rel="apple-touch-icon" href="/favicon_151.gif" />
       </head>
-      <body className={`${inter.className} flex min-h-screen flex-col items-center`}>
+      <body className={`${inter.className} flex min-h-screen flex-col items-center text-base`}>
         <nav className='flex flex-col gap-10 items-center mt-10 mb-20 px-5 print:hidden' role="navigation">
           <a href="/" aria-hidden="true" tabIndex={-1}>
             <Image

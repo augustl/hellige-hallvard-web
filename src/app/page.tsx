@@ -24,13 +24,13 @@ export default async function HomePage() {
 
                     <div className="md:order-1">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Siste nytt</h2>
-                        <div className="hh-body-typography grid gap-4 grid-cols-[auto_1fr] mb-4">
+                        <div className="hh-body-typography grid sm:gap-4 grid-cols-1 sm:grid-cols-[auto_1fr] mb-4">
                             {wpPostsData.map(it => {
                                 const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
 
                                 return <React.Fragment key={it.id}>
                                     <div>{d}.{m}.{y}</div>
-                                    <a href={`/nyheter/${y}/${m}/${it.slug}`} className="font-bold hyphens-auto w-full" dangerouslySetInnerHTML={{__html: it.title.rendered}}></a>
+                                    <div className="mb-4 sm:mb-0"><a href={`/nyheter/${y}/${m}/${it.slug}`} className="font-bold hyphens-auto w-full" dangerouslySetInnerHTML={{__html: it.title.rendered}}></a></div>
                                 </React.Fragment>
                             })}
                         </div>
