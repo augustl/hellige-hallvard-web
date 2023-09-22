@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 type WordpressPageParams = {params: {slug: string[]}}
 
+export const revalidate = 3600
 
 export async function generateMetadata(
     {params}: WordpressPageParams,

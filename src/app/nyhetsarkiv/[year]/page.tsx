@@ -7,6 +7,8 @@ const monthNames = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli",
 
 type NyhetsarkivParams = {params: {year: string}}
 
+export const revalidate = 3600
+
 export async function generateStaticParams() {
     return [{year: new Date().getFullYear().toString()}]
 }

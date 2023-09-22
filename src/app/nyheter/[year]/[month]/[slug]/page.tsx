@@ -11,6 +11,8 @@ type WordpressPost = {
 
 type WordpressPostParams = { params: {year: string, month: string, slug: string}}
 
+export const revalidate = 3600
+
 export async function generateStaticParams() {
     const wpPostsData = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=10`)).json()
 

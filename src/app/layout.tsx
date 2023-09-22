@@ -7,6 +7,8 @@ import React from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_PAGE_TITLE,
   description: 'Erkebispedømmet av menigheter med russisk tradisjon i Vesteuropa',
