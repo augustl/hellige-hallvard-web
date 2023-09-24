@@ -6,7 +6,7 @@ export const revalidate = 3600
 export default async function HomePage() {
     const [wpPagesDataRes, wpPostsDataRes] = await Promise.all([
         fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=view&include=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-home-page"]}}),
-        fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=5`, {next: {tags: ["wp-home-page", "wp-posts"]}})
+        fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=6`, {next: {tags: ["wp-home-page", "wp-posts"]}})
     ])
 
     const wpPagesData: any[] = await wpPagesDataRes.json()
