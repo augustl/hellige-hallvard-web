@@ -4,12 +4,27 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
+}
+
+.hh-body-typography a {
+  @apply text-blue-700;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 0, 0, 0;
+  }
+
+  .hh-body-typography a {
+    @apply text-blue-400;
+  }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb))
 }
 
 .hh-typography h1, .hh-typography h2, .hh-typography h3, .hh-typography h4 {
@@ -106,5 +121,5 @@ body {
 }
 
 .hh-body-typography a {
-  @apply text-blue-700 underline;
+  @apply underline;
 }
