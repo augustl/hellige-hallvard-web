@@ -1,3 +1,4 @@
+import WpPostContent from "@/components/WpPostContent"
 import { WordpressRestV2Page, WordpressRestV2PagesRes } from "@/types/wordpress"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
@@ -71,7 +72,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
         {wpParentPage && <p className="mb-10"><a href={`/${wpParentPage.slug}`}>Tilbake til <span dangerouslySetInnerHTML={{__html: wpParentPage.title.rendered}}></span></a></p>}
         <h1 dangerouslySetInnerHTML={{__html: wpPage.title.rendered}}></h1>
     </div>
-    <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
+    <WpPostContent content={wpPage.content.rendered} />
     <div className="hh-content-blocks mt-10">
         <ul>
             {wpChildPages.map(childPage => <li key={childPage.id}>

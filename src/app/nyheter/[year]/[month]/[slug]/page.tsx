@@ -1,3 +1,4 @@
+import WpPostContent from '@/components/WpPostContent'
 import { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
@@ -77,6 +78,6 @@ export default async function WordpressPost({params}: WordpressPostParams) {
             <h1 className="hyphens-auto" dangerouslySetInnerHTML={{__html: wpPost.title.rendered}}></h1>
             <p>{wpPostParsedDate?.[3]}.{wpPostParsedDate?.[2]}, {wpPostParsedDate?.[1]}</p>
         </div>
-        <div className="hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>
+        <WpPostContent content={wpPost.content.rendered} />
     </div>
 }
