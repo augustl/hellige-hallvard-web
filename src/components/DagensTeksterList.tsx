@@ -50,7 +50,7 @@ export default async function DagensTeksterList () {
     }
 
     return <div className="flex flex-col md:flex-row gap-2 flex-wrap hh-body-typography">
-        <div>Dagens tekster:</div>
+        <div className="text-2xl md:text-base font-bold font-serif">Dagens tekster<span className="hidden md:inline">:</span></div>
         <DagensTeksterListNB88 dagensTekster={dagensTekster} />
     </div>
 }
