@@ -4,8 +4,7 @@ export type DagensTekstItem = {
         chapter: number, 
         verses: {
             from: number, 
-            to: number, 
-            isLast?: boolean
+            to?: number, 
         }[]
     }[]
 }
