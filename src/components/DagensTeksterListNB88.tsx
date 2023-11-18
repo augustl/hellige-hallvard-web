@@ -1,7 +1,7 @@
 "use client"
 
 import { scrapeNB88Text } from "@/app/actions"
-import { DagensTekstItem } from "@/types/dynamodb"
+import { DagensTekstItems } from "@/types/dynamodb"
 import React, { useEffect, useRef, useState } from "react"
 
 const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
@@ -34,8 +34,7 @@ const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bo
     "Rev": { norskBibel: "Rev", bookNameShort: "Åp", bookName: "Johannes' åpenbaring" }
 };
 
-const DagensTeksterListNB88: React.FC<{dagensTekst: DagensTekstItem}> = ({dagensTekst}) => {
-    const dbBookName = dagensTekst.book
+const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems}> = ({dagensTekster}) => {
     const dialogRef = useRef<HTMLDialogElement | null>(null)
     const [currentBibleVerse, setCurrentBibleVerse] = useState<{url: string, title: string} | null>(null)
 
@@ -73,29 +72,31 @@ const DagensTeksterListNB88: React.FC<{dagensTekst: DagensTekstItem}> = ({dagens
                 <div><button className="p-2" onClick={() => setCurrentBibleVerse(null)}>Lukk</button></div>
             </div>
         </dialog>
-        <div key={dbBookName} className="flex flex-row gap-1">
-            {bookNames[dbBookName].bookNameShort}
-            <div className="flex flex-row gap-2">
-                {dagensTekst.chapters.map(chapter => {
-                    return chapter.verses.map(verse => {
-                        const chapterNo = chapter.chapter
-                        const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[dbBookName].norskBibel}:${chapterNo}:${verse.from}:p${verse.to - verse.from}`
-                
-                        return <a 
-                            key={`${chapterNo}-${verse.from}-${verse.to}`}   
-                            className="font-bold"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                setCurrentBibleVerse({url: bibleVerseUrl, title: `${bookNames[dbBookName].bookName} ${chapterNo}, ${verse.from}-${verse.to}`})
-                            }}
-                            href={bibleVerseUrl}
-                        >
-                            {chapterNo}, {verse.from}-{verse.to}
-                        </a>
-                    })     
-                })}
+        {dagensTekster.map(dagensTekst => {
+            return <div key={dagensTekst.book} className="flex flex-row gap-1">
+                {bookNames[dagensTekst.book].bookNameShort}
+                <div className="flex flex-row gap-2">
+                    {dagensTekst.chapters.map(chapter => {
+                        return chapter.verses.map(verse => {
+                            const chapterNo = chapter.chapter
+                            const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[dagensTekst.book].norskBibel}:${chapterNo}:${verse.from}:p${verse.to - verse.from}`
+                    
+                            return <a 
+                                key={`${chapterNo}-${verse.from}-${verse.to}`}   
+                                className="font-bold"
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    setCurrentBibleVerse({url: bibleVerseUrl, title: `${bookNames[dagensTekst.book].bookName} ${chapterNo}, ${verse.from}-${verse.to}`})
+                                }}
+                                href={bibleVerseUrl}
+                            >
+                                {chapterNo}, {verse.from}-{verse.to}
+                            </a>
+                        })     
+                    })}
+                </div>
             </div>
-        </div>
+        })}
     </>
 }
 

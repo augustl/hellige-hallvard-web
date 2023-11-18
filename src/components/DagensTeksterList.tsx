@@ -51,8 +51,6 @@ export default async function DagensTeksterList () {
 
     return <div className="flex flex-col md:flex-row gap-2 flex-wrap hh-body-typography">
         <div>Dagens tekster:</div>
-        {dagensTekster.map(dagensTekst => {
-            return <DagensTeksterListNB88 key={`${JSON.stringify(dagensTekst)}`} dagensTekst={dagensTekst} />
-        })}
+        <DagensTeksterListNB88 dagensTekster={dagensTekster} />
     </div>
 }
