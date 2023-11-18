@@ -27,12 +27,16 @@ type DateTimeWithZone = {dateTime: `${ISO8601Date}T${ISO8601TimeWithOffset}`, ti
 type DateOnly = {date: ISO8601Date}
 type GoogleCalendarDate = DateTimeWithZone | DateOnly
 
+const isFullDayEvent = (dateValue: GoogleCalendarDate): dateValue is DateOnly => {
+    return "date" in dateValue
+}
+
 const getEventDate = (dateValue: GoogleCalendarDate): Date => {
-    if ("dateTime" in dateValue) {
-        return new Date(dateValue.dateTime)
+    if (isFullDayEvent(dateValue)) {
+        return new Date(dateValue.date)
     }
 
-    return new Date(dateValue.date)
+    return new Date(dateValue.dateTime)
 }
 
 export default async function UpcomingEventsListSSR() {
@@ -42,7 +46,7 @@ export default async function UpcomingEventsListSSR() {
     const upcomingEventsData: {id: number, start: GoogleCalendarDate, summary: string}[] = (await res.json()).items
     const upcomingEvents = upcomingEventsData.map(it => {
         const start = getEventDate(it.start)
-        return {...it, date: start, dateKey: `${start.getFullYear()}-${start.getMonth()}-${start.getDate()}`}
+        return {...it, isFullDayEvent: isFullDayEvent(it.start), date: start, dateKey: `${start.getFullYear()}-${start.getMonth()}-${start.getDate()}`}
     })
 
     const upcomingEventsByDay = partitionBy(upcomingEvents, it => it.dateKey).slice(0, NUM_DATES)
@@ -56,7 +60,7 @@ export default async function UpcomingEventsListSSR() {
                     const hour = dateParts.filter(it => it.type === "hour")[0].value
                     const minute = dateParts.filter(it => it.type === "minute")[0].value
                     return <div key={event.id}>
-                        {hour}:{minute} {event.summary}
+                        {event.isFullDayEvent ? '' : `${hour}:${minute}`} {event.summary}
                     </div>
                 })}
             </div>
