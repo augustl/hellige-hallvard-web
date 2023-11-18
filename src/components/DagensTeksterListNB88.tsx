@@ -42,7 +42,7 @@ const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems}> = ({dag
     return <>
         <Modal onClose={() => setCurrentBibleVerse(null)}>
             {currentBibleVerse && <div className="p-6">
-                <h2 className="text-1xl font-bold font-serif">{currentBibleVerse.title}</h2>
+                <h2 className="text-1xl xs:text-3xl font-bold font-serif">{currentBibleVerse.title}</h2>
                 <div className="hh-typography hh-body-typography">
                     <DagensTeksterListNB88TekstScraper url={currentBibleVerse.url} />
                 </div>
