@@ -3,6 +3,7 @@
 import { scrapeNB88Text } from "@/app/actions"
 import { DagensTekstItems } from "@/types/dynamodb"
 import React, { useEffect, useRef, useState } from "react"
+import Modal from "./Modal";
 
 const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
     "Mt": { norskBibel: "Matt", bookNameShort: "Matt", bookName: "Matteus' evangelium" },
@@ -35,43 +36,18 @@ const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bo
 };
 
 const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems}> = ({dagensTekster}) => {
-    const dialogRef = useRef<HTMLDialogElement | null>(null)
     const [currentBibleVerse, setCurrentBibleVerse] = useState<{url: string, title: string} | null>(null)
 
-    useEffect(() => {
-        const dialogEl = dialogRef.current
-        if (!dialogEl) {
-            return
-        }
-
-        if (currentBibleVerse) {
-            dialogEl.showModal()
-        } else {
-            dialogEl.close()
-        }
-    }, [currentBibleVerse])
     
     return <>
-        <dialog
-            ref={dialogRef}
-            className="backdrop:bg-gray-900 backdrop:bg-opacity-90
-            top-1/2 left-1/2 fixed -translate-x-1/2 -translate-y-1/3
-            h-5/6 w-5/6"
-        >
-            <div className="h-full w-full flex flex-col">
-                <div className="flex-1 min-h-0 overflow-y-auto">
-                    <div className="p-6">
-                        {currentBibleVerse && <>
-                            <h2 className="text-1xl font-bold font-serif">{currentBibleVerse.title}</h2>
-                            <div className="hh-typography hh-body-typography">
-                                <DagensTeksterListNB88TekstScraper url={currentBibleVerse.url} />
-                            </div>
-                        </>}
-                    </div>
+        <Modal onClose={() => setCurrentBibleVerse(null)}>
+            {currentBibleVerse && <div className="p-6">
+                <h2 className="text-1xl font-bold font-serif">{currentBibleVerse.title}</h2>
+                <div className="hh-typography hh-body-typography">
+                    <DagensTeksterListNB88TekstScraper url={currentBibleVerse.url} />
                 </div>
-                <div><button className="p-2" onClick={() => setCurrentBibleVerse(null)}>Lukk</button></div>
-            </div>
-        </dialog>
+            </div>}
+        </Modal>
         {dagensTekster.map(dagensTekst => {
             return <div key={dagensTekst.book} className="flex flex-row gap-1">
                 {bookNames[dagensTekst.book].bookNameShort}
