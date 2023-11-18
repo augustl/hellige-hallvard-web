@@ -20,13 +20,28 @@ const DateHeadline: React.FC<{date: Date}> = ({date}) => {
     return <><span className="capitalize">{weekday}</span> {day}. {month}</>
 }
 
+type ISO8601Date = `${number}-${number}-${number}`
+type ISO8601TimeWithOffset = `${number}:${number}${'+' | '-'}${number}:${number}`
+
+type DateTimeWithZone = {dateTime: `${ISO8601Date}T${ISO8601TimeWithOffset}`, timeZone: string}
+type DateOnly = {date: ISO8601Date}
+type GoogleCalendarDate = DateTimeWithZone | DateOnly
+
+const getEventDate = (dateValue: GoogleCalendarDate): Date => {
+    if ("dateTime" in dateValue) {
+        return new Date(dateValue.dateTime)
+    }
+
+    return new Date(dateValue.date)
+}
+
 export default async function UpcomingEventsListSSR() {
     const calendarCutoffTime = new Date()
     calendarCutoffTime.setHours(0, 0, 0, 0)
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=8&timeMin=${calendarCutoffTime.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
-    const upcomingEventsData: {id: number, start: {dateTime: string}, summary: string}[] = (await res.json()).items
+    const upcomingEventsData: {id: number, start: GoogleCalendarDate, summary: string}[] = (await res.json()).items
     const upcomingEvents = upcomingEventsData.map(it => {
-        const start = new Date(it.start.dateTime)
+        const start = getEventDate(it.start)
         return {...it, date: start, dateKey: `${start.getFullYear()}-${start.getMonth()}-${start.getDate()}`}
     })
 
