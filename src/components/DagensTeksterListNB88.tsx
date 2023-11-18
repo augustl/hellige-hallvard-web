@@ -55,18 +55,18 @@ const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems}> = ({dag
                     {dagensTekst.chapters.map(chapter => {
                         return chapter.verses.map(verse => {
                             const chapterNo = chapter.chapter
-                            const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[dagensTekst.book].norskBibel}:${chapterNo}:${verse.from}:p${verse.to - verse.from}`
+                            const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[dagensTekst.book].norskBibel}:${chapterNo}:${verse.from}${verse.to ? `:p${verse.to - verse.from}` : ``}`
                     
                             return <a 
                                 key={`${chapterNo}-${verse.from}-${verse.to}`}   
                                 className="font-bold"
                                 onClick={(e) => {
                                     e.preventDefault()
-                                    setCurrentBibleVerse({url: bibleVerseUrl, title: `${bookNames[dagensTekst.book].bookName} ${chapterNo}, ${verse.from}-${verse.to}`})
+                                    setCurrentBibleVerse({url: bibleVerseUrl, title: `${bookNames[dagensTekst.book].bookName} ${chapterNo}, ${verse.from}${verse.to ? `-${verse.to}` : ``}`})
                                 }}
                                 href={bibleVerseUrl}
                             >
-                                {chapterNo}, {verse.from}-{verse.to}
+                                {chapterNo}, {verse.from}{verse.to ? `-${verse.to}` : ``}
                             </a>
                         })     
                     })}
