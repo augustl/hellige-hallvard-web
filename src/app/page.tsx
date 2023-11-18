@@ -1,3 +1,4 @@
+import DagensTeksterList from "@/components/DagensTeksterList"
 import UpcomingEventsListSSR from "@/components/UpcomingEventsListSSR"
 import React from "react"
 
@@ -14,9 +15,11 @@ export default async function HomePage() {
 
     const wpPage = wpPagesData[0]
 
+
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
+                <div className="mb-8"><DagensTeksterList /></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="md:order-2">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
