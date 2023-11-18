@@ -49,7 +49,7 @@ export default async function RootLayout({
         <main className='w-full px-5'>
           {children}
         </main>
-        <footer className="mt-40 w-full px-5 bg-gray-600 print:hidden">
+        <footer className="mt-40 w-full px-5 bg-gray-600 dark:bg-gray-900 print:hidden">
           <div className="mx-auto max-w-6xl py-20 text-white">
             <p>Hellige Hallvard ortdokse menighet</p>
             <p>Myrerveien 4, 0494 Oslo</p>
