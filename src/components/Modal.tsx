@@ -19,6 +19,16 @@ const Modal: React.FC<{onClose: () => void, children: React.ReactNode}> = ({onCl
         }
     }, [hasChild])
 
+    useEffect(() => {
+        const dialogEl = dialogRef.current
+        if (!dialogEl) {
+            return
+        }
+
+        dialogEl.addEventListener("close", onClose)
+        return () => dialogEl.removeEventListener("close", onClose)
+    }, [onClose])
+
     return <dialog
         ref={dialogRef}
         className="backdrop:bg-gray-900 backdrop:bg-opacity-90
