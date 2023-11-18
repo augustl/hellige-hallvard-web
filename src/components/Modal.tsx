@@ -22,8 +22,8 @@ const Modal: React.FC<{onClose: () => void, children: React.ReactNode}> = ({onCl
     return <dialog
         ref={dialogRef}
         className="backdrop:bg-gray-900 backdrop:bg-opacity-90
-        top-1/2 left-1/2 fixed -translate-x-1/2 -translate-y-1/3
-        h-5/6 w-5/6"
+        top-1/2 left-1/2 fixed -translate-x-1/2 -translate-y-1/4
+        h-full w-full"
     >
         <div className="h-full w-full flex flex-col">
             <div className="flex-1 min-h-0 overflow-y-auto">
