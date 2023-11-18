@@ -8,7 +8,7 @@ const client = new DynamoDBClient()
 const docClient = DynamoDBDocumentClient.from(client)
 
 const getLocalDateSk = (now: Date): string | null => {
-    const date = new Date().toLocaleString("en-US", { timeZone: "Europe/Oslo" })
+    const date = now.toLocaleString("en-US", { timeZone: "Europe/Oslo" })
     const match = date.match(/^(\d+)\/(\d+)\/(\d+)/)
     if (!match) {
         return null
