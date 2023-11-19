@@ -40,15 +40,15 @@ body, dialog {
 }
 
 .hh-typography h1 {
-  @apply text-5xl;
+  @apply text-3xl xs:text-5xl;
 }
 
 .hh-typography h2 {
-  @apply text-4xl;
+  @apply text-2xl xs:text-4xl;
 }
 
 .hh-typography h3 {
-  @apply text-3xl;
+  @apply text-xl xs:text-3xl;
 }
 
 .hh-body-typography blockquote {
