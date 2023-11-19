@@ -1,6 +1,7 @@
 import Image from "next/image"
 import NewsPagination from "./NewsPagination"
 import React from "react"
+import Link from "next/link"
 
 const MAX_IMAGE_WIDTH = 500
 
@@ -25,7 +26,7 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
     return <div>
         <div className="hh-typography hh-body-typography hh-content-blocks mb-20">
             <h1>Nyheter</h1>
-            <p><a href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Nyhetsarkiv</a></p>
+            <p><Link href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Nyhetsarkiv</Link></p>
         </div>
         <div className="hh-typography">
             {wpPostsData.map(wpPost => {
@@ -33,7 +34,7 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
                 const postPath = `/nyheter/${postDate.getFullYear()}/${(postDate.getMonth() + 1).toString().padStart(2, "0")}/${wpPost.slug}`
                 const attachment = wpPost.attachments[Object.keys(wpPost.attachments)[0]]
                 return <div key={wpPost.id} className="hh-content-blocks mb-20">
-                    <h2><a dangerouslySetInnerHTML={{__html: wpPost.title}} href={postPath} className="hyphens-auto"></a></h2>
+                    <h2><Link dangerouslySetInnerHTML={{__html: wpPost.title}} href={postPath} className="hyphens-auto"></Link></h2>
                     <div>{postDate.getDay().toString().padStart(2, "0")}.{(postDate.getMonth() + 1).toString().padStart(2, "0")}, {postDate.getFullYear()}</div>
 
                     <div className={attachment ? "md:grid gap-4" : ""} style={{gridTemplateColumns: "200px auto"}}>
@@ -42,7 +43,7 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
                     </div>
 
                     <div className="hh-body-typography">
-                        <p><a href={postPath}>Les mere</a></p>
+                        <p><Link href={postPath}>Les mere</Link></p>
                     </div>
                 </div>
             })}

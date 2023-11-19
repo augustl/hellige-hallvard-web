@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,7 @@ export default async function RootLayout({
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center text-base`}>
         <nav className='flex flex-col gap-5 md:gap-10 items-center mt-10 mb-10 md:mb-20 px-5 print:hidden' role="navigation">
-          <a href="/" aria-hidden="true" tabIndex={-1}>
+          <Link href="/" aria-hidden="true" tabIndex={-1}>
             <Image
                 className="max-h-[100px] md:max-h-none object-contain"
                 src="/orthodox_cross_logo_red.gif"
@@ -40,9 +41,9 @@ export default async function RootLayout({
                 tabIndex={-1}
                 priority
             />
-          </a>
+          </Link>
 
-          <a href="/" title="Hellige Halvard ortodokse menighet - forsiden" className='font-bold text-xl md:text-3xl font-serif text-center'>Hellige Hallvard ortodokse menighet</a>
+          <Link href="/" title="Hellige Halvard ortodokse menighet - forsiden" className='font-bold text-xl md:text-3xl font-serif text-center'>Hellige Hallvard ortodokse menighet</Link>
 
           <Menu wpPagesData={wpPagesData} />
         </nav>

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import NewsPagination from "./NewsPagination"
 
 export default async function NewsListFull({currentPage}: {currentPage: number}) {
@@ -11,7 +12,7 @@ export default async function NewsListFull({currentPage}: {currentPage: number})
         <div className="hh-typography hh-body-typography hh-content-blocks">
             <div className="flex flex-row items-center gap-10">
                 <h1>Nyheter</h1>
-                <div className="text-xl"><a href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Arkiv</a></div>
+                <div className="text-xl"><Link href={`/nyhetsarkiv/${new Date().getFullYear()}`}>Arkiv</Link></div>
             </div>
         </div>
         <div className="hh-typography">
@@ -20,7 +21,7 @@ export default async function NewsListFull({currentPage}: {currentPage: number})
 
 
                 return <div key={wpPost.id} className="hh-content-blocks mb-40">
-                    <h2><a dangerouslySetInnerHTML={{__html: wpPost.title.rendered}} href={`/nyheter/${y}/${m}/${wpPost.slug}`} className="hyphens-auto"></a></h2>
+                    <h2><Link dangerouslySetInnerHTML={{__html: wpPost.title.rendered}} href={`/nyheter/${y}/${m}/${wpPost.slug}`} className="hyphens-auto"></Link></h2>
                     <div>{d}.{m}, {y}</div>
 
                     <div className="hh-body-typography" dangerouslySetInnerHTML={{__html: wpPost.content.rendered}}></div>

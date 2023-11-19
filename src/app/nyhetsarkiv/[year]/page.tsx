@@ -1,5 +1,6 @@
 import { groupBy } from "@/utils"
 import { Metadata, ResolvingMetadata } from "next"
+import Link from "next/link"
 import { notFound } from "next/navigation"
 import React from "react"
 
@@ -55,7 +56,7 @@ export default async function Nyhetsarkiv({params}: NyhetsarkivParams) {
 
                         <ul>
                             {postsInMonth.map(post => <li key={post.id}>
-                                <a dangerouslySetInnerHTML={{__html: post.renderedTitle}} href={`/nyheter/${post.year}/${post.month}/${post.slug}`}></a>
+                                <Link dangerouslySetInnerHTML={{__html: post.renderedTitle}} href={`/nyheter/${post.year}/${post.month}/${post.slug}`}></Link>
                             </li>)}
                         </ul>
                     </React.Fragment>
@@ -66,10 +67,10 @@ export default async function Nyhetsarkiv({params}: NyhetsarkivParams) {
         <div className="hh-content-blocks hh-body-typography mt-20">
             <div className="flex flex-row gap-4">
                 {year < currentYear && <>
-                    <a href={`/nyhetsarkiv/${year + 1}`}>Nyhetsarkiv for {year + 1}</a>
+                    <Link href={`/nyhetsarkiv/${year + 1}`}>Nyhetsarkiv for {year + 1}</Link>
                 </>}
                 <div className="flex-1 "></div>
-                <a href={`/nyhetsarkiv/${year - 1}`}>Nyhetsarkiv for {year - 1}</a>
+                <Link href={`/nyhetsarkiv/${year - 1}`}>Nyhetsarkiv for {year - 1}</Link>
             </div>
 
         </div>

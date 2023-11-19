@@ -5,6 +5,7 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb"
 import { DynamoDBDocumentClient, GetCommand } from "@aws-sdk/lib-dynamodb"
 import { getDagensTekster } from "@/lib/dagens-tekster-lib"
 import DagensTeksterListNB88 from "@/components/DagensTeksterListNB88"
+import Link from "next/link"
 
 const client = new DynamoDBClient()
 const docClient = DynamoDBDocumentClient.from(client)
@@ -56,7 +57,7 @@ const DayOffsetLink: React.FC<{date: Date, offset: number}> = ({date, offset}) =
     const offsetDate = new Date()
     offsetDate.setDate(date.getDate() + offset)
 
-    return <a href={`/dagenstekster/${offsetDate.getFullYear()}/${offsetDate.getMonth() + 1}/${offsetDate.getDate()}`}><DateFormat date={offsetDate} /></a>
+    return <Link href={`/dagenstekster/${offsetDate.getFullYear()}/${offsetDate.getMonth() + 1}/${offsetDate.getDate()}`}><DateFormat date={offsetDate} /></Link>
 }
 
 const DateFormat: React.FC<{date: Date}> = ({date}) => {

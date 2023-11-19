@@ -1,5 +1,6 @@
 import DagensTeksterList from "@/components/DagensTeksterList"
 import UpcomingEventsListSSR from "@/components/UpcomingEventsListSSR"
+import Link from "next/link"
 import React from "react"
 
 export const revalidate = 3600
@@ -14,7 +15,7 @@ async function WpPostList() {
 
             return <React.Fragment key={it.id}>
                 <div>{d}.{m}.{y}</div>
-                <div className="mb-4 sm:mb-0"><a href={`/nyheter/${y}/${m}/${it.slug}`} className="font-bold hyphens-auto w-full" dangerouslySetInnerHTML={{__html: it.title.rendered}}></a></div>
+                <div className="mb-4 sm:mb-0"><Link href={`/nyheter/${y}/${m}/${it.slug}`} className="font-bold hyphens-auto w-full" dangerouslySetInnerHTML={{__html: it.title.rendered}}></Link></div>
             </React.Fragment>
         })}
     </>
@@ -37,7 +38,7 @@ export default async function HomePage() {
                     <div className="md:order-2">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
                         <UpcomingEventsListSSR />
-                        <p className="hh-body-typography"><a href="/gudstjenester">Hele kalenderen</a></p>
+                        <p className="hh-body-typography"><Link href="/gudstjenester">Hele kalenderen</Link></p>
                     </div>
 
                     <div className="md:order-1">
@@ -45,7 +46,7 @@ export default async function HomePage() {
                         <div className="hh-body-typography grid sm:gap-4 grid-cols-1 sm:grid-cols-[auto_1fr] mb-4">
                             <WpPostList />
                         </div>
-                        <p className="hh-body-typography"><a href="/nyheter/side/1">Alle nyheter</a></p>
+                        <p className="hh-body-typography"><Link href="/nyheter/side/1">Alle nyheter</Link></p>
                     </div>
                 </div>
             </div>

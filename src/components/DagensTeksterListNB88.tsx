@@ -57,7 +57,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, l
                             const chapterNo = chapter.chapter
                             const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[dagensTekst.book].norskBibel}:${chapterNo}:${verse.from}${verse.to ? `:p${verse.to - verse.from}` : ``}`
                     
-                            return <a 
+                            return <a
                                 key={`${chapterNo}-${verse.from}-${verse.to}`}   
                                 className="font-bold"
                                 onClick={(e) => {
