@@ -35,7 +35,7 @@ const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bo
     "Rev": { norskBibel: "Rev", bookNameShort: "Åp", bookName: "Johannes' åpenbaring" }
 };
 
-const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems}> = ({dagensTekster}) => {
+export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, longBookName?: boolean}> = ({dagensTekster, longBookName}) => {
     const [currentBibleVerse, setCurrentBibleVerse] = useState<{url: string, title: string} | null>(null)
 
     
@@ -49,8 +49,8 @@ const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems}> = ({dag
             </div>}
         </Modal>
         {dagensTekster.map(dagensTekst => {
-            return <div key={dagensTekst.book} className="flex flex-row gap-1">
-                {bookNames[dagensTekst.book].bookNameShort}
+            return <div key={dagensTekst.book} className="flex flex-row gap-1 hh-body-typography">
+                {longBookName ? bookNames[dagensTekst.book].bookName : bookNames[dagensTekst.book].bookNameShort}
                 <div className="flex flex-row gap-2">
                     {dagensTekst.chapters.map(chapter => {
                         return chapter.verses.map(verse => {
