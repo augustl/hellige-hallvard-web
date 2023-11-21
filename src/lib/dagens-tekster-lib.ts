@@ -14,7 +14,7 @@ export const getDagensTekster = async (y: string, m: string, d: string): Promise
     const {Item: item} = await docClient.send(new GetCommand({
         TableName: "church_calendar",
         Key: {
-            PK : "calendar_hh",
+            PK : "calendar_hh_v2",
             SK: sk
         }
     }))

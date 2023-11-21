@@ -15,7 +15,7 @@ const main = async () => {
     const {Item: item} = await docClient.send(new GetCommand({
         TableName: "church_calendar",
         Key: {
-            PK : "calendar_hh",
+            PK : "calendar_hh_v2",
             SK: date
         }
     }))
@@ -25,7 +25,7 @@ const main = async () => {
     const res = await docClient.send(new PutCommand({
         TableName: "church_calendar",
         Item: {
-            PK: "calendar_hh",
+            PK: "calendar_hh_v2",
             SK: date,
             items: input
         }
