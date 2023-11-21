@@ -44,7 +44,6 @@ const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[],
             }
 
             const chapterNo = verse.from.chapter
-            console.log(verse.from, verse.to)
             
             const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[book].norskBibel}:${chapterNo}:${verse.from.verse}${verse.to ? `:p${verse.to.verse - verse.from.verse}` : ``}`
 
