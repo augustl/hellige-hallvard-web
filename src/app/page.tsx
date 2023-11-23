@@ -1,5 +1,6 @@
 import DagensTeksterList from "@/components/DagensTeksterList"
 import UpcomingEventsListSSR from "@/components/UpcomingEventsListSSR"
+import { Metadata, ResolvingMetadata } from "next"
 import Link from "next/link"
 import React from "react"
 
@@ -27,6 +28,24 @@ async function WpHomePage() {
     const wpPage = wpPagesData[0]
 
     return <div className="hh-typography hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
+}
+
+export async function generateMetadata(
+    {params}: {params: {}},
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const parentMetadata = await parent
+
+    return {
+        title: process.env.NEXT_PUBLIC_PAGE_TITLE,
+        openGraph: {
+            title: process.env.NEXT_PUBLIC_PAGE_TITLE,
+            siteName: process.env.NEXT_PUBLIC_PAGE_TITLE,
+            description: parentMetadata.description || process.env.NEXT_PUBLIC_PAGE_TITLE,
+            type: "website",
+            locale: "nb_no"
+        }
+    }
 }
 
 export default async function HomePage() {
