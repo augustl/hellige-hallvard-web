@@ -71,7 +71,7 @@ export default async function DagensTeksterPage({params}: {params: {year: string
     }
 
 
-    return <div>
+    return <div className="hh-content-blocks">
         <div className="hh-typography hh-body-typography flex flex-col gap-8">
             <h1>Dagens tekster, <DateFormat date={date} /></h1>
 
