@@ -35,7 +35,9 @@ const WpPostImageEnlargeHook = () => {
     }, [])
 
     return <Modal onClose={() => setImageModalSrc(null)}>
-       {imageModalSrc && <img src={imageModalSrc} alt="" className="max-w-full max-h-full h-auto w-auto object-contain mx-auto" />}
+       {imageModalSrc && <div className="flex items-center justify-center h-full">
+            <img src={imageModalSrc} alt="" className="max-w-full max-h-full h-auto w-auto object-contain" />
+        </div>}
     </Modal>
 }
 
