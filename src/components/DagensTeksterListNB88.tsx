@@ -67,7 +67,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, l
 
     
     return <>
-        <Modal onClose={() => setCurrentBibleVerse(null)}>
+        <Modal onClose={() => setCurrentBibleVerse(null)} size={"medium"}>
             {currentBibleVerse && <div className="p-6">
                 <h2 className="text-1xl xs:text-3xl font-bold font-serif">{currentBibleVerse.title}</h2>
                 <div className="hh-typography hh-body-typography">

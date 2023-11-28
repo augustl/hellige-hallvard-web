@@ -1,6 +1,16 @@
 import React, { useEffect, useRef } from "react"
 
-const Modal: React.FC<{onClose: () => void, children: React.ReactNode}> = ({onClose, children}) => {
+type ModalSize = "medium" | "full"
+
+const getModalWidth = (size: ModalSize): string => {
+    if (size === "medium") {
+        return "max-w-2xl"
+    }
+
+    return ""
+}
+
+const Modal: React.FC<{onClose: () => void, size?: ModalSize, children: React.ReactNode}> = ({onClose, children, size = "full"}) => {
     const dialogRef = useRef<HTMLDialogElement | null>(null)
 
     const childEl = children ? React.Children.only(children) : null
@@ -35,7 +45,7 @@ const Modal: React.FC<{onClose: () => void, children: React.ReactNode}> = ({onCl
         top-1/2 left-1/2 fixed -translate-x-1/2 -translate-y-1/4
         h-full w-full"
     >
-        <div className="h-full w-full flex flex-col">
+        <div className={`h-full ${getModalWidth(size)} mx-auto flex flex-col hh-body`}>
             <div className="flex-1 min-h-0 overflow-y-auto">
                 {childEl}
             </div>

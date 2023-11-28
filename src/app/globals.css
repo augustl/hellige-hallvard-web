@@ -22,9 +22,14 @@
   }
 }
 
-body, dialog {
+body, .hh-body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb))
+}
+
+dialog {
+  color: rgb(var(--foreground-rgb));
+  background: transparent;
 }
 
 .hh-typography h1, .hh-typography h2, .hh-typography h3, .hh-typography h4 {
