@@ -55,7 +55,7 @@ async function DagensTeksterContents(props: {year: string, month: string, day: s
 
 const DayOffsetLink: React.FC<{date: Date, offset: number}> = ({date, offset}) => {
     const offsetDate = new Date()
-    offsetDate.setDate(date.getDate() + offset)
+    offsetDate.setTime(date.getTime() + (offset * 24 * 60 * 60 * 1000))
 
     return <Link href={`/dagenstekster/${offsetDate.getFullYear()}/${offsetDate.getMonth() + 1}/${offsetDate.getDate()}`}><DateFormat date={offsetDate} /></Link>
 }
