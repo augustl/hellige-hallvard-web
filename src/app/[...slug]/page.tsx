@@ -64,7 +64,9 @@ export default async function WordpressPage({params}: WordpressPageParams) {
             context: "embed",
             per_page: "100",
             exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
-            parent: wpPage.id.toString()
+            parent: wpPage.id.toString(),
+            orderby: "menu_order",
+            order: "asc"
         })}`, 
         {next: {tags: [`wp-page-${wpPage.slug}`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
 
