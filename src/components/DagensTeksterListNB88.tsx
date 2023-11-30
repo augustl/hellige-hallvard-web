@@ -76,7 +76,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, l
             </div>}
         </Modal>
         {dagensTekster.map(dagensTekst => {
-            return <div key={dagensTekst.book} className="flex flex-row gap-1 hh-body-typography">
+            return <div key={JSON.stringify(dagensTekst)} className="flex flex-row gap-1 hh-body-typography">
                 {longBookName ? bookNames[dagensTekst.book].bookName : bookNames[dagensTekst.book].bookNameShort}
                 <div className="flex flex-row gap-2">
                     {dagensTekst.contiguousVerses 
