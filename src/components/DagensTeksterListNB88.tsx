@@ -48,7 +48,8 @@ const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[],
             
             const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[book].norskBibel}:${chapterNo}:${verse.from.verse}${verse.to ? `:p${verse.to.verse - verse.from.verse}` : ``}`
 
-            return <a
+            return <span key={JSON.stringify(verse)}>
+            <a
                 key={`${JSON.stringify(verse)}`}   
                 className="font-bold"
                 onClick={(e) => {
@@ -57,8 +58,10 @@ const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[],
                 }}
                 href={bibleVerseUrl}
             >
-                {prevChapterNo === chapterNo ? `` : `${chapterNo}, `}{verse.from.verse}{verse.to ? `-${verse.to.verse}` : ``}
+                {prevChapterNo === chapterNo ? `` : `${chapterNo}:`}{verse.from.verse}{verse.to ? `-${verse.to.verse}` : ``}
             </a>
+            {idx !== verses.length - 1 && `,`}
+            </span>
         })}
     </>
 }
