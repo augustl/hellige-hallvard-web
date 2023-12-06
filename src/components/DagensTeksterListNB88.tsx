@@ -38,11 +38,12 @@ const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bo
 
 const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[], onClick: (tekst: {url: string, title: string}) => void}> = ({book, verses, onClick}) => {
     return <>
-        {verses.map(verse => {
+        {verses.map((verse, idx) => {
             if (verse.to && verse.to.chapter !== verse.from.chapter) {
                 console.error("Chapter mismatch, this should never happen")
             }
 
+            const prevChapterNo = verses[idx - 1]?.from.chapter
             const chapterNo = verse.from.chapter
             
             const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[book].norskBibel}:${chapterNo}:${verse.from.verse}${verse.to ? `:p${verse.to.verse - verse.from.verse}` : ``}`
@@ -56,7 +57,7 @@ const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[],
                 }}
                 href={bibleVerseUrl}
             >
-                {chapterNo}, {verse.from.verse}{verse.to ? `-${verse.to.verse}` : ``}
+                {prevChapterNo === chapterNo ? `` : `${chapterNo}, `}{verse.from.verse}{verse.to ? `-${verse.to.verse}` : ``}
             </a>
         })}
     </>
