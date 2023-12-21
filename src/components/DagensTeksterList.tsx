@@ -33,6 +33,6 @@ export default async function DagensTeksterList () {
             </Link>
         </div>
         <DagensTeksterListNB88 dagensTekster={dagensTekster} />
-        <div className="text-gray-500 text-sm"><DateFormat date={now} /></div>
+        <div className="text-gray-500 text-sm flex flex-row items-center"><DateFormat date={now} /></div>
     </div>
 }
