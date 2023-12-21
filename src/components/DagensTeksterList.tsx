@@ -4,10 +4,12 @@ import React from "react"
 import DagensTeksterListNB88 from "./DagensTeksterListNB88"
 import { getDagensTekster } from "@/lib/dagens-tekster-lib"
 import Link from "next/link"
+import { DateFormat } from "@/app/dagenstekster/[year]/[month]/[day]/page"
 
 
 export default async function DagensTeksterList () {
-    const date = new Date().toLocaleString("en-US", { timeZone: "Europe/Oslo" })
+    const now = new Date()
+    const date = now.toLocaleString("en-US", { timeZone: "Europe/Oslo" })
     const match = date.match(/^(\d+)\/(\d+)\/(\d+)/)
     if (!match) {
         return null
@@ -31,5 +33,6 @@ export default async function DagensTeksterList () {
             </Link>
         </div>
         <DagensTeksterListNB88 dagensTekster={dagensTekster} />
+        <div className="text-gray-500 text-sm"><DateFormat date={now} /></div>
     </div>
 }

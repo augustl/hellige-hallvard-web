@@ -60,7 +60,7 @@ const DayOffsetLink: React.FC<{date: Date, offset: number}> = ({date, offset}) =
     return <Link href={`/dagenstekster/${offsetDate.getFullYear()}/${offsetDate.getMonth() + 1}/${offsetDate.getDate()}`}><DateFormat date={offsetDate} /></Link>
 }
 
-const DateFormat: React.FC<{date: Date}> = ({date}) => {
+export const DateFormat: React.FC<{date: Date}> = ({date}) => {
     return date.toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})
 }
 
