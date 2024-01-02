@@ -32,7 +32,7 @@ describe("Dagens tekster", () => {
       processDagensTekster([
         {
           "book":"Heb",
-          "verses":[{"from":{"chapter":11,"verse":8},"to":{"chapter":11,"verse":8}}]
+          "verses":[{"from":{"chapter":11,"verse":8},"to":{"chapter":11,"verse":8}}, {"from":{"chapter":13,"verse":5},"to":{"chapter":13,"verse":8}}]
         },
         {
           "book":"Mk",
@@ -46,7 +46,7 @@ describe("Dagens tekster", () => {
       [
         {
           book: "Heb",
-          items: [{label: "11:8", chapter: 11, verseFrom: 8, verseTo: 8}]
+          items: [{label: "11:8", chapter: 11, verseFrom: 8, verseTo: 8}, {label: "13:5-8", chapter: 13, verseFrom: 5, verseTo: 8}]
         },
         {
           book: "Mk",

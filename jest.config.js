@@ -8,6 +8,10 @@ const nextJest = require("next/jest")
 const createJestConfig = nextJest({dir: './'})
 
 const config = {
+  moduleNameMapper: {
+    react: 'next/dist/compiled/react/cjs/react.development.js',
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
