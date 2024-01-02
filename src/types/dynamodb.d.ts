@@ -1,7 +1,2 @@
-export type DagensTekstItemVerse = {from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}}
-export type DagensTekstItem = {
-    book: string,
-    verses: DagensTekstItemVerse[],
-    contiguousVerses?: DagensTekstItemVerse[]
-}
-export type DagensTekstItems = DagensTekstItem[]
+export type DagensTekstItems = {book: string, items: DagensTekstItem[]}[]
+export type DagensTekstItem = {label: string, chapter: number, verseFrom: number, verseTo?: number}

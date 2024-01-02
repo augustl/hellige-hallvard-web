@@ -1,11 +1,11 @@
 "use client"
 
 import { scrapeNB88Text } from "@/app/actions"
-import { DagensTekstItemVerse, DagensTekstItems } from "@/types/dynamodb"
+import { DagensTekstItem, DagensTekstItemVerse, DagensTekstItems } from "@/types/dynamodb"
 import React, { useEffect, useRef, useState } from "react"
 import Modal from "./Modal";
 
-const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
+export const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
     "Mt": { norskBibel: "Matt", bookNameShort: "Matt", bookName: "Matteus' evangelium" },
     "Mk": { norskBibel: "Mark", bookNameShort: "Mark", bookName: "Markus' evangelium" },
     "Lk": { norskBibel: "Luke", bookNameShort: "Luk", bookName: "Lukas' evangelium" },
@@ -36,17 +36,11 @@ const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bo
 };
 
 
-const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[], onClick: (tekst: {url: string, title: string}) => void}> = ({book, verses, onClick}) => {
+const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onClick: (tekst: {url: string, title: string}) => void}> = ({book, items, onClick}) => {
     return <>
-        {verses.map((verse, idx) => {
-            if (verse.to && verse.to.chapter !== verse.from.chapter) {
-                console.error("Chapter mismatch, this should never happen")
-            }
-
-            const prevChapterNo = verses[idx - 1]?.from.chapter
-            const chapterNo = verse.from.chapter
-            
-            const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[book].norskBibel}:${chapterNo}:${verse.from.verse}${verse.to ? `:p${verse.to.verse - verse.from.verse}` : ``}`
+        {items.map((verse, idx) => {
+            const chapterNo = verse.chapter
+            const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[book].norskBibel}:${chapterNo}:${verse.verseFrom}${verse.verseTo ? `:p${verse.verseTo - verse.verseFrom}` : ``}`
 
             return <span key={JSON.stringify(verse)}>
             <a
@@ -54,13 +48,13 @@ const DagensTeksterList: React.FC<{book: string, verses: DagensTekstItemVerse[],
                 className="font-bold"
                 onClick={(e) => {
                     e.preventDefault()
-                    onClick({url: bibleVerseUrl, title: `${bookNames[book].bookName} ${chapterNo}, ${verse.from.verse}${verse.to ? `-${verse.to.verse}` : ``}`})
+                    onClick({url: bibleVerseUrl, title: `${bookNames[book].bookName} ${chapterNo}, ${verse.verseFrom}${verse.verseTo ? `-${verse.verseTo}` : ``}`})
                 }}
                 href={bibleVerseUrl}
             >
-                {prevChapterNo === chapterNo ? `` : `${chapterNo}:`}{verse.from.verse}{verse.to ? `-${verse.to.verse}` : ``}
+                {verse.label}
             </a>
-            {idx !== verses.length - 1 && `,`}
+            {idx !== items.length - 1 && `,`}
             </span>
         })}
     </>
@@ -83,9 +77,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, l
             return <div key={JSON.stringify(dagensTekst)} className="flex flex-row gap-1 hh-body-typography">
                 {longBookName ? bookNames[dagensTekst.book].bookName : bookNames[dagensTekst.book].bookNameShort}
                 <div className="flex flex-row gap-2">
-                    {dagensTekst.contiguousVerses 
-                        ? dagensTekst.contiguousVerses.map(verse => <DagensTeksterList key={JSON.stringify(verse)} book={dagensTekst.book} verses={[verse]} onClick={setCurrentBibleVerse} />)
-                        : <DagensTeksterList book={dagensTekst.book} verses={dagensTekst.verses}  onClick={setCurrentBibleVerse} />}
+                <DagensTeksterList book={dagensTekst.book} items={dagensTekst.items}  onClick={setCurrentBibleVerse} />
                 </div>
             </div>
         })}
