@@ -1,8 +1,8 @@
 "use client"
 
 import { scrapeNB88Text } from "@/app/actions"
-import { DagensTekstItem, DagensTekstItemVerse, DagensTekstItems } from "@/types/dynamodb"
-import React, { useEffect, useRef, useState } from "react"
+import { DagensTekstItem, DagensTekstItems } from "@/types/dynamodb"
+import React, { useEffect, useState } from "react"
 import Modal from "./Modal";
 
 export const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
@@ -36,40 +36,37 @@ export const bookNames: {[key: string]: { norskBibel: string, bookNameShort: str
 };
 
 
-const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onClick: (tekst: {url: string, title: string}) => void}> = ({book, items, onClick}) => {
+const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onClick: (item: {book: string, item: DagensTekstItem}) => void}> = ({book, items, onClick}) => {
     return <>
         {items.map((verse, idx) => {
-            const chapterNo = verse.chapter
-            const bibleVerseUrl = `http://les.norsk-bibel.no/index_modal.php?res=${bookNames[book].norskBibel}:${chapterNo}:${verse.verseFrom}${verse.verseTo ? `:p${verse.verseTo - verse.verseFrom}` : ``}`
-
             return <span key={JSON.stringify(verse)}>
-            <a
-                key={`${JSON.stringify(verse)}`}   
-                className="font-bold"
-                onClick={(e) => {
-                    e.preventDefault()
-                    onClick({url: bibleVerseUrl, title: `${bookNames[book].bookName} ${chapterNo}, ${verse.verseFrom}${verse.verseTo ? `-${verse.verseTo}` : ``}`})
-                }}
-                href={bibleVerseUrl}
-            >
-                {verse.label}
-            </a>
-            {idx !== items.length - 1 && `,`}
+                <a
+                    className="font-bold"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        onClick({book: book, item: verse})
+                    }}
+                    href={"#"}
+                >
+                    {verse.label}
+                </a>
+                {idx !== items.length - 1 && `,`}
             </span>
         })}
     </>
 }
 
 export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, longBookName?: boolean}> = ({dagensTekster, longBookName}) => {
-    const [currentBibleVerse, setCurrentBibleVerse] = useState<{url: string, title: string} | null>(null)
-
+    const [currentBibleVerse, setCurrentBibleVerse] = useState<{book: string, item: DagensTekstItem} | null>(null)
     
     return <>
         <Modal onClose={() => setCurrentBibleVerse(null)} size={"medium"}>
             {currentBibleVerse && <div className="p-6">
-                <h2 className="text-1xl xs:text-3xl font-bold font-serif">{currentBibleVerse.title}</h2>
+                <h2 className="text-1xl xs:text-3xl font-bold font-serif">
+                    {bookNames[currentBibleVerse.book].bookName} {currentBibleVerse.item.label}
+                </h2>
                 <div className="hh-typography hh-body-typography">
-                    <DagensTeksterListNB88TekstScraper url={currentBibleVerse.url} />
+                    <DagensTeksterListNB88TekstScraper url={`http://les.norsk-bibel.no/index_modal.php?res=${bookNames[currentBibleVerse.book].norskBibel}:${currentBibleVerse.item.chapter}:${currentBibleVerse.item.verseFrom}${currentBibleVerse.item.verseTo ? `:p${currentBibleVerse.item.verseTo - currentBibleVerse.item.verseFrom}` : ``}`} />
                 </div>
             </div>}
         </Modal>
