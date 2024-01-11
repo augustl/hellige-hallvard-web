@@ -72,8 +72,10 @@ export default async function DagensTeksterPage({params}: {params: {year: string
 
 
     return <div className="hh-content-blocks">
-        <div className="hh-typography hh-body-typography flex flex-col gap-8">
-            <h1>Dagens tekster,<br/><DateFormat date={date} /></h1>
+        <div className="flex flex-col gap-8">
+            <div className="hh-typography hh-body-typography">
+                <h1>Dagens tekster,<br/><DateFormat date={date} /></h1>
+            </div>
 
             <div>
                 <Suspense fallback={"Laster inn..."}>
@@ -81,7 +83,7 @@ export default async function DagensTeksterPage({params}: {params: {year: string
                 </Suspense>
             </div>
 
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-4 hh-body-typography">
                 <DayOffsetLink date={date} offset={-1} />
                 <DayOffsetLink date={date} offset={1} />
             </div>

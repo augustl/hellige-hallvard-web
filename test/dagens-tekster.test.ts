@@ -17,11 +17,11 @@ describe("Dagens tekster", () => {
       [
         {
           book: "2Ti",
-          items: [{label: "4:5-8", chapter: 4, verseFrom: 5, verseTo: 8}]
+          items: [{label: "4:5-8", chapterChunks: [{chapter: 4, verseFrom: 5, verseTo: 8}]}]
         },
         {
           book: "Mk",
-          items: [{label: "1:1-8", chapter: 1, verseFrom: 1, verseTo: 8}]
+          items: [{label: "1:1-8", chapterChunks: [{chapter: 1, verseFrom: 1, verseTo: 8}]}]
         }
       ]
     )
@@ -46,21 +46,21 @@ describe("Dagens tekster", () => {
       [
         {
           book: "Heb",
-          items: [{label: "11:8", chapter: 11, verseFrom: 8, verseTo: 8}, {label: "13:5-8", chapter: 13, verseFrom: 5, verseTo: 8}]
+          items: [{label: "11:8", chapterChunks: [{chapter: 11, verseFrom: 8, verseTo: 8}]}, {label: "13:5-8", chapterChunks: [{chapter: 13, verseFrom: 5, verseTo: 8}]}]
         },
         {
           book: "Mk",
-          items: [{label: "12:1-12", chapter: 12, verseFrom: 1, verseTo: 12}]
+          items: [{label: "12:1-12", chapterChunks: [{chapter: 12, verseFrom: 1, verseTo: 12}]}]
         },
         {
           book: "Mk",
-          items: [{label: "9:33-41", chapter: 9, verseFrom: 33, verseTo: 41}]
+          items: [{label: "9:33-41", chapterChunks: [{chapter: 9, verseFrom: 33, verseTo: 41}]}]
         }
       ]
     )
   })  
 
-  it("should expand contiguous verses", async () => {
+  it("should handle ranges spanning different chapters", async () => {
     assert.deepStrictEqual(
       processDagensTekster([
         {
@@ -76,11 +76,28 @@ describe("Dagens tekster", () => {
       [
         {
           book: "Heb",
-          items: [{label: "7:26-28", chapter: 7, verseFrom: 26, verseTo: 28}, {label: "8:1-2", chapter: 8, verseFrom: 1, verseTo: 2}]
+          items: [{label: "7:26-8:2", chapterChunks: [{chapter: 7, verseFrom: 26}, {chapter: 8, verseFrom: 1, verseTo: 2}]}]
         },
         {
           book: "Lk",
-          items: [{label: "6:17-23", chapter: 6, verseFrom: 17, verseTo: 23}]
+          items: [{label: "6:17-23", chapterChunks: [{chapter: 6, verseFrom: 17, verseTo: 23}]}]
+        }
+      ]
+    )
+  })
+
+  it("should support multi-chapter ranges", async () => {
+    assert.deepStrictEqual(
+      processDagensTekster([
+        {
+          "verses":[{"from":{"chapter":4,"verse":5},"to":{"chapter":6,"verse":3}}],
+          "book":"X"
+        }
+      ]),
+      [
+        {
+          book: "X",
+          items: [{label: "4:5-6:3", chapterChunks: [{chapter: 4, verseFrom: 5}, {chapter: 5, verseFrom: 1}, {chapter:6, verseFrom: 1, verseTo: 3}]}]
         }
       ]
     )
@@ -97,7 +114,7 @@ describe("Dagens tekster", () => {
       [
         {
           book: "2Ti",
-          items: [{label: "4:5-8", chapter: 4, verseFrom: 5, verseTo: 8}, {label: "10-13", chapter: 4, verseFrom: 10, verseTo: 13}]
+          items: [{label: "4:5-8", chapterChunks: [{chapter: 4, verseFrom: 5, verseTo: 8}]}, {label: "10-13", chapterChunks: [{chapter: 4, verseFrom: 10, verseTo: 13}]}]
         }
       ]
     )

@@ -2,9 +2,9 @@
 
 import { JSDOM } from "jsdom"
 
-type NB88LineTitle = {type: "title", text: string, verseFrom: number, verseTo: number}
-type NB88LineParagraph = {type: "paragraph", verse: number, text: string}
-type NB88Line = NB88LineTitle | NB88LineParagraph
+export type NB88LineTitle = {type: "title", text: string, verseFrom: number, verseTo: number}
+export type NB88LineParagraph = {type: "paragraph", verse: number, text: string}
+export type NB88Line = NB88LineTitle | NB88LineParagraph
 
 const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
     const dom = new JSDOM(chapterHtml)
