@@ -1,4 +1,4 @@
-import { processDagensTekster } from "@/lib/dagens-tekster-lib"
+import { processDagensTekster } from "@/lib/dagens-tekster-parse-lib"
 import assert from "assert"
 
 describe("Dagens tekster", () => {
