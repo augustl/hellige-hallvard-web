@@ -1,6 +1,4 @@
-"use server"
-
-import React from "react"
+import React, { Suspense } from "react"
 import DagensTeksterListNB88 from "./DagensTeksterListNB88"
 import { getDagensTekster } from "@/lib/dagens-tekster-lib"
 import Link from "next/link"
@@ -16,14 +14,6 @@ export default async function DagensTeksterList () {
     }
     const [_, m, d, y] = match
 
-    const dagensTekster = await getDagensTekster(y, m, d)
-
-    if (!dagensTekster) {
-        return null
-    }
-
-    const nb88Chapters = await fetchNB88Chapters(dagensTekster)
-
     return <div className="flex flex-col md:flex-row gap-2 flex-wrap">
         <div className="text-2xl md:text-base font-bold font-serif flex flex-row items-center gap-1">
             <span className="hh-body-typography">Dagens tekster<span className="hidden md:inline">:</span></span>
@@ -34,7 +24,21 @@ export default async function DagensTeksterList () {
                 </svg>
             </Link>
         </div>
-        <DagensTeksterListNB88 dagensTekster={dagensTekster} nb88Chapters={nb88Chapters} />
+        <Suspense fallback={<div className="text-gray-500 italic min-w-40 text-center">Henter...</div>}>
+            <DagensTeksterListData y={y} m={m} d={d} />
+        </Suspense>
         <div className="text-gray-500 text-sm flex flex-row items-center"><DateFormat date={now} /></div>
     </div>
+}
+
+async function DagensTeksterListData({y, m, d}: {y: string, m: string, d: string}) {
+    const dagensTekster = await getDagensTekster(y, m, d)
+
+    if (!dagensTekster) {
+        return null
+    }
+
+    const nb88Chapters = await fetchNB88Chapters(dagensTekster)
+
+    return <DagensTeksterListNB88 dagensTekster={dagensTekster} nb88Chapters={nb88Chapters} />
 }
