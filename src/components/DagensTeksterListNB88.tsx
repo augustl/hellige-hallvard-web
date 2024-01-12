@@ -1,11 +1,12 @@
 "use client"
 
 import { DagensTekstItem, DagensTekstItems } from "@/types/dynamodb"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Modal from "./Modal";
 import { bookNames } from "@/lib/book-names";
-import { fetchChapterFromNB88 } from "@/lib/nb88-fetch-lib";
-import { NB88Line, extractDataFromNB88Chapter } from "@/lib/nb88-parse-lib";
+import { NB88ChaptersType } from "@/lib/nb88-fetch-lib";
+import { NB88Line } from "@/lib/nb88-parse-lib";
+import { extractDataFromNB88ChapterTokenized } from "@/lib/nb88-extract-lib";
 
 const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onClick: (item: {book: string, item: DagensTekstItem}) => void}> = ({book, items, onClick}) => {
     return <>
@@ -27,7 +28,7 @@ const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onCli
     </>
 }
 
-export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, longBookName?: boolean}> = ({dagensTekster, longBookName}) => {
+export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, nb88Chapters: NB88ChaptersType, longBookName?: boolean}> = ({dagensTekster, longBookName, nb88Chapters}) => {
     const [currentBibleVerse, setCurrentBibleVerse] = useState<{book: string, item: DagensTekstItem} | null>(null)
     
     return <>
@@ -37,7 +38,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, l
                     {bookNames[currentBibleVerse.book].bookName} {currentBibleVerse.item.label}
                 </h2>
                 <div>
-                    <DagensTeksterListNB88TekstScraper book={currentBibleVerse.book} item={currentBibleVerse.item} />
+                    <DagensTeksterListNB88Tekst book={currentBibleVerse.book} item={currentBibleVerse.item} nb88Chapters={nb88Chapters} />
                 </div>
             </div>}
         </Modal>
@@ -52,44 +53,22 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, l
     </>
 }
 
-const DagensTeksterListNB88TekstScraper: React.FC<{book: string, item: DagensTekstItem}> = ({book, item}) => {
-    const nb88BookName = bookNames[book].norskBibel
-    const [content, setContents] = useState<{chapter: number, lines: NB88Line[]}[] | null>(null)
-
-    useEffect(() => {
-        const fetchAll = async () => {
-            const res: {chapter: number, lines: NB88Line[]}[] = []
-            for (const chapterChunk of item.chapterChunks) {
-                const html = await fetchChapterFromNB88(nb88BookName, chapterChunk.chapter)
-                const chapterData = await extractDataFromNB88Chapter(html, chapterChunk.verseFrom, chapterChunk.verseTo)
-
-                res.push({chapter: chapterChunk.chapter, lines: chapterData})
-            }
-
-            setContents(res)
-        }
-
-        fetchAll()
-
-    }, [item, nb88BookName])
-
-    if (!content) {
-        return <div>Laster...</div>
-    }
-
-    const firstChapter = content[0]
-    
+const DagensTeksterListNB88Tekst: React.FC<{book: string, item: DagensTekstItem, nb88Chapters: NB88ChaptersType}> = (props) => {
+    const firstChunk = props.item.chapterChunks[0]
 
     return <div className="mt-8">
-        <NB88LinesComponent lines={firstChapter.lines} />
-        {content.slice(1).map(({chapter, lines}) => {
-            return <div key={chapter}>
-                <h2 className="text-4xl mt-4 mb-10 font-bold font-serif text-center">{chapter}</h2>
-                <NB88LinesComponent lines={lines} />
+        <NB88LinesComponent lines={extractDataFromNB88ChapterTokenized(props.nb88Chapters[`${props.book}:${firstChunk.chapter}`], firstChunk.verseFrom, firstChunk.verseTo)} />
+        {props.item.chapterChunks.slice(1).map(chapterChunk => {
+            console.log("----")
+            console.log(props.nb88Chapters[`${props.book}:${chapterChunk.chapter}`])
+            return <div key={JSON.stringify(chapterChunk)}>
+                <h2 className="text-4xl mt-4 mb-10 font-bold font-serif text-center">{chapterChunk.chapter}</h2>
+                <NB88LinesComponent lines={extractDataFromNB88ChapterTokenized(props.nb88Chapters[`${props.book}:${chapterChunk.chapter}`], chapterChunk.verseFrom, chapterChunk.verseTo)} />
             </div>
         })}
     </div>
 }
+
 
 const NB88LinesComponent: React.FC<{lines: NB88Line[]}> = ({lines}) => {
     return <div className="leading-7">

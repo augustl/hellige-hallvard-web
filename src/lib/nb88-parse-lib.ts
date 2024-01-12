@@ -1,12 +1,13 @@
 "use server"
 
 import { JSDOM } from "jsdom"
+import { extractDataFromNB88ChapterTokenized } from "./nb88-extract-lib"
 
 export type NB88LineTitle = {type: "title", text: string, verseFrom: number, verseTo: number}
 export type NB88LineParagraph = {type: "paragraph", verse: number, text: string}
 export type NB88Line = NB88LineTitle | NB88LineParagraph
 
-const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
+export const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
     const dom = new JSDOM(chapterHtml)
     const doc = dom.window.document
     const versesContainer = doc.querySelector(".text-div")
@@ -49,36 +50,5 @@ const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
 
 export const extractDataFromNB88Chapter = (chapterHtml: string, verseFrom: number, verseTo?: number): NB88Line[] => {
     const lines = tokenizeNB88Chapter(chapterHtml)
-
-    const res: NB88Line[] = []
-
-    let i = 0;
-    for (; i < lines.length; i++) {
-        const line = lines[i]
-        if (line.type === "paragraph" && line.verse === verseFrom) {
-            res.push(line)
-            break;
-        }
-    }
-
-    // Always include title if it's immediately preceding the first line
-    const prevLine = lines[i - 1]
-    if (prevLine && prevLine.type === "title") {
-        res.unshift(prevLine)
-    }
-
-    if (verseFrom === verseTo) {
-        return res
-    }
-
-    ++i
-    for (; i < lines.length; i++) {
-        const line = lines[i]
-        res.push(line)
-        if (line.type === "paragraph" && line.verse === verseTo) {
-            break;
-        }        
-    }
-
-    return res
+    return extractDataFromNB88ChapterTokenized(lines, verseFrom, verseTo)
 }

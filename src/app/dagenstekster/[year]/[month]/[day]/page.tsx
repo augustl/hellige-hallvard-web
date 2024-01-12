@@ -6,6 +6,7 @@ import { DynamoDBDocumentClient, GetCommand } from "@aws-sdk/lib-dynamodb"
 import { getDagensTekster } from "@/lib/dagens-tekster-lib"
 import DagensTeksterListNB88 from "@/components/DagensTeksterListNB88"
 import Link from "next/link"
+import { fetchNB88Chapters } from "@/lib/nb88-fetch-lib"
 
 const client = new DynamoDBClient()
 const docClient = DynamoDBDocumentClient.from(client)
@@ -50,7 +51,9 @@ async function DagensTeksterContents(props: {year: string, month: string, day: s
         return <div><em>Fant ikke dagens tekster. Kontakt teknisk administrator av websiden, August Lilleaas: <a href="mailto:august@augustl.com">august@augustl.com</a></em></div>
     }
 
-    return <DagensTeksterListNB88 dagensTekster={dagensTekster} longBookName={true} />
+    const nb88Chapters = await fetchNB88Chapters(dagensTekster)
+
+    return <DagensTeksterListNB88 dagensTekster={dagensTekster} nb88Chapters={nb88Chapters} longBookName={true} />
 }
 
 const DayOffsetLink: React.FC<{date: Date, offset: number}> = ({date, offset}) => {

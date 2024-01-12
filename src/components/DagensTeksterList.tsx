@@ -5,7 +5,7 @@ import DagensTeksterListNB88 from "./DagensTeksterListNB88"
 import { getDagensTekster } from "@/lib/dagens-tekster-lib"
 import Link from "next/link"
 import { DateFormat } from "@/app/dagenstekster/[year]/[month]/[day]/page"
-
+import { fetchNB88Chapters } from "@/lib/nb88-fetch-lib"
 
 export default async function DagensTeksterList () {
     const now = new Date()
@@ -22,6 +22,8 @@ export default async function DagensTeksterList () {
         return null
     }
 
+    const nb88Chapters = await fetchNB88Chapters(dagensTekster)
+
     return <div className="flex flex-col md:flex-row gap-2 flex-wrap">
         <div className="text-2xl md:text-base font-bold font-serif flex flex-row items-center gap-1">
             <span className="hh-body-typography">Dagens tekster<span className="hidden md:inline">:</span></span>
@@ -32,7 +34,7 @@ export default async function DagensTeksterList () {
                 </svg>
             </Link>
         </div>
-        <DagensTeksterListNB88 dagensTekster={dagensTekster} />
+        <DagensTeksterListNB88 dagensTekster={dagensTekster} nb88Chapters={nb88Chapters} />
         <div className="text-gray-500 text-sm flex flex-row items-center"><DateFormat date={now} /></div>
     </div>
 }

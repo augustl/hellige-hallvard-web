@@ -9,8 +9,6 @@ import { DagensTekstDynamoItems, processDagensTekster } from './dagens-tekster-p
 const client = new DynamoDBClient()
 const docClient = DynamoDBDocumentClient.from(client)
 
-export const revalidate = 3600
-
 export const getDagensTekster = cache(async (y: string, m: string, d: string): Promise<DagensTekstItems | null> => {
     const sk = `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`
 
