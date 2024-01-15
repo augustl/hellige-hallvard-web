@@ -3,7 +3,7 @@
 import { JSDOM } from "jsdom"
 import { extractDataFromNB88ChapterTokenized } from "./nb88-extract-lib"
 
-export type NB88LineTitle = {type: "title", text: string, verseFrom: number, verseTo: number}
+export type NB88LineTitle = {type: "title", text: string}
 export type NB88LineParagraph = {type: "paragraph", verse: number, text: string}
 export type NB88Line = NB88LineTitle | NB88LineParagraph
 
@@ -21,14 +21,10 @@ export const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
 
             if (div.className === "paragraph-title-div") {
                 const titleNode = div.querySelector(".paragraph-title")!
-                const verseRangeNode = div.querySelector(".paragraph-title-span")!
-
-                const [_, verseFromStr, verseToStr] = verseRangeNode.textContent!.trim().match(/^\((\d+)\-(\d+)\)$/)!
+                
                 res.push({
                     type: "title", 
-                    text: titleNode.textContent!.trim(), 
-                    verseFrom: parseInt(verseFromStr), 
-                    verseTo: parseInt(verseToStr)
+                    text: titleNode.textContent!.trim()
                 })
             }
 
