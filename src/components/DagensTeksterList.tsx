@@ -24,10 +24,10 @@ export default async function DagensTeksterList () {
                 </svg>
             </Link>
         </div>
-        <Suspense fallback={<div className="text-gray-500 italic min-w-40 text-center">Henter...</div>}>
+        <Suspense fallback={<div className="dark:text-gray-400 text-gray-600 italic min-w-40 text-center">Henter...</div>}>
             <DagensTeksterListData y={y} m={m} d={d} />
         </Suspense>
-        <div className="text-gray-500 text-sm flex flex-row items-center"><DateFormat date={now} /></div>
+        <div className="dark:text-gray-400 text-gray-600 text-sm flex flex-row items-center"><DateFormat date={now} /></div>
     </div>
 }
 

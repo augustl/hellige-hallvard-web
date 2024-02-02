@@ -14,8 +14,8 @@ const Menu: React.FC<{wpPagesData: any[]}> = ({wpPagesData}) => {
     }, [])
 
     return <div className="w-full flex flex-col items-center">
-        <button className="visible md:hidden font-bold uppercase bg-gray-200 text-black px-4 py-2" onClick={e => setMenuVisible(!menuVisible)}>Meny</button>
-        <ul className={`${menuVisible ? 'visible' : 'hidden'} md:flex flex-col md:flex-row md:gap-5 bg-gray-200 text-black md:text-current md:bg-transparent w-full md:w-auto`}>
+        <button className="visible lg:hidden font-bold uppercase bg-gray-200 text-black px-4 py-2" onClick={e => setMenuVisible(!menuVisible)}>Meny</button>
+        <ul className={`${menuVisible ? 'visible' : 'hidden'} lg:flex flex-col lg:flex-row md:gap-5 bg-gray-200 text-black lg:text-current lg:bg-transparent w-full lg:w-auto`}>
             <li><MenuLink className={navLinkClass} onClick={navLinkOnClick} href="/">Velkommen</MenuLink></li>
             <li><MenuLink className={navLinkClass} onClick={navLinkOnClick} href="/nyheter/side/1">Nyheter</MenuLink></li>
             {wpPagesData.map(it => {

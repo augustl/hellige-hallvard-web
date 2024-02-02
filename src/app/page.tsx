@@ -1,3 +1,4 @@
+import DagensHoytid from "@/components/DagensHoytid"
 import DagensTeksterList from "@/components/DagensTeksterList"
 import UpcomingEventsListSSR from "@/components/UpcomingEventsListSSR"
 import { Metadata, ResolvingMetadata } from "next"
@@ -52,6 +53,7 @@ export default async function HomePage() {
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
+                <div className="mb-8"><DagensHoytid /></div>
                 <div className="mb-8"><DagensTeksterList /></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="md:order-2">
