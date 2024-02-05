@@ -59,8 +59,6 @@ const DagensTeksterListNB88Tekst: React.FC<{book: string, item: DagensTekstItem,
     return <div className="mt-8">
         <NB88LinesComponent lines={extractDataFromNB88ChapterTokenized(props.nb88Chapters[`${props.book}:${firstChunk.chapter}`], firstChunk.verseFrom, firstChunk.verseTo)} />
         {props.item.chapterChunks.slice(1).map(chapterChunk => {
-            console.log("----")
-            console.log(props.nb88Chapters[`${props.book}:${chapterChunk.chapter}`])
             return <div key={JSON.stringify(chapterChunk)}>
                 <h2 className="text-4xl mt-4 mb-10 font-bold font-serif text-center">{chapterChunk.chapter}</h2>
                 <NB88LinesComponent lines={extractDataFromNB88ChapterTokenized(props.nb88Chapters[`${props.book}:${chapterChunk.chapter}`], chapterChunk.verseFrom, chapterChunk.verseTo)} />

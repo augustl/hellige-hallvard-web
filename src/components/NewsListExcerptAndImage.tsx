@@ -58,7 +58,6 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
                 const postDate = new Date(Date.parse(wpPost.date))
                 const postPath = `/nyheter/${postDate.getFullYear()}/${(postDate.getMonth() + 1).toString().padStart(2, "0")}/${wpPost.slug}`
                 const postDefaultImageId = getPostDefaultImageId(wpPost.content.rendered)
-                console.log(postDefaultImageId)
 
                 return <div key={wpPost.id} className="hh-content-blocks mb-20">
                     <h2><Link dangerouslySetInnerHTML={{__html: wpPost.title.rendered}} href={postPath} className="hyphens-auto"></Link></h2>
