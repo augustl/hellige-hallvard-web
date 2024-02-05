@@ -19,7 +19,7 @@ export async function generateMetadata(
             per_page: "1",
             context: "embed"
         })}`,
-        {next: {tags: [`wp-page-${params.slug}`]}})
+        {next: {tags: [`wp-page-${params.slug}`, `wp-all-pages-by-slug`]}})
     const wpPost = (await res.json())[0]
 
     return {
@@ -44,7 +44,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
                 exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
                 parent: parentPage ? parentPage.id.toString() : "0"
             })}`, 
-            {next: {tags: [`wp-page-${slugPart}`]}})
+            {next: {tags: [`wp-page-${slugPart}`, `wp-all-pages-by-slug`]}})
         if (!res.ok) {
             return notFound()
         }
@@ -75,7 +75,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
             orderby: "menu_order",
             order: "asc"
         })}`, 
-        {next: {tags: [`wp-page-${wpPage.slug}`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
+        {next: {tags: [`wp-page-${wpPage.slug}`, `wp-all-pages-by-slug`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
 
     return <div className="hh-typography hh-body-typography">
     <div className="hh-content-blocks">
