@@ -12,16 +12,23 @@ export async function generateMetadata(
     {params}: WordpressPageParams,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.slug[params.slug.length - 1])}`, {next: {tags: [`wp-page-${params.slug}`]}})
-    const wpPost = await req.json()
+    const slug = params.slug[params.slug.length - 1]
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
+            slug: slug,
+            per_page: "1",
+            context: "embed"
+        })}`,
+        {next: {tags: [`wp-page-${params.slug}`]}})
+    const wpPost = (await res.json())[0]
 
     return {
-        title: wpPost.title ? `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}` : process.env.NEXT_PUBLIC_PAGE_TITLE
+        title: wpPost.title.rendered ? `${wpPost.title.rendered} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}` : process.env.NEXT_PUBLIC_PAGE_TITLE
     }
 }
 
 export async function generateStaticParams() {
-    const wpPagesData: WordpressRestV2PagesRes = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=embed&per_page=100&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=0`)).json()
+    const wpPagesData: WordpressRestV2PagesRes = await (await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?context=embed&per_page=100&exclude=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}&parent=0`)).json()
 
     return wpPagesData.map((it: any) => ({slug: [it.slug]}))
 }
@@ -32,7 +39,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
     for (const slugPart of params.slug) {
         const parentPage = pages[pages.length - 1]
         const res = await fetch(
-            `https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?${new URLSearchParams({
+            `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
                 slug: slugPart,
                 exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
                 parent: parentPage ? parentPage.id.toString() : "0"
@@ -60,7 +67,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
     }
 
     const wpChildPages: any[] = await (await fetch(
-        `https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?${new URLSearchParams({
+        `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
             context: "embed",
             per_page: "100",
             exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,

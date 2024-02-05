@@ -15,7 +15,7 @@ type WordpressPostParams = { params: {year: string, month: string, slug: string}
 export const revalidate = 3600
 
 export async function generateStaticParams() {
-    const wpPostsData = await (await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=10`)).json()
+    const wpPostsData = await (await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=embed&per_page=10`)).json()
 
     return wpPostsData.map((it: any) => {
         const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
@@ -27,16 +27,24 @@ export async function generateMetadata(
     {params}: WordpressPostParams,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-    const req = await fetch(`https://public-api.wordpress.com/rest/v1.1/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts/slug:${encodeURIComponent(params.slug)}`, {next: {tags: ["wp-posts"]}})
-    const wpPost = await req.json()
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?${new URLSearchParams({
+            slug: params.slug,
+            per_page: "1",
+            context: "embed"
+        })}`,
+        {next: {tags: [`wp-posts`]}})
+    
 
-    if (!req.ok) {
+    if (!res.ok) {
         return {title: process.env.NEXT_PUBLIC_PAGE_TITLE}
     }
 
-    const attachment = wpPost.attachments[Object.keys(wpPost.attachments)[0]]
+    const wpPost = (await res.json())[0]
+    const title = `${wpPost.title.rendered} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`
 
-    const title = `${wpPost.title} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`
+    const mediaRes = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/media?${new URLSearchParams({parent: wpPost.id})}`, {next: {tags: [`wp-posts`]}})
+    const thumbnailPathname = (await mediaRes.json())[0]?.media_details?.sizes?.thumbnail?.source_url
 
     return {
         title: title,
@@ -44,7 +52,7 @@ export async function generateMetadata(
             title: title,
             siteName: process.env.NEXT_PUBLIC_PAGE_TITLE,
             description: process.env.NEXT_PUBLIC_PAGE_TITLE,
-            images: attachment ? [attachment.thumbnails.large] : [],
+            images: thumbnailPathname ? [`${thumbnailPathname}`] : [],
             type: "website",
             locale: "nb_no"
         }
@@ -52,7 +60,7 @@ export async function generateMetadata(
 }
 
 export default async function WordpressPost({params}: WordpressPostParams) {
-    const wpData = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&slug=${params.slug}`, {next: {tags: ["wp-posts"]}})
+    const wpData = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=view&slug=${params.slug}`, {next: {tags: ["wp-posts"]}})
 
     if (wpData.status !== 200) {
         return notFound()

@@ -33,7 +33,7 @@ export default async function Nyhetsarkiv({params}: NyhetsarkivParams) {
     const currentYear = new Date().getFullYear()
 
     // With some luck, we'll never have more than 100 posts for one year
-    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=100&order=asc&before=${encodeURIComponent(`${year + 1}-01-01T00:00:00Z`)}&after=${encodeURIComponent(`${year}-01-01T00:00:00Z`)}`, {next: {tags: ["wp-posts"]}})
+    const wpPostsDataRes = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=embed&per_page=100&order=asc&before=${encodeURIComponent(`${year + 1}-01-01T00:00:00Z`)}&after=${encodeURIComponent(`${year}-01-01T00:00:00Z`)}`, {next: {tags: ["wp-posts"]}})
     const wpPostsData: any[] = await wpPostsDataRes.json()
 
     const parsedWpPosts = wpPostsData.map(it => {

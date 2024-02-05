@@ -2,7 +2,7 @@ import Link from "next/link"
 import NewsPagination from "./NewsPagination"
 
 export default async function NewsListFull({currentPage}: {currentPage: number}) {
-    const wpPostsDataRes = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=view&per_page=5&page=${currentPage}`, {next: {tags: ["wp-posts"]}})
+    const wpPostsDataRes = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=view&per_page=5&page=${currentPage}`, {next: {tags: ["wp-posts"]}})
     const wpPostsData: any[] = await wpPostsDataRes.json()
     const totalNumPages = parseInt(wpPostsDataRes.headers.get("x-wp-totalpages") as string)
 

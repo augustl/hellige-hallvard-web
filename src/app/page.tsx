@@ -8,7 +8,7 @@ import React from "react"
 export const revalidate = 3600
 
 async function WpPostList() {
-    const res = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/posts?context=embed&per_page=6`, {next: {tags: ["wp-home-page", "wp-posts"]}})
+    const res = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=embed&per_page=6`, {next: {tags: ["wp-home-page", "wp-posts"]}})
     const wpPostsData: any[] = await res.json()
 
     return <>
@@ -24,7 +24,7 @@ async function WpPostList() {
 }
 
 async function WpHomePage() {
-    const res = await fetch(`https://public-api.wordpress.com/wp/v2/sites/${process.env.NEXT_PUBLIC_WORDPRESS_URL}/pages?context=view&include=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-home-page"]}})
+    const res = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?context=view&include=${process.env.NEXT_PUBLIC_HOME_PAGE_ID}`, {next: {tags: ["wp-home-page"]}})
     const wpPagesData: any[] = await res.json()
     const wpPage = wpPagesData[0]
 
