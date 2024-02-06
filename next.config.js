@@ -10,7 +10,7 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'ocb-wordpress-media-library.s3.eu-north-1.amazonaws.com',
+            hostname: 'dq48ad80olhv4.cloudfront.net',
             port: '',
             pathname: '/**',
           },
