@@ -26,7 +26,7 @@ export default async function DagenIDag() {
             <h2 className="text-2xl font-bold font-serif">I dag</h2>
             <div className=""><DagensHoytidList now={now} /></div>
             <div><DagensHendelserList now={now} /></div>
-            <div className="flex flex-col md:flex-row md:gap-2"><span className="font-bold">Dagens tekster<span className="hidden md:inline">:</span></span> <DagensTeksterList d={d} m={m} y={y} /></div>
+            <div className="flex flex-col md:flex-row md:gap-2"><DagensTeksterList d={d} m={m} y={y} /></div>
         </div>
     </div>
 }
