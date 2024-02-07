@@ -62,7 +62,7 @@ export default async function HomePage() {
                     </div>
 
                     <div className="md:order-3">
-                        <h2 className="mb-4 text-2xl font-bold font-serif">Neste helgen/fest</h2>
+                        <h2 className="mb-4 text-2xl font-bold font-serif">Neste helgen/festdag</h2>
                         <DagensHoytid />
                     </div>
 
