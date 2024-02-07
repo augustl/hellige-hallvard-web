@@ -3,11 +3,20 @@ import { getGoogleCalendarUpcomingEvents } from "@/lib/gcal-utils"
 const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
     weekday: 'long',
     day: 'numeric',
-    month: 'short',
+    month: 'long',
     hour: '2-digit',
     minute: '2-digit',
     timeZone: "Europe/Oslo"
 })
+
+const DateHeadline: React.FC<{date: Date}> = ({date}) => {
+    const dateParts = calendarFormatter.formatToParts(date)
+    const weekday = dateParts.filter(it => it.type === "weekday")[0].value
+    const month = dateParts.filter(it => it.type === "month")[0].value
+    const day = dateParts.filter(it => it.type === "day")[0].value
+
+    return <><span className="capitalize">{weekday}</span> {day}. {month}</>
+}
 
 export default async function DagensHoytid() {
     const calendarCutoffTime = new Date()
@@ -17,14 +26,11 @@ export default async function DagensHoytid() {
     
     const upcomingFullDayEvents = upcomingEvents.filter(it => it.isFullDayEvent).slice(0, 3)
 
-    return <div className="flex md:flex-row md:gap-4 flex-col gap-1">
+    return <div className="flex flex-col gap-4">
         {upcomingFullDayEvents.map(event => {
-            const dateParts = calendarFormatter.formatToParts(event.date)
-            const month = dateParts.filter(it => it.type === "month")[0].value.replace(/\.$/, "")
-            const day = dateParts.filter(it => it.type === "day")[0].value
-
             return <div key={event.id}>
-                <strong>{day} {month}:</strong> <span className="dark:text-gray-400 text-gray-600">{event.summary}</span>
+                <div><strong><DateHeadline date={event.date} /></strong></div>
+                <div>{event.summary}</div>
             </div>
         })}
     </div>

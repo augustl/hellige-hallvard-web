@@ -54,12 +54,16 @@ export default async function HomePage() {
         <div className="hh-content-blocks">
             <div className="alignwide">
                 <div className="mb-8"><DagenIDag /></div>
-                <div className="mb-8"><DagensHoytid /></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div className="md:order-2">
-                        <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kalenderen</h2>
+                        <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kirken</h2>
                         <UpcomingEventsListSSR />
                         <p className="hh-body-typography"><Link href="/gudstjenester">Hele kalenderen</Link></p>
+                    </div>
+
+                    <div className="md:order-3">
+                        <h2 className="mb-4 text-2xl font-bold font-serif">Neste helgen/fest</h2>
+                        <DagensHoytid />
                     </div>
 
                     <div className="md:order-1">
