@@ -23,8 +23,8 @@ const DateHeadline: React.FC<{date: Date}> = ({date}) => {
 
 
 
-export default async function UpcomingEventsListSSR() {
-    const calendarCutoffTime = new Date()
+export default async function UpcomingEventsListSSR(props: {date: Date}) {
+    const calendarCutoffTime = new Date(props.date.getTime())
     calendarCutoffTime.setDate(calendarCutoffTime.getDate() + 1)
     calendarCutoffTime.setHours(0, 0, 0, 0)
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=8&timeMin=${calendarCutoffTime.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
@@ -32,7 +32,7 @@ export default async function UpcomingEventsListSSR() {
     
     const upcomingEventsByDay = partitionBy(upcomingEvents, it => it.dateKey).slice(0, NUM_DATES)
 
-    return <div className="flex flex-col gap-4 mb-4">
+    return <div className="flex flex-col gap-4">
         {upcomingEventsByDay.map((events, idx) => {
             return <div key={events[0].dateKey} className={(idx === (NUM_DATES - 1)) ? "hidden md:block" : ""}>
                 <h3 className="font-bold"><DateHeadline date={events[0].date} /></h3>

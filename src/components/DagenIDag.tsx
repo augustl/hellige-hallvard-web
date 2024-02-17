@@ -11,10 +11,8 @@ const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
     timeZone: "Europe/Oslo"
 })
 
-export default async function DagenIDag() {
-    const now = new Date()
-    now.setHours(0, 0, 0, 0)
-    const date = now.toLocaleString("en-US", { timeZone: "Europe/Oslo" })
+export default async function DagenIDag(props: {date: Date}) {
+    const date = props.date.toLocaleString("en-US", { timeZone: "Europe/Oslo" })
     const match = date.match(/^(\d+)\/(\d+)\/(\d+)/)
     if (!match) {
         return null
@@ -22,11 +20,11 @@ export default async function DagenIDag() {
     const [_, m, d, y] = match
 
     return <div>
-        <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold font-serif">I dag</h2>
-            <div className=""><DagensHoytidList now={now} /></div>
-            <div><DagensHendelserList now={now} /></div>
+        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})}</h2>
+        <div className="flex flex-col gap-4">
+            <div><DagensHendelserList now={props.date} /></div>
             <div className="flex flex-col md:flex-row md:gap-2"><DagensTeksterList d={d} m={m} y={y} /></div>
+            <div className=""><DagensHoytidList now={props.date} /></div>
         </div>
     </div>
 }
@@ -44,7 +42,7 @@ async function DagensHendelserList({now}: {now: Date}) {
             const minute = dateParts.filter(it => it.type === "minute")[0].value
 
             return <div key={event.id}>
-                {event.isFullDayEvent ? <></> : <span className="font-bold">{hour}:{minute}:</span>} {event.summary}
+                {event.isFullDayEvent ? <></> : <span className="font-bold">Kirken, {hour}:{minute}:</span>} {event.summary}
             </div>
         })}
     </>

@@ -18,9 +18,9 @@ const DateHeadline: React.FC<{date: Date}> = ({date}) => {
     return <><span className="capitalize">{weekday}</span> {day}. {month}</>
 }
 
-export default async function DagensHoytid() {
-    const calendarCutoffTime = new Date()
-    calendarCutoffTime.setDate(calendarCutoffTime.getDate() + 1)
+export default async function DagensHoytid(props: {date: Date}) {
+    const calendarCutoffTime = new Date(props.date.getTime())
+    calendarCutoffTime.setDate(props.date.getDate() + 1)
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_HOYTIDER_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=5&timeMin=${calendarCutoffTime.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
     const upcomingEvents = await getGoogleCalendarUpcomingEvents(await res.json())
     
