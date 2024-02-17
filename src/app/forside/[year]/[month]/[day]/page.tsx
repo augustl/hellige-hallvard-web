@@ -1,5 +1,5 @@
 import HomePageForDate from "@/components/HomePageForDate"
-import moment from "moment"
+import moment from "moment-timezone"
 import Link from "next/link"
 
 export const revalidate = 3600
@@ -18,7 +18,7 @@ const parseIntSafe = (val: string): number | null => {
     return parsed
 }
 
-const getValidDate = (ys: string, ms: string, ds: string): Date | null => {
+const getValidDate = (ys: string, ms: string, ds: string): moment.Moment | null => {
     const y = parseIntSafe(ys)
     if (!y) return null
 
@@ -28,14 +28,7 @@ const getValidDate = (ys: string, ms: string, ds: string): Date | null => {
     const d = parseIntSafe(ds)
     if (!d) return null
 
-    const date = new Date(y, m - 1, d)
-
-    // Bail out if we try to ask for february 31st or other nonsensical things
-    if (date.getFullYear() !== y && date.getMonth() !== (m - 1) && date.getDate() !== d) {
-        return null
-    }
-
-    return date
+    return moment.tz([y, m - 1, d], "Europe/Oslo").startOf("day")
 }
 
 const DateFormat: React.FC<{date: Date}> = ({date}) => {
@@ -60,12 +53,12 @@ export default async function ForsideForDate({params}: {params: {year: string, m
         <div className="hh-content-blocks mb-10 hidden md:block">
             <div className="alignwide">
                 <div className="flex flex-row gap-4 hh-body-typography">
-                    <DayOffsetLink date={date} offset={-1} />
-                    <DayOffsetLink date={date} offset={1} />
+                    <DayOffsetLink date={date.toDate()} offset={-1} />
+                    <DayOffsetLink date={date.toDate()} offset={1} />
                 </div>
             </div>
         </div>
 
-        <HomePageForDate date={moment(date)} />
+        <HomePageForDate date={date} />
     </div>
 }
