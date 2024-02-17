@@ -26,10 +26,10 @@ export default async function DagensHoytid(props: {date: moment.Moment}) {
     
     const upcomingFullDayEvents = upcomingEvents.filter(it => it.isFullDayEvent).slice(0, 3)
 
-    return <div className="flex flex-col gap-4">
+    return <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
         {upcomingFullDayEvents.map(event => {
             return <div key={event.id}>
-                <div><strong><DateHeadline date={event.date} /></strong></div>
+                <div className="font-semibold"><DateHeadline date={event.date} /></div>
                 <div>{event.summary}</div>
             </div>
         })}
