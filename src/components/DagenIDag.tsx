@@ -11,16 +11,13 @@ const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
     timeZone: "Europe/Oslo"
 })
 
-export default async function DagenIDag(props: {date: Date}) {
-    const date = props.date.toLocaleString("en-US", { timeZone: "Europe/Oslo" })
-    const match = date.match(/^(\d+)\/(\d+)\/(\d+)/)
-    if (!match) {
-        return null
-    }
-    const [_, m, d, y] = match
+export default async function DagenIDag(props: {date: moment.Moment}) {    
+    const d = props.date.date().toString()
+    const m = props.date.month().toString()
+    const y = props.date.year().toString()
 
     return <div>
-        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})}</h2>
+        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.toDate().toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})}</h2>
         <div className="flex flex-col gap-4">
             <div><DagensHendelserList now={props.date} /></div>
             <div className="flex flex-col md:flex-row md:gap-2"><DagensTeksterList d={d} m={m} y={y} /></div>
@@ -29,9 +26,8 @@ export default async function DagenIDag(props: {date: Date}) {
     </div>
 }
 
-async function DagensHendelserList({now}: {now: Date}) {
-    const tomorrow = new Date(now.getTime())
-    tomorrow.setDate(tomorrow.getDate() + 1)
+async function DagensHendelserList({now}: {now: moment.Moment}) {
+    const tomorrow = now.clone().add(1, "days").startOf("day")
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=4&timeMin=${now.toISOString()}&timeMax=${tomorrow.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
     const upcomingEvents = await getGoogleCalendarUpcomingEvents(await res.json())
 
@@ -48,9 +44,8 @@ async function DagensHendelserList({now}: {now: Date}) {
     </>
 }
 
-async function DagensHoytidList({now}: {now: Date}) {
-    const tomorrow = new Date(now.getTime())
-    tomorrow.setDate(tomorrow.getDate() + 1)
+async function DagensHoytidList({now}: {now: moment.Moment}) {
+    const tomorrow = now.clone().add(1, "days").startOf("day")
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_HOYTIDER_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=5&timeMin=${now.toISOString()}&timeMax=${tomorrow.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
     const upcomingEvents = await getGoogleCalendarUpcomingEvents(await res.json())
 

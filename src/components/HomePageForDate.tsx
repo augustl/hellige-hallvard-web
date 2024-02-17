@@ -3,6 +3,7 @@ import DagenIDag from "./DagenIDag"
 import UpcomingEventsListSSR from "./UpcomingEventsListSSR"
 import DagensHoytid from "./DagensHoytid"
 import React from "react"
+import moment from "moment"
 
 async function WpPostList() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=embed&per_page=6`, {next: {tags: ["wp-home-page", "wp-posts"]}})
@@ -29,7 +30,7 @@ async function WpHomePage() {
     return <div className="hh-typography hh-content-blocks" dangerouslySetInnerHTML={{__html: wpPage.content.rendered}}></div>
 }
 
-export default async function HomePageForDate({date}: {date: Date}) {
+export default async function HomePageForDate({date}: {date: moment.Moment}) {
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">

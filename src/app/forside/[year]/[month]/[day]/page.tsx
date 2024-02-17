@@ -1,4 +1,5 @@
 import HomePageForDate from "@/components/HomePageForDate"
+import moment from "moment"
 import Link from "next/link"
 
 export const revalidate = 3600
@@ -65,6 +66,6 @@ export default async function ForsideForDate({params}: {params: {year: string, m
             </div>
         </div>
 
-        <HomePageForDate date={date} />
+        <HomePageForDate date={moment(date)} />
     </div>
 }

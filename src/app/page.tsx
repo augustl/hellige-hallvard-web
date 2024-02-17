@@ -1,4 +1,5 @@
 import HomePageForDate from "@/components/HomePageForDate"
+import moment from "moment-timezone"
 import { Metadata, ResolvingMetadata } from "next"
 import React from "react"
 
@@ -23,8 +24,7 @@ export async function generateMetadata(
 }
 
 export default async function HomePage() {
-    const now = new Date()
-    now.setHours(0, 0, 0, 0)
+    const now = moment().tz("Europe/Oslo").startOf("day")
     
     return <HomePageForDate date={now} />
 }
