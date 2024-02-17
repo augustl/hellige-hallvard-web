@@ -25,7 +25,7 @@ const MetaThemeColor: React.FC = () => {
         if (!metaEl) return
 
         if (isDarkMode) {
-            metaEl.setAttribute("content", "#000")
+            metaEl.setAttribute("content", "#23231E")
         } else {
             metaEl.setAttribute("content", "#fff")
         }
