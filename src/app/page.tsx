@@ -25,6 +25,8 @@ export async function generateMetadata(
 
 export default async function HomePage() {
     const now = moment().tz("Europe/Oslo").startOf("day")
+
+    console.log("----", now.toISOString())
     
     return <HomePageForDate date={now} />
 }
