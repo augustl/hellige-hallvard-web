@@ -11,6 +11,7 @@ const docClient = DynamoDBDocumentClient.from(client)
 
 export const getDagensTekster = cache(async (y: string, m: string, d: string): Promise<DagensTekstItems | null> => {
     const sk = `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`
+    console.log("FETCHING DAGENS TEKSTER", y, m, d, sk)
 
     const {Item: item} = await docClient.send(new GetCommand({
         TableName: "church_calendar",

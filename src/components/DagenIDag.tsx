@@ -20,9 +20,6 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
     const m = props.date.month().toString()
     const y = props.date.year().toString()
 
-    console.log("DAGEN I DAG")
-    console.log(d, m, y)
-
     return <div>
         <h2 className="text-2xl font-bold font-serif mb-2">{props.date.format("Do MMMM YYYY")}</h2>
         <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
