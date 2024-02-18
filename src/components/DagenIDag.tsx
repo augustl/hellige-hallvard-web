@@ -17,7 +17,7 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
     const y = props.date.year().toString()
 
     return <div>
-        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.toDate().toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})}</h2>
+        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.clone().tz("Europe/Oslo").toDate().toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})}</h2>
         <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
             <div><DagensHendelserList now={props.date} /></div>
             <div className="flex flex-col md:flex-row md:gap-2"><DagensTeksterList d={d} m={m} y={y} /></div>
