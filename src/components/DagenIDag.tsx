@@ -17,7 +17,7 @@ const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
 
 export default async function DagenIDag(props: {date: moment.Moment}) {    
     const d = props.date.date().toString()
-    const m = props.date.month().toString()
+    const m = (props.date.month() + 1).toString()
     const y = props.date.year().toString()
 
     return <div>
