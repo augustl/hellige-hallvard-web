@@ -1,6 +1,10 @@
 import DagensTeksterList from "./DagensTeksterList"
 import React from "react"
 import { getGoogleCalendarUpcomingEvents } from "@/lib/gcal-utils"
+import moment from "moment"
+
+require('moment/locale/nb')
+moment.locale("nb")
 
 const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
     weekday: 'long',
@@ -16,8 +20,11 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
     const m = props.date.month().toString()
     const y = props.date.year().toString()
 
+    console.log("DAGEN I DAG")
+    console.log(d, m, y)
+
     return <div>
-        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.clone().tz("Europe/Oslo").startOf("day").toDate().toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})}</h2>
+        <h2 className="text-2xl font-bold font-serif mb-2">{props.date.format("Do MMMM YYYY")}</h2>
         <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
             <div><DagensHendelserList now={props.date} /></div>
             <div className="flex flex-col md:flex-row md:gap-2"><DagensTeksterList d={d} m={m} y={y} /></div>
