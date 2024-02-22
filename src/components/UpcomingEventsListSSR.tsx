@@ -31,17 +31,20 @@ export default async function UpcomingEventsListSSR(props: {date: moment.Moment}
     
     const upcomingEventsByDay = partitionBy(upcomingEvents, it => it.dateKey).slice(0, NUM_DATES)
 
-    return <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
+    return <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700 hh-body-typography">
         {upcomingEventsByDay.map((events, idx) => {
             return <div key={events[0].dateKey} className={(idx === (NUM_DATES - 1)) ? "hidden md:block" : ""}>
-                <h3 className="font-semibold"><DateHeadline date={events[0].date} /></h3>
+                <h3 className="font-semibold "><DateHeadline date={events[0].date} /></h3>
                 {events.map(event => {
                     const dateParts = calendarFormatter.formatToParts(event.date)
                     const hour = dateParts.filter(it => it.type === "hour")[0].value
                     const minute = dateParts.filter(it => it.type === "minute")[0].value
-                    return <div key={event.id}>
-                        {event.isFullDayEvent ? '' : `${hour}:${minute}`} {event.summary}
-                    </div>
+                    const textPrefix = `${event.isFullDayEvent ? '' : `${hour}:${minute}`}`
+                    if (event.url) {
+                        return <div key={event.id}>{textPrefix} <a href={event.url}>{event.summary}</a></div>
+                    } else {
+                        return <div key={event.id}>{textPrefix} {event.summary}</div>
+                    }
                 })}
             </div>
         })}

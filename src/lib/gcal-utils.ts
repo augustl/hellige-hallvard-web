@@ -18,10 +18,17 @@ const getEventDate = (dateValue: GoogleCalendarDate): Date => {
 }
 
 export const getGoogleCalendarUpcomingEvents = async (gcalResJson: any) => {
-    const upcomingEventsData: {id: number, start: GoogleCalendarDate, summary: string}[] = gcalResJson.items
+    const upcomingEventsData: {id: number, start: GoogleCalendarDate, summary: string, location: string}[] = gcalResJson.items
+
     return upcomingEventsData.map(it => {
         const start = getEventDate(it.start)
-        return {...it, isFullDayEvent: isFullDayEvent(it.start), date: start, dateKey: `${start.getFullYear()}-${start.getMonth()}-${start.getDate()}`}
+        return {
+            ...it, 
+            isFullDayEvent: isFullDayEvent(it.start), 
+            date: start, 
+            dateKey: `${start.getFullYear()}-${start.getMonth()}-${start.getDate()}`,
+            url: it.location && it.location.startsWith("http") ? it.location : null
+        }
     })
 
 }
