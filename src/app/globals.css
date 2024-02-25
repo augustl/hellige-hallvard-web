@@ -7,8 +7,10 @@
   --background-rgb: 255, 255, 255;
 }
 
-.hh-body-typography a {
-  @apply text-blue-700;
+.hh-body-typography a,
+.hh-link-style {
+  @apply text-blue-700 underline;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,7 +19,8 @@
     --background-rgb: 35, 35, 30;
   }
 
-  .hh-body-typography a {
+  .hh-body-typography a,
+  .hh-link-style {
     @apply text-blue-400;
   }
 }
@@ -123,8 +126,4 @@ dialog {
      i stedet for å vise det med feil ar
    */
   object-fit: contain;
-}
-
-.hh-body-typography a {
-  @apply underline;
 }
