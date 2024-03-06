@@ -48,7 +48,7 @@ const getValidDate = (ys: string, ms: string, ds: string): Date | null => {
 async function DagensTeksterContents(props: {year: string, month: string, day: string}) {
     const dagensTekster = await getDagensTekster(props.year, props.month, props.day)
     if (!dagensTekster) {
-        return <div><em>Fant ikke dagens tekster. Kontakt teknisk administrator av websiden, August Lilleaas: <a href="mailto:august@augustl.com">august@augustl.com</a></em></div>
+        return <div><em>Har ingen tekster for i dag. Vi legger ut tekstene fortløpende, som regel en uke eller to i forveien. Prøv igjen senere!</em></div>
     }
 
     const nb88Chapters = await fetchNB88Chapters(dagensTekster)
