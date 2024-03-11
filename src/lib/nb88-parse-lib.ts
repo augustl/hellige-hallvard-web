@@ -32,6 +32,10 @@ export const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
                 const verseNumberNode = div.querySelector("sup.verse-no")!
                 const textContentsNode = div.querySelector("span")!
 
+                textContentsNode.querySelectorAll(":scope > .verse-star-reference").forEach(it => {
+                    it.parentNode?.removeChild(it)
+                })
+
                 res.push({
                     type: "paragraph", 
                     verse: parseInt(verseNumberNode.textContent!.trim()), 

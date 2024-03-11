@@ -1,4 +1,6 @@
 export const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
+    "Joel": { norskBibel: "Joel", bookNameShort: "Joel", bookName: "Profeten Joel"},
+    "Zech": { norskBibel: "Zech", bookNameShort: "Sak", bookName: "Profeten Sakarias"},
     "Mt": { norskBibel: "Matt", bookNameShort: "Matt", bookName: "Matteus' evangelium" },
     "Mk": { norskBibel: "Mark", bookNameShort: "Mark", bookName: "Markus' evangelium" },
     "Lk": { norskBibel: "Luke", bookNameShort: "Luk", bookName: "Lukas' evangelium" },
