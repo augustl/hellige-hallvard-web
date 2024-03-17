@@ -1,11 +1,10 @@
 "use server"
 
-import { cache } from "react"
 import { NB88Line, tokenizeNB88Chapter } from "./nb88-parse-lib"
 import { bookNames } from "./book-names"
 import { DagensTekstItems } from "@/types/dynamodb"
 
-export const fetchChapterFromNB88 = cache(async (book: unknown, chapter: unknown): Promise<string> => {
+export const fetchChapterFromNB88 = async (book: unknown, chapter: unknown): Promise<string> => {
     const url = `http://les.norsk-bibel.no/index_reader.php?res=${book}:${chapter}`
     console.log("Fetching from", url)
 
@@ -16,7 +15,7 @@ export const fetchChapterFromNB88 = cache(async (book: unknown, chapter: unknown
 
     console.log("Performed fetch")
     return await res.text()
-})
+}
 
 export type NB88ChaptersType = {[key: string]: NB88Line[]}
 
