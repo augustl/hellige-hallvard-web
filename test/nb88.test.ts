@@ -31,7 +31,7 @@ describe("NB88", () => {
         assert.deepStrictEqual(
             extractDataFromNB88Chapter(await jas4, 13, 13),
             [
-                {type: "title", text: "Vår fremtid står i Guds hånd", verseFrom: 13, verseTo: 17},
+                {type: "title", text: "Vår fremtid står i Guds hånd"},
                 {type: "paragraph", verse: 13, text: "Nå vel, dere som sier: i dag eller i morgen drar vi til den eller den byen. Vi skal bli der et år og drive handel og tjene penger!"}
             ]
         )
@@ -41,7 +41,7 @@ describe("NB88", () => {
         assert.deepStrictEqual(
             extractDataFromNB88Chapter(await jas4, 1, 2),
             [
-                {type: "title", text: "Ydmyk for Herren", verseFrom: 1, verseTo: 10},
+                {type: "title", text: "Ydmyk for Herren"},
                 {type: "paragraph", verse: 1, text: "Hvorfra kommer all ufreden, og hvorfra kommer all striden blant dere? Er det ikke fra lystene, som fører krig i lemmene deres?"},
                 {type: "paragraph", verse: 2, text: "Dere begjærer, men har ikke. Dere slår i hjel og misunner, og kan ikke få. Dere ligger i strid og ufred. Dere har ikke, fordi dere ikke ber."}
             ]
