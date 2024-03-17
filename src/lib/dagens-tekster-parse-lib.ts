@@ -59,10 +59,6 @@ export const processDagensTekster = (items: DagensTekstDynamoItems): DagensTekst
                 return {
                     label: getLabel(prevChapter, verse.from, verse.to) ,
                     chapterChunks: getChapterChunks(verse.from, verse.to)
-                    // chapterFrom: verse.from.chapter,
-                    // chapterTo: verse.to?.chapter,
-                    // verseFrom, 
-                    // verseTo
                 }
             })
         }
