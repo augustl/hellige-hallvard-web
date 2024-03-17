@@ -7,7 +7,7 @@ export type NB88LineTitle = {type: "title", text: string}
 export type NB88LineParagraph = {type: "paragraph", verse: number, text: string}
 export type NB88Line = NB88LineTitle | NB88LineParagraph
 
-export const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
+export const tokenizeNB88Chapter = async (chapterHtml: string): Promise<NB88Line[]> => {
     const dom = new JSDOM(chapterHtml)
     const doc = dom.window.document
     const versesContainer = doc.querySelector(".text-div")
@@ -32,14 +32,10 @@ export const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
                 const verseNumberNode = div.querySelector("sup.verse-no")!
                 const textContentsNode = div.querySelector("span")!
 
-                textContentsNode.querySelectorAll(":scope > .verse-star-reference").forEach(it => {
-                    it.parentNode?.removeChild(it)
-                })
-
                 res.push({
                     type: "paragraph", 
                     verse: parseInt(verseNumberNode.textContent!.trim()), 
-                    text: textContentsNode.textContent!.trim()
+                    text: textContentsNode.textContent!.trim().replace(/\*/g, "")
                 })
             }
         }
@@ -48,7 +44,7 @@ export const tokenizeNB88Chapter = (chapterHtml: string): NB88Line[] => {
     return res
 }
 
-export const extractDataFromNB88Chapter = (chapterHtml: string, verseFrom: number, verseTo?: number): NB88Line[] => {
-    const lines = tokenizeNB88Chapter(chapterHtml)
+export const extractDataFromNB88Chapter = async (chapterHtml: string, verseFrom: number, verseTo?: number): Promise<NB88Line[]> => {
+    const lines = await tokenizeNB88Chapter(chapterHtml)
     return extractDataFromNB88ChapterTokenized(lines, verseFrom, verseTo)
 }

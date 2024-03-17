@@ -35,7 +35,7 @@ export const fetchNB88Chapters = async (dagensTekster: DagensTekstItems): Promis
                     headers: {"X-Hei-Fra-Utvikler": "Hentet for helligehallvard.no. Vi betaler gjerne for et API :) Kontakt august@augustl.com"}
                 })
                 const html = await res.text()
-                nb88Chapters[chapterKey] = tokenizeNB88Chapter(html)
+                nb88Chapters[chapterKey] = await tokenizeNB88Chapter(html)
             }
         }
     }
