@@ -29,8 +29,8 @@ export default async function DagensHoytid(props: {date: moment.Moment}) {
     return <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
         {upcomingFullDayEvents.map(event => {
             return <div key={event.id}>
-                <div className="font-semibold"><DateHeadline date={event.date} /></div>
-                <div>{event.summary}</div>
+                <div className="text-sm"><DateHeadline date={event.date} /></div>
+                <div className="font-semibold">{event.summary}</div>
             </div>
         })}
     </div>

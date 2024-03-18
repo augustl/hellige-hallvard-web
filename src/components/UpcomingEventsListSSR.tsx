@@ -34,7 +34,7 @@ export default async function UpcomingEventsListSSR(props: {date: moment.Moment}
     return <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700 hh-body-typography">
         {upcomingEventsByDay.map((events, idx) => {
             return <div key={events[0].dateKey} className={(idx === (NUM_DATES - 1)) ? "hidden md:block" : ""}>
-                <h3 className="font-semibold "><DateHeadline date={events[0].date} /></h3>
+                <h3 className="text-"><DateHeadline date={events[0].date} /></h3>
                 {events.map(event => {
                     const dateParts = calendarFormatter.formatToParts(event.date)
                     const hour = dateParts.filter(it => it.type === "hour")[0].value
@@ -43,7 +43,7 @@ export default async function UpcomingEventsListSSR(props: {date: moment.Moment}
                     if (event.url) {
                         return <div key={event.id}>{textPrefix} <a href={event.url}>{event.summary}</a></div>
                     } else {
-                        return <div key={event.id}>{textPrefix} {event.summary}</div>
+                        return <div key={event.id}>{textPrefix} <span className="font-semibold">{event.summary}</span></div>
                     }
                 })}
             </div>
