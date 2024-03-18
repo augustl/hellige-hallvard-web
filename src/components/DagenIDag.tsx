@@ -24,7 +24,8 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
     return <div>
         <h2 className="text-2xl font-bold font-serif mb-2">{props.date.format("Do MMMM YYYY")}</h2>
         <div className="flex flex-col gap-4 dark:text-gray-300 text-gray-700">
-            <div><DagensHendelserList now={props.date} /></div>
+            <DagensHoytidList now={props.date} />
+            <DagensHendelserList now={props.date} />
             <div>
                 <div className="border border-slate-300 dark:border-slate-600 border-double border-4 inline-block relative">
                     <div className="px-4 py-2 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold flex flex-row gap-4">
@@ -39,7 +40,6 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
                     </div>
                 </div>
             </div>
-            <div className=""><DagensHoytidList now={props.date} /></div>
         </div>
     </div>
 }
@@ -49,7 +49,11 @@ async function DagensHendelserList({now}: {now: moment.Moment}) {
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=4&timeMin=${now.toISOString()}&timeMax=${tomorrow.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
     const upcomingEvents = await getGoogleCalendarUpcomingEvents(await res.json())
 
-    return <>
+    if (!upcomingEvents || upcomingEvents.length === 0) {
+        return null
+    }
+
+    return <div>
         {upcomingEvents.map(event => {
             const dateParts = calendarFormatter.formatToParts(event.date)
             const hour = dateParts.filter(it => it.type === "hour")[0].value
@@ -59,7 +63,7 @@ async function DagensHendelserList({now}: {now: moment.Moment}) {
                 {event.isFullDayEvent ? <></> : <span className="font-bold">Kirken, {hour}:{minute}:</span>} {event.url ? <a href={event.url}>{event.summary}</a> : event.summary}
             </div>
         })}
-    </>
+    </div>
 }
 
 async function DagensHoytidList({now}: {now: moment.Moment}) {
@@ -67,9 +71,13 @@ async function DagensHoytidList({now}: {now: moment.Moment}) {
     const res = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.NEXT_PUBLIC_HOYTIDER_GCAL_ID!)}/events?key=${process.env.NEXT_PUBLIC_GCAL_BACKEND_API_KEY!}&maxResults=5&timeMin=${now.toISOString()}&timeMax=${tomorrow.toISOString()}&timeZone=Europe/Oslo&orderBy=startTime&singleEvents=true`, {next: {revalidate: 60}})
     const upcomingEvents = await getGoogleCalendarUpcomingEvents(await res.json())
 
-    return <>
+    if (!upcomingEvents || upcomingEvents.length === 0) {
+        return null
+    }
+
+    return <div>
         {upcomingEvents.map(event => {
-            return <div key={event.id}>{event.summary}</div>
+            return <div key={event.id} className="text-lg">{event.summary}</div>
         })}
-    </>
+    </div>
 }
