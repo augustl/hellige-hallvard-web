@@ -34,7 +34,33 @@ export default async function HomePageForDate({date}: {date: moment.Moment}) {
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
-                <div className="mb-8"><DagenIDag date={date} /></div>
+                <div className="mb-8 gap-8 flex flex-col md:flex-row-reverse md:justify-end">
+                    <div className="border border-yellow-600 border-double border-4 inline-block relative">
+                        <h2 className="px-4 py-2 bg-yellow-100 dark:bg-yellow-900 bg-opacity-40 mb-2 text-2xl font-bold font-serif">Hl. Efraim Syrerens bønn</h2>
+
+                        <div className="flex flex-col gap-4 p-4">
+                            <p className="flex flex-col">
+                                <span>Herre og Hersker over mitt liv, </span>
+                                <span>gi meg ikke likegyldighetens, mismotets, </span>
+                                <span>maktlystens eller skravlingens ånd.</span>
+                            </p>
+
+                            <p className="flex flex-col">
+                                <span>Men gi meg, Din tjener, </span>
+                                <span>kyskhetens, ydmykhetens, </span>
+                                <span>tålmodighetens og kjærlighetens ånd.</span>
+                            </p>
+
+                            <p className="flex flex-col">
+                                <span>Herre og Konge, la meg se mine egne synder, </span>
+                                <span>og ikke dømme min bror,  </span>
+                                <span>for Du er velsignet i evighet. Amen!</span>
+                            </p>
+                        </div>
+
+                    </div>
+                    <DagenIDag date={date} />
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div className="md:order-2">
                         <h2 className="mb-4 text-2xl font-bold font-serif">Neste i kirken</h2>
