@@ -75,9 +75,9 @@ async function DagensHoytidList({now}: {now: moment.Moment}) {
         return null
     }
 
-    return <div>
+    return <div className="mb-2">
         {upcomingEvents.map(event => {
-            return <div key={event.id} className="text-lg">{event.summary}</div>
+            return <div key={event.id} className="text-xl font-serif">{event.summary}</div>
         })}
     </div>
 }
