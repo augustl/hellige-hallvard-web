@@ -12,6 +12,7 @@ const getModalWidth = (size: ModalSize): string => {
 
 const Modal: React.FC<{onClose: () => void, size?: ModalSize, children: React.ReactNode}> = ({onClose, children, size = "full"}) => {
     const dialogRef = useRef<HTMLDialogElement | null>(null)
+    const dialogScrollRef = useRef<HTMLElement | null>(null)
 
     const childEl = children ? React.Children.only(children) : null
     const hasChild = childEl !== null
@@ -24,6 +25,7 @@ const Modal: React.FC<{onClose: () => void, size?: ModalSize, children: React.Re
 
         if (hasChild) {
             dialogEl.showModal()
+            dialogScrollRef.current?.scrollTo(0, 0)
         } else {
             dialogEl.close()
         }
@@ -46,7 +48,7 @@ const Modal: React.FC<{onClose: () => void, size?: ModalSize, children: React.Re
         h-full w-full"
     >
         <div className={`h-full ${getModalWidth(size)} mx-auto flex flex-col hh-body`}>
-            <div className="flex-1 min-h-0 overflow-y-auto">
+            <div className="flex-1 min-h-0 overflow-y-auto" ref={dialogScrollRef}>
                 {childEl}
             </div>
             <div><button className="p-2" onClick={onClose}>Lukk</button></div>
