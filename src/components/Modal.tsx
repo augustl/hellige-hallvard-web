@@ -12,7 +12,7 @@ const getModalWidth = (size: ModalSize): string => {
 
 const Modal: React.FC<{onClose: () => void, size?: ModalSize, children: React.ReactNode}> = ({onClose, children, size = "full"}) => {
     const dialogRef = useRef<HTMLDialogElement | null>(null)
-    const dialogScrollRef = useRef<HTMLElement | null>(null)
+    const dialogScrollRef = useRef<HTMLDivElement | null>(null)
 
     const childEl = children ? React.Children.only(children) : null
     const hasChild = childEl !== null
