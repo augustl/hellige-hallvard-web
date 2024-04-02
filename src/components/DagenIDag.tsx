@@ -60,7 +60,7 @@ async function DagensHendelserList({now}: {now: moment.Moment}) {
             const minute = dateParts.filter(it => it.type === "minute")[0].value
 
             return <div key={event.id} className="hh-body-typography">
-                {event.isFullDayEvent ? <></> : <span className="font-bold">Kirken, {hour}:{minute}:</span>} {event.url ? <a href={event.url}>{event.summary}</a> : event.summary}
+                {event.isFullDayEvent ? <></> : <span className="font-bold">{event.location || "Kirken"}, {hour}:{minute}:</span>} {event.url ? <a href={event.url}>{event.summary}</a> : event.summary}
             </div>
         })}
     </div>
