@@ -59,6 +59,14 @@ dialog {
   @apply text-xl xs:text-3xl;
 }
 
+.hh-typography h4 {
+  @apply text-lg xs:text-xl;
+}
+
+.hh-typography h4 + p{
+  @apply mt-0;
+}
+
 .hh-body-typography blockquote {
   @apply border-l-2 border-gray-600 border-solid pl-4 text-gray-600;
 }
