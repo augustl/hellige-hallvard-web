@@ -68,7 +68,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
 
     const wpChildPages: any[] = await (await fetch(
         `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
-            context: "embed",
+            context: "view",
             per_page: "100",
             exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
             parent: wpPage.id.toString(),
@@ -76,6 +76,30 @@ export default async function WordpressPage({params}: WordpressPageParams) {
             order: "asc"
         })}`, 
         {next: {tags: [`wp-page-${wpPage.slug}`, `wp-all-pages-by-slug`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
+
+    const grandchildPagesByChildPageId: {[key: string]: any[]} = {}
+    const childPagesByHasGrandchildren: {false: any[], true: any[]} = {false: [], true: []} 
+    
+    for (const wpChildPage of wpChildPages) {
+        const grandchildPages = await (await fetch(
+            `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
+                context: "embed",
+                per_page: "100",
+                exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
+                parent: wpChildPage.id.toString(),
+                orderby: "menu_order",
+                order: "asc"
+            })}`, 
+            {next: {tags: [`wp-page-${wpPage.slug}`, `wp-all-pages-by-slug`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
+
+        if (grandchildPages.length === 0) {
+            childPagesByHasGrandchildren.false.push(wpChildPage)
+        } else {
+            childPagesByHasGrandchildren.true.push(wpChildPage)
+
+        }
+        grandchildPagesByChildPageId[wpChildPage.id] = grandchildPages
+    }
 
     const parentSlug = pages.slice(0, pages.length - 1).map(it => it.slug).join("/")
     const pageSlug = pages.map(it => it.slug).join("/")
@@ -88,10 +112,23 @@ export default async function WordpressPage({params}: WordpressPageParams) {
     <WpPostContent content={wpPage.content.rendered} />
     <div className="hh-content-blocks mt-10">
         <ul>
-            {wpChildPages.map(childPage => <li key={childPage.id}>
+            {childPagesByHasGrandchildren.false.map(childPage => <li key={childPage.id}>
                 <Link href={`/${pageSlug}/${childPage.slug}`} dangerouslySetInnerHTML={{__html: childPage.title.rendered}}></Link>
             </li>)}
         </ul>
+
+        {childPagesByHasGrandchildren.true.map(childPage => {
+            return <div key={childPage.id}>
+                <h2 dangerouslySetInnerHTML={{__html: childPage.title.rendered}}></h2>
+                <WpPostContent content={childPage.content.rendered} />
+
+                <ul>
+                    {grandchildPagesByChildPageId[childPage.id].map(grandchildPage => <li key={grandchildPage.id}>
+                        <Link href={`/${pageSlug}/${childPage.slug}/${grandchildPage.slug}`} dangerouslySetInnerHTML={{__html: grandchildPage.title.rendered}}></Link>
+                    </li>)}
+                </ul>
+            </div>
+        })}
     </div>
 </div>
 }
