@@ -77,16 +77,19 @@ export default async function WordpressPage({params}: WordpressPageParams) {
         })}`, 
         {next: {tags: [`wp-page-${wpPage.slug}`, `wp-all-pages-by-slug`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
 
+    const parentSlug = pages.slice(0, pages.length - 1).map(it => it.slug).join("/")
+    const pageSlug = pages.map(it => it.slug).join("/")
+
     return <div className="hh-typography hh-body-typography">
     <div className="hh-content-blocks">
-        {wpParentPage && <p className="mb-10"><Link href={`/${wpParentPage.slug}`}>Tilbake til <span dangerouslySetInnerHTML={{__html: wpParentPage.title.rendered}}></span></Link></p>}
+        {wpParentPage && <p className="mb-10"><Link href={`/${parentSlug}`}>Tilbake til <span dangerouslySetInnerHTML={{__html: wpParentPage.title.rendered}}></span></Link></p>}
         <h1 dangerouslySetInnerHTML={{__html: wpPage.title.rendered}}></h1>
     </div>
     <WpPostContent content={wpPage.content.rendered} />
     <div className="hh-content-blocks mt-10">
         <ul>
             {wpChildPages.map(childPage => <li key={childPage.id}>
-                <Link href={`/${wpPage.slug}/${childPage.slug}`} dangerouslySetInnerHTML={{__html: childPage.title.rendered}}></Link>
+                <Link href={`/${pageSlug}/${childPage.slug}`} dangerouslySetInnerHTML={{__html: childPage.title.rendered}}></Link>
             </li>)}
         </ul>
     </div>
