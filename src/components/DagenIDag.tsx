@@ -53,14 +53,14 @@ async function DagensHendelserList({now}: {now: moment.Moment}) {
         return null
     }
 
-    return <div>
+    return <div className="flex flex-col gap-4">
         {upcomingEvents.map(event => {
             const dateParts = calendarFormatter.formatToParts(event.date)
             const hour = dateParts.filter(it => it.type === "hour")[0].value
             const minute = dateParts.filter(it => it.type === "minute")[0].value
 
-            return <div key={event.id} className="hh-body-typography">
-                {event.isFullDayEvent ? <></> : <span className="font-bold">{(!event.url && event.location) || "Kirken"}, {hour}:{minute}:</span>} {event.url ? <a href={event.url}>{event.summary}</a> : event.summary}
+            return <div key={event.id} className="hh-body-typography text-lg">
+                {event.isFullDayEvent ? <></> : <div><span className="font-bold">{(!event.url && event.location) || "Kirken"}, {hour}:{minute}</span></div>} {event.url ? <a href={event.url}>{event.summary}</a> : event.summary}
             </div>
         })}
     </div>
