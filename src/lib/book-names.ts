@@ -1,6 +1,8 @@
 export const bookNames: {[key: string]: { norskBibel: string, bookNameShort: string, bookName: string }} = {
     "Gen": { norskBibel: "Gen", bookNameShort: "1Mos", bookName: "Første Mosebok"},
+    "Ex": { norskBibel: "Exod", bookNameShort: "2Mos", bookName: "Andre Mosebok"},
     "Prov": { norskBibel: "Prov", bookNameShort: "Ord", bookName: "Salomos ordspråk"},
+    "Job": { norskBibel: "Job", bookNameShort: "Job", bookName: "Jobs bok"},
     "Is": { norskBibel: "Isa", bookNameShort: "Jes", bookName: "Profeten Jesaja"},
     "Joel": { norskBibel: "Joel", bookNameShort: "Joel", bookName: "Profeten Joel"},
     "Zech": { norskBibel: "Zech", bookNameShort: "Sak", bookName: "Profeten Sakarias"},
