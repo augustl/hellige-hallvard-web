@@ -27,7 +27,7 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
             <DagensHoytidList now={props.date} />
             <DagensHendelserList now={props.date} />
             <div>
-                <div className="border border-slate-300 dark:border-slate-600 border-double border-4 inline-block relative">
+                <div className="border border-slate-300 dark:border-slate-600 border-double border-4 inline-block relative max-w-md">
                     <div className="px-4 py-2 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold flex flex-row gap-4">
                         <h2 className="mr-8 font-serif">Dagens tekster</h2>
                         <Link href={`/dagenstekster/${y}/${m}/${d}`} className="flex flex-row gap-1" title="Kalender med dagens tekster">
@@ -36,7 +36,7 @@ export default async function DagenIDag(props: {date: moment.Moment}) {
                         </Link>
                     </div>
                     <div className="p-4">
-                        <div className="flex flex-col md:flex-row gap-4 md:gap-6"><DagensTeksterList d={d} m={m} y={y} /></div>
+                        <div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-wrap"><DagensTeksterList d={d} m={m} y={y} /></div>
                     </div>
                 </div>
             </div>
