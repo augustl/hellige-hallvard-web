@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import MetaThemeColor from '@/components/MetaThemeColor'
 
 const inter = Inter({ subsets: ['latin'] })
 
