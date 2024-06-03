@@ -1,6 +1,6 @@
 import Menu from '@/components/Menu'
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import React from 'react'
@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   description: 'Erkebispedømmet av menigheter med russisk tradisjon i Vesteuropa',
 }
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fff' },
+    { media: '(prefers-color-scheme: dark)', color: '#23231E' },
+  ],
+}
+
 export default async function RootLayout({
   children,
 }: {
@@ -29,7 +36,6 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon_25.gif" sizes="32x32" />
         <link rel="icon" href="/favicon_142.gif" sizes="192x192" />
         <link rel="apple-touch-icon" href="/favicon_151.gif" />
-        <MetaThemeColor />
       </head>
       <body className={`${inter.className} flex min-h-screen flex-col items-center text-base`}>
         <nav className='flex flex-col gap-5 md:gap-10 items-center mt-10 mb-10 md:mb-20 px-5 print:hidden' role="navigation">
