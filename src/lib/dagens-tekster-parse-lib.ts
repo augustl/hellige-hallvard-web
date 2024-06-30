@@ -1,5 +1,3 @@
-"use server"
-
 import { DagensTekstItemChapterChunk, DagensTekstItems } from "@/types/dynamodb"
 
 export type DagensTekstItemDynamoVerse = {from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}}
@@ -28,9 +26,23 @@ const getLabel = (prevChapter: number | null | undefined, from: {chapter: number
     return `${chapterFromStr}${from.verse}-${from.chapter === to.chapter ? `` : `${to.chapter}:`}${to.verse}`
 }
 
+
+const getFullLabel = (from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): string => {
+    if (!to) {
+        return `${from.chapter}:${from.verse}`
+    }
+
+    if (from.verse === to.verse && from.chapter === to.chapter) {
+        return `${from.chapter}:${from.verse}`   
+    }
+
+
+    return `${from.chapter}:${from.verse}-${from.chapter === to.chapter ? `` : `${to.chapter}:`}${to.verse}`
+}
+
 const getChapterChunks = (from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): DagensTekstItemChapterChunk[] => {
     if (!to) {
-        return [{chapter: from.chapter, verseFrom: from.verse}]
+        return [{chapter: from.chapter, verseFrom: from.verse, verseTo: from.verse}]
     }
 
     if (from.chapter === to.chapter) {
@@ -58,6 +70,7 @@ export const processDagensTekster = (items: DagensTekstDynamoItems): DagensTekst
                 const prevChapter = verses[idx - 1]?.from.chapter
                 return {
                     label: getLabel(prevChapter, verse.from, verse.to) ,
+                    fullLabel: getFullLabel(verse.from, verse.to),
                     chapterChunks: getChapterChunks(verse.from, verse.to)
                 }
             })

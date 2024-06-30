@@ -35,7 +35,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, n
         <Modal onClose={() => setCurrentBibleVerse(null)} size={"medium"}>
             {currentBibleVerse && <div className="p-6">
                 <h2 className="text-1xl xs:text-3xl font-bold font-serif">
-                    {bookNames[currentBibleVerse.book].bookName} {currentBibleVerse.item.label}
+                    {bookNames[currentBibleVerse.book].bookName} {currentBibleVerse.item.fullLabel}
                 </h2>
                 <div>
                     <DagensTeksterListNB88Tekst book={currentBibleVerse.book} item={currentBibleVerse.item} nb88Chapters={nb88Chapters} />
