@@ -1,3 +1,8 @@
 {
-    "crons": []
+    "crons": [
+        {
+            "path": "/api/reset-homepage-cache",
+            "schedule": "0 3 * * *"
+      }
+    ]
   }
