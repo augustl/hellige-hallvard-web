@@ -87,5 +87,6 @@ export default async function HomePageForDate({date}: {date: moment.Moment}) {
             </div>
         </div>
         <WpHomePage />
+        <div className="opacity-10 text-xs">{Date.now()}</div>
     </div>
 }
