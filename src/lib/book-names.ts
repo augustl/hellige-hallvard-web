@@ -6,6 +6,7 @@ export const bookNames: {[key: string]: { norskBibel: string, bookNameShort: str
     "Is": { norskBibel: "Isa", bookNameShort: "Jes", bookName: "Profeten Jesaja"},
     "Joel": { norskBibel: "Joel", bookNameShort: "Joel", bookName: "Profeten Joel"},
     "Zech": { norskBibel: "Zech", bookNameShort: "Sak", bookName: "Profeten Sakarias"},
+    "Ezek": { norskBibel: "Ezek", bookNameShort: "Esek", bookName: "Profeten Esekiel"},
     "Mt": { norskBibel: "Matt", bookNameShort: "Matt", bookName: "Matteus' evangelium" },
     "Mk": { norskBibel: "Mark", bookNameShort: "Mark", bookName: "Markus' evangelium" },
     "Lk": { norskBibel: "Luke", bookNameShort: "Luk", bookName: "Lukas' evangelium" },
