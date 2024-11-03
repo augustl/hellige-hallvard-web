@@ -4,14 +4,15 @@ import { Metadata, ResolvingMetadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-type WordpressPageParams = {params: {slug: string[]}}
+type WordpressPageParams = {params: Promise<{slug: string[]}>}
 
 export const revalidate = 3600
 
 export async function generateMetadata(
-    {params}: WordpressPageParams,
+    props: WordpressPageParams,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
+    const params = await props.params
     const slug = params.slug[params.slug.length - 1]
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
@@ -33,7 +34,8 @@ export async function generateStaticParams() {
     return wpPagesData.map((it: any) => ({slug: [it.slug]}))
 }
 
-export default async function WordpressPage({params}: WordpressPageParams) {
+export default async function WordpressPage(props: WordpressPageParams) {
+    const params = await props.params
     let pages: WordpressRestV2Page[] = []
 
     for (const slugPart of params.slug) {
@@ -43,7 +45,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
                 slug: slugPart,
                 exclude: process.env.NEXT_PUBLIC_HOME_PAGE_ID!,
                 parent: parentPage ? parentPage.id.toString() : "0"
-            })}`, 
+            })}`,
             {next: {tags: [`wp-page-${slugPart}`, `wp-all-pages-by-slug`]}})
         if (!res.ok) {
             return notFound()
@@ -74,12 +76,12 @@ export default async function WordpressPage({params}: WordpressPageParams) {
             parent: wpPage.id.toString(),
             orderby: "menu_order",
             order: "asc"
-        })}`, 
+        })}`,
         {next: {tags: [`wp-page-${wpPage.slug}`, `wp-all-pages-by-slug`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
 
     const grandchildPagesByChildPageId: {[key: string]: any[]} = {}
-    const childPagesByHasGrandchildren: {false: any[], true: any[]} = {false: [], true: []} 
-    
+    const childPagesByHasGrandchildren: {false: any[], true: any[]} = {false: [], true: []}
+
     for (const wpChildPage of wpChildPages) {
         const grandchildPages = await (await fetch(
             `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/pages?${new URLSearchParams({
@@ -89,7 +91,7 @@ export default async function WordpressPage({params}: WordpressPageParams) {
                 parent: wpChildPage.id.toString(),
                 orderby: "menu_order",
                 order: "asc"
-            })}`, 
+            })}`,
             {next: {tags: [`wp-page-${wpPage.slug}`, `wp-all-pages-by-slug`, ...(wpParentPage ? [`wp-page-${wpParentPage.slug}`] : [])]}})).json()
 
         if (grandchildPages.length === 0) {

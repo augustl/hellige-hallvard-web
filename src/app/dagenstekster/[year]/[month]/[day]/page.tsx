@@ -67,7 +67,9 @@ const DateFormat: React.FC<{date: Date}> = ({date}) => {
     return date.toLocaleDateString("nb-NO", {day: 'numeric', month: 'long', year: 'numeric'})
 }
 
-export default async function DagensTeksterPage({params}: {params: {year: string, month: string, day: string}}) {
+export default async function DagensTeksterPage(props: {params: Promise<{year: string, month: string, day: string}>}) {
+    const params = await props.params
+
     const date = getValidDate(params.year, params.month , params.day)
     if (!date) {
         return null

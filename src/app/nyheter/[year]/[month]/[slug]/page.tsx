@@ -10,7 +10,7 @@ type WordpressPost = {
     content: {rendered: string}
 }
 
-type WordpressPostParams = { params: {year: string, month: string, slug: string}}
+type WordpressPostParams = { params: Promise<{year: string, month: string, slug: string}>}
 
 export const revalidate = 3600
 
@@ -24,9 +24,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-    {params}: WordpressPostParams,
+    props: WordpressPostParams,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
+    const params = await props.params
+
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?${new URLSearchParams({
             slug: params.slug,
@@ -34,7 +36,7 @@ export async function generateMetadata(
             context: "embed"
         })}`,
         {next: {tags: [`wp-posts`]}})
-    
+
 
     if (!res.ok) {
         return {title: process.env.NEXT_PUBLIC_PAGE_TITLE}
@@ -59,7 +61,8 @@ export async function generateMetadata(
     }
 }
 
-export default async function WordpressPost({params}: WordpressPostParams) {
+export default async function WordpressPost(props: WordpressPostParams) {
+    const params = await props.params
     const wpData = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=view&slug=${params.slug}`, {next: {tags: ["wp-posts"]}})
 
     if (wpData.status !== 200) {

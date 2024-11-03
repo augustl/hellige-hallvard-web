@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     title: `Nyheter - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`,
 }
 
-export default async function NyheterArkiv({params}: {params: {pageNum: string}}) {
+export default async function NyheterArkiv(props: {params: Promise<{pageNum: string}>}) {
+    const params = await props.params
     const currentPage = parseInt(params.pageNum)
     if (isNaN(currentPage)) {
         return notFound()
