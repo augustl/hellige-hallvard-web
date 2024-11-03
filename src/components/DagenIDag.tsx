@@ -3,9 +3,8 @@ import React from "react"
 import { getGoogleCalendarUpcomingEvents } from "@/lib/gcal-utils"
 import moment from "moment"
 import Link from "next/link"
-// @ts-expect-error Moment locale data is imported as plain JS module, no TS needed
-import * as momentLocale from "moment/locale/nb"
-
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+require("moment/locale/nb")
 moment.locale("nb")
 
 const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
