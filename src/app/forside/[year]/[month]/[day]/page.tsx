@@ -42,7 +42,8 @@ const DayOffsetLink: React.FC<{date: Date, offset: number}> = ({date, offset}) =
     return <Link href={`/forside/${offsetDate.getFullYear()}/${offsetDate.getMonth() + 1}/${offsetDate.getDate()}`}><DateFormat date={offsetDate} /></Link>
 }
 
-export default async function ForsideForDate({params}: {params: {year: string, month: string, day: string}}) {
+export default async function ForsideForDate(props: {params: Promise<{year: string, month: string, day: string}>}) {
+    const params = await props.params
     const date = getValidDate(params.year, params.month , params.day)
     if (!date) {
         return null
