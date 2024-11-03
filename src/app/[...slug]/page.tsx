@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 
 export default async function WordpressPage(props: WordpressPageParams) {
     const params = await props.params
-    let pages: WordpressRestV2Page[] = []
+    const pages: WordpressRestV2Page[] = []
 
     for (const slugPart of params.slug) {
         const parentPage = pages[pages.length - 1]
