@@ -6,7 +6,7 @@ import React from "react"
 
 const monthNames = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
 
-type NyhetsarkivParams = {params: {year: string}}
+type NyhetsarkivParams = {params: Promise<{year: string}>}
 
 export const revalidate = 3600
 
@@ -15,16 +15,17 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-    {params}: NyhetsarkivParams,
+    props: NyhetsarkivParams,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-
+    const params = await props.params
     return {
         title: `Nyhetsarkiv ${params.year} - ${process.env.NEXT_PUBLIC_PAGE_TITLE}`
     }
 }
 
-export default async function Nyhetsarkiv({params}: NyhetsarkivParams) {
+export default async function Nyhetsarkiv(props: NyhetsarkivParams) {
+    const params = await props.params
     const year = parseInt(params.year)
     if (isNaN(year)) {
         return notFound()
