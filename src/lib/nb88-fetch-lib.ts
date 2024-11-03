@@ -33,7 +33,10 @@ export const fetchNB88Chapters = async (dagensTekster: DagensTekstItems): Promis
                 const url = `http://les.norsk-bibel.no/index_reader.php?res=${bookNames[dagensTekst.book].norskBibel}:${chapterChunk.chapter}`
                 const res = await fetch(url, {
                     headers: {"X-Hei-Fra-Utvikler": "Hentet for helligehallvard.no. Vi betaler gjerne for et API :) Kontakt august@augustl.com"},
-                    cache: "force-cache"
+                    // Cache all NB88 responses
+                    cache: "force-cache",
+                    // And cache it infinitely - no need to re-fetch these, ever
+                    next: {revalidate: false}
                 })
                 const html = await res.text()
                 nb88Chapters[chapterKey] = await tokenizeNB88Chapter(html)
