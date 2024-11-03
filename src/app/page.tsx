@@ -6,7 +6,7 @@ import React from "react"
 export const revalidate = 3600
 
 export async function generateMetadata(
-    {params}: {params: {}},
+    props: unknown,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
     const parentMetadata = await parent
@@ -25,6 +25,6 @@ export async function generateMetadata(
 
 export default async function HomePage() {
     const now = moment().tz("Europe/Oslo").startOf("day")
-    
+
     return <HomePageForDate date={now} />
 }

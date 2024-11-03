@@ -3,8 +3,9 @@ import React from "react"
 import { getGoogleCalendarUpcomingEvents } from "@/lib/gcal-utils"
 import moment from "moment"
 import Link from "next/link"
+// @ts-expect-error Moment locale data is imported as plain JS module, no TS needed
+import * as momentLocale from "moment/locale/nb"
 
-require('moment/locale/nb')
 moment.locale("nb")
 
 const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
@@ -16,7 +17,7 @@ const calendarFormatter = new Intl.DateTimeFormat("nb-NO", {
     timeZone: "Europe/Oslo"
 })
 
-export default async function DagenIDag(props: {date: moment.Moment}) {    
+export default async function DagenIDag(props: {date: moment.Moment}) {
     const d = props.date.date().toString()
     const m = (props.date.month() + 1).toString()
     const y = props.date.year().toString()
