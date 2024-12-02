@@ -65,7 +65,7 @@ export default async function NewsListExcerptAndImage({currentPage}: {currentPag
 
                     <div className={postDefaultImageId ? "md:grid gap-4" : ""} style={{gridTemplateColumns: "200px auto"}}>
                         <div className="hh-body-typography" style={{gridRow: 1, gridColumn: 2}} dangerouslySetInnerHTML={{__html: wpPost.excerpt.rendered}}></div>
-                        {postDefaultImageId && <div className="mt-8 max-w-sm" style={{gridRow: 1, gridColumn: 1}}><DownsizedWordpressImage imageId={postDefaultImageId} /></div>}
+                        {postDefaultImageId && <Link href={postPath} className="mt-8 max-w-sm" style={{gridRow: 1, gridColumn: 1}}><DownsizedWordpressImage imageId={postDefaultImageId} /></Link>}
                     </div>
 
                     <div className="hh-body-typography">
