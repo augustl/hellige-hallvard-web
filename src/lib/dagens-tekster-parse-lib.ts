@@ -7,7 +7,7 @@ export type DagensTekstDynamoItems = {
     contiguousVerses?: DagensTekstItemDynamoVerse[]
 }[]
 
-const getLabel = (prevChapter: number | null | undefined, from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): string => {
+export const getLabel = (prevChapter: number | null | undefined, from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): string => {
     if (!to) {
         if (prevChapter === from.chapter) {
             return `${from.verse}`
@@ -19,7 +19,7 @@ const getLabel = (prevChapter: number | null | undefined, from: {chapter: number
     const chapterFromStr = prevChapter === from.chapter ? "" : `${from.chapter}:`
 
     if (from.verse === to.verse && from.chapter === to.chapter) {
-        return `${chapterFromStr}${from.verse}`   
+        return `${chapterFromStr}${from.verse}`
     }
 
 
@@ -27,20 +27,20 @@ const getLabel = (prevChapter: number | null | undefined, from: {chapter: number
 }
 
 
-const getFullLabel = (from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): string => {
+export const getFullLabel = (from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): string => {
     if (!to) {
         return `${from.chapter}:${from.verse}`
     }
 
     if (from.verse === to.verse && from.chapter === to.chapter) {
-        return `${from.chapter}:${from.verse}`   
+        return `${from.chapter}:${from.verse}`
     }
 
 
     return `${from.chapter}:${from.verse}-${from.chapter === to.chapter ? `` : `${to.chapter}:`}${to.verse}`
 }
 
-const getChapterChunks = (from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): DagensTekstItemChapterChunk[] => {
+export const getChapterChunks = (from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}): DagensTekstItemChapterChunk[] => {
     if (!to) {
         return [{chapter: from.chapter, verseFrom: from.verse, verseTo: from.verse}]
     }
@@ -52,7 +52,7 @@ const getChapterChunks = (from: {chapter: number, verse: number}, to?: {chapter:
 
     const res: DagensTekstItemChapterChunk[] = []
     res.push({chapter: from.chapter, verseFrom: from.verse})
-    
+
     for (let i = from.chapter + 1; i < to.chapter; i++) {
         res.push({chapter: i, verseFrom: 1})
     }

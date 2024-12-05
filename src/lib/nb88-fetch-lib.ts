@@ -34,9 +34,7 @@ export const fetchNB88Chapters = async (dagensTekster: DagensTekstItems): Promis
                 const res = await fetch(url, {
                     headers: {"X-Hei-Fra-Utvikler": "Hentet for helligehallvard.no. Vi betaler gjerne for et API :) Kontakt august@augustl.com"},
                     // Cache all NB88 responses
-                    cache: "force-cache",
-                    // And cache it infinitely - no need to re-fetch these, ever
-                    next: {revalidate: false}
+                    cache: "force-cache"
                 })
                 const html = await res.text()
                 nb88Chapters[chapterKey] = await tokenizeNB88Chapter(html)
