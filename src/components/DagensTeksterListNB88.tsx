@@ -24,7 +24,7 @@ const DagensTeksterList: React.FC<{book: keyof typeof bookNames, items: DagensTe
                 </a>
                 {idx !== items.length - 1 && `,`}
 
-                {verse.flags && verse.flags.indexOf("oldBysant") > -1 && " ♦"}
+                {verse.flags && verse.flags.indexOf("oldBysant") > -1 && <span className={"hover:cursor-help"} title={"Tekst fra kalender i gammelbysantinsk tradisjon, som noen ganger brukes i kirken."}> ♦</span>}
             </span>
         })}
     </>
