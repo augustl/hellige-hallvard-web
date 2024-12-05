@@ -7,6 +7,7 @@ import { getDagensTekster } from "@/lib/dagens-tekster-lib"
 import DagensTeksterListNB88 from "@/components/DagensTeksterListNB88"
 import Link from "next/link"
 import { fetchNB88Chapters } from "@/lib/nb88-fetch-lib"
+import {DagensTeksterListData} from "@/components/DagensTeksterList";
 
 const client = new DynamoDBClient()
 const docClient = DynamoDBDocumentClient.from(client)
@@ -46,14 +47,15 @@ const getValidDate = (ys: string, ms: string, ds: string): Date | null => {
 }
 
 async function DagensTeksterContents(props: {year: string, month: string, day: string}) {
-    const dagensTekster = await getDagensTekster(props.year, props.month, props.day)
-    if (!dagensTekster) {
-        return <div><em>Har ingen tekster for i dag. Vi legger ut tekstene fortløpende, som regel en uke eller to i forveien. Prøv igjen senere!</em></div>
-    }
-
-    const nb88Chapters = await fetchNB88Chapters(dagensTekster)
-
-    return <DagensTeksterListNB88 dagensTekster={dagensTekster} nb88Chapters={nb88Chapters} longBookName={true} />
+    return <DagensTeksterListData y={props.year} m={props.month} d={props.day} />
+    // const dagensTekster = await getDagensTekster(props.year, props.month, props.day)
+    // if (!dagensTekster) {
+    //     return <div><em>Har ingen tekster for i dag. Vi legger ut tekstene fortløpende, som regel en uke eller to i forveien. Prøv igjen senere!</em></div>
+    // }
+    //
+    // const nb88Chapters = await fetchNB88Chapters(dagensTekster)
+    //
+    // return <DagensTeksterListNB88 dagensTekster={dagensTekster} nb88Chapters={nb88Chapters} longBookName={true} />
 }
 
 const DayOffsetLink: React.FC<{date: Date, offset: number}> = ({date, offset}) => {

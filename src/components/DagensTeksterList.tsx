@@ -14,7 +14,7 @@ export default async function DagensTeksterList ({y, m, d}: {y: string, m: strin
     </Suspense>
 }
 
-async function DagensTeksterListData({y, m, d}: {y: string, m: string, d: string}) {
+export async function DagensTeksterListData({y, m, d}: {y: string, m: string, d: string}) {
     const {paschaCycleStart: currentPascha} = lectionaryYearParams[y]
     if (!currentPascha) {
         return <div>Feil med henting av dagens tekster: fant ikke påskedatoen for {y}</div>
