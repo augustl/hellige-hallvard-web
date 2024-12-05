@@ -8,7 +8,7 @@ import { NB88ChaptersType } from "@/lib/nb88-fetch-lib";
 import { NB88Line } from "@/lib/nb88-parse-lib";
 import { extractDataFromNB88ChapterTokenized } from "@/lib/nb88-extract-lib";
 
-const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onClick: (item: {book: string, item: DagensTekstItem}) => void}> = ({book, items, onClick}) => {
+const DagensTeksterList: React.FC<{book: keyof typeof bookNames, items: DagensTekstItem[], onClick: (item: {book: keyof typeof bookNames, item: DagensTekstItem}) => void}> = ({book, items, onClick}) => {
     return <>
         {items.map((verse, idx) => {
             return <span key={JSON.stringify(verse)}>
@@ -23,14 +23,16 @@ const DagensTeksterList: React.FC<{book: string, items: DagensTekstItem[], onCli
                     {verse.label}
                 </a>
                 {idx !== items.length - 1 && `,`}
+
+                {verse.flags && verse.flags.indexOf("oldBysant") > -1 && " ♦"}
             </span>
         })}
     </>
 }
 
 export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, nb88Chapters: NB88ChaptersType, longBookName?: boolean}> = ({dagensTekster, longBookName, nb88Chapters}) => {
-    const [currentBibleVerse, setCurrentBibleVerse] = useState<{book: string, item: DagensTekstItem} | null>(null)
-    
+    const [currentBibleVerse, setCurrentBibleVerse] = useState<{book: keyof typeof bookNames, item: DagensTekstItem} | null>(null)
+
     return <>
         <Modal onClose={() => setCurrentBibleVerse(null)} size={"medium"}>
             {currentBibleVerse && <div className="p-6">
@@ -46,7 +48,7 @@ export const DagensTeksterListNB88: React.FC<{dagensTekster: DagensTekstItems, n
             return <div key={JSON.stringify(dagensTekst)} className="flex flex-row gap-1 hh-body-typography">
                 {longBookName ? bookNames[dagensTekst.book].bookName : bookNames[dagensTekst.book].bookNameShort}
                 <div className="flex flex-row gap-2">
-                <DagensTeksterList book={dagensTekst.book} items={dagensTekst.items}  onClick={setCurrentBibleVerse} />
+                    <DagensTeksterList book={dagensTekst.book} items={dagensTekst.items}  onClick={setCurrentBibleVerse} />
                 </div>
             </div>
         })}

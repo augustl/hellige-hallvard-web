@@ -38,7 +38,7 @@ export type DailyReadings = {
     texts?: DailyReading[]
 }
 
-const DAILY_READING_FLAGS = {
+export const DAILY_READING_FLAGS = {
     oldBysant: "..."
 } as const
 

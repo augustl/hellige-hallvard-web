@@ -77,7 +77,8 @@ async function DagensTeksterSection(props: {texts: DailyReading[]}) {
                 return {
                     label: getLabel(prevChapter, verseFrom, verseTo),
                     fullLabel: getFullLabel(verseFrom, verseTo),
-                    chapterChunks: getChapterChunks(verseFrom, verseTo)
+                    chapterChunks: getChapterChunks(verseFrom, verseTo),
+                    flags: text.flags
                 }
             })
         }
