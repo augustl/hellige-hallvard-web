@@ -1,8 +1,9 @@
 import { DagensTekstItemChapterChunk, DagensTekstItems } from "@/types/dynamodb"
+import {bookNames} from "@/lib/book-names";
 
 export type DagensTekstItemDynamoVerse = {from: {chapter: number, verse: number}, to?: {chapter: number, verse: number}}
 export type DagensTekstDynamoItems = {
-    book: string,
+    book: keyof typeof bookNames,
     verses: DagensTekstItemDynamoVerse[],
     contiguousVerses?: DagensTekstItemDynamoVerse[]
 }[]
@@ -71,7 +72,7 @@ export const processDagensTekster = (items: DagensTekstDynamoItems): DagensTekst
                 return {
                     label: getLabel(prevChapter, verse.from, verse.to) ,
                     fullLabel: getFullLabel(verse.from, verse.to),
-                    chapterChunks: getChapterChunks(verse.from, verse.to)
+                    chapterChunks: getChapterChunks(verse.from, verse.to),
                 }
             })
         }
