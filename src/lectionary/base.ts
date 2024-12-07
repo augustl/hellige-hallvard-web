@@ -564,17 +564,62 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     [
         {
             cycle: "24. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Eph", chunks: [{from: [2, 14], to: [2, 22]}]},
+                {book: "Lk", chunks: [{from: [13, 10], to: [13, 17]}]},
+                {book: "Lk", chunks: [{from: [8, 41], to: [8, 56]}], flags: ["oldBysant"]}
+            ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "2Th", chunks: [{from: [1, 1], to: [1, 10]}]},
+                {book: "Mk", chunks: [{from: [8, 11], to: [8, 21]}]},
+                {book: "Lk", chunks: [{from: [12, 13], to: [12, 15]}, {from: [12, 22], to: [12, 31]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "2Th", chunks: [{from: [1, 10], to: [2, 2]}]},
+                {book: "Mk", chunks: [{from: [8, 22], to: [8, 26]}]},
+                {book: "Lk", chunks: [{from: [12, 42], to: [12, 48]}], flags: ["oldBysant"]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Th", chunks: [{from: [2, 1], to: [2, 12]}]},
+                {book: "Mk", chunks: [{from: [8, 30], to: [8, 34]}]},
+                {book: "Lk", chunks: [{from: [12, 48], to: [12, 59]}], flags: ["oldBysant"]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Th", chunks: [{from: [2, 13], to: [3, 5]}]},
+                {book: "Mk", chunks: [{from: [9, 10], to: [9, 16]}]},
+                {book: "Lk", chunks: [{from: [13, 1], to: [13, 9]}], flags: ["oldBysant"]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Th", chunks: [{from: [3, 6], to: [3, 18]}]},
+                {book: "Mk", chunks: [{from: [9, 33], to: [9, 41]}]},
+                {book: "Lk", chunks: [{from: [13, 31], to: [13, 35]}], flags: ["oldBysant"]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Gal", chunks: [{from: [1, 3], to: [1, 10]}]},
+                {book: "Lk", chunks: [{from: [14, 1], to: [14, 11]}]},
+                {book: "Lk", chunks: [{from: [9, 37], to: [9, 43]}], flags: ["oldBysant"]}
+            ]
+        }
     ],
     [
         {
             cycle: "25. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Col", chunks: [{from: [3, 4], to: [3, 11]}]},
+                {book: "Lk", chunks: [{from: [14, 16], to: [14, 24]}]},
+            ]
         },
         null,
         null,
