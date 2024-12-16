@@ -623,12 +623,25 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
         },
         {
             texts: [
-                {book: "1Th", chunks: [{from: [1, 1], to: [1,7]}]},
-                {book: "Mk", chunks: [{from: [9, 42], to: [10,1]}]}
+                {book: "1Ti", chunks: [{from: [1, 1], to: [1,7]}]},
+                {book: "Mk", chunks: [{from: [9, 42], to: [10,1]}]},
+                {book: "Lk", chunks: [{from: [14, 12], to: [14, 15]}], flags: ["oldBysant"]},
             ]
         },
-        null,
-        null,
+        {
+            texts: [
+                {book: "1Ti", chunks: [{from: [1, 8], to: [1, 14]}]},
+                {book: "Mk", chunks: [{from: [10, 2], to: [10, 12]}]},
+                {book: "Lk", chunks: [{from: [14, 25], to: [14, 35]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "1Ti", chunks: [{from: [1, 18], to: [1, 20]}, {from: [2, 8], to: [2, 15]}]},
+                {book: "Mk", chunks: [{from: [10, 11], to: [10, 16]}]},
+                {book: "Lk", chunks: [{from: [15, 1], to: [15, 10]}], flags: ["oldBysant"]},
+            ]
+        },
         null,
         null,
         null
