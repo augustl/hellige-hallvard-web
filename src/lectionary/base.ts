@@ -31,6 +31,15 @@ export const dateSpecificItems: {[key: string]: {label: string, dailyReadings: D
                 {book: "Lk", chunks: [{from: [2, 1], to: [2, 20]}]},
             ]
         }
+    },
+    "12-25": {
+        label: "Fødselen til vår Herre Gud og Frelser Jesus Kristus",
+        dailyReadings: {
+            liturgyTexts: [
+                {book: "Gal", chunks: [{from: [4, 4], to: [4, 7]}]},
+                {book: "Mt", chunks: [{from: [2, 1], to: [2, 12]}]}
+            ]
+        }
     }
 }
 
