@@ -15,7 +15,10 @@ export default async function DagensTeksterList ({y, m, d}: {y: string, m: strin
 }
 
 export async function DagensTeksterListData({y, m, d}: {y: string, m: string, d: string}) {
+
+    const dateSpecificItem = dateSpecificItems[`${m}-${d}`]
     const {paschaCycleStart: currentPascha} = lectionaryYearParams[y]
+
     if (!currentPascha) {
         return <div>Feil med henting av dagens tekster: fant ikke påskedatoen for {y}</div>
     }
@@ -33,11 +36,16 @@ export async function DagensTeksterListData({y, m, d}: {y: string, m: string, d:
     const currentDayOfWeek = daysSinceStartOfPaschaCycle % 7
     const dayItems = paschaCycle[currentPaschaCycleWeek][currentDayOfWeek]
 
+    if (dateSpecificItem && !dayItems) {
+        return <div>
+            <h3 className={"py-2 px-4 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold border-y-4 border-slate-300 dark:border-slate-600 border-double font-serif"}>{dateSpecificItem.label}</h3>
+            <div className={"p-4"}><DagensTeksterDayItems dayItems={dateSpecificItem.dailyReadings}/></div>
+        </div>
+    }
+
     if (!dayItems) {
         return <div>Feil med henting av dagens tekster - ingen oppføring for dag {daysSinceStartOfPaschaCycle} etter påske ({y})</div>
     }
-
-    const dateSpecificItem = dateSpecificItems[`${m}-${d}`]
 
     const cycleLabel = (dayItems as any).cycle
 
@@ -59,10 +67,18 @@ async function DagensTeksterDayItems({dayItems}: {dayItems: DailyReadings}) {
     return <>
         {dayItems.texts && <DagensTeksterSection texts={dayItems.texts} />}
 
-        {dayItems.liturgyTexts && <div>
-            <h3 className={"font-serif font-bold mb-1"}>Liturgi</h3>
-            <DagensTeksterSection texts={dayItems.liturgyTexts} />
-        </div>}
+        <div className={"flex flex-col gap-4"}>
+            {dayItems.liturgyTexts && <div>
+                <h3 className={"font-serif font-bold mb-1"}>Liturgi</h3>
+                <DagensTeksterSection texts={dayItems.liturgyTexts} />
+            </div>}
+
+            {dayItems.vespersTexts && <div>
+                <h3 className={"font-serif font-bold mb-1"}>Vesper</h3>
+                <DagensTeksterSection texts={dayItems.vespersTexts} />
+            </div>}
+        </div>
+
     </>
 }
 
