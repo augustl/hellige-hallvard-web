@@ -40,6 +40,15 @@ export const dateSpecificItems: {[key: string]: {label: string, dailyReadings: D
                 {book: "Mt", chunks: [{from: [2, 1], to: [2, 12]}]}
             ]
         }
+    },
+    "12-27": {
+        label: "Hl. Stefan",
+        dailyReadings: {
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [6, 8], to: [7, 5]}, {from: [7, 47], to: [7, 60]}]},
+                {book: "Mt", chunks: [{from: [9, 33], to: [9, 42]}]},
+            ]
+        }
     }
 }
 
