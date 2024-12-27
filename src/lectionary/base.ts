@@ -1,54 +1,46 @@
 import {bookNames} from "@/lib/book-names";
 
-export const dateSpecificItems: {[key: string]: {label: string, dailyReadings: DailyReadings}} = {
+export const dateSpecificItems: {[key: string]: {label: string, includesDailyReadings?: boolean} & DailyReadings} = {
     "6-29": {
-        label: "Apostelfest",
-        dailyReadings: {}
+        label: "Apostelfest"
     },
-    "4-25": {
+    "3-25": {
         label: "Maria Bebudelse",
-        dailyReadings: {}
+        includesDailyReadings: true
     },
     "12-6": {
         label: "Hl. Nikolai",
-        dailyReadings: {
-            liturgyTexts: [
-                {book: "Heb", chunks: [{from: [13, 17], to: [13, 21]}]},
-                {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]},
-            ]
-        }
+        liturgyTexts: [
+            {book: "Heb", chunks: [{from: [13, 17], to: [13, 21]}]},
+            {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]},
+        ]
     },
     "12-24": {
         label: "Dagen før Kristi fødsel",
-        dailyReadings: {
-            vespersTexts: [
-                {book: "Gen", chunks: [{from: [1, 1], to: [1, 13]}]},
-                {book: "Is", chunks: [{from: [11, 1], to: [11, 10]}]},
-                {book: "Is", chunks: [{from: [9, 5], to: [9, 6]}]}
-            ],
-            liturgyTexts: [
-                {book: "Heb", chunks: [{from: [1, 1], to: [1, 12]}]},
-                {book: "Lk", chunks: [{from: [2, 1], to: [2, 20]}]},
-            ]
-        }
+        vespersTexts: [
+            {book: "Gen", chunks: [{from: [1, 1], to: [1, 13]}]},
+            {book: "Is", chunks: [{from: [11, 1], to: [11, 10]}]},
+            {book: "Is", chunks: [{from: [9, 5], to: [9, 6]}]}
+        ],
+        liturgyTexts: [
+            {book: "Heb", chunks: [{from: [1, 1], to: [1, 12]}]},
+            {book: "Lk", chunks: [{from: [2, 1], to: [2, 20]}]},
+        ]
     },
     "12-25": {
         label: "Fødselen til vår Herre Gud og Frelser Jesus Kristus",
-        dailyReadings: {
-            liturgyTexts: [
-                {book: "Gal", chunks: [{from: [4, 4], to: [4, 7]}]},
-                {book: "Mt", chunks: [{from: [2, 1], to: [2, 12]}]}
-            ]
-        }
+        liturgyTexts: [
+            {book: "Gal", chunks: [{from: [4, 4], to: [4, 7]}]},
+            {book: "Mt", chunks: [{from: [2, 1], to: [2, 12]}]}
+        ]
     },
     "12-27": {
         label: "Hl. Stefan",
-        dailyReadings: {
-            liturgyTexts: [
-                {book: "Acts", chunks: [{from: [6, 8], to: [7, 5]}, {from: [7, 47], to: [7, 60]}]},
-                {book: "Mt", chunks: [{from: [9, 33], to: [9, 42]}]},
-            ]
-        }
+        includesDailyReadings: true,
+        liturgyTexts: [
+            {book: "Acts", chunks: [{from: [6, 8], to: [7, 5]}, {from: [7, 47], to: [7, 60]}]},
+            {book: "Mt", chunks: [{from: [21, 33], to: [21, 42]}]}
+        ]
     }
 }
 
@@ -80,10 +72,27 @@ export type DailyReading = {
     flags?: (keyof typeof DAILY_READING_FLAGS)[]
 }
 
-export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry][] = [
+export const nativityCycle = {
+    "satAfterNativity": {
+        label: "Lørdag etter Kristi fødsel",
+        liturgyTexts: [
+            {book: "1Ti", chunks: [{from: [6, 11], to: [6, 16]}]},
+            {book: "Mt", chunks: [{from: [12, 15], to: [12, 21]}]}
+        ] satisfies DailyReading[] as DailyReading[]
+    },
+    "sunAfterNativity": {
+        label: "Søndag etter Kristi fødsel",
+        liturgyTexts: [
+            {book: "Gal", chunks: [{from: [1, 11], to: [1, 19]}]},
+            {book: "Mt", chunks: [{from: [2, 13], to: [2, 23]}]}
+        ] satisfies DailyReading[] as DailyReading[]
+    }
+} as const
+
+export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry][] = [
     [
         {
-            cycle: "Tollerens og fariséerens søndag"
+            label: "Tollerens og fariséerens søndag"
         },
         null,
         null,
@@ -94,7 +103,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "Bortkommende sønns søndag"
+            label: "Bortkommende sønns søndag"
         },
         null,
         null,
@@ -105,7 +114,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "Tilgivelsens søndag"
+            label: "Tilgivelsens søndag"
         },
         null,
         null,
@@ -116,7 +125,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "1. søndag i den store fasten og Ortodoksiens søndag"
+            label: "1. søndag i den store fasten og Ortodoksiens søndag"
         },
         null,
         null,
@@ -127,7 +136,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "2. søndag i den store fasten"
+            label: "2. søndag i den store fasten"
         },
         null,
         null,
@@ -138,7 +147,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "3. søndag i den store fasten og Det Hellige Kors"
+            label: "3. søndag i den store fasten og Det Hellige Kors"
         },
         null,
         null,
@@ -149,7 +158,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "4. søndag i den store fasten og Joh. Klimakos"
+            label: "4. søndag i den store fasten og Joh. Klimakos"
         },
         null,
         null,
@@ -160,7 +169,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "5. søndag i den store fasten og Maria av Egypt"
+            label: "5. søndag i den store fasten og Maria av Egypt"
         },
         null,
         null,
@@ -173,7 +182,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "Palmesøndag"
+            label: "Palmesøndag"
         },
         {
             label: "Hellige mandag"
@@ -196,7 +205,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-          label: "Kristi oppstandelse"
+            label: "Kristi oppstandelse"
         },
         {
             label: "Lys mandag"
@@ -219,7 +228,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "2. søndag etter Påske",
+            label: "2. søndag etter Påske",
         },
         null,
         null,
@@ -230,7 +239,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "3. søndag etter Påske",
+            label: "3. søndag etter Påske",
         },
         null,
         null,
@@ -241,7 +250,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "4. søndag etter Påske",
+            label: "4. søndag etter Påske",
         },
         null,
         null,
@@ -252,7 +261,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "5. søndag etter Påske",
+            label: "5. søndag etter Påske",
         },
         null,
         null,
@@ -263,7 +272,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "6. søndag etter Påske",
+            label: "6. søndag etter Påske",
         },
         null,
         null,
@@ -276,7 +285,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "7. søndag etter Påske",
+            label: "7. søndag etter Påske",
         },
         null,
         null,
@@ -287,8 +296,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "Pinse",
-            label: "Fest for den allhellige Treenigheten, Den Hellige Ånds nedstigning på apostlene"
+            label: "Pinse",
         },
         null,
         null,
@@ -301,7 +309,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "1. søndag etter Pinse",
+            label: "1. søndag etter Pinse",
         },
         null,
         null,
@@ -312,7 +320,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "2. søndag etter Pinse",
+            label: "2. søndag etter Pinse",
         },
         null,
         null,
@@ -323,7 +331,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "3. søndag etter Pinse",
+            label: "3. søndag etter Pinse",
         },
         null,
         null,
@@ -334,7 +342,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "4. søndag etter Pinse",
+            label: "4. søndag etter Pinse",
         },
         null,
         null,
@@ -345,7 +353,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "5. søndag etter Pinse",
+            label: "5. søndag etter Pinse",
         },
         null,
         null,
@@ -356,7 +364,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "6. søndag etter Pinse",
+            label: "6. søndag etter Pinse",
         },
         null,
         null,
@@ -367,7 +375,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "7. søndag etter Pinse",
+            label: "7. søndag etter Pinse",
         },
         null,
         null,
@@ -378,7 +386,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "8. søndag etter Pinse",
+            label: "8. søndag etter Pinse",
         },
         null,
         null,
@@ -389,7 +397,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "9. søndag etter Pinse",
+            label: "9. søndag etter Pinse",
         },
         null,
         null,
@@ -400,7 +408,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "10. søndag etter Pinse",
+            label: "10. søndag etter Pinse",
         },
         null,
         null,
@@ -411,7 +419,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "11. søndag etter Pinse",
+            label: "11. søndag etter Pinse",
         },
         null,
         null,
@@ -422,7 +430,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "12. søndag etter Pinse",
+            label: "12. søndag etter Pinse",
         },
         null,
         null,
@@ -433,7 +441,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "13. søndag etter Pinse",
+            label: "13. søndag etter Pinse",
         },
         null,
         null,
@@ -444,7 +452,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "14. søndag etter Pinse",
+            label: "14. søndag etter Pinse",
         },
         null,
         null,
@@ -455,7 +463,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "15. søndag etter Pinse",
+            label: "15. søndag etter Pinse",
         },
         null,
         null,
@@ -466,7 +474,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "16. søndag etter Pinse",
+            label: "16. søndag etter Pinse",
         },
         null,
         null,
@@ -477,7 +485,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "17. søndag etter Pinse",
+            label: "17. søndag etter Pinse",
         },
         null,
         null,
@@ -488,7 +496,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "18. søndag etter Pinse",
+            label: "18. søndag etter Pinse",
         },
         null,
         null,
@@ -499,7 +507,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "19. søndag etter Pinse",
+            label: "19. søndag etter Pinse",
         },
         null,
         null,
@@ -510,7 +518,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "20. søndag etter Pinse",
+            label: "20. søndag etter Pinse",
         },
         null,
         null,
@@ -521,7 +529,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "21. søndag etter Pinse",
+            label: "21. søndag etter Pinse",
         },
         null,
         null,
@@ -532,7 +540,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "22. søndag etter Pinse",
+            label: "22. søndag etter Pinse",
         },
         null,
         null,
@@ -543,111 +551,97 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "23. søndag etter Pinse",
+            label: "23. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Eph", chunks: [{from: [2, 4], to: [2, 10]}]},
-                {book: "Mt", chunks: [{from: [22, 35], to: [22, 46]}]},
-                {book: "Lk", chunks: [{from: [8, 26], to: [8, 39]}], flags: ["oldBysant"]}
+                {book: "Mt", chunks: [{from: [22, 35], to: [22, 46]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [2, 20], to: [3, 8]}]},
-                {book: "Lk", chunks: [{from: [20,27], to: [20,44]}]},
-                {book: "Lk", chunks: [{from: [11,29], to: [11,33]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [20,27], to: [20,44]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [3, 9], to: [3, 13]}]},
-                {book: "Lk", chunks: [{from: [21,12], to: [21,19]}]},
-                {book: "Lk", chunks: [{from: [11,34], to: [11,41]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [21,12], to: [21,19]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [4, 1], to: [4, 12]}]},
-                {book: "Lk", chunks: [{from: [21, 5], to: [21, 7]}, {from: [21, 10], to: [21, 11]}, {from: [21, 20], to: [21, 24]}]},
-                {book: "Lk", chunks: [{from: [11, 42], to: [11, 46]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [21, 5], to: [21, 7]}, {from: [21, 10], to: [21, 11]}, {from: [21, 20], to: [21, 24]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [5, 1], to: [5, 8]}]},
-                {book: "Lk", chunks: [{from: [21, 28], to: [21, 33]}]},
-                {book: "Lk", chunks: [{from: [11, 47], to: [12, 1]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [21, 28], to: [21, 33]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [5, 9], to: [5, 13]}, {from: [5, 24], to: [5, 28]}]},
-                {book: "Lk", chunks: [{from: [21, 37], to: [22, 8]}]},
-                {book: "Lk", chunks: [{from: [12, 2], to: [12, 12]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [21, 37], to: [22, 8]}]}
             ]
         },
         {
             texts: [
                 {book: "2Co", chunks: [{from: [11, 1], to: [11, 6]}]},
-                {book: "Lk", chunks: [{from: [13, 18], to: [13, 19]}]},
-                {book: "Lk", chunks: [{from: [9, 1], to: [9, 6]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [13, 18], to: [13, 19]}]}
             ]
         },
     ],
     [
         {
-            cycle: "24. søndag etter Pinse",
+            label: "24. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Eph", chunks: [{from: [2, 14], to: [2, 22]}]},
-                {book: "Lk", chunks: [{from: [13, 10], to: [13, 17]}]},
-                {book: "Lk", chunks: [{from: [8, 41], to: [8, 56]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [13, 10], to: [13, 17]}]}
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [1, 1], to: [1, 10]}]},
                 {book: "Mk", chunks: [{from: [8, 11], to: [8, 21]}]},
-                {book: "Lk", chunks: [{from: [12, 13], to: [12, 15]}, {from: [12, 22], to: [12, 31]}], flags: ["oldBysant"]},
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [1, 10], to: [2, 2]}]},
-                {book: "Mk", chunks: [{from: [8, 22], to: [8, 26]}]},
-                {book: "Lk", chunks: [{from: [12, 42], to: [12, 48]}], flags: ["oldBysant"]}
+                {book: "Mk", chunks: [{from: [8, 22], to: [8, 26]}]}
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [2, 1], to: [2, 12]}]},
-                {book: "Mk", chunks: [{from: [8, 30], to: [8, 34]}]},
-                {book: "Lk", chunks: [{from: [12, 48], to: [12, 59]}], flags: ["oldBysant"]}
+                {book: "Mk", chunks: [{from: [8, 30], to: [8, 34]}]}
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [2, 13], to: [3, 5]}]},
-                {book: "Mk", chunks: [{from: [9, 10], to: [9, 16]}]},
-                {book: "Lk", chunks: [{from: [13, 1], to: [13, 9]}], flags: ["oldBysant"]}
+                {book: "Mk", chunks: [{from: [9, 10], to: [9, 16]}]}
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [3, 6], to: [3, 18]}]},
-                {book: "Mk", chunks: [{from: [9, 33], to: [9, 41]}]},
-                {book: "Lk", chunks: [{from: [13, 31], to: [13, 35]}], flags: ["oldBysant"]}
+                {book: "Mk", chunks: [{from: [9, 33], to: [9, 41]}]}
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [1, 3], to: [1, 10]}]},
-                {book: "Lk", chunks: [{from: [14, 1], to: [14, 11]}]},
-                {book: "Lk", chunks: [{from: [9, 37], to: [9, 43]}], flags: ["oldBysant"]}
+                {book: "Lk", chunks: [{from: [14, 1], to: [14, 11]}]}
             ]
         }
     ],
     [
         {
-            cycle: "25. søndag etter Pinse",
+            label: "25. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Col", chunks: [{from: [3, 4], to: [3, 11]}]},
                 {book: "Lk", chunks: [{from: [14, 16], to: [14, 24]}]},
@@ -656,49 +650,43 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [1, 1], to: [1,7]}]},
-                {book: "Mk", chunks: [{from: [9, 42], to: [10,1]}]},
-                {book: "Lk", chunks: [{from: [14, 12], to: [14, 15]}], flags: ["oldBysant"]},
+                {book: "Mk", chunks: [{from: [9, 42], to: [10,1]}]}
             ]
         },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [1, 8], to: [1, 14]}]},
-                {book: "Mk", chunks: [{from: [10, 2], to: [10, 12]}]},
-                {book: "Lk", chunks: [{from: [14, 25], to: [14, 35]}], flags: ["oldBysant"]},
+                {book: "Mk", chunks: [{from: [10, 2], to: [10, 12]}]}
             ]
         },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [1, 18], to: [1, 20]}, {from: [2, 8], to: [2, 15]}]},
-                {book: "Mk", chunks: [{from: [10, 11], to: [10, 16]}]},
-                {book: "Lk", chunks: [{from: [15, 1], to: [15, 10]}], flags: ["oldBysant"]},
+                {book: "Mk", chunks: [{from: [10, 11], to: [10, 16]}]}
             ]
         },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [3, 1], to: [3, 13]}]},
-                {book: "Mk", chunks: [{from: [10, 17], to: [10, 27]}]},
-                {book: "Lk", chunks: [{from: [16, 1], to: [16, 9]}], flags: ["oldBysant"]},
+                {book: "Mk", chunks: [{from: [10, 17], to: [10, 27]}]}
             ]
         },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [4, 4], to: [4, 8]}, {from: [4, 16], to: [4, 16]}]},
-                {book: "Mk", chunks: [{from: [10, 23], to: [10, 32]}]},
-                {book: "Lk", chunks: [{from: [16, 15], to: [16, 18]}, {from: [17, 1], to: [17, 4]}], flags: ["oldBysant"]},
+                {book: "Mk", chunks: [{from: [10, 23], to: [10, 32]}]}
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [3, 8], to: [3, 12]}]},
                 {book: "Lk", chunks: [{from: [16, 10], to: [16, 15]}]},
-                {book: "Lk", chunks: [{from: [9, 57], to: [9, 62]}], flags: ["oldBysant"]},
             ]
         }
     ],
     [
         {
-            cycle: "26. søndag etter Pinse",
+            label: "26. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Heb", chunks: [{from: [11, 9], to: [11, 10]}, {from: [11, 17], to: [11, 23]}, {from: [11, 32], to: [11, 40]}]},
                 {book: "Mt", chunks: [{from: [1, 1], to: [1, 25]}]},
@@ -707,8 +695,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [5,1], to: [5, 10]}]},
-                {book: "Mk", chunks: [{from: [10, 46], to: [10,52]}]},
-                {book: "Lk", chunks: [{from: [17, 20], to: [17, 25]}], flags: ["oldBysant"]},
+                {book: "Mk", chunks: [{from: [10, 46], to: [10,52]}]}
             ]
         },
         null,
@@ -727,11 +714,17 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
                 {book: "Lk", chunks: [{from: [14, 12], to: [14, 28]}], flags: ["oldBysant"]},
             ]
         },
-        null
+        {
+            texts: [
+                {book: "Gal", chunks: [{from: [5, 22], to: [6, 2]}]},
+                {book: "Lk", chunks: [{from: [17, 3], to: [17, 10]}]},
+                {book: "Lk", chunks: [{from: [10, 19], to: [10, 21]}], flags: ["oldBysant"]}
+            ]
+        }
     ],
     [
         {
-            cycle: "27. søndag etter Pinse",
+            label: "27. søndag etter Pinse",
         },
         null,
         null,
@@ -742,7 +735,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "28. søndag etter Pinse",
+            label: "28. søndag etter Pinse",
         },
         null,
         null,
@@ -753,7 +746,7 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
     ],
     [
         {
-            cycle: "29. søndag etter Pinse",
+            label: "29. søndag etter Pinse",
         },
         null,
         null,
@@ -763,3 +756,47 @@ export const paschaCycle: [PaschaCycleEntry & {cycle?: string}, PaschaCycleEntry
         null
     ],
 ]
+
+// export const oldBysantCycle: [DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null][] = [
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [
+//         {book: "Lk", chunks: [{from: [8, 26], to: [8, 39]}]},
+//         {book: "Lk", chunks: [{from: [11,29], to: [11,33]}]},
+//         {book: "Lk", chunks: [{from: [11,34], to: [11,41]}]},
+//         {book: "Lk", chunks: [{from: [11, 42], to: [11, 46]}]},
+//         {book: "Lk", chunks: [{from: [11, 47], to: [12, 1]}]},
+//         {book: "Lk", chunks: [{from: [12, 2], to: [12, 12]}]},
+//         {book: "Lk", chunks: [{from: [9, 1], to: [9, 6]}]}
+//     ],
+//     [
+//         {book: "Lk", chunks: [{from: [8, 41], to: [8, 56]}]},
+//         {book: "Lk", chunks: [{from: [12, 13], to: [12, 15]}, {from: [12, 22], to: [12, 31]}]},
+//         {book: "Lk", chunks: [{from: [12, 42], to: [12, 48]}]},
+//         {book: "Lk", chunks: [{from: [12, 48], to: [12, 59]}]},
+//         {book: "Lk", chunks: [{from: [13, 1], to: [13, 9]}]},
+//         {book: "Lk", chunks: [{from: [13, 31], to: [13, 35]}]},
+//         {book: "Lk", chunks: [{from: [9, 37], to: [9, 43]}]}
+//     ],
+//     [
+//         null,
+//         {book: "Lk", chunks: [{from: [14, 12], to: [14, 15]}]},
+//         {book: "Lk", chunks: [{from: [14, 25], to: [14, 35]}]},
+//         {book: "Lk", chunks: [{from: [15, 1], to: [15, 10]}]},
+//         {book: "Lk", chunks: [{from: [16, 1], to: [16, 9]}]},
+//         {book: "Lk", chunks: [{from: [16, 15], to: [16, 18]}, {from: [17, 1], to: [17, 4]}]},
+//         {book: "Lk", chunks: [{from: [9, 57], to: [9, 62]}]},
+//     ],
+//     [
+//         null,
+//         {book: "Lk", chunks: [{from: [17, 20], to: [17, 25]}], flags: ["oldBysant"]}
+//     ]
+// ]

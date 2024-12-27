@@ -1,12 +1,10 @@
-import React, { Suspense } from "react"
+import React, {Suspense} from "react"
 import DagensTeksterListNB88 from "./DagensTeksterListNB88"
-import { getDagensTekster } from "@/lib/dagens-tekster-lib"
-import { fetchNB88Chapters } from "@/lib/nb88-fetch-lib"
-import {DailyReading, DailyReadings, dateSpecificItems, lectionaryYearParams, paschaCycle} from "@/lectionary/base";
-import {DateTime} from "luxon";
-import {DagensTekstItems} from "@/types/dynamodb";
-import {bookNames} from "@/lib/book-names";
-import {getChapterChunks, getFullLabel, getLabel} from "@/lib/dagens-tekster-parse-lib";
+import {fetchNB88Chapters} from "@/lib/nb88-fetch-lib"
+import {DailyReading, DailyReadings} from "@/lectionary/base"
+import {DagensTekstItems} from "@/types/dynamodb"
+import {getChapterChunks, getFullLabel, getLabel} from "@/lib/dagens-tekster-parse-lib"
+import {getLectionaryTexts} from "@/lectionary/lectionary-logic"
 
 export default async function DagensTeksterList ({y, m, d}: {y: string, m: string, d: string}) {
     return <Suspense fallback={<div className="dark:text-gray-400 text-gray-600 italic min-w-40 text-center">Henter...</div>}>
@@ -15,54 +13,25 @@ export default async function DagensTeksterList ({y, m, d}: {y: string, m: strin
 }
 
 export async function DagensTeksterListData({y, m, d}: {y: string, m: string, d: string}) {
+    try {
+        const texts = getLectionaryTexts(parseInt(y), parseInt(m), parseInt(d))
 
-    const dateSpecificItem = dateSpecificItems[`${m}-${d}`]
-    const {paschaCycleStart: currentPascha} = lectionaryYearParams[y]
-
-    if (!currentPascha) {
-        return <div>Feil med henting av dagens tekster: fant ikke påskedatoen for {y}</div>
-    }
-
-    const {paschaCycleStart: nextPascha} = lectionaryYearParams[parseInt(y) + 1]
-
-    const currentPaschaDate = DateTime.fromJSDate(new Date(parseInt(y), currentPascha[0] - 1, currentPascha[1]))
-    const nextPaschaDate = DateTime.fromJSDate(new Date(parseInt(y) + 1, nextPascha[0] - 1, nextPascha[1]))
-
-    const today = DateTime.fromJSDate(new Date(parseInt(y), parseInt(m) - 1, parseInt(d)))
-
-    const currentPaschaCyclePoint = Math.floor(today.diff(nextPaschaDate, "days").days) < 0 ? currentPaschaDate : nextPaschaDate
-    const daysSinceStartOfPaschaCycle = Math.floor(today.diff(currentPaschaCyclePoint, "days").days)
-    const currentPaschaCycleWeek = Math.floor(daysSinceStartOfPaschaCycle / 7) - 1
-    const currentDayOfWeek = daysSinceStartOfPaschaCycle % 7
-    const dayItems = paschaCycle[currentPaschaCycleWeek][currentDayOfWeek]
-
-    console.log(paschaCycle[currentPaschaCycleWeek], currentDayOfWeek)
-
-    if (dateSpecificItem && !dayItems) {
         return <div>
-            <h3 className={"py-2 px-4 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold border-y-4 border-slate-300 dark:border-slate-600 border-double font-serif"}>{dateSpecificItem.label}</h3>
-            <div className={"p-4"}><DagensTeksterDayItems dayItems={dateSpecificItem.dailyReadings}/></div>
+            {texts?.dailyReadings && <div className={"p-4"}>
+                {texts.dailyReadings.label && <h3 className={"mb-2"}>{texts.dailyReadings.label}</h3>}
+
+                <DagensTeksterDayItems dayItems={texts.dailyReadings} />
+            </div>}
+
+
+            {texts?.labelledItems?.map(it => <div key={JSON.stringify(it)}>
+                <h3 className={"py-2 px-4 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold border-y-4 border-slate-300 dark:border-slate-600 border-double font-serif"}>{it.label}</h3>
+                <div className={"p-4"}><DagensTeksterDayItems dayItems={it}/></div>
+            </div>)}
         </div>
+    } catch (e: any) {
+        return <div>{e.message || "En ukjent feil har oppstått i forbindelse med hentingen av dagens tekster"}</div>
     }
-
-    if (!dayItems) {
-        return <div>Feil med henting av dagens tekster - ingen oppføring for dag {daysSinceStartOfPaschaCycle} etter påske ({y})</div>
-    }
-
-    const cycleLabel = (dayItems as any).cycle
-
-    return <div>
-        <div className={"p-4"}>
-            {cycleLabel && <h3 className={"mb-2"}>{cycleLabel}</h3>}
-
-            <DagensTeksterDayItems dayItems={dayItems} />
-        </div>
-
-        {dateSpecificItem && <div>
-            <h3 className={"py-2 px-4 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold border-y-4 border-slate-300 dark:border-slate-600 border-double font-serif"}>{dateSpecificItem.label}</h3>
-            <div className={"p-4"}><DagensTeksterDayItems dayItems={dateSpecificItem.dailyReadings}/></div>
-        </div>}
-    </div>
 }
 
 async function DagensTeksterDayItems({dayItems}: {dayItems: DailyReadings}) {
