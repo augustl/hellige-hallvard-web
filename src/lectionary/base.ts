@@ -82,6 +82,7 @@ export const nativityCycle = {
     },
     "sunAfterNativity": {
         label: "Søndag etter Kristi fødsel",
+        includesDailyReadings: false,
         liturgyTexts: [
             {book: "Gal", chunks: [{from: [1, 11], to: [1, 19]}]},
             {book: "Mt", chunks: [{from: [2, 13], to: [2, 23]}]}

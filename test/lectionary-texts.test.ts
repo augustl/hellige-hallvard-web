@@ -41,7 +41,7 @@ describe("Lectionary", () => {
         assert.deepStrictEqual(res.labelledItems[0], nativityCycle.satAfterNativity)
     })
 
-    it("should get daily readings and saturday after nativity readings", () => {
+    it("should get sunday after nativity readings", () => {
         const res = getLectionaryTexts(2024, 12, 29)
 
         assert.ok(res)
