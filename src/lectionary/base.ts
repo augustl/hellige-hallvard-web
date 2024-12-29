@@ -727,8 +727,20 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
         {
             label: "27. søndag etter Pinse",
         },
-        null,
-        null,
+        {
+            texts: [
+                {book: "2Ti", chunks: [{from: [2, 20], to: [2, 26]}]},
+                {book: "Mk", chunks: [{from: [3, 6], to: [3, 12]}]},
+                {book: "Lk", chunks: [{from: [14, 37], to: [14, 44]}], flags: ["oldBysant"]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Ti", chunks: [{from: [3, 16], to: [4, 4]}]},
+                {book: "Mk", chunks: [{from: [3, 13], to: [3, 19]}]},
+                {book: "Lk", chunks: [{from: [14, 45], to: [14, 48]}], flags: ["oldBysant"]}
+            ]
+        },
         null,
         null,
         null,
