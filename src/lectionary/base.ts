@@ -1,52 +1,88 @@
 import {bookNames} from "@/lib/book-names";
 
-export const dateSpecificItems: {[key: string]: {label: string, includesDailyReadings?: boolean} & DailyReadings} = {
+export const dateSpecificItems: {[key: string]: {includesDailyReadings?: boolean, items: ({label: string} & DailyReadings)[]}} = {
     "1-1": {
-        label: "Jesu omskåring",
-        liturgyTexts: [
-            {book: "Col", chunks: [{from: [2, 8], to: [2, 12]}]},
-            {book: "Lk", chunks: [{from: [2, 20], to: [2, 21]}, {from: [2, 40], to: [2, 52]}]},
+        items: [
+            {
+                label: "Jesu omskåring",
+                liturgyTexts: [
+                    {book: "Col", chunks: [{from: [2, 8], to: [2, 12]}]},
+                    {book: "Lk", chunks: [{from: [2, 20], to: [2, 21]}, {from: [2, 40], to: [2, 52]}]},
+                ]
+            },
+            {
+                label: "Hl. Basilios",
+                liturgyTexts: [
+                    {book: "Heb", chunks: [{from: [7, 26], to: [8, 2]}]},
+                    {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]},
+                ]
+            }
+
         ]
     },
     "6-29": {
-        label: "Apostelfest"
+        items: [
+            {
+                label: "Apostelfest"
+            }
+        ]
     },
     "3-25": {
-        label: "Maria Bebudelse",
-        includesDailyReadings: true
+        includesDailyReadings: true,
+        items: [
+            {
+                label: "Maria Bebudelse",
+            }
+        ]
     },
     "12-6": {
-        label: "Hl. Nikolai",
-        liturgyTexts: [
-            {book: "Heb", chunks: [{from: [13, 17], to: [13, 21]}]},
-            {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]},
+        items: [
+            {
+                label: "Hl. Nikolai",
+                liturgyTexts: [
+                    {book: "Heb", chunks: [{from: [13, 17], to: [13, 21]}]},
+                    {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]},
+                ]
+            }
         ]
     },
     "12-24": {
-        label: "Dagen før Kristi fødsel",
-        vespersTexts: [
-            {book: "Gen", chunks: [{from: [1, 1], to: [1, 13]}]},
-            {book: "Is", chunks: [{from: [11, 1], to: [11, 10]}]},
-            {book: "Is", chunks: [{from: [9, 5], to: [9, 6]}]}
-        ],
-        liturgyTexts: [
-            {book: "Heb", chunks: [{from: [1, 1], to: [1, 12]}]},
-            {book: "Lk", chunks: [{from: [2, 1], to: [2, 20]}]},
+        items: [
+            {
+                label: "Dagen før Kristi fødsel",
+                vespersTexts: [
+                    {book: "Gen", chunks: [{from: [1, 1], to: [1, 13]}]},
+                    {book: "Is", chunks: [{from: [11, 1], to: [11, 10]}]},
+                    {book: "Is", chunks: [{from: [9, 5], to: [9, 6]}]}
+                ],
+                liturgyTexts: [
+                    {book: "Heb", chunks: [{from: [1, 1], to: [1, 12]}]},
+                    {book: "Lk", chunks: [{from: [2, 1], to: [2, 20]}]},
+                ]
+            }
         ]
     },
     "12-25": {
-        label: "Fødselen til vår Herre Gud og Frelser Jesus Kristus",
-        liturgyTexts: [
-            {book: "Gal", chunks: [{from: [4, 4], to: [4, 7]}]},
-            {book: "Mt", chunks: [{from: [2, 1], to: [2, 12]}]}
+        items: [
+            {
+                label: "Fødselen til vår Herre Gud og Frelser Jesus Kristus",
+                liturgyTexts: [
+                    {book: "Gal", chunks: [{from: [4, 4], to: [4, 7]}]},
+                    {book: "Mt", chunks: [{from: [2, 1], to: [2, 12]}]}
+                ]
+            }
         ]
     },
     "12-27": {
-        label: "Hl. Stefan",
         includesDailyReadings: true,
-        liturgyTexts: [
-            {book: "Acts", chunks: [{from: [6, 8], to: [7, 5]}, {from: [7, 47], to: [7, 60]}]},
-            {book: "Mt", chunks: [{from: [21, 33], to: [21, 42]}]}
+        items: [
+            {
+                label: "Hl. Stefan",
+                liturgyTexts: [
+                    {book: "Acts", chunks: [{from: [6, 8], to: [7, 5]}, {from: [7, 47], to: [7, 60]}]},
+                    {book: "Mt", chunks: [{from: [21, 33], to: [21, 42]}]}
+                ],
+            }
         ]
     }
 }

@@ -13,9 +13,9 @@ export const getLectionaryTexts = (
 
     if (dateSpecificItem) {
         if (dateSpecificItem.includesDailyReadings) {
-            return {dailyReadings: getDailyReadingsFromCycle(y, m, d), labelledItems: [dateSpecificItem]}
+            return {dailyReadings: getDailyReadingsFromCycle(y, m, d), labelledItems: dateSpecificItem.items}
         } else {
-            return {labelledItems: [dateSpecificItem]}
+            return {labelledItems: dateSpecificItem.items}
         }
     }
 
