@@ -1,6 +1,13 @@
 import {bookNames} from "@/lib/book-names";
 
 export const dateSpecificItems: {[key: string]: {label: string, includesDailyReadings?: boolean} & DailyReadings} = {
+    "1-1": {
+        label: "Jesu omskåring",
+        liturgyTexts: [
+            {book: "Col", chunks: [{from: [2, 8], to: [2, 12]}]},
+            {book: "Lk", chunks: [{from: [2, 20], to: [2, 21]}, {from: [2, 40], to: [2, 52]}]},
+        ]
+    },
     "6-29": {
         label: "Apostelfest"
     },

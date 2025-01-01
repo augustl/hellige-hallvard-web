@@ -49,4 +49,13 @@ describe("Lectionary", () => {
         assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems[0], nativityCycle.sunAfterNativity)
     })
+
+    it("should get text on new years", () => {
+        const res = getLectionaryTexts(2025, 1, 1)
+
+        assert.ok(res)
+        assert.ok(!res.dailyReadings)
+        assert.ok(res.labelledItems)
+        assert.deepStrictEqual(res.labelledItems[0], dateSpecificItems["1-1"])
+    })
 })

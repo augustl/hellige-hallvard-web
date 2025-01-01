@@ -49,16 +49,8 @@ export const getDailyReadingsFromCycle = (
 ) => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
-    const {paschaCycleStart: currentPascha} = lectionaryYearParams[y]
-    if (!currentPascha) {
-        throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${y}`)
-    }
+    const {currentPaschaDate, nextPaschaDate} = getCurrentAndNextPaschaDates(date)
 
-    const {paschaCycleStart: nextPascha} = lectionaryYearParams[y + 1]
-
-
-    const currentPaschaDate = DateTime.fromJSDate(new Date(y, currentPascha[0] - 1, currentPascha[1]))
-    const nextPaschaDate = DateTime.fromJSDate(new Date(y + 1, nextPascha[0] - 1, nextPascha[1]))
     const currentPaschaCyclePoint = Math.floor(date.diff(nextPaschaDate, "days").days) < 0 ? currentPaschaDate : nextPaschaDate
     const daysSinceStartOfPaschaCycle = Math.floor(date.diff(currentPaschaCyclePoint, "days").days)
     const currentPaschaCycleWeek = Math.floor(daysSinceStartOfPaschaCycle / 7) - 1
@@ -70,4 +62,36 @@ export const getDailyReadingsFromCycle = (
     }
 
     return dayItems
+}
+
+const getCurrentAndNextPaschaDates = (
+    date: DateTime
+): {currentPaschaDate: DateTime, nextPaschaDate: DateTime} => {
+    const {paschaCycleStart: paschaThisYearData} = lectionaryYearParams[date.year]
+    if (!paschaThisYearData) {
+        throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year}`)
+    }
+
+    const paschaThisYear = date.set({month: paschaThisYearData[0], day: paschaThisYearData[1]})
+
+    if (date < paschaThisYear) {
+        const {paschaCycleStart: paschaPreviousYearData} = lectionaryYearParams[date.year - 1]
+
+        if (!paschaPreviousYearData) {
+            throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year - 1}`)
+        }
+
+        const paschaPreviousYear = date.set({year: date.year - 1, month: paschaThisYearData[0], day: paschaThisYearData[1]})
+
+        return {currentPaschaDate: paschaPreviousYear, nextPaschaDate: paschaThisYear}
+    } else {
+        const {paschaCycleStart: paschaNextYearData} = lectionaryYearParams[date.year + 1]
+        if (!paschaNextYearData) {
+            throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year + 1}`)
+        }
+
+        const nextPaschaDate = date.set({year: date.year + 1, month: paschaThisYearData[0], day: paschaThisYearData[1]})
+
+        return {currentPaschaDate: paschaThisYear, nextPaschaDate}
+    }
 }
