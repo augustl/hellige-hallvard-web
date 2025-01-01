@@ -58,6 +58,9 @@ export const getDailyReadingsFromCycle = (
     const dayItems = paschaCycle[currentPaschaCycleWeek][currentDayOfWeek]
 
     if (!dayItems) {
+        if (paschaCycle[currentPaschaCycleWeek]) {
+            throw new Error(`Feil med henting av dagens tekster: fant ikke tekster for dag ${currentDayOfWeek} for ${paschaCycle[currentPaschaCycleWeek][0].label}`)
+        }
         throw new Error(`Feil med henting av dagens tekster: fant ikke tekster for dag ${daysSinceStartOfPaschaCycle} etter påske i ${y}`)
     }
 
@@ -81,7 +84,7 @@ const getCurrentAndNextPaschaDates = (
             throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year - 1}`)
         }
 
-        const paschaPreviousYear = date.set({year: date.year - 1, month: paschaThisYearData[0], day: paschaThisYearData[1]})
+        const paschaPreviousYear = date.set({year: date.year - 1, month: paschaPreviousYearData[0], day: paschaPreviousYearData[1]})
 
         return {currentPaschaDate: paschaPreviousYear, nextPaschaDate: paschaThisYear}
     } else {

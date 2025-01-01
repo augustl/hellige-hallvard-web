@@ -749,7 +749,13 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
         },
         null,
-        null,
+        {
+            texts: [
+                {book: "Tts", chunks: [{from: [1, 5], to: [2, 1]}]},
+                {book: "Mk", chunks: [{from: [3, 28], to: [3, 35]}]},
+                {book: "Lk", chunks: [{from: [20, 9], to: [20, 18]}], flags: ["oldBysant"]},
+            ]
+        },
         null,
         null
     ],
