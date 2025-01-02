@@ -1,11 +1,40 @@
 import {DateTime} from "luxon"
-import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle} from "@/lectionary/base"
+import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours} from "@/lectionary/base"
+
+const getExpectedRoyalHoursDate = (y: number): DateTime => {
+    const teophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
+    const teophanyWeekday = teophanyDate.weekday
+
+    if (teophanyWeekday === 1) {
+        return teophanyDate.minus({days: 3})
+    }
+
+    if (teophanyWeekday === 7) {
+        return teophanyDate.minus({days: 2})
+    }
+
+    return teophanyDate.minus({days: 1})
+}
 
 export const getLectionaryTexts = (
     y: number,
     m: number,
     d: number
 ): {dailyReadings?: {label?: string} & DailyReadings, labelledItems?: ({label: string} & DailyReadings)[]} | undefined => {
+    const date = DateTime.fromJSDate(new Date(y, m - 1, d))
+
+    // Royal hours occurs on the first weekday before teophany if teophany itself is on weekday, or the day
+    // before if teophany is on saturday or sunday
+    if (m === 1 && d < 6) {
+        const expectedRoyalHoursDate = getExpectedRoyalHoursDate(y)
+        if (date.equals(expectedRoyalHoursDate)) {
+            return {
+                labelledItems: teophanyRoyalHours.items
+            }
+        }
+    }
+
+
     // Date specific items are special feast days. These will always either override the Pascha schedule
     // completely, or optionally include the daily readings from the Pascha schedule.
     // TODO: This is not always true. Some Pascha schedule items override date specific items. Figure out later
@@ -18,9 +47,6 @@ export const getLectionaryTexts = (
             return {labelledItems: dateSpecificItem.items}
         }
     }
-
-
-    const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
     if (m === 12) {
         if (d > 25) {

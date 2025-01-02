@@ -1,6 +1,6 @@
 import {getLectionaryTexts} from "@/lectionary/lectionary-logic"
 import assert from "assert"
-import {dateSpecificItems, nativityCycle} from "@/lectionary/base"
+import {dateSpecificItems, nativityCycle, teophanyRoyalHours} from "@/lectionary/base"
 
 describe("Lectionary", () => {
     it("should get nativity texts", () => {
@@ -57,5 +57,23 @@ describe("Lectionary", () => {
         assert.ok(!res.dailyReadings)
         assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, dateSpecificItems["1-1"].items)
+    })
+
+    it("should get royal hours before teophany on 2025 with teophany on monday", () => {
+        const res = getLectionaryTexts(2025, 1, 3)
+
+        assert.ok(res)
+        assert.ok(!res.dailyReadings)
+        assert.ok(res.labelledItems)
+        assert.deepStrictEqual(res.labelledItems, teophanyRoyalHours.items)
+    })
+
+    it("should get royal hours before teophany on 2024 with teophany on saturday", () => {
+        const res = getLectionaryTexts(2024, 1, 5)
+
+        assert.ok(res)
+        assert.ok(!res.dailyReadings)
+        assert.ok(res.labelledItems)
+        assert.deepStrictEqual(res.labelledItems, teophanyRoyalHours.items)
     })
 })

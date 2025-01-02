@@ -115,6 +115,43 @@ export type DailyReading = {
     flags?: (keyof typeof DAILY_READING_FLAGS)[]
 }
 
+export const teophanyRoyalHours: {items: ({label: string} & DailyReadings)[]} = {
+    items: [
+        {
+            label: "Kongelige timebønner før teofonia - 1. time",
+            texts: [
+                {book: "Is", chunks: [{from: [35, 1], to: [35, 10]}]},
+                {book: "Acts", chunks: [{from: [13, 25], to: [13, 32]}]},
+                {book: "Mt", chunks: [{from: [3, 1], to: [3, 11]}]},
+            ]
+        },
+        {
+            label: "3. time",
+            texts: [
+                {book: "Is", chunks: [{from: [1, 16], to: [1, 20]}]},
+                {book: "Acts", chunks: [{from: [14, 1], to: [14, 8]}]},
+                {book: "Mk", chunks: [{from: [1, 1], to: [1, 8]}]},
+            ]
+        },
+        {
+            label: "6. time",
+            texts: [
+                {book: "Is", chunks: [{from: [12, 3], to: [12, 6]}]},
+                {book: "Rom", chunks: [{from: [6, 3], to: [6, 11]}]},
+                {book: "Mk", chunks: [{from: [1, 9], to: [1, 15]}]},
+            ]
+        },
+        {
+            label: "9. time",
+            texts: [
+                {book: "Is", chunks: [{from: [49, 8], to: [49, 15]}]},
+                {book: "Tts", chunks: [{from: [2, 11], to: [2, 14]}, {from: [3, 4], to: [3, 7]}]},
+                {book: "Mk", chunks: [{from: [3, 13], to: [3, 17]}]},
+            ]
+        },
+    ]
+}
+
 export const nativityCycle = {
     "satAfterNativity": {
         label: "Lørdag etter Kristi fødsel",
