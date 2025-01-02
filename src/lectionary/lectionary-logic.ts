@@ -1,6 +1,8 @@
 import {DateTime} from "luxon"
 import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore} from "@/lectionary/base"
 
+// This logic should be a 1:1 match with the annual liturgical calendar published
+// by https://fraternite-orthodoxe.eu/bis/
 export const getLectionaryTexts = (
     y: number,
     m: number,
