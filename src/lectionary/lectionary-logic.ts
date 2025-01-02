@@ -8,8 +8,6 @@ export const getLectionaryTexts = (
 ): {dailyReadings?: {label?: string} & DailyReadings, labelledItems?: ({label: string} & DailyReadings)[]} | undefined => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
-    // Royal hours occurs on the first weekday before teophany if teophany itself is on weekday, or the day
-    // before if teophany is on saturday or sunday
     if (m === 1 && d < 6) {
         const expectedRoyalHoursDate = getExpectedRoyalHoursDate(y)
         if (date.equals(expectedRoyalHoursDate)) {
