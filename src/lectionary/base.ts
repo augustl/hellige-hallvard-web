@@ -152,6 +152,14 @@ export const teophanyRoyalHours: {items: ({label: string} & DailyReadings)[]} = 
     ]
 }
 
+export const teophanySaturdayBefore: {label: string} & DailyReadings = {
+    label: "Lørdag før teofonia",
+    texts: [
+        {book: "1Ti", chunks: [{from: [3, 14], to: [4, 5]}]},
+        {book: "Mt", chunks: [{from: [3, 1], to: [3, 11]}]}
+    ]
+}
+
 export const nativityCycle = {
     "satAfterNativity": {
         label: "Lørdag etter Kristi fødsel",
@@ -830,7 +838,13 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
         },
         null,
-        null
+        {
+            texts: [
+                {book: "Eph", chunks: [{from: [1, 16], to: [1, 23]}]},
+                {book: "Mt", chunks: [{from: [22, 15], to: [22, 22]}]},
+                {book: "Lk", chunks: [{from: [12, 32], to: [12, 40]}], flags: ["oldBysant"]},
+            ]
+        }
     ],
     [
         {

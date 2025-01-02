@@ -76,4 +76,12 @@ describe("Lectionary", () => {
         assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, teophanyRoyalHours.items)
     })
+
+    it("should get saturday before teophonia special readings", () => {
+        const res = getLectionaryTexts(2025, 1, 4)
+
+        assert.ok(res)
+        assert.ok(res.dailyReadings)
+        assert.ok(res.labelledItems)
+    })
 })
