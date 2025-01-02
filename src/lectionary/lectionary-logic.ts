@@ -1,31 +1,6 @@
 import {DateTime} from "luxon"
 import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore} from "@/lectionary/base"
 
-const getExpectedRoyalHoursDate = (y: number): DateTime => {
-    const teophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
-    const teophanyWeekday = teophanyDate.weekday
-
-    if (teophanyWeekday === 1) {
-        return teophanyDate.minus({days: 3})
-    }
-
-    if (teophanyWeekday === 7) {
-        return teophanyDate.minus({days: 2})
-    }
-
-    return teophanyDate.minus({days: 1})
-}
-
-const getExpectedSaturdayBeforeTheophanyDate = (y: number): DateTime | null => {
-    const theophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
-
-    if (theophanyDate.weekday === 6) {
-        return null
-    }
-
-    return theophanyDate.minus({days: (theophanyDate.weekday % 7) + 1})
-}
-
 export const getLectionaryTexts = (
     y: number,
     m: number,
@@ -141,4 +116,29 @@ const getCurrentAndNextPaschaDates = (
 
         return {currentPaschaDate: paschaThisYear, nextPaschaDate}
     }
+}
+
+const getExpectedRoyalHoursDate = (y: number): DateTime => {
+    const teophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
+    const teophanyWeekday = teophanyDate.weekday
+
+    if (teophanyWeekday === 1) {
+        return teophanyDate.minus({days: 3})
+    }
+
+    if (teophanyWeekday === 7) {
+        return teophanyDate.minus({days: 2})
+    }
+
+    return teophanyDate.minus({days: 1})
+}
+
+const getExpectedSaturdayBeforeTheophanyDate = (y: number): DateTime | null => {
+    const theophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
+
+    if (theophanyDate.weekday === 6) {
+        return null
+    }
+
+    return theophanyDate.minus({days: (theophanyDate.weekday % 7) + 1})
 }
