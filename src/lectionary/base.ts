@@ -160,6 +160,34 @@ export const teophanySaturdayBefore: {label: string} & DailyReadings = {
     ]
 }
 
+export const teophanySundayBefore: {label: string} & DailyReadings = {
+    label: "Søndag før teofonia",
+    texts: [
+        {book: "2Ti", chunks: [{from: [4, 5], to: [4, 8]}]},
+        {book: "Mk", chunks: [{from: [1, 1], to: [1, 8]}]}
+    ]
+}
+
+export const theophany: {label: string} & DailyReadings = {
+    label: "Teofonia",
+    texts: [
+        {book: "Tts", chunks: [{from: [2, 11], to: [2, 14]}, {from: [3, 4], to: [3, 7]}]},
+        {book: "Mt", chunks: [{from: [3, 13], to: [3, 17]}]},
+
+    ]
+}
+
+export const theophanyGreatBlessingsOfTheWaters: {label: string} & DailyReadings = {
+    label: "Vannvielse",
+    texts: [
+        {book: "Is", chunks: [{from: [35, 1], to: [35, 10]}]},
+        {book: "Is", chunks: [{from: [55, 1], to: [55, 13]}]},
+        {book: "Is", chunks: [{from: [12, 3], to: [12, 6]}]},
+        {book: "1Co", chunks: [{from: [10, 1], to: [10, 4]}]},
+        {book: "Mk", chunks: [{from: [1, 9], to: [1, 11]}]},
+    ]
+}
+
 export const nativityCycle = {
     "satAfterNativity": {
         label: "Lørdag etter Kristi fødsel",

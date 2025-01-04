@@ -1,5 +1,5 @@
 import {DateTime} from "luxon"
-import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore} from "@/lectionary/base"
+import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyGreatBlessingsOfTheWaters} from "@/lectionary/base"
 
 // This logic should be a 1:1 match with the annual liturgical calendar published
 // by https://fraternite-orthodoxe.eu/bis/
@@ -10,7 +10,28 @@ export const getLectionaryTexts = (
 ): {dailyReadings?: {label?: string} & DailyReadings, labelledItems?: ({label: string} & DailyReadings)[]} | undefined => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
-    if (m === 1 && d < 6) {
+    if (m === 1 && d <= 6) {
+        if (d === 6) {
+            return {
+                labelledItems: [theophany]
+            }
+        }
+
+        // The 5th is always the day before theophany
+        if (d === 5) {
+            // If the day before theophany is a sunday, we also need to include the
+            // sunday before theophany texts
+            if (DateTime.fromJSDate(new Date(y, 0, 5)).weekday === 7) {
+                return {
+                    labelledItems: [teophanySundayBefore, theophanyGreatBlessingsOfTheWaters]
+                }
+            } else {
+                return {
+                    labelledItems: [theophanyGreatBlessingsOfTheWaters]
+                }
+            }
+        }
+
         const expectedRoyalHoursDate = getExpectedRoyalHoursDate(y)
         if (date.equals(expectedRoyalHoursDate)) {
             return {
