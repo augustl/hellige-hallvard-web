@@ -1,5 +1,5 @@
 import {DateTime} from "luxon"
-import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyGreatBlessingsOfTheWaters} from "@/lectionary/base"
+import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
 
 // This logic should be a 1:1 match with the annual liturgical calendar published
 // by https://fraternite-orthodoxe.eu/bis/
@@ -10,7 +10,14 @@ export const getLectionaryTexts = (
 ): {dailyReadings?: {label?: string} & DailyReadings, labelledItems?: ({label: string} & DailyReadings)[]} | undefined => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
-    if (m === 1 && d <= 6) {
+    if (m === 1 && d <= 7) {
+        if (d === 7) {
+            return {
+                dailyReadings: getDailyReadingsFromCycle(y, m, d),
+                labelledItems: [theophanyAfter]
+            }
+        }
+
         if (d === 6) {
             return {
                 labelledItems: [theophany]
@@ -44,6 +51,23 @@ export const getLectionaryTexts = (
             return {
                 dailyReadings: getDailyReadingsFromCycle(y, m, d),
                 labelledItems: [teophanySaturdayBefore]
+            }
+        }
+    }
+
+    if (m === 1) {
+        const expectedSaturdayAfterTheophanyDate = getExpectedSaturdayAfterTheophanyDate(y)
+        if (expectedSaturdayAfterTheophanyDate.equals(date)) {
+            return {
+                dailyReadings: getDailyReadingsFromCycle(y, m, d),
+                labelledItems: [theophanySaturdayAfter]
+            }
+        }
+
+        const expectedSundayAfterTheophanyDate = getExpectedSundayAfterTheophanyDate(y)
+        if (expectedSundayAfterTheophanyDate.equals(date)) {
+            return {
+                labelledItems: [theophanySundayAfter]
             }
         }
     }
@@ -162,4 +186,22 @@ const getExpectedSaturdayBeforeTheophanyDate = (y: number): DateTime | null => {
     }
 
     return theophanyDate.minus({days: (theophanyDate.weekday % 7) + 1})
+}
+
+const getExpectedSaturdayAfterTheophanyDate = (y: number): DateTime => {
+    const theophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
+    if (theophanyDate.weekday === 6) {
+        return theophanyDate.plus({days: 7})
+    } else {
+        return theophanyDate.plus({days: (6 - theophanyDate.weekday) % 7})
+    }
+}
+
+const getExpectedSundayAfterTheophanyDate = (y: number): DateTime => {
+    const theophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
+    if (theophanyDate.weekday === 7) {
+        return theophanyDate.plus({days: 7})
+    } else {
+        return theophanyDate.plus({days: (7 - theophanyDate.weekday) % 7})
+    }
 }

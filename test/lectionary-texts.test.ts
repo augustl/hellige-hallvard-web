@@ -1,14 +1,12 @@
 import {getLectionaryTexts} from "@/lectionary/lectionary-logic"
 import assert from "assert"
-import {dateSpecificItems, nativityCycle, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyGreatBlessingsOfTheWaters} from "@/lectionary/base"
+import {dateSpecificItems, nativityCycle, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
 
 describe("Lectionary", () => {
     it("should get nativity texts", () => {
         const res = getLectionaryTexts(2024, 12, 25)
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.ok(res.labelledItems)
-        assert.strictEqual(res.labelledItems.length, 1)
         assert.deepStrictEqual(res.labelledItems, dateSpecificItems["12-25"].items)
     })
 
@@ -28,7 +26,6 @@ describe("Lectionary", () => {
         const res = getLectionaryTexts(2024, 12, 27)
         assert.ok(res)
         assert.ok(res.dailyReadings)
-        assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, dateSpecificItems["12-27"].items)
     })
 
@@ -46,8 +43,7 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.ok(res.labelledItems)
-        assert.deepStrictEqual(res.labelledItems[0], nativityCycle.sunAfterNativity)
+        assert.deepStrictEqual(res.labelledItems, [nativityCycle.sunAfterNativity])
     })
 
     it("should get text on new years", () => {
@@ -55,7 +51,6 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, dateSpecificItems["1-1"].items)
     })
 
@@ -64,7 +59,6 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, teophanyRoyalHours.items)
     })
 
@@ -73,7 +67,6 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(res.dailyReadings)
-        assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, [teophanySaturdayBefore])
     })
 
@@ -82,7 +75,6 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, [teophanySundayBefore, theophanyGreatBlessingsOfTheWaters])
     })
 
@@ -91,8 +83,30 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems, [theophany])
+    })
 
+    it("should get day after theophany readings", () => {
+        const res = getLectionaryTexts(2025, 1, 7)
+
+        assert.ok(res)
+        assert.ok(res.dailyReadings)
+        assert.deepStrictEqual(res.labelledItems, [theophanyAfter])
+    })
+
+    it("should get saturday adfter theophany readings", () => {
+        const res = getLectionaryTexts(2025, 1, 11)
+
+        assert.ok(res)
+        assert.ok(res.dailyReadings)
+        assert.deepStrictEqual(res.labelledItems, [theophanySaturdayAfter])
+    })
+
+    it("should get sunday adfter theophany readings", () => {
+        const res = getLectionaryTexts(2025, 1, 12)
+
+        assert.ok(res)
+        assert.ok(!res.dailyReadings)
+        assert.deepStrictEqual(res.labelledItems, [theophanySundayAfter])
     })
 })
