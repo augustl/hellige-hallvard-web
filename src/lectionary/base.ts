@@ -949,7 +949,13 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
         {
             label: "29. søndag etter Pinse",
         },
-        null,
+        {
+            texts: [
+                {book: "Heb", chunks: [{from: [8, 7], to: [8, 13]}]},
+                {book: "Mk", chunks: [{from: [5, 24], to: [5, 34]}]},
+                {book: "Mk", chunks: [{from: [8, 11], to: [8, 21]}], flags: ["oldBysant"]},
+            ]
+        },
         null,
         null,
         null,
