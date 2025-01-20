@@ -1002,6 +1002,11 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
         },
         {
+            texts: [
+                {book: "Heb", chunks: [{from: [11, 17], to: [11, 23]}, {from: [11, 27], to: [11, 31]}]},
+                {book: "Mk", chunks: [{from: [6, 54], to: [7, 8]}]},
+                {book: "Mk", chunks: [{from: [9, 42], to: [10, 1]}], flags: ["oldBysant"]},
+            ]
         },
         null,
         null,
