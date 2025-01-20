@@ -1008,12 +1008,59 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Mk", chunks: [{from: [9, 42], to: [10, 1]}], flags: ["oldBysant"]},
             ]
         },
+        {
+            texts: [
+                {book: "Heb", chunks: [{from: [12, 25], to: [12, 25]}, {from: [13, 22], to: [13, 25]}]},
+                {book: "Mk", chunks: [{from: [7, 5], to: [7, 16]}]},
+                {book: "Mk", chunks: [{from: [10, 2], to: [10, 12]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [1, 1], to: [1, 18]}]},
+                {book: "Mk", chunks: [{from: [7, 14], to: [7, 24]}]},
+                {book: "Mk", chunks: [{from: [10, 11], to: [10, 16]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [1, 19], to: [1, 27]}]},
+                {book: "Mk", chunks: [{from: [7, 24], to: [7, 30]}]},
+                {book: "Mk", chunks: [{from: [10, 17], to: [10, 27]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [2, 1], to: [2, 13]}]},
+                {book: "Mk", chunks: [{from: [8, 1], to: [8, 10]}]},
+                {book: "Mk", chunks: [{from: [10, 23], to: [10, 32]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Col", chunks: [{from: [1, 3], to: [1, 6]}]},
+                {book: "Mt", chunks: [{from: [24, 33], to: [24, 44]}]},
+                {book: "Lk", chunks: [{from: [14, 10], to: [14, 15]}], flags: ["oldBysant"]},
+            ]
+        }
+    ],
+    [
+        {
+            label: "31. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Ti", chunks: [{from: [1, 15], to: [1, 17]}]},
+                {book: "Lk", chunks: [{from: [19, 1], to: [19, 10]}]},
+                {book: "Lk", chunks: [{from: [18, 35], to: [18, 43]}], flags: ["oldBysant"]},
+            ]
+        },
+        null,
         null,
         null,
         null,
         null,
         null
     ]
+
 ]
 
 // export const oldBysantCycle: [DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null, DailyReading | null][] = [
