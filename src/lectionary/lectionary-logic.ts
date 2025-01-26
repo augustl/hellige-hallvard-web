@@ -1,5 +1,5 @@
 import {DateTime} from "luxon"
-import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
+import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, sundayOfZachary, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
 
 // This logic should be a 1:1 match with the annual liturgical calendar published
 // by https://fraternite-orthodoxe.eu/bis/
@@ -9,6 +9,16 @@ export const getLectionaryTexts = (
     d: number
 ): {dailyReadings?: {label?: string} & DailyReadings, labelledItems?: ({label: string} & DailyReadings)[]} | undefined => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
+
+    const thisYearsPaschaCycleStartData = lectionaryYearParams[y].paschaCycleStart
+    const thisYearsPaschaCycleStart = DateTime.fromJSDate(new Date(y, thisYearsPaschaCycleStartData[0] - 1, thisYearsPaschaCycleStartData[1]))
+
+    if (thisYearsPaschaCycleStart.minus({days: 7}).equals(date)) {
+        return {
+            dailyReadings: getDailyReadingsFromCycle(y, m, d),
+            labelledItems: [sundayOfZachary]
+        }
+    }
 
     if (m === 1 && d <= 7) {
         if (d === 7) {

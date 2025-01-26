@@ -230,6 +230,14 @@ export const theophanyGreatBlessingsOfTheWaters: {label: string} & DailyReadings
     ]
 }
 
+export const sundayOfZachary: {label: string} & DailyReadings = {
+    label: "Sakarjas søndag",
+    texts: [
+        {book: "Heb", chunks: [{from: [7, 7], to: [7, 17]}]},
+        {book: "Lk", chunks: [{from: [2, 22], to: [2, 40]}]},
+    ]
+}
+
 export const nativityCycle = {
     "satAfterNativity": {
         label: "Lørdag etter Kristi fødsel",
