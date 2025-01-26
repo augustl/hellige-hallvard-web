@@ -20,6 +20,18 @@ export const dateSpecificItems: {[key: string]: {includesDailyReadings?: boolean
 
         ]
     },
+    "1-27": {
+        includesDailyReadings: true,
+        items: [
+            {
+                label: "Hl. Johannes Khrysostomos",
+                liturgyTexts: [
+                    {book: "Heb", chunks: [{from: [7, 26], to: [8, 2]}]},
+                    {book: "Jn", chunks: [{from: [10, 9], to: [10, 16]}]}
+                ]
+            }
+        ]
+    },
     "6-29": {
         items: [
             {
@@ -1051,6 +1063,53 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "1Ti", chunks: [{from: [1, 15], to: [1, 17]}]},
                 {book: "Lk", chunks: [{from: [19, 1], to: [19, 10]}]},
                 {book: "Lk", chunks: [{from: [18, 35], to: [18, 43]}], flags: ["oldBysant"]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [2, 14], to: [2, 26]}]},
+                {book: "Mk", chunks: [{from: [10, 146], to: [10, 52]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [3, 1], to: [3, 10]}]},
+                {book: "Mk", chunks: [{from: [11, 11], to: [11, 23]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [3, 11], to: [4, 6]}]},
+                {book: "Mk", chunks: [{from: [11, 23], to: [11, 26]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "Jam", chunks: [{from: [4, 7], to: [5, 9]}]},
+                {book: "Mk", chunks: [{from: [11, 27], to: [11, 33]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "1Pt", chunks: [{from: [1, 1], to: [1, 2]}, {from: [1, 10], to: [1, 12]}, {from: [2, 6], to: [2, 10]}]},
+                {book: "Mk", chunks: [{from: [12, 1], to: [12, 12]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "1Th", chunks: [{from: [5, 14], to: [5, 23]}]},
+                {book: "Mt", chunks: [{from: [25, 1], to: [25, 13]}]},
+                {book: "Lk", chunks: [{from: [17, 3], to: [17, 10]}], flags: ["oldBysant"]},
+            ]
+        }
+    ],
+    [
+        {
+            label: "32. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Ti", chunks: [{from: [4, 9], to: [4, 15]}]},
+                {book: "Mt", chunks: [{from: [15, 21], to: [15, 28]}]},
+                {book: "Lk", chunks: [{from: [19, 1], to: [19, 10]}], flags: ["oldBysant"]},
             ]
         },
         null,
