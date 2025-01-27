@@ -25,7 +25,7 @@ export const dateSpecificItems: {[key: string]: {includesDailyReadings?: boolean
         items: [
             {
                 label: "Hl. Johannes Khrysostomos",
-                liturgyTexts: [
+                texts: [
                     {book: "Heb", chunks: [{from: [7, 26], to: [8, 2]}]},
                     {book: "Jn", chunks: [{from: [10, 9], to: [10, 16]}]}
                 ]
