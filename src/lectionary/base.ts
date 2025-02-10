@@ -271,15 +271,44 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Mk", chunks: [{from: [13, 9], to: [13, 13]}]},
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "2Pt", chunks: [{from: [2, 9], to: [2, 22]}]},
+                {book: "Mk", chunks: [{from: [13, 14], to: [13, 23]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "2Pt", chunks: [{from: [3, 1], to: [3, 18]}]},
+                {book: "Mk", chunks: [{from: [13, 24], to: [13, 31]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "1Jn", chunks: [{from: [1, 8], to: [2, 6]}]},
+                {book: "Mk", chunks: [{from: [13, 31], to: [14, 2]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "1Jn", chunks: [{from: [2, 7], to: [2, 17]}]},
+                {book: "Mk", chunks: [{from: [14, 3], to: [14, 9]}]},
+            ]
+        },
+        {
+            texts: [
+                {book: "2Ti", chunks: [{from: [3, 1], to: [3, 9]}]},
+                {book: "Lk", chunks: [{from: [20, 45], to: [21, 4]}]},
+            ]
+        }
     ],
     [
         {
-            label: "Bortkommende sønns søndag"
+            label: "Bortkommende sønns søndag",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [6, 12], to: [6, 20]}]},
+                {book: "Lk", chunks: [{from: [15, 11], to: [15, 32]}]},
+            ]
         },
         null,
         null,
