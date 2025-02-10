@@ -259,9 +259,18 @@ export const nativityCycle = {
 export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry, PaschaCycleEntry][] = [
     [
         {
-            label: "Tollerens og fariséerens søndag"
+            label: "Tollerens og fariséerens søndag",
+            liturgyTexts: [
+                {book: "2Ti", chunks: [{from: [3, 10], to: [3, 15]}]},
+                {book: "Lk", chunks: [{from: [18, 10], to: [18, 14]}]}
+            ]
         },
-        null,
+        {
+            texts: [
+                {book: "2Pt", chunks: [{from: [1, 20], to: [2, 19]}]},
+                {book: "Mk", chunks: [{from: [13, 9], to: [13, 13]}]},
+            ]
+        },
         null,
         null,
         null,
@@ -281,7 +290,18 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
     ],
     [
         {
-            label: "Tilgivelsens søndag"
+            label: "Domssøndag"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "Adams utdrivelse av Paradiset"
         },
         null,
         null,

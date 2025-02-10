@@ -127,7 +127,7 @@ export const getDailyReadingsFromCycle = (
 
     const currentPaschaCyclePoint = Math.floor(date.diff(nextPaschaDate, "days").days) < 0 ? currentPaschaDate : nextPaschaDate
     const daysSinceStartOfPaschaCycle = Math.floor(date.diff(currentPaschaCyclePoint, "days").days)
-    const currentPaschaCycleWeek = Math.floor(daysSinceStartOfPaschaCycle / 7) - 1
+    const currentPaschaCycleWeek = Math.floor(daysSinceStartOfPaschaCycle / 7)
     const currentDayOfWeek = daysSinceStartOfPaschaCycle % 7
     const dayItems = paschaCycle[currentPaschaCycleWeek][currentDayOfWeek]
 

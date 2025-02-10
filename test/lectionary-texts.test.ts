@@ -1,6 +1,6 @@
 import {getLectionaryTexts} from "@/lectionary/lectionary-logic"
 import assert from "assert"
-import {dateSpecificItems, nativityCycle, sundayOfZachary, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
+import {dateSpecificItems, nativityCycle, paschaCycle, sundayOfZachary, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
 
 describe("Lectionary", () => {
     it("should get nativity texts", () => {
@@ -116,5 +116,15 @@ describe("Lectionary", () => {
         assert.ok(res)
         assert.ok(res.dailyReadings)
         assert.deepStrictEqual(res.labelledItems, [sundayOfZachary])
+    })
+
+    it("should get first text of pascha cycle", () => {
+        const res = getLectionaryTexts(2025, 2, 9)
+
+        assert.ok(res)
+        assert.ok(res.dailyReadings)
+        assert.ok(res.dailyReadings.label, paschaCycle[0][0].label)
+        assert.ok(!res.labelledItems)
+        // assert.deepStrictEqual(res.labelledItems, [paschaCycle[0][0]])
     })
 })
