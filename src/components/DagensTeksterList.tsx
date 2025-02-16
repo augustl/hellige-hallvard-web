@@ -24,7 +24,7 @@ export async function DagensTeksterListData({y, m, d}: {y: string, m: string, d:
             </div>}
 
 
-            {texts?.labelledItems?.map(it => <div key={JSON.stringify(it)}>
+            {[...(texts?.dailyReadings?.labelledItems || []), ...(texts?.labelledItems || [])].map(it => <div key={JSON.stringify(it)}>
                 <h3 className={"py-2 px-4 bg-slate-200 dark:bg-slate-600 bg-opacity-40 font-bold border-y-4 border-slate-300 dark:border-slate-600 border-double font-serif"}>{it.label}</h3>
                 <div className={"p-4"}><DagensTeksterDayItems dayItems={it}/></div>
             </div>)}

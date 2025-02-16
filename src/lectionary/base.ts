@@ -115,6 +115,7 @@ export type DailyReadings = {
     matinesTexts?: DailyReading[]
     vespersTexts?: DailyReading[]
     texts?: DailyReading[]
+    labelledItems?: ({label: string} & DailyReadings)[]
 }
 
 export const DAILY_READING_FLAGS = {
@@ -310,16 +311,59 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Lk", chunks: [{from: [15, 11], to: [15, 32]}]},
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "1Jn", chunks: [{from: [2, 18], to: [3, 10]}]},
+                {book: "Mk", chunks: [{from: [11, 1], to: [11, 11]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Jn", chunks: [{from: [3, 11], to: [3, 20]}]},
+                {book: "Mk", chunks: [{from: [14, 10], to: [14, 42]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Jn", chunks: [{from: [3, 21], to: [4, 6]}]},
+                {book: "Mk", chunks: [{from: [14, 43], to: [15, 1]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Jn", chunks: [{from: [4, 20], to: [5, 21]}]},
+                {book: "Mk", chunks: [{from: [15, 1], to: [15, 15]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Jn", chunks: [{from: [1, 1], to: [1, 13]}]},
+                {book: "Mk", chunks: [{from: [15, 22], to: [15, 25]}, {from: [15, 33], to: [15, 41]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [10, 23], to: [10, 28]}]},
+                {book: "Lk", chunks: [{from: [21, 8], to: [21, 9]}, {from: [21, 25], to: [21, 27]}, {from: [21, 33], to: [21, 36]}]},
+            ],
+            labelledItems: [
+                {
+                    label: "Minne om de omkomne",
+                    texts: [
+                        {book: "1Th", chunks: [{from: [4, 13], to: [4, 17]}]},
+                        {book: "Jn", chunks: [{from: [5, 24], to: [5, 30]}]},
+                    ]
+                }
+            ]
+        }
     ],
     [
         {
-            label: "Domssøndag"
+            label: "Domssøndag",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [8, 8], to: [9, 2]}]},
+                {book: "Mt", chunks: [{from: [25, 31], to: [25, 46]}]},
+            ]
         },
         null,
         null,
