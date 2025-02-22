@@ -15,7 +15,7 @@ async function WpPostList() {
             const [_, y, m, d] = it.date.match(/^(\d\d\d\d)\-(\d\d)\-(\d\d)/)
 
             return <React.Fragment key={it.id}>
-                <div>{d}.{m}{y === now.getFullYear().toString() ? `` : y}</div>
+                <div>{d}.{m}{y === now.getFullYear().toString() ? `` : `.${y}`}</div>
                 <div><Link href={`/nyheter/${y}/${m}/${it.slug}`} className="font-bold hyphens-auto w-full" dangerouslySetInnerHTML={{__html: it.title.rendered}}></Link></div>
             </React.Fragment>
         })}
