@@ -348,7 +348,7 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ],
             labelledItems: [
                 {
-                    label: "Minne om de omkomne",
+                    label: "Lødagen for de hensovnede",
                     texts: [
                         {book: "1Th", chunks: [{from: [4, 13], to: [4, 17]}]},
                         {book: "Jn", chunks: [{from: [5, 24], to: [5, 30]}]},
