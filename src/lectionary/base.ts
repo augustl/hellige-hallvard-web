@@ -365,16 +365,72 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Mt", chunks: [{from: [25, 31], to: [25, 46]}]},
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "3Jn", chunks: [{from: [1, 1], to: [1, 15]}]},
+                {book: "Lk", chunks: [{from: [19, 29], to: [19, 40]}, {from: [22, 7], to: [22, 39]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Jude", chunks: [{from: [1, 1], to: [1, 10]}]},
+                {book: "Lk", chunks: [{from: [22, 39], to: [22, 42]}, {from: [22, 45], to: [23, 1]}]},
+            ]
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Joel", chunks: [{from: [2, 12], to: [2, 26]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Joel", chunks: [{from: [3, 19], to: [3, 26]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            texts: [
+                {book: "Jude", chunks: [{from: [1, 11], to: [1, 25]}]},
+                {book: "Lk", chunks: [{from: [23, 1], to: [23, 34]}, {from: [23, 44], to: [23, 56]}]},
+            ]
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Zech", chunks: [{from: [8, 7], to: [8, 17]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Zech", chunks: [{from: [8, 19], to: [8, 23]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [14, 19], to: [14, 26]}]},
+                {book: "Mt", chunks: [{from: [6, 1], to: [6, 13]}]}
+            ]
+        }
     ],
     [
         {
-            label: "Adams utdrivelse av Paradiset"
+            label: "Adams utdrivelse av Paradiset",
+            liturgyTexts: [
+                {book: "Rom", chunks: [{from: [13, 11], to: [14, 4]}]},
+                {book: "Mt", chunks: [{from: [6, 14], to: [6, 21]}]},
+            ]
         },
         null,
         null,
