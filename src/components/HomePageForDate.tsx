@@ -35,7 +35,7 @@ export default async function HomePageForDate({date}: {date: moment.Moment}) {
         <div className="hh-content-blocks">
             <div className="alignwide">
                 <div className="mb-8 gap-8 flex flex-col md:flex-row-reverse md:justify-end">
-                    {/* <div className="border border-yellow-600 border-double border-4 inline-block relative">
+                    <div className="border border-yellow-600 border-double border-4 inline-block relative">
                         <h2 className="px-4 py-2 bg-yellow-100 dark:bg-yellow-900 bg-opacity-40 text-xl font-bold font-serif">
                         <span className="whitespace-nowrap">𐡷 Hl.</span> Efraim Syrerens <span className="whitespace-nowrap">bønn 𐡸</span>
                         </h2>
@@ -60,7 +60,7 @@ export default async function HomePageForDate({date}: {date: moment.Moment}) {
                             </p>
                         </div>
 
-                    </div> */}
+                    </div>
                     <DagenIDag date={date} />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
