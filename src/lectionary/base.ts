@@ -504,12 +504,39 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
 
             ]
         },
-        null,
-        null
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [3, 1], to: [3, 14]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [2, 20], to: [3, 20]}]},
+                        {book: "Prov", chunks: [{from: [3, 19], to: [3, 34]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            texts: [
+                {book: "Heb", chunks: [{from: [1, 1], to: [1, 12]}]},
+                {book: "Mk", chunks: [{from: [2, 3], to: [3, 5]}]}
+            ]
+        }
+
     ],
     [
         {
-            label: "1. søndag i den store fasten og Ortodoksiens søndag"
+            label: "1. søndag i den store fasten og Ortodoksiens søndag",
+            liturgyTexts: [
+                {book: "Heb", chunks: [{from: [11, 24], to: [11, 26]}, {from: [11, 32], to: [12, 2]}]},
+                {book: "Jn", chunks: [{from: [1, 43], to: [1, 51]}]},
+            ]
         },
         null,
         null,
