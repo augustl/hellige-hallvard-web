@@ -674,15 +674,106 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
 
         },
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [9, 8], to: [10, 4]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [7, 1], to: [7, 5]}]},
+                        {book: "Prov", chunks: [{from: [8, 32], to: [9, 11]}]},
+                    ]
+                }
+
+            ]
+
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [10, 12], to: [10, 20]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [7, 6], to: [7, 9]}]},
+                        {book: "Prov", chunks: [{from: [9, 12], to: [9, 18]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [11, 10], to: [12, 2]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [7, 11], to: [8, 3]}]},
+                        {book: "Prov", chunks: [{from: [10, 1], to: [10, 22]}]},
+                    ]
+                }
+
+            ]
+
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [13, 2], to: [13, 13]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [8, 4], to: [8, 21]}]},
+                        {book: "Prov", chunks: [{from: [10, 31], to: [11, 12]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            texts: [
+                {book: "Heb", chunks: [{from: [10, 32], to: [10, 38]}]},
+                {book: "Mk", chunks: [{from: [2, 14], to: [2, 17]}]},
+
+            ],
+            labelledItems: [
+                {
+                    label: "Minne om de hensovnede",
+                    texts: [
+                        {book: "1Th", chunks: [{from: [4, 13], to: [4, 17]}]},
+                        {book: "Jn", chunks: [{from: [5, 24], to: [5, 30]}]},
+                    ]
+                }
+            ]
+        }
+
     ],
     [
         {
-            label: "3. søndag i den store fasten og Det Hellige Kors"
+            label: "3. søndag i den store fasten og Det Hellige Kors",
+            liturgyTexts: [
+                {book: "Heb", chunks: [{from: [4, 14], to: [5, 6]}]},
+                {book: "Mk", chunks: [{from: [8, 34], to: [9, 1]}]},
+            ]
+
         },
         null,
         null,
