@@ -44,6 +44,12 @@ export const dateSpecificItems: {[key: string]: {includesDailyReadings?: boolean
         items: [
             {
                 label: "Maria Bebudelse",
+                liturgyTexts: [
+                    {book: "Ex", chunks: [{from: [3, 1], to: [3, 8]}]},
+                    {book: "Heb", chunks: [{from: [2, 11], to: [2, 18]}]},
+                    {book: "Prov", chunks: [{from: [8, 22], to: [8, 30]}]},
+                    {book: "Lk", chunks: [{from: [1, 24], to: [1, 38]}]}
+                ]
             }
         ]
     },
@@ -775,8 +781,43 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
 
         },
-        null,
-        null,
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [14, 24], to: [14, 32]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [8, 21], to: [9, 7]}]},
+                        {book: "Prov", chunks: [{from: [11, 19], to: [12, 6]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [25, 1], to: [25, 9]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [9, 8], to: [8, 17]}]},
+                        {book: "Prov", chunks: [{from: [12, 8], to: [12, 22]}]},
+                    ]
+                }
+
+            ]
+
+        },
         null,
         null,
         null,
