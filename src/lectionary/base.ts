@@ -893,14 +893,14 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
     ],
     [
         {
-            label: "4. søndag i den store fasten og Joh. Klimakos",
+            label: "4. søndag i den store fasten og hl. Johannes Klimakus",
             liturgyTexts: [
                 {book: "Heb", chunks: [{from: [6, 13], to: [6, 20]}]},
                 {book: "Mk", chunks: [{from: [9, 17], to: [9, 31]}]},
             ],
             labelledItems: [
                 {
-                    label: "Hl. Joh. Klimakos",
+                    label: "Hl. Johannes Klimakus",
                     texts: [
                         {book: "Eph", chunks: [{from: [5, 9], to: [5, 19]}]},
                         {book: "Mt", chunks: [{from: [4, 25], to: [5, 12]}]},
