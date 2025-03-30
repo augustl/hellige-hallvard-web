@@ -909,11 +909,98 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
 
         },
-        null,
-        null,
-        null,
-        null,
-        null,
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [37, 33], to: [38, 6]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [13, 12], to: [13, 18]}]},
+                        {book: "Prov", chunks: [{from: [14, 27], to: [15, 4]}]},
+                    ]
+                }
+
+            ]
+
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [40, 18], to: [40, 31]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [15, 1], to: [15, 15]}]},
+                        {book: "Prov", chunks: [{from: [15, 7], to: [15, 19]}]},
+                    ]
+                }
+
+            ]
+
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [41, 4], to: [41, 14]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [17, 1], to: [17, 9]}]},
+                        {book: "Prov", chunks: [{from: [15, 20], to: [16, 9]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [42, 5], to: [42, 16]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [18, 20], to: [18, 33]}]},
+                        {book: "Prov", chunks: [{from: [16, 17], to: [17, 17]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [45, 11], to: [45, 17]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [22, 1], to: [22, 18]}]},
+                        {book: "Prov", chunks: [{from: [17, 17], to: [18, 5]}]},
+                    ]
+                }
+
+            ]
+        },
         null
     ],
     [
