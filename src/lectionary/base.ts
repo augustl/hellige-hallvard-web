@@ -354,7 +354,7 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ],
             labelledItems: [
                 {
-                    label: "Lødagen for de hensovnede",
+                    label: "Lørdagen for de hensovnede",
                     texts: [
                         {book: "1Th", chunks: [{from: [4, 13], to: [4, 17]}]},
                         {book: "Jn", chunks: [{from: [5, 24], to: [5, 30]}]},
@@ -1001,11 +1001,40 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
 
             ]
         },
-        null
+        {
+            texts: [
+                {book: "Heb", chunks: [{from: [9, 24], to: [9, 28]}]},
+                {book: "Mk", chunks: [{from: [8, 27], to: [8, 31]}]},
+            ],
+            labelledItems: [
+                {
+                    label: "Av Gudfødersken",
+                    texts: [
+                        {book: "Heb", chunks: [{from: [9, 1], to: [9, 7]}]},
+                        {book: "Lk", chunks: [{from: [10, 38], to: [10, 42]}, {from: [11, 27], to: [11, 28]}]},
+                    ]
+                }
+            ]
+        }
+
     ],
     [
         {
-            label: "5. søndag i den store fasten og Maria av Egypt"
+            label: "5. søndag i den store fasten og Maria av Egypt",
+            texts: [
+                {book: "Heb", chunks: [{from: [9, 11], to: [9, 14]}]},
+                {book: "Mk", chunks: [{from: [10, 32], to: [10, 45]}]},
+            ],
+            labelledItems: [
+                {
+                    label: "Maria av Egypt",
+                    texts: [
+                        {book: "Gal", chunks: [{from: [3, 23], to: [3, 29]}]},
+                        {book: "Lk", chunks: [{from: [7, 36], to: [7, 50]},]},
+                    ]
+                }
+            ]
+
         },
         null,
         null,
