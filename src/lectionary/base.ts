@@ -1074,7 +1074,23 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
 
         },
-        null,
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [58, 1], to: [58, 11]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Prov", chunks: [{from: [21, 23], to: [22, 4]}]},
+                    ]
+                }
+
+            ]
+        },
         null,
         null,
         {
