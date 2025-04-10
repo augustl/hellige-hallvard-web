@@ -1110,14 +1110,40 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
 
         },
-        null,
         {
-            label: "Lasarus oppvekkelse"
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [66, 10], to: [66, 24]}]},
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [49, 33], to: [50, 26]}]},
+                        {book: "Prov", chunks: [{from: [31, 8], to: [31, 31]}]},
+                    ]
+                }
+
+            ]
+        },
+        {
+            label: "Lasarus oppvekkelse",
+            texts: [
+                {book: "Heb", chunks: [{from: [12, 28], to: [13, 8]}]},
+                {book: "Jn", chunks: [{from: [11, 1], to: [11, 45]}]},
+            ]
         }
     ],
     [
         {
-            label: "Palmesøndag"
+            label: "Palmesøndag",
+            texts: [
+                {book: "Php", chunks: [{from: [4, 4], to: [4, 9]}]},
+                {book: "Jn", chunks: [{from: [12, 1], to: [12, 8]}]},
+            ]
+
         },
         {
             label: "Hellige mandag"
