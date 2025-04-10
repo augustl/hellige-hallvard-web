@@ -1091,7 +1091,25 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
 
             ]
         },
-        null,
+        {
+            labelledItems: [
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Is", chunks: [{from: [65, 8], to: [65, 16]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [46, 1], to: [46, 7]}]},
+                        {book: "Prov", chunks: [{from: [23, 15], to: [24, 5]}]},
+                    ]
+                }
+
+            ]
+
+        },
         null,
         {
             label: "Lasarus oppvekkelse"
