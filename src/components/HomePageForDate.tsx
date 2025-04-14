@@ -34,7 +34,7 @@ export default async function HomePageForDate({date}: {date: moment.Moment}) {
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
-                <div className="mb-8 gap-8 flex flex-col md:flex-row-reverse md:justify-end">
+                <div className="mb-8 gap-8 flex flex-col md:flex-row-reverse md:justify-end md:items-start">
                     <div className="border border-yellow-600 border-double border-4 inline-block relative">
                         <h2 className="px-4 py-2 bg-yellow-100 dark:bg-yellow-900 bg-opacity-40 text-xl font-bold font-serif">
                         <span className="whitespace-nowrap">𐡷 Hl.</span> Efraim Syrerens <span className="whitespace-nowrap">bønn 𐡸</span>
