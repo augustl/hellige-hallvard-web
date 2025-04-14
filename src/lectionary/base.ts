@@ -1146,7 +1146,36 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
 
         },
         {
-            label: "Hellige mandag"
+            label: "Hellige mandag",
+            labelledItems: [
+                {
+                    label: "Matutin",
+                    texts: [
+                        {book: "Mt", chunks: [{from: [21, 18], to: [21, 43]}]},
+                    ]
+                },
+                {
+                    label: "6. time",
+                    texts: [
+                        {book: "Ezek", chunks: [{from: [1, 1], to: [1, 20]}]}
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Ex", chunks: [{from: [1, 1], to: [1, 20]}]},
+                        {book: "Job", chunks: [{from: [1, 1], to: [1, 12]}]}
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [14, 3], to: [14, 35]}]}
+                    ]
+                }
+
+            ]
+
         },
         {
             label: "Hellige tirsdag"
