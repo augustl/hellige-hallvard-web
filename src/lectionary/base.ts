@@ -1242,7 +1242,40 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
 
         },
         {
-            label: "Skjærtorsdag"
+            label: "Skjærtorsdag",
+            labelledItems: [
+                {
+                    label: "Matutin",
+                    texts: [
+                        {book: "Lk", chunks: [{from: [22, 1], to: [22, 39]}]},
+                    ]
+                },
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Ex", chunks: [{from: [19, 10], to: [19, 19]}]},
+                        {book: "Is", chunks: [{from: [50, 4], to: [50, 11]}]}
+                    ]
+                },
+                {
+                    label: "Forutinnviede gavers liturgi",
+                    texts: [
+                        {book: "1Co", chunks: [{from: [11, 23], to: [11, 32]}]}
+                    ]
+                },
+                {
+                    label: "Evangelietekster",
+                    texts: [
+                        {book: "Mt", chunks: [{from: [26, 1], to: [26, 20]}]},
+                        {book: "Jn", chunks: [{from: [13, 3], to: [13, 17]}]},
+                        {book: "Mt", chunks: [{from: [26, 21], to: [26, 39]}]},
+                        {book: "Lk", chunks: [{from: [22, 43], to: [22, 45]}]},
+                        {book: "Mt", chunks: [{from: [26, 40], to: [27, 2]}]},
+                    ]
+                }
+
+            ]
+
         },
         {
             label: "Langfredag"
