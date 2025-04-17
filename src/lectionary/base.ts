@@ -1330,7 +1330,7 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                         {book: "Ex", chunks: [{from: [13, 20], to: [15, 19]}]},
                         {book: "Rev", chunks: [{from: [3, 8], to: [3, 15]}]},
                         {book: "1Kgs", chunks: [{from: [17, 8], to: [17, 24]}]},
-                        {book: "Is", chunks: [{from: [61, 1], to: [61, 9]}]},
+                        {book: "Is", chunks: [{from: [61,10], to: [62, 5]}]},
                         {book: "Gen", chunks: [{from: [22, 1], to: [22, 18]}]},
                         {book: "Is", chunks: [{from: [61, 1], to: [61, 9]}]},
                         {book: "2Kgs", chunks: [{from: [4,8], to: [4, 37]}]},
@@ -1351,7 +1351,19 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
     ],
     [
         {
-            label: "Kristi oppstandelse"
+            label: "Kristi oppstandelse",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [1, 1], to: [1, 8]}]},
+                {book: "Jn", chunks: [{from: [1, 1], to: [1, 17]}]}
+            ],
+            labelledItems: [
+                {
+                    label: "Påskevesper",
+                    texts: [
+                        {book: "Jn", chunks: [{from: [20, 19], to: [20, 25]}]}
+                    ]
+                }
+            ]
         },
         {
             label: "Lys mandag"
