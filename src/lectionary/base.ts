@@ -1272,6 +1272,23 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                         {book: "Lk", chunks: [{from: [22, 43], to: [22, 45]}]},
                         {book: "Mt", chunks: [{from: [26, 40], to: [27, 2]}]},
                     ]
+                },
+                {
+                    label: "12 lidelsesevangelier",
+                    texts: [
+                        {book: "Jn", chunks: [{from: [13, 31], to: [14, 1]}]},
+                        {book: "Jn", chunks: [{from: [18, 1], to: [18, 28]}]},
+                        {book: "Mt", chunks: [{from: [26, 57], to: [26, 75]}]},
+                        {book: "Jn", chunks: [{from: [18, 28], to: [19, 16]}]},
+                        {book: "Mt", chunks: [{from: [27, 3], to: [27, 32]}]},
+                        {book: "Mk", chunks: [{from: [15, 16], to: [15, 32]}]},
+                        {book: "Mt", chunks: [{from: [27, 33], to: [27, 54]}]},
+                        {book: "Lk", chunks: [{from: [23, 32], to: [23, 49]}]},
+                        {book: "Jn", chunks: [{from: [19, 25], to: [19, 37]}]},
+                        {book: "Mk", chunks: [{from: [15, 42], to: [15, 47]}]},
+                        {book: "Jn", chunks: [{from: [19, 38], to: [19, 42]}]},
+                        {book: "Mt", chunks: [{from: [27, 62], to: [27, 66]}]},
+                    ]
                 }
 
             ]
