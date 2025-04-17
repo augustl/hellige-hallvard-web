@@ -1306,7 +1306,13 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                     ]
                 },
                 {
-                    label: "Matutin"
+                    label: "Matutin",
+                    texts: [
+                        {book: "Ezek", chunks: [{from: [37, 1], to: [37, 14]}]},
+                        {book: "1Co", chunks: [{from: [5, 6], to: [5, 8]}]},
+                        {book: "Gal", chunks: [{from: [3, 13], to: [3, 14]}]},
+                        {book: "Mt", chunks: [{from: [27, 62], to: [27, 66]}]}
+                    ]
                 }
             ]
         },
