@@ -1295,10 +1295,52 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
 
         },
         {
-            label: "Langfredag"
+            label: "Store fredag",
+            labelledItems: [
+                {
+                    label: "Vesper Store fredag",
+                    texts: [
+                        {book: "Ex", chunks: [{from: [33, 11], to: [33, 23]}]},
+                        {book: "Job", chunks: [{from: [42, 12], to: [42, 17]}]},
+                        {book: "Is", chunks: [{from: [52, 13], to: [54, 1]}]},
+                    ]
+                },
+                {
+                    label: "Matutin"
+                }
+            ]
         },
         {
-            label: "Hellige lørdag"
+            label: "Hellige lørdag",
+            labelledItems: [
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Gen", chunks: [{from: [1, 1], to: [1, 13]}]},
+                        {book: "Is", chunks: [{from: [60, 1], to: [60, 16]}]},
+                        {book: "Ex", chunks: [{from: [12, 1], to: [12, 11]}]},
+                        {book: "1Jn", chunks: [{from: [1, 1], to: [4, 11]}]},
+                        {book: "Jam", chunks: [{from: [5, 10], to: [5, 15]}]},
+                        {book: "Ex", chunks: [{from: [13, 20], to: [15, 19]}]},
+                        {book: "Rev", chunks: [{from: [3, 8], to: [3, 15]}]},
+                        {book: "1Kgs", chunks: [{from: [17, 8], to: [17, 24]}]},
+                        {book: "Is", chunks: [{from: [61, 1], to: [61, 9]}]},
+                        {book: "Gen", chunks: [{from: [22, 1], to: [22, 18]}]},
+                        {book: "Is", chunks: [{from: [61, 1], to: [61, 9]}]},
+                        {book: "2Kgs", chunks: [{from: [4,8], to: [4, 37]}]},
+                        {book: "Is", chunks: [{from: [63, 11], to: [64, 4]}]},
+                        {book: "Jer", chunks: [{from: [31, 31], to: [31, 34]}]},
+                        {book: "Dan", chunks: [{from: [3, 1], to: [3, 88]}]},
+                    ]
+                },
+                {
+                    label: "Liturgi",
+                    texts: [
+                        {book: "Rom", chunks: [{from: [6, 3], to: [6, 11]}]},
+                        {book: "Mt", chunks: [{from: [28, 1], to: [28, 20]}]},
+                    ]
+                }
+            ]
         }
     ],
     [
