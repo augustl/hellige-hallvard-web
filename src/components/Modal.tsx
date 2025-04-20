@@ -42,11 +42,18 @@ const Modal: React.FC<{onClose: () => void, size?: ModalSize, children: React.Re
 
     return <dialog
         ref={dialogRef}
-        className="backdrop:bg-gray-900/90 w-[calc(100dvw-20px)] m-auto p-0"
+        className="backdrop:bg-gray-900/90 "
+        style={{maxInlineSize: "100vw", maxBlockSize: "100vh"}}
     >
-        <div className={`h-full ${getModalWidth(size)} mx-auto flex flex-col hh-body`}>
-            {childEl}
-            <div><button className="p-2" onClick={onClose}>Lukk</button></div>
+        <div className={`flex flex-col items-center`} style={{height: "calc(100vh - 80px)", width: "100vw", marginTop: 40, overflow: "hidden"}}>
+            <div className={`${getModalWidth(size)} hh-body`} style={{height: "100%", display: "flex", flexDirection: "column"}}>
+                <div style={{flex: 1, overflowY: "auto"}}>
+                    {childEl}
+                </div>
+                <div className={"p-4"}>
+                    <button className="p-2" onClick={onClose}>Lukk</button>
+                </div>
+            </div>
         </div>
     </dialog>
 }
