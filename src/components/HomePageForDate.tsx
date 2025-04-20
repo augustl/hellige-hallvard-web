@@ -4,6 +4,8 @@ import UpcomingEventsListSSR from "./UpcomingEventsListSSR"
 import DagensHoytid from "./DagensHoytid"
 import React from "react"
 import moment from "moment"
+import {lectionaryYearParams} from "@/lectionary/base"
+import {DateTime} from "luxon"
 
 async function WpPostList() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/posts?context=embed&per_page=6`, {next: {tags: ["wp-home-page", "wp-posts"]}})
@@ -31,11 +33,17 @@ async function WpHomePage() {
 }
 
 export default async function HomePageForDate({date}: {date: moment.Moment}) {
+    const thisYearsPaschaCycleStartData = lectionaryYearParams[date.year()].paschaCycleStart
+    const thisYearsPaschaCycleStart = DateTime.fromJSDate(new Date(date.year(), thisYearsPaschaCycleStartData[0] - 1, thisYearsPaschaCycleStartData[1]))
+    const currentDaysSinceStartOfPaschalCycle = DateTime.fromJSDate(date.toDate()).diff(thisYearsPaschaCycleStart, "days").days
+
+    const isInGreatLent = currentDaysSinceStartOfPaschalCycle >= 0 && currentDaysSinceStartOfPaschalCycle <= 69
+
     return <div className="">
         <div className="hh-content-blocks">
             <div className="alignwide">
                 <div className="mb-8 gap-8 flex flex-col md:flex-row-reverse md:justify-end md:items-start">
-                    <div className="border-4 border-yellow-600 border-double inline-block relative">
+                    {isInGreatLent && <div className="border-4 border-yellow-600 border-double inline-block relative">
                         <h2 className="px-4 py-2 bg-yellow-100 dark:bg-yellow-900 bg-opacity-40 text-xl font-bold font-serif">
                         <span className="whitespace-nowrap">𐡷 Hl.</span> Efraim Syrerens <span className="whitespace-nowrap">bønn 𐡸</span>
                         </h2>
@@ -60,7 +68,7 @@ export default async function HomePageForDate({date}: {date: moment.Moment}) {
                             </p>
                         </div>
 
-                    </div>
+                    </div>}
                     <DagenIDag date={date} />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
