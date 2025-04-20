@@ -1352,7 +1352,7 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
     [
         {
             label: "Kristi oppstandelse",
-            liturgyTexts: [
+            texts: [
                 {book: "Acts", chunks: [{from: [1, 1], to: [1, 8]}]},
                 {book: "Jn", chunks: [{from: [1, 1], to: [1, 17]}]}
             ],
@@ -1366,27 +1366,68 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
             ]
         },
         {
-            label: "Lys mandag"
+            label: "Lys mandag",
+            texts: [
+                {book: "Acts", chunks: [{from: [1, 12], to: [1, 17]}, {from: [1, 21], to: [1, 26]}]},
+                {book: "Jn", chunks: [{from: [1, 18], to: [1, 28]}]}
+            ]
         },
         {
-            label: "Lys tirsdag"
+            label: "Lys tirsdag",
+            texts: [
+                {book: "Acts", chunks: [{from: [2, 14], to: [2, 21]}]},
+                {book: "Lk", chunks: [{from: [24, 12], to: [24, 35]}]}
+            ]
         },
         {
-            label: "Lys onsdag"
+            label: "Lys onsdag",
+            texts: [
+                {book: "Acts", chunks: [{from: [2, 22], to: [2, 36]}]},
+                {book: "Jn", chunks: [{from: [1, 35], to: [1, 51]}]}
+            ],
+            labelledItems: [
+                {
+                    label: "Vesper",
+                    texts: [
+                        {book: "Is", chunks: [{from: [43, 9], to: [43, 14]}]},
+                        {book: "1Kgs", chunks: [{from: [3, 1], to: [3, 9]}]},
+                        {book: "1Kgs", chunks: [{from: [4, 7], to: [4, 15]}]},
+                    ]
+                }
+            ]
+
         },
         {
-            label: "Lys torsdag"
+            label: "Lys torsdag",
+            texts: [
+                {book: "Acts", chunks: [{from: [2, 38], to: [2, 43]}]},
+                {book: "Jn", chunks: [{from: [3, 1], to: [3, 15]}]}
+            ]
         },
         {
-            label: "Lys fredag"
+            label: "Lys fredag",
+            texts: [
+                {book: "Acts", chunks: [{from: [3, 1], to: [3, 8]}]},
+                {book: "Jn", chunks: [{from: [2, 12], to: [2, 22]}]}
+            ]
+
         },
         {
-            label: "Lys lørdag"
+            label: "Lys lørdag",
+            texts: [
+                {book: "Acts", chunks: [{from: [3, 11], to: [3, 16]}]},
+                {book: "Jn", chunks: [{from: [3, 22], to: [3, 33]}]}
+            ]
         },
     ],
     [
         {
             label: "2. søndag etter Påske",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [5, 12], to: [5, 20]}]},
+                {book: "Jn", chunks: [{from: [20, 19], to: [20, 31]}]}
+            ]
+
         },
         null,
         null,
