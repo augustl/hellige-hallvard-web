@@ -1445,8 +1445,8 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
         },
         {
             texts: [
-                {book: "Acts", chunks: [{from: [12, 1], to: [12, 11]}]},
-                {book: "Lk", chunks: [{from: [9, 1], to: [9, 6]}]}
+                {book: "Acts", chunks: [{from: [4, 13], to: [4, 22]}]},
+                {book: "Jn", chunks: [{from: [5, 17], to: [5, 24]}]}
             ]
 
         },
@@ -1459,18 +1459,35 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
         },
         {
             texts: [
-                {book: "Heb", chunks: [{from: [13, 7], to: [13, 16]}]},
-                {book: "Mt", chunks: [{from: [5, 14], to: [5, 19]}]}
+                {book: "Acts", chunks: [{from: [5, 1], to: [5, 11]}]},
+                {book: "Jn", chunks: [{from: [5, 30], to: [6, 2]}]}
             ]
 
         },
-        null
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [5, 21], to: [5, 33]}]},
+                {book: "Jn", chunks: [{from: [6, 14], to: [6, 27]}]}
+            ]
+
+        }
     ],
     [
         {
             label: "3. søndag etter Påske",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [6, 1], to: [6, 7]}]},
+                {book: "Mk", chunks: [{from: [15, 43], to: [16, 6]}]}
+            ]
+
         },
-        null,
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [6, 8], to: [7, 5]}, {from: [7, 47], to: [7, 60]}]},
+                {book: "Jn", chunks: [{from: [4, 46], to: [4, 54]}]}
+            ]
+        }
+        ,
         null,
         null,
         null,
