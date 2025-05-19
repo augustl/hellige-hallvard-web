@@ -1571,7 +1571,12 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Jn", chunks: [{from: [4, 5], to: [4, 42]}]}
             ]
         },
-        null,
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [12, 12], to: [12, 17]}]},
+                {book: "Jn", chunks: [{from: [8, 42], to: [8, 51]}]}
+            ]
+        },
         null,
         null,
         null,
