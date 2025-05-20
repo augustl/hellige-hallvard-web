@@ -1583,27 +1583,84 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Jn", chunks: [{from: [8, 51], to: [8, 59]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [13, 13], to: [13, 24]}]},
+                {book: "Jn", chunks: [{from: [6, 5], to: [6, 14]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [14, 20], to: [14, 27]}]},
+                {book: "Jn", chunks: [{from: [9, 39], to: [10, 9]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [15, 5], to: [15, 34]}]},
+                {book: "Jn", chunks: [{from: [10, 17], to: [10, 28]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [15, 35], to: [15, 41]}]},
+                {book: "Jn", chunks: [{from: [10, 27], to: [10, 38]}]}
+            ]
+        }
     ],
     [
         {
             label: "6. søndag etter Påske",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [16, 16], to: [16, 34]}]},
+                {book: "Jn", chunks: [{from: [9, 1], to: [9, 38]}]}
+            ]
         },
-        null,
-        null,
-        null,
         {
-            label: "Kristi himmelfartsdag"
+            texts: [
+                {book: "Acts", chunks: [{from: [17, 1], to: [17, 15]}]},
+                {book: "Jn", chunks: [{from: [11, 47], to: [11, 57]}]}
+            ]
         },
-        null,
-        null
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [17, 19], to: [17, 28]}]},
+                {book: "Jn", chunks: [{from: [12, 19], to: [12, 36]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [18, 22], to: [18, 28]}]},
+                {book: "Jn", chunks: [{from: [12, 36], to: [12, 47]}]}
+            ]
+        },
+        {
+            label: "Kristi himmelfartsdag",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [1, 1], to: [1, 12]}]},
+                {book: "Lk", chunks: [{from: [24, 36], to: [24, 53]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [19, 1], to: [19, 8]}]},
+                {book: "Jn", chunks: [{from: [14, 1], to: [14, 11]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [20, 7], to: [20, 12]}]},
+                {book: "Jn", chunks: [{from: [14, 10], to: [14, 21]}]}
+            ]
+        }
     ],
     [
         {
             label: "7. søndag etter Påske",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [20, 16], to: [20, 18]}, {from: [20, 28], to: [20, 36]}]},
+                {book: "Jn", chunks: [{from: [17, 1], to: [17, 13]}]}
+            ]
         },
         null,
         null,
