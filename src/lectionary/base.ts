@@ -1662,16 +1662,51 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Jn", chunks: [{from: [17, 1], to: [17, 13]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [21, 8], to: [21, 14]}]},
+                {book: "Jn", chunks: [{from: [14, 27], to: [15, 7]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [21, 26], to: [21, 32]}]},
+                {book: "Jn", chunks: [{from: [16, 2], to: [16, 13]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [23, 1], to: [23, 11]}]},
+                {book: "Jn", chunks: [{from: [16, 15], to: [16, 23]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [25, 13], to: [25, 19]}]},
+                {book: "Jn", chunks: [{from: [16, 23], to: [16, 33]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [27, 1], to: [27, 44]}]},
+                {book: "Jn", chunks: [{from: [17, 18], to: [17, 26]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Acts", chunks: [{from: [28, 1], to: [28, 31]}]},
+                {book: "Jn", chunks: [{from: [21, 15], to: [21, 25]}]}
+            ]
+        }
     ],
     [
         {
             label: "Pinse",
+            liturgyTexts: [
+                {book: "Acts", chunks: [{from: [2, 1], to: [2, 11]}]},
+                {book: "Jn", chunks: [{from: [7, 37], to: [7, 52]}, {from: [8, 12], to: [8, 12]}]}
+            ]
+
         },
         null,
         null,
