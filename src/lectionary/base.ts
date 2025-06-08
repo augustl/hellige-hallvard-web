@@ -1706,20 +1706,52 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Acts", chunks: [{from: [2, 1], to: [2, 11]}]},
                 {book: "Jn", chunks: [{from: [7, 37], to: [7, 52]}, {from: [8, 12], to: [8, 12]}]}
             ]
-
         },
-        null,
-        null,
-        null,
-        null,
-        null,
         {
-            label: "Avslutning av pinsefesten"
+            texts: [
+                {book: "Eph", chunks: [{from: [5, 9], to: [5, 19]}]},
+                {book: "Mt", chunks: [{from: [18, 10], to: [18, 20]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [1, 1], to: [1, 7]}, {from: [1, 13], to: [1, 17]}]},
+                {book: "Mt", chunks: [{from: [4, 25], to: [5, 13]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [1, 18], to: [1, 27]}]},
+                {book: "Mt", chunks: [{from: [5, 20], to: [5, 26]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [1, 28], to: [2, 9]}]},
+                {book: "Mt", chunks: [{from: [5, 27], to: [5, 32]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [2, 14], to: [2, 29]}]},
+                {book: "Mt", chunks: [{from: [5, 33], to: [5, 41]}]}
+            ]
+        },
+        {
+            label: "Avslutning av pinsefesten",
+            texts: [
+                {book: "Rom", chunks: [{from: [1, 7], to: [1, 12]}]},
+                {book: "Mt", chunks: [{from: [5, 42], to: [5, 48]}]}
+            ]
         }
     ],
     [
         {
             label: "1. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Heb", chunks: [{from: [11, 33], to: [12, 2]}]},
+                {book: "Mt", chunks: [{from: [10, 32], to: [10, 33]}, {from: [10, 37], to: [10, 38]}, {from: [19, 27], to: [19, 30]}]}
+            ]
         },
         null,
         null,
