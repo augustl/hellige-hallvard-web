@@ -33,9 +33,14 @@ export const dateSpecificItems: {[key: string]: {includesDailyReadings?: boolean
         ]
     },
     "6-29": {
+        includesDailyReadings: true,
         items: [
             {
-                label: "Apostelfest"
+                label: "Apostelfest",
+                liturgyTexts: [
+                    {book: "2Co", chunks: [{from: [11, 21], to: [12, 9]}]},
+                    {book: "Mt", chunks: [{from: [16, 13], to: [16, 19]}]}
+                ]
             }
         ]
     },
@@ -1771,24 +1776,77 @@ export const paschaCycle: [PaschaCycleEntry & {label: string}, PaschaCycleEntry,
                 {book: "Mt", chunks: [{from: [7, 21], to: [7, 23]}]}
             ]
         },
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [5, 10], to: [5, 16]}]},
+                {book: "Mt", chunks: [{from: [8, 23], to: [8, 27]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [5, 17], to: [6, 2]}]},
+                {book: "Mt", chunks: [{from: [9, 14], to: [9, 17]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [3, 19], to: [3, 26]}]},
+                {book: "Mt", chunks: [{from: [7, 1], to: [7, 8]}]}
+            ]
+        }
     ],
     [
         {
             label: "2. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Rom", chunks: [{from: [2, 10], to: [2, 16]}]},
+                {book: "Mt", chunks: [{from: [4, 18], to: [4, 23]}]}
+            ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [7, 1], to: [7, 13]}]},
+                {book: "Mt", chunks: [{from: [9, 36], to: [10, 8]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [7, 14], to: [8, 2]}]},
+                {book: "Mt", chunks: [{from: [10, 9], to: [10, 15]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [8, 2], to: [8, 13]}]},
+                {book: "Mt", chunks: [{from: [10, 16], to: [10, 22]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [8, 22], to: [8, 27]}]},
+                {book: "Mt", chunks: [{from: [10, 23], to: [10, 31]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [9, 6], to: [9, 19]}]},
+                {book: "Mt", chunks: [{from: [10, 32], to: [10, 36]}, {from: [11, 1], to: [11, 1]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [3, 28], to: [4, 3]}]},
+                {book: "Mt", chunks: [{from: [7, 24], to: [8, 4]}]}
+            ]
+        }
     ],
     [
         {
             label: "3. søndag etter Pinse",
+            texts: [
+                {book: "Rom", chunks: [{from: [5, 1], to: [5, 10]}]},
+                {book: "Mt", chunks: [{from: [6, 22], to: [6, 33]}]}
+            ]
         },
         null,
         null,
