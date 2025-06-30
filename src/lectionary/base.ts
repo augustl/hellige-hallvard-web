@@ -1816,13 +1816,28 @@ export const paschaCycle: [
     },
     {
       texts: [
-        { book: "Rom", chunks: [{ from: [9, 36], to: [10, 8] }] },
-        { book: "Mk", chunks: [{ from: [3, 13], to: [3, 19] }] },
+        { book: "Rom", chunks: [{ from: [9, 18], to: [9, 33] }] },
+        { book: "Mt", chunks: [{ from: [11, 2], to: [11, 15] }] },
       ],
     },
-    null,
-    null,
-    null,
+    {
+      texts: [
+        { book: "Rom", chunks: [{ from: [10, 11], to: [11, 2] }] },
+        { book: "Mt", chunks: [{ from: [11, 16], to: [11, 20] }] },
+      ],
+    },
+    {
+      texts: [
+        { book: "Rom", chunks: [{ from: [11, 2], to: [11, 12] }] },
+        { book: "Mt", chunks: [{ from: [11, 20], to: [11, 26] }] },
+      ],
+    },
+    {
+      texts: [
+        { book: "Rom", chunks: [{ from: [11, 13], to: [11, 24] }] },
+        { book: "Mt", chunks: [{ from: [11, 27], to: [11, 30] }] },
+      ],
+    },
     null,
     null,
   ],
