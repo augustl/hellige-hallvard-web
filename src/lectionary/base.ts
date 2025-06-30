@@ -1838,12 +1838,26 @@ export const paschaCycle: [
         { book: "Mt", chunks: [{ from: [11, 27], to: [11, 30] }] },
       ],
     },
-    null,
-    null,
+    {
+      texts: [
+        { book: "Rom", chunks: [{ from: [11, 25], to: [11, 36] }] },
+        { book: "Mt", chunks: [{ from: [12, 1], to: [12, 8] }] },
+      ],
+    },
+    {
+      texts: [
+        { book: "Rom", chunks: [{ from: [6, 11], to: [6, 17] }] },
+        { book: "Mt", chunks: [{ from: [8, 14], to: [8, 23] }] },
+      ],
+    },
   ],
   [
     {
       label: "4. søndag etter Pinse",
+      liturgyTexts: [
+        { book: "Rom", chunks: [{ from: [6, 18], to: [6, 23] }] },
+        { book: "Lk", chunks: [{ from: [24, 1], to: [24, 12] }] },
+      ],
     },
     null,
     null,
