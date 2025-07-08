@@ -1873,7 +1873,7 @@ export const paschaCycle: [
         },
         {
             texts: [
-                {book: "Rom", chunks: [{from: [14, 9], to: [14, 8]}]},
+                {book: "Rom", chunks: [{from: [14, 9], to: [14, 18]}]},
                 {
                     book: "Mt",
                     chunks: [
