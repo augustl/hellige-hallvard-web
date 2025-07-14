@@ -1922,15 +1922,44 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [13, 10], to: [13, 23]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [1, 1], to: [1, 9]}]},
+                {book: "Mt", chunks: [{from: [13, 24], to: [13, 30]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [2, 9], to: [3, 6]}]},
+                {book: "Mt", chunks: [{from: [13, 31], to: [13, 36]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [3, 18], to: [3, 23]}]},
+                {book: "Mt", chunks: [{from: [13, 36], to: [13, 43]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [4, 5], to: [4, 8]}]},
+                {book: "Mt", chunks: [{from: [13, 44], to: [13, 54]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [9, 1], to: [9, 5]}]},
+                {book: "Mt", chunks: [{from: [9, 18], to: [9, 26]}]}
+            ]
+        }
     ],
     [
         {
-            label: "6. søndag etter Pinse"
+            label: "6. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Rom", chunks: [{from: [12, 6], to: [12, 14]}]},
+                {book: "Mt", chunks: [{from: [9, 1], to: [9, 8]}]}
+            ]
         },
         null,
         null,
