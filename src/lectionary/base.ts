@@ -1961,27 +1961,95 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [9, 1], to: [9, 8]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-    ],
-    [
         {
-            label: "7. søndag etter Pinse"
+            texts: [
+                {book: "1Co", chunks: [{from: [5, 9], to: [6, 11]}]},
+                {book: "Mt", chunks: [{from: [13, 54], to: [13, 58]}]}
+            ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [6, 20], to: [7, 12]}]},
+                {book: "Mt", chunks: [{from: [14, 1], to: [14, 13]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [7, 12], to: [7, 24]}]},
+                {book: "Mt", chunks: [{from: [14, 35], to: [15, 11]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [7, 24], to: [7, 35]}]},
+                {book: "Mt", chunks: [{from: [15, 12], to: [15, 21]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [7, 35], to: [8, 7]}]},
+                {book: "Mt", chunks: [{from: [15, 29], to: [15, 31]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [12, 1], to: [12, 3]}]},
+                {book: "Mt", chunks: [{from: [10, 37], to: [11, 1]}]}
+            ]
+        }
     ],
     [
         {
-            label: "8. søndag etter Pinse"
+            label: "7. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Rom", chunks: [{from: [15, 1], to: [15, 7]}]},
+                {book: "Mt", chunks: [{from: [9, 27], to: [9, 35]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [9, 13], to: [9, 18]}]},
+                {book: "Mt", chunks: [{from: [16, 1], to: [16, 6]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [10, 5], to: [10, 12]}]},
+                {book: "Mt", chunks: [{from: [16, 6], to: [16, 12]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [10, 12], to: [10, 22]}]},
+                {book: "Mt", chunks: [{from: [16, 20], to: [16, 24]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [10, 28], to: [11, 7]}]},
+                {book: "Mt", chunks: [{from: [16, 24], to: [16, 28]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [11, 8], to: [11, 22]}]},
+                {book: "Mt", chunks: [{from: [17, 10], to: [17, 18]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [13, 1], to: [13, 10]}]},
+                {book: "Mt", chunks: [{from: [12, 30], to: [12, 37]}]}
+            ]
+        }
+    ],
+    [
+        {
+            label: "8. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [1, 10], to: [1, 18]}]},
+                {book: "Mt", chunks: [{from: [16, 14], to: [16, 22]}]}
+            ]
         },
         null,
         null,
