@@ -1856,7 +1856,7 @@ export const paschaCycle: [
             label: "4. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Rom", chunks: [{from: [6, 18], to: [6, 23]}]},
-                {book: "Lk", chunks: [{from: [24, 1], to: [24, 12]}]}
+                {book: "Mt", chunks: [{from: [8, 5], to: [8, 13]}]}
             ]
         },
         {
@@ -1913,7 +1913,7 @@ export const paschaCycle: [
             label: "5. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Rom", chunks: [{from: [10, 1], to: [10, 10]}]},
-                {book: "Jn", chunks: [{from: [17, 1], to: [1, 13]}]}
+                {book: "Mt", chunks: [{from: [8, 28], to: [9, 1]}]}
             ]
         },
         {
@@ -1930,7 +1930,7 @@ export const paschaCycle: [
         },
         {
             texts: [
-                {book: "1Co", chunks: [{from: [2, 9], to: [3, 6]}]},
+                {book: "1Co", chunks: [{from: [2, 9], to: [3, 8]}]},
                 {book: "Mt", chunks: [{from: [13, 31], to: [13, 36]}]}
             ]
         },
