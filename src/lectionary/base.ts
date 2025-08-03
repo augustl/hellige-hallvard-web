@@ -123,6 +123,21 @@ export const dateSpecificItems: {
                 ]
             }
         ]
+    },
+    "8-6": {
+        items: [
+            {
+                label: "Transfigurasjon",
+                vespersTexts: [{book: "Ex", chunks: [{from: [24, 12], to: [24, 18]}]}],
+                liturgyTexts: [
+                    {book: "2Pt", chunks: [{from: [1, 10], to: [1, 19]}]},
+                    {
+                        book: "Mt",
+                        chunks: [{from: [17, 1], to: [17, 9]}]
+                    }
+                ]
+            }
+        ]
     }
 }
 
@@ -2051,9 +2066,31 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [16, 14], to: [16, 22]}]}
             ]
         },
-        null,
-        null,
-        null,
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [11, 31], to: [12, 6]}]},
+                {book: "Mt", chunks: [{from: [18, 1], to: [18, 11]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [12, 12], to: [12, 26]}]},
+                {
+                    book: "Mt",
+                    chunks: [
+                        {from: [18, 18], to: [18, 22]},
+                        {from: [19, 1], to: [19, 2]},
+                        {from: [19, 13], to: [19, 15]}
+                    ]
+                }
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [13, 4], to: [14, 5]}]},
+                {book: "Mt", chunks: [{from: [20, 1], to: [20, 16]}]}
+            ]
+        },
         null,
         null,
         null
