@@ -127,7 +127,7 @@ export const dateSpecificItems: {
     "8-6": {
         items: [
             {
-                label: "Transfigurasjon",
+                label: "Kristi forklarelse",
                 vespersTexts: [{book: "Ex", chunks: [{from: [24, 12], to: [24, 18]}]}],
                 liturgyTexts: [
                     {book: "2Pt", chunks: [{from: [1, 10], to: [1, 19]}]},
