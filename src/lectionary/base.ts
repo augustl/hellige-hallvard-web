@@ -2091,13 +2091,38 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [20, 1], to: [20, 16]}]}
             ]
         },
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [14, 6], to: [14, 19]}]},
+                {book: "Mt", chunks: [{from: [20, 17], to: [20, 28]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [14, 26], to: [14, 40]}]},
+                {
+                    book: "Mt",
+                    chunks: [
+                        {from: [21, 12], to: [21, 14]},
+                        {from: [21, 17], to: [21, 20]}
+                    ]
+                }
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [14, 6], to: [14, 9]}]},
+                {book: "Mt", chunks: [{from: [15, 32], to: [15, 39]}]}
+            ]
+        }
     ],
     [
         {
-            label: "9. søndag etter Pinse"
+            label: "9. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [3, 9], to: [3, 17]}]},
+                {book: "Mt", chunks: [{from: [14, 22], to: [14, 34]}]}
+            ]
         },
         null,
         null,
