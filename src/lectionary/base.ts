@@ -2124,7 +2124,12 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [14, 22], to: [14, 34]}]}
             ]
         },
-        null,
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [15, 12], to: [15, 19]}]},
+                {book: "Mt", chunks: [{from: [21, 18], to: [21, 22]}]}
+            ]
+        },
         null,
         null,
         null,
