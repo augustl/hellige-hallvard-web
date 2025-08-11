@@ -138,6 +138,37 @@ export const dateSpecificItems: {
                 ]
             }
         ]
+    },
+    "8-15": {
+        items: [
+            {
+                label: "Gudføderskens hensovnelse",
+                vespersTexts: [
+                    {book: "Gen", chunks: [{from: [28, 10], to: [28, 17]}]},
+                    {book: "Ezek", chunks: [{from: [43, 24], to: [44, 4]}]},
+                    {book: "Prov", chunks: [{from: [9, 1], to: [9, 11]}]}
+                ],
+                matinesTexts: [
+                    {
+                        book: "Lk",
+                        chunks: [
+                            {from: [1, 39], to: [1, 49]},
+                            {from: [1, 56], to: [1, 56]}
+                        ]
+                    }
+                ],
+                liturgyTexts: [
+                    {book: "Php", chunks: [{from: [2, 5], to: [2, 11]}]},
+                    {
+                        book: "Lk",
+                        chunks: [
+                            {from: [10, 38], to: [10, 42]},
+                            {from: [11, 27], to: [11, 28]}
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 
@@ -2130,15 +2161,44 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [21, 18], to: [21, 22]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [15, 29], to: [15, 38]}]},
+                {book: "Mt", chunks: [{from: [21, 23], to: [21, 27]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [16, 4], to: [16, 12]}]},
+                {book: "Mt", chunks: [{from: [21, 28], to: [21, 32]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [1, 1], to: [1, 7]}]},
+                {book: "Mt", chunks: [{from: [21, 43], to: [21, 46]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [1, 12], to: [1, 20]}]},
+                {book: "Mt", chunks: [{from: [22, 23], to: [22, 33]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Rom", chunks: [{from: [15, 30], to: [15, 33]}]},
+                {book: "Mt", chunks: [{from: [17, 24], to: [18, 4]}]}
+            ]
+        }
     ],
     [
         {
-            label: "10. søndag etter Pinse"
+            label: "10. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [4, 9], to: [4, 16]}]},
+                {book: "Mt", chunks: [{from: [17, 14], to: [17, 23]}]}
+            ]
         },
         null,
         null,
