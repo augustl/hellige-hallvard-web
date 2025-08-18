@@ -2206,15 +2206,50 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [23, 13], to: [23, 22]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [2, 14], to: [3, 3]}]},
+                {book: "Mt", chunks: [{from: [23, 23], to: [23, 28]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [3, 4], to: [3, 11]}]},
+                {book: "Mt", chunks: [{from: [23, 29], to: [23, 39]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [4, 1], to: [4, 6]}]},
+                {book: "Mt", chunks: [{from: [24, 13], to: [24, 28]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [4, 13], to: [3, 18]}]},
+                {
+                    book: "Mt",
+                    chunks: [
+                        {from: [24, 27], to: [24, 33]},
+                        {from: [24, 42], to: [24, 51]}
+                    ]
+                }
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [1, 3], to: [1, 9]}]},
+                {book: "Mt", chunks: [{from: [19, 3], to: [19, 12]}]}
+            ]
+        }
     ],
     [
         {
-            label: "11. søndag etter Pinse"
+            label: "11. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [9, 2], to: [9, 12]}]},
+                {book: "Mt", chunks: [{from: [18, 23], to: [18, 35]}]}
+            ]
         },
         null,
         null,
