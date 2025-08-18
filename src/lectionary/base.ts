@@ -2226,7 +2226,7 @@ export const paschaCycle: [
         },
         {
             texts: [
-                {book: "2Co", chunks: [{from: [4, 13], to: [3, 18]}]},
+                {book: "2Co", chunks: [{from: [4, 13], to: [4, 18]}]},
                 {
                     book: "Mt",
                     chunks: [
