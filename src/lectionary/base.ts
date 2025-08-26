@@ -2296,16 +2296,50 @@ export const paschaCycle: [
                 {book: "Mt", chunks: [{from: [19, 16], to: [19, 26]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [8, 7], to: [8, 15]}]},
+                {book: "Mk", chunks: [{from: [3, 6], to: [3, 12]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [8, 16], to: [9, 5]}]},
+                {book: "Mk", chunks: [{from: [3, 13], to: [3, 19]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [9, 12], to: [10, 7]}]},
+                {book: "Mk", chunks: [{from: [3, 20], to: [3, 27]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [10, 7], to: [10, 18]}]},
+                {book: "Mk", chunks: [{from: [3, 28], to: [3, 35]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Co", chunks: [{from: [11, 5], to: [11, 21]}]},
+                {book: "Mk", chunks: [{from: [4, 1], to: [4, 9]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [2, 6], to: [2, 9]}]},
+                {book: "Mt", chunks: [{from: [22, 15], to: [22, 22]}]}
+            ]
+        }
     ],
     [
         {
-            label: "13. søndag etter Pinse"
+            label: "13. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [16, 13], to: [16, 24]}]},
+                {book: "Mt", chunks: [{from: [21, 33], to: [21, 42]}]}
+            ]
         },
         null,
         null,
