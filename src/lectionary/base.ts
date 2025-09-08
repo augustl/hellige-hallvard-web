@@ -169,6 +169,23 @@ export const dateSpecificItems: {
                 ]
             }
         ]
+    },
+    "9-8": {
+        items: [
+            {
+                label: "Gudføderskens fødsel",
+                liturgyTexts: [
+                    {book: "Php", chunks: [{from: [2, 5], to: [2, 11]}]},
+                    {
+                        book: "Lk",
+                        chunks: [
+                            {from: [10, 38], to: [10, 42]},
+                            {from: [11, 27], to: [11, 28]}
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 
