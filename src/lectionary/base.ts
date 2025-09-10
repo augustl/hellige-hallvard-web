@@ -2376,9 +2376,36 @@ export const paschaCycle: [
                 {book: "Mk", chunks: [{from: [4, 35], to: [4, 41]}]}
             ]
         },
-        null,
-        null,
-        null
+        {
+            texts: [
+                {
+                    book: "Gal",
+                    chunks: [
+                        {from: [1, 1], to: [1, 10]},
+                        {from: [1, 20], to: [2, 5]}
+                    ]
+                },
+                {book: "Mk", chunks: [{from: [5, 1], to: [5, 20]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Gal", chunks: [{from: [2, 6], to: [2, 10]}]},
+                {
+                    book: "Mk",
+                    chunks: [
+                        {from: [5, 22], to: [5, 24]},
+                        {from: [5, 35], to: [6, 1]}
+                    ]
+                }
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [4, 1], to: [4, 5]}]},
+                {book: "Mt", chunks: [{from: [23, 1], to: [23, 12]}]}
+            ]
+        }
     ],
     [
         {
