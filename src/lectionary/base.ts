@@ -2409,7 +2409,19 @@ export const paschaCycle: [
     ],
     [
         {
-            label: "14. søndag etter Pinse"
+            label: "14. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "1Co", chunks: [{from: [1, 18], to: [1, 24]}]},
+                {
+                    book: "Jn",
+                    chunks: [
+                        {from: [19, 6], to: [19, 11]},
+                        {from: [19, 13], to: [19, 20]},
+                        {from: [19, 25], to: [19, 28]},
+                        {from: [19, 30], to: [19, 35]}
+                    ]
+                }
+            ]
         },
         null,
         null,
