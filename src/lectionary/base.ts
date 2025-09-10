@@ -186,6 +186,25 @@ export const dateSpecificItems: {
                 ]
             }
         ]
+    },
+    "9-14": {
+        items: [
+            {
+                label: "Korsets opphøyelse",
+                liturgyTexts: [
+                    {book: "1Co", chunks: [{from: [1, 18], to: [1, 24]}]},
+                    {
+                        book: "Jn",
+                        chunks: [
+                            {from: [19, 6], to: [19, 11]},
+                            {from: [19, 13], to: [19, 20]},
+                            {from: [19, 25], to: [19, 28]},
+                            {from: [19, 30], to: [19, 35]}
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 
@@ -2411,16 +2430,8 @@ export const paschaCycle: [
         {
             label: "14. søndag etter Pinse",
             liturgyTexts: [
-                {book: "1Co", chunks: [{from: [1, 18], to: [1, 24]}]},
-                {
-                    book: "Jn",
-                    chunks: [
-                        {from: [19, 6], to: [19, 11]},
-                        {from: [19, 13], to: [19, 20]},
-                        {from: [19, 25], to: [19, 28]},
-                        {from: [19, 30], to: [19, 35]}
-                    ]
-                }
+                {book: "2Co", chunks: [{from: [1, 21], to: [2, 4]}]},
+                {book: "Lk", chunks: [{from: [6, 31], to: [6, 36]}]}
             ]
         },
         null,
