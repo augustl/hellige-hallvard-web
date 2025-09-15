@@ -2440,7 +2440,12 @@ export const paschaCycle: [
                 {book: "Mk", chunks: [{from: [5, 24], to: [5, 34]}]}
             ]
         },
-        null,
+        {
+            texts: [
+                {book: "Gal", chunks: [{from: [2, 21], to: [3, 7]}]},
+                {book: "Mk", chunks: [{from: [6, 1], to: [6, 7]}]}
+            ]
+        },
         null,
         null,
         null,
