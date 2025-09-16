@@ -2473,7 +2473,11 @@ export const paschaCycle: [
     ],
     [
         {
-            label: "15. søndag etter Pinse"
+            label: "15. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "2Co", chunks: [{from: [4, 6], to: [4, 15]}]},
+                {book: "Mt", chunks: [{from: [22, 35], to: [22, 46]}]}
+            ]
         },
         null,
         null,
