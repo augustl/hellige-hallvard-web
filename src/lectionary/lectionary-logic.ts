@@ -1,5 +1,21 @@
 import {DateTime} from "luxon"
-import {DailyReadings, dateSpecificItems, lectionaryYearParams, nativityCycle, paschaCycle, sundayOfZachary, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
+import {
+    DailyReadings,
+    dateSpecificItems,
+    exaltationOfTheCrossSundayAfter,
+    lectionaryYearParams,
+    nativityCycle,
+    paschaCycle,
+    sundayOfZachary,
+    teophanyRoyalHours,
+    teophanySaturdayBefore,
+    teophanySundayBefore,
+    theophany,
+    theophanyAfter,
+    theophanyGreatBlessingsOfTheWaters,
+    theophanySaturdayAfter,
+    theophanySundayAfter
+} from "@/lectionary/base"
 
 // This logic should be a 1:1 match with the annual liturgical calendar published
 // by https://fraternite-orthodoxe.eu/bis/
@@ -7,11 +23,18 @@ export const getLectionaryTexts = (
     y: number,
     m: number,
     d: number
-): {dailyReadings?: {label?: string} & DailyReadings, labelledItems?: ({label: string} & DailyReadings)[]} | undefined => {
+):
+    | {
+          dailyReadings?: {label?: string} & DailyReadings
+          labelledItems?: ({label: string} & DailyReadings)[]
+      }
+    | undefined => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
     const thisYearsPaschaCycleStartData = lectionaryYearParams[y].paschaCycleStart
-    const thisYearsPaschaCycleStart = DateTime.fromJSDate(new Date(y, thisYearsPaschaCycleStartData[0] - 1, thisYearsPaschaCycleStartData[1]))
+    const thisYearsPaschaCycleStart = DateTime.fromJSDate(
+        new Date(y, thisYearsPaschaCycleStartData[0] - 1, thisYearsPaschaCycleStartData[1])
+    )
 
     if (thisYearsPaschaCycleStart.minus({days: 7}).equals(date)) {
         return {
@@ -57,7 +80,10 @@ export const getLectionaryTexts = (
         }
 
         const expectedSaturdayBeforeTheophanyDate = getExpectedSaturdayBeforeTheophanyDate(y)
-        if (expectedSaturdayBeforeTheophanyDate && expectedSaturdayBeforeTheophanyDate.equals(date)) {
+        if (
+            expectedSaturdayBeforeTheophanyDate &&
+            expectedSaturdayBeforeTheophanyDate.equals(date)
+        ) {
             return {
                 dailyReadings: getDailyReadingsFromCycle(y, m, d),
                 labelledItems: [teophanySaturdayBefore]
@@ -82,6 +108,16 @@ export const getLectionaryTexts = (
         }
     }
 
+    if (m === 9 || m === 10) {
+        const expectedSundayAfterExaltationOfTheCross =
+            getExpectedSundayAfterExaltationOfTheCross(y)
+        if (expectedSundayAfterExaltationOfTheCross.equals(date)) {
+            return {
+                dailyReadings: getDailyReadingsFromCycle(y, m, d),
+                labelledItems: [exaltationOfTheCrossSundayAfter]
+            }
+        }
+    }
 
     // Date specific items are special feast days. These will always either override the Pascha schedule
     // completely, or optionally include the daily readings from the Pascha schedule.
@@ -90,7 +126,10 @@ export const getLectionaryTexts = (
 
     if (dateSpecificItem) {
         if (dateSpecificItem.includesDailyReadings) {
-            return {dailyReadings: getDailyReadingsFromCycle(y, m, d), labelledItems: dateSpecificItem.items}
+            return {
+                dailyReadings: getDailyReadingsFromCycle(y, m, d),
+                labelledItems: dateSpecificItem.items
+            }
         } else {
             return {labelledItems: dateSpecificItem.items}
         }
@@ -116,16 +155,13 @@ export const getLectionaryTexts = (
     return {dailyReadings: getDailyReadingsFromCycle(y, m, d)}
 }
 
-export const getDailyReadingsFromCycle = (
-    y: number,
-    m: number,
-    d: number
-) => {
+export const getDailyReadingsFromCycle = (y: number, m: number, d: number) => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
     const {currentPaschaDate, nextPaschaDate} = getCurrentAndNextPaschaDates(date)
 
-    const currentPaschaCyclePoint = Math.floor(date.diff(nextPaschaDate, "days").days) < 0 ? currentPaschaDate : nextPaschaDate
+    const currentPaschaCyclePoint =
+        Math.floor(date.diff(nextPaschaDate, "days").days) < 0 ? currentPaschaDate : nextPaschaDate
     const daysSinceStartOfPaschaCycle = Math.floor(date.diff(currentPaschaCyclePoint, "days").days)
     const currentPaschaCycleWeek = Math.floor(daysSinceStartOfPaschaCycle / 7)
     const currentDayOfWeek = daysSinceStartOfPaschaCycle % 7
@@ -133,9 +169,13 @@ export const getDailyReadingsFromCycle = (
 
     if (!dayItems) {
         if (paschaCycle[currentPaschaCycleWeek]) {
-            throw new Error(`Feil med henting av dagens tekster: fant ikke tekster for dag ${currentDayOfWeek} for ${paschaCycle[currentPaschaCycleWeek][0].label}`)
+            throw new Error(
+                `Feil med henting av dagens tekster: fant ikke tekster for dag ${currentDayOfWeek} for ${paschaCycle[currentPaschaCycleWeek][0].label}`
+            )
         }
-        throw new Error(`Feil med henting av dagens tekster: fant ikke tekster for dag ${daysSinceStartOfPaschaCycle} etter påske i ${y}`)
+        throw new Error(
+            `Feil med henting av dagens tekster: fant ikke tekster for dag ${daysSinceStartOfPaschaCycle} etter påske i ${y}`
+        )
     }
 
     return dayItems
@@ -143,10 +183,12 @@ export const getDailyReadingsFromCycle = (
 
 const getCurrentAndNextPaschaDates = (
     date: DateTime
-): {currentPaschaDate: DateTime, nextPaschaDate: DateTime} => {
+): {currentPaschaDate: DateTime; nextPaschaDate: DateTime} => {
     const {paschaCycleStart: paschaThisYearData} = lectionaryYearParams[date.year]
     if (!paschaThisYearData) {
-        throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year}`)
+        throw new Error(
+            `Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year}`
+        )
     }
 
     const paschaThisYear = date.set({month: paschaThisYearData[0], day: paschaThisYearData[1]})
@@ -155,19 +197,31 @@ const getCurrentAndNextPaschaDates = (
         const {paschaCycleStart: paschaPreviousYearData} = lectionaryYearParams[date.year - 1]
 
         if (!paschaPreviousYearData) {
-            throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year - 1}`)
+            throw new Error(
+                `Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year - 1}`
+            )
         }
 
-        const paschaPreviousYear = date.set({year: date.year - 1, month: paschaPreviousYearData[0], day: paschaPreviousYearData[1]})
+        const paschaPreviousYear = date.set({
+            year: date.year - 1,
+            month: paschaPreviousYearData[0],
+            day: paschaPreviousYearData[1]
+        })
 
         return {currentPaschaDate: paschaPreviousYear, nextPaschaDate: paschaThisYear}
     } else {
         const {paschaCycleStart: paschaNextYearData} = lectionaryYearParams[date.year + 1]
         if (!paschaNextYearData) {
-            throw new Error(`Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year + 1}`)
+            throw new Error(
+                `Feil ved henting av dagens tekster: fant ikke dato for påske i ${date.year + 1}`
+            )
         }
 
-        const nextPaschaDate = date.set({year: date.year + 1, month: paschaThisYearData[0], day: paschaThisYearData[1]})
+        const nextPaschaDate = date.set({
+            year: date.year + 1,
+            month: paschaThisYearData[0],
+            day: paschaThisYearData[1]
+        })
 
         return {currentPaschaDate: paschaThisYear, nextPaschaDate}
     }
@@ -209,9 +263,18 @@ const getExpectedSaturdayAfterTheophanyDate = (y: number): DateTime => {
 
 const getExpectedSundayAfterTheophanyDate = (y: number): DateTime => {
     const theophanyDate = DateTime.fromJSDate(new Date(y, 0, 6))
-    if (theophanyDate.weekday === 7) {
-        return theophanyDate.plus({days: 7})
+    return getSundayAfterDate(theophanyDate)
+}
+
+const getExpectedSundayAfterExaltationOfTheCross = (y: number): DateTime => {
+    const exaltationOfTheCrossDate = DateTime.fromObject({year: y, month: 9, day: 14})
+    return getSundayAfterDate(exaltationOfTheCrossDate)
+}
+
+const getSundayAfterDate = (date: DateTime): DateTime => {
+    if (date.weekday === 7) {
+        return date.plus({days: 7})
     } else {
-        return theophanyDate.plus({days: (7 - theophanyDate.weekday) % 7})
+        return date.plus({days: (7 - date.weekday) % 7})
     }
 }

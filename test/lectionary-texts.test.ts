@@ -1,6 +1,19 @@
 import {getLectionaryTexts} from "@/lectionary/lectionary-logic"
 import assert from "assert"
-import {dateSpecificItems, nativityCycle, paschaCycle, sundayOfZachary, teophanyRoyalHours, teophanySaturdayBefore, teophanySundayBefore, theophany, theophanyAfter, theophanyGreatBlessingsOfTheWaters, theophanySaturdayAfter, theophanySundayAfter} from "@/lectionary/base"
+import {
+    dateSpecificItems,
+    nativityCycle,
+    paschaCycle,
+    sundayOfZachary,
+    teophanyRoyalHours,
+    teophanySaturdayBefore,
+    teophanySundayBefore,
+    theophany,
+    theophanyAfter,
+    theophanyGreatBlessingsOfTheWaters,
+    theophanySaturdayAfter,
+    theophanySundayAfter
+} from "@/lectionary/base"
 
 describe("Lectionary", () => {
     it("should get nativity texts", () => {
@@ -16,9 +29,9 @@ describe("Lectionary", () => {
         assert.ok(res.dailyReadings)
         assert.ok(!res.labelledItems)
         assert.deepStrictEqual(res.dailyReadings.texts, [
-            {"book": "1Ti", "chunks": [{"from": [6, 17], "to": [6, 21]}]},
-            {"book": "Mk", "chunks": [{"from": [11, 27], "to": [11, 33]}]},
-            {"book": "Lk", "chunks": [{"from": [18, 31], "to": [18, 34]}], "flags": ["oldBysant"]}
+            {book: "1Ti", chunks: [{from: [6, 17], to: [6, 21]}]},
+            {book: "Mk", chunks: [{from: [11, 27], to: [11, 33]}]},
+            {book: "Lk", chunks: [{from: [18, 31], to: [18, 34]}], flags: ["oldBysant"]}
         ])
     })
 
@@ -75,7 +88,10 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(!res.dailyReadings)
-        assert.deepStrictEqual(res.labelledItems, [teophanySundayBefore, theophanyGreatBlessingsOfTheWaters])
+        assert.deepStrictEqual(res.labelledItems, [
+            teophanySundayBefore,
+            theophanyGreatBlessingsOfTheWaters
+        ])
     })
 
     it("should get theophany readings", () => {
@@ -126,5 +142,15 @@ describe("Lectionary", () => {
         assert.ok(res.dailyReadings.label, paschaCycle[0][0].label)
         assert.ok(!res.labelledItems)
         // assert.deepStrictEqual(res.labelledItems, [paschaCycle[0][0]])
+    })
+
+    it("should get special texts the first liturgy after the exhaltatino of the cross", () => {
+        const res = getLectionaryTexts(2025, 9, 21)
+
+        assert.ok(res)
+        assert.ok(res.dailyReadings)
+        assert.ok(res.dailyReadings.liturgyTexts)
+
+        assert.ok(res.labelledItems)
     })
 })

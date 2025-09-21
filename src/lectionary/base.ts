@@ -338,6 +338,14 @@ export const theophanySundayAfter: {label: string} & DailyReadings = {
     ]
 }
 
+export const exaltationOfTheCrossSundayAfter: {label: string} & DailyReadings = {
+    label: "Søndag etter korsets opphøyelse",
+    texts: [
+        {book: "Gal", chunks: [{from: [2, 16], to: [2, 20]}]},
+        {book: "Mk", chunks: [{from: [8, 34], to: [9, 1]}]}
+    ]
+}
+
 export const theophanyGreatBlessingsOfTheWaters: {
     label: string
 } & DailyReadings = {
