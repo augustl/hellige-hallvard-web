@@ -2562,11 +2562,20 @@ export const paschaCycle: [
                 {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]}
             ]
         },
-        null
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [14, 20], to: [14, 25]}]},
+                {book: "Lk", chunks: [{from: [5, 17], to: [5, 26]}]}
+            ]
+        }
     ],
     [
         {
-            label: "17. søndag etter Pinse"
+            label: "17. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "2Co", chunks: [{from: [6, 16], to: [7, 1]}]},
+                {book: "Lk", chunks: [{from: [6, 31], to: [6, 36]}]}
+            ]
         },
         null,
         null,
