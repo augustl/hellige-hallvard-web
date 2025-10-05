@@ -2597,7 +2597,7 @@ export const paschaCycle: [
         },
         {
             texts: [
-                {book: "Eph", chunks: [{from: [5, 35], to: [6, 9]}]},
+                {book: "Eph", chunks: [{from: [5, 33], to: [6, 9]}]},
                 {book: "Lk", chunks: [{from: [7, 17], to: [7, 30]}]}
             ]
         },
