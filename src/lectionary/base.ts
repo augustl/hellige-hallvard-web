@@ -2577,16 +2577,50 @@ export const paschaCycle: [
                 {book: "Lk", chunks: [{from: [6, 31], to: [6, 36]}]}
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {book: "Eph", chunks: [{from: [4, 25], to: [4, 32]}]},
+                {book: "Lk", chunks: [{from: [6, 24], to: [6, 30]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Eph", chunks: [{from: [5, 20], to: [5, 26]}]},
+                {book: "Lk", chunks: [{from: [6, 37], to: [6, 45]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Eph", chunks: [{from: [5, 25], to: [5, 33]}]},
+                {book: "Lk", chunks: [{from: [6, 46], to: [7, 1]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Eph", chunks: [{from: [5, 35], to: [6, 9]}]},
+                {book: "Lk", chunks: [{from: [7, 17], to: [7, 30]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "Eph", chunks: [{from: [6, 18], to: [6, 24]}]},
+                {book: "Lk", chunks: [{from: [7, 31], to: [7, 35]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [15, 39], to: [15, 45]}]},
+                {book: "Lk", chunks: [{from: [5, 27], to: [5, 32]}]}
+            ]
+        }
     ],
     [
         {
-            label: "18. søndag etter Pinse"
+            label: "18. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "2Co", chunks: [{from: [9, 6], to: [9, 11]}]},
+                {book: "Lk", chunks: [{from: [8, 5], to: [8, 15]}]}
+            ]
         },
         null,
         null,
