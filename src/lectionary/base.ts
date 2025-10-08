@@ -2529,43 +2529,78 @@ export const paschaCycle: [
             label: "16. søndag etter Pinse",
             liturgyTexts: [
                 {book: "2Co", chunks: [{from: [6, 1], to: [6, 10]}]},
-                {book: "Lk", chunks: [{from: [5, 1], to: [5, 11]}]}
+                {book: "Lk", chunks: [{from: [5, 1], to: [5, 11]}]},
+                {
+                    book: "Mt",
+                    chunks: [{from: [25, 14], to: [25, 30]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [1, 22], to: [2, 3]}]},
-                {book: "Lk", chunks: [{from: [4, 37], to: [4, 44]}]}
+                {book: "Lk", chunks: [{from: [4, 37], to: [4, 44]}]},
+                {
+                    book: "Mk",
+                    chunks: [{from: [10, 46], to: [10, 52]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [2, 19], to: [3, 7]}]},
-                {book: "Lk", chunks: [{from: [5, 12], to: [5, 16]}]}
+                {book: "Lk", chunks: [{from: [5, 12], to: [5, 16]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [11, 11], to: [11, 23]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [3, 8], to: [3, 21]}]},
-                {book: "Lk", chunks: [{from: [5, 33], to: [5, 39]}]}
+                {book: "Lk", chunks: [{from: [5, 33], to: [5, 39]}]},
+                {
+                    book: "Mk",
+                    chunks: [{from: [11, 23], to: [11, 26]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [4, 14], to: [4, 19]}]},
-                {book: "Lk", chunks: [{from: [6, 12], to: [6, 19]}]}
+                {book: "Lk", chunks: [{from: [6, 12], to: [6, 19]}]},
+                {
+                    book: "Mk",
+                    chunks: [{from: [11, 27], to: [11, 33]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [4, 17], to: [4, 25]}]},
-                {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]}
+                {book: "Lk", chunks: [{from: [6, 17], to: [6, 23]}]},
+                {
+                    book: "Mk",
+                    chunks: [{from: [12, 1], to: [12, 12]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "1Co", chunks: [{from: [14, 20], to: [14, 25]}]},
-                {book: "Lk", chunks: [{from: [5, 17], to: [5, 26]}]}
+                {book: "Lk", chunks: [{from: [5, 17], to: [5, 26]}]},
+                {
+                    book: "Mt",
+                    chunks: [{from: [25, 1], to: [25, 13]}],
+                    flags: ["oldBysant"]
+                }
             ]
         }
     ],
@@ -2574,43 +2609,78 @@ export const paschaCycle: [
             label: "17. søndag etter Pinse",
             liturgyTexts: [
                 {book: "2Co", chunks: [{from: [6, 16], to: [7, 1]}]},
-                {book: "Lk", chunks: [{from: [6, 31], to: [6, 36]}]}
+                {book: "Lk", chunks: [{from: [6, 31], to: [6, 36]}]},
+                {
+                    book: "Mt",
+                    chunks: [{from: [15, 21], to: [15, 28]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [4, 25], to: [4, 32]}]},
-                {book: "Lk", chunks: [{from: [6, 24], to: [6, 30]}]}
+                {book: "Lk", chunks: [{from: [6, 24], to: [6, 30]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [3, 19], to: [3, 22]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [5, 20], to: [5, 26]}]},
-                {book: "Lk", chunks: [{from: [6, 37], to: [6, 45]}]}
+                {book: "Lk", chunks: [{from: [6, 37], to: [6, 45]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [3, 23], to: [4, 1]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [5, 25], to: [5, 33]}]},
-                {book: "Lk", chunks: [{from: [6, 46], to: [7, 1]}]}
+                {book: "Lk", chunks: [{from: [6, 46], to: [7, 1]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [4, 1], to: [4, 15]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [5, 33], to: [6, 9]}]},
-                {book: "Lk", chunks: [{from: [7, 17], to: [7, 30]}]}
+                {book: "Lk", chunks: [{from: [7, 17], to: [7, 30]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [4, 16], to: [4, 22]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [6, 18], to: [6, 24]}]},
-                {book: "Lk", chunks: [{from: [7, 31], to: [7, 35]}]}
+                {book: "Lk", chunks: [{from: [7, 31], to: [7, 35]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [4, 22], to: [4, 30]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         {
             texts: [
                 {book: "1Co", chunks: [{from: [15, 39], to: [15, 45]}]},
-                {book: "Lk", chunks: [{from: [5, 27], to: [5, 32]}]}
+                {book: "Lk", chunks: [{from: [5, 27], to: [5, 32]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [4, 31], to: [4, 36]}],
+                    flags: ["oldBysant"]
+                }
             ]
         }
     ],
@@ -2619,7 +2689,12 @@ export const paschaCycle: [
             label: "18. søndag etter Pinse",
             liturgyTexts: [
                 {book: "2Co", chunks: [{from: [9, 6], to: [9, 11]}]},
-                {book: "Lk", chunks: [{from: [8, 5], to: [8, 15]}]}
+                {book: "Lk", chunks: [{from: [8, 5], to: [8, 15]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [5, 1], to: [5, 11]}],
+                    flags: ["oldBysant"]
+                }
             ]
         },
         null,
