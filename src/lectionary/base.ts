@@ -2700,7 +2700,7 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "Php", chunks: [{from: [1, 1], to: [1, 7]}]},
-                {book: "Lk", chunks: [{from: [6, 36], to: [6, 50]}]},
+                {book: "Lk", chunks: [{from: [7, 36], to: [7, 50]}]},
                 {
                     book: "Lk",
                     chunks: [{from: [4, 37], to: [4, 44]}],
@@ -2708,7 +2708,17 @@ export const paschaCycle: [
                 }
             ]
         },
-        null,
+        {
+            texts: [
+                {book: "Php", chunks: [{from: [1, 8], to: [1, 14]}]},
+                {book: "Lk", chunks: [{from: [8, 1], to: [8, 3]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [5, 12], to: [5, 16]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
         null,
         null,
         null,
