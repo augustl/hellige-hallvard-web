@@ -2730,7 +2730,17 @@ export const paschaCycle: [
                 }
             ]
         },
-        null,
+        {
+            texts: [
+                {book: "Php", chunks: [{from: [1, 20], to: [1, 27]}]},
+                {book: "Lk", chunks: [{from: [9, 7], to: [9, 11]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [6, 12], to: [6, 19]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
         null,
         null
     ],
