@@ -2752,11 +2752,30 @@ export const paschaCycle: [
                 }
             ]
         },
-        null
+        {
+            texts: [
+                {book: "1Co", chunks: [{from: [15, 58], to: [16, 3]}]},
+                {book: "Lk", chunks: [{from: [6, 1], to: [6, 10]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [5, 17], to: [5, 26]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        }
     ],
     [
         {
-            label: "19. søndag etter Pinse"
+            label: "19. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "2Co", chunks: [{from: [11, 31], to: [12, 9]}]},
+                {book: "Lk", chunks: [{from: [7, 11], to: [7, 16]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [6, 31], to: [6, 36]}],
+                    flags: ["oldBysant"]
+                }
+            ]
         },
         null,
         null,
