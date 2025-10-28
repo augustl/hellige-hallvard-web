@@ -1,5 +1,5 @@
 import "server-only"
-import {JSDOM} from "jsdom"
+import {parseHTML} from "linkedom"
 import {extractDataFromNB88ChapterTokenized} from "./nb88-extract-lib"
 
 export type NB88LineTitle = {type: "title"; text: string}
@@ -7,7 +7,7 @@ export type NB88LineParagraph = {type: "paragraph"; verse: number; text: string}
 export type NB88Line = NB88LineTitle | NB88LineParagraph
 
 export const tokenizeNB88Chapter = async (chapterHtml: string): Promise<NB88Line[]> => {
-    const dom = new JSDOM(chapterHtml)
+    const dom = parseHTML(chapterHtml)
     const doc = dom.window.document
     const versesContainer = doc.querySelector(".text-div")
 

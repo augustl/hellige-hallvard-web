@@ -3,7 +3,7 @@ import Image from "next/image"
 import NewsPagination from "./NewsPagination"
 import React from "react"
 import Link from "next/link"
-import {JSDOM} from "jsdom"
+import {parseHTML} from "linkedom"
 
 const MAX_IMAGE_WIDTH = 500
 
@@ -33,7 +33,7 @@ const DownsizedWordpressImage: React.FC<{imageId: number}> = async ({imageId}) =
 }
 
 const getPostDefaultImageId = (postHtml: string): number | null => {
-    const dom = new JSDOM(postHtml)
+    const dom = parseHTML(postHtml)
     const firstImage = dom.window.document.querySelector("img[class^='wp-image-']")
     if (firstImage) {
         const matchRes = firstImage.getAttribute("class")?.match(/^wp-image-(\d+)$/)
