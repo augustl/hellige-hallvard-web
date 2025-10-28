@@ -1,10 +1,9 @@
-"use server"
+import "server-only"
+import {JSDOM} from "jsdom"
+import {extractDataFromNB88ChapterTokenized} from "./nb88-extract-lib"
 
-import { JSDOM } from "jsdom"
-import { extractDataFromNB88ChapterTokenized } from "./nb88-extract-lib"
-
-export type NB88LineTitle = {type: "title", text: string}
-export type NB88LineParagraph = {type: "paragraph", verse: number, text: string}
+export type NB88LineTitle = {type: "title"; text: string}
+export type NB88LineParagraph = {type: "paragraph"; verse: number; text: string}
 export type NB88Line = NB88LineTitle | NB88LineParagraph
 
 export const tokenizeNB88Chapter = async (chapterHtml: string): Promise<NB88Line[]> => {
@@ -21,9 +20,9 @@ export const tokenizeNB88Chapter = async (chapterHtml: string): Promise<NB88Line
 
             if (div.className === "paragraph-title-div") {
                 const titleNode = div.querySelector(".paragraph-title")!
-                
+
                 res.push({
-                    type: "title", 
+                    type: "title",
                     text: titleNode.textContent!.trim()
                 })
             }
@@ -33,8 +32,8 @@ export const tokenizeNB88Chapter = async (chapterHtml: string): Promise<NB88Line
                 const textContentsNode = div.querySelector("span")!
 
                 res.push({
-                    type: "paragraph", 
-                    verse: parseInt(verseNumberNode.textContent!.trim()), 
+                    type: "paragraph",
+                    verse: parseInt(verseNumberNode.textContent!.trim()),
                     text: textContentsNode.textContent!.trim().replace(/\*/g, "")
                 })
             }
@@ -44,7 +43,11 @@ export const tokenizeNB88Chapter = async (chapterHtml: string): Promise<NB88Line
     return res
 }
 
-export const extractDataFromNB88Chapter = async (chapterHtml: string, verseFrom: number, verseTo?: number): Promise<NB88Line[]> => {
+export const extractDataFromNB88Chapter = async (
+    chapterHtml: string,
+    verseFrom: number,
+    verseTo?: number
+): Promise<NB88Line[]> => {
     const lines = await tokenizeNB88Chapter(chapterHtml)
     return extractDataFromNB88ChapterTokenized(lines, verseFrom, verseTo)
 }

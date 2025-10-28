@@ -10,8 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.918.0",
-    "@aws-sdk/lib-dynamodb": "^3.918.0",
     "@tailwindcss/postcss": "^4.1.16",
     "@types/node": "24.9.2",
     "@types/react": "19.2.2",
