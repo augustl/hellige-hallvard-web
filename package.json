@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo --port 3010",
-    "build": "next build --turbo",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "test": "jest"
