@@ -2849,7 +2849,7 @@ export const paschaCycle: [
             label: "20. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Gal", chunks: [{from: [1, 11], to: [1, 19]}]},
-                {book: "Lk", chunks: [{from: [8, 261], to: [8, 39]}]},
+                {book: "Lk", chunks: [{from: [8, 26], to: [8, 39]}]},
                 {
                     book: "Lk",
                     chunks: [{from: [7, 11], to: [7, 16]}],
@@ -2899,13 +2899,61 @@ export const paschaCycle: [
                 }
             ]
         },
-        null,
-        null,
-        null
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [1, 24], to: [1, 29]}]
+                },
+                {book: "Lk", chunks: [{from: [11, 14], to: [11, 23]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 7], to: [9, 11]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [2, 1], to: [2, 7]}]
+                },
+                {book: "Lk", chunks: [{from: [11, 23], to: [11, 26]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 12], to: [9, 18]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "2Co",
+                    chunks: [{from: [3, 12], to: [3, 18]}]
+                },
+                {book: "Lk", chunks: [{from: [8, 16], to: [8, 21]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [6, 1], to: [6, 10]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        }
     ],
     [
         {
-            label: "21. søndag etter Pinse"
+            label: "21. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Gal", chunks: [{from: [2, 16], to: [2, 20]}]},
+                {book: "Lk", chunks: [{from: [16, 19], to: [16, 31]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [8, 5], to: [8, 15]}],
+                    flags: ["oldBysant"]
+                }
+            ]
         },
         null,
         null,
