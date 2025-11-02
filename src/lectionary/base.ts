@@ -2955,16 +2955,103 @@ export const paschaCycle: [
                 }
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [2, 13], to: [2, 20]}]
+                },
+                {book: "Lk", chunks: [{from: [11, 29], to: [11, 33]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 18], to: [9, 22]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [2, 20], to: [3, 3]}]
+                },
+                {book: "Lk", chunks: [{from: [11, 34], to: [11, 41]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 23], to: [9, 27]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [3, 17], to: [4, 1]}]
+                },
+                {book: "Lk", chunks: [{from: [11, 42], to: [11, 46]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 44], to: [9, 50]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [4, 2], to: [4, 9]}]
+                },
+                {book: "Lk", chunks: [{from: [11, 47], to: [12, 1]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 49], to: [9, 56]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "Col",
+                    chunks: [{from: [4, 10], to: [4, 18]}]
+                },
+                {book: "Lk", chunks: [{from: [12, 2], to: [12, 12]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [10, 1], to: [10, 15]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "2Co",
+                    chunks: [{from: [5, 1], to: [5, 10]}]
+                },
+                {book: "Lk", chunks: [{from: [9, 1], to: [9, 6]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [7, 2], to: [7, 10]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        }
     ],
     [
         {
-            label: "22. søndag etter Pinse"
+            label: "22. søndag etter Pinse",
+            liturgyTexts: [
+                {book: "Gal", chunks: [{from: [6, 11], to: [6, 18]}]},
+                {book: "Lk", chunks: [{from: [8, 41], to: [8, 56]}]},
+                {
+                    book: "Lk",
+                    chunks: [{from: [16, 19], to: [16, 31]}],
+                    flags: ["oldBysant"]
+                }
+            ]
         },
         null,
         null,
