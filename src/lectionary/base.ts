@@ -3073,11 +3073,91 @@ export const paschaCycle: [
                 }
             ]
         },
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            texts: [
+                {
+                    book: "1Th",
+                    chunks: [{from: [1, 6], to: [1, 10]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [12, 42], to: [12, 48]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [11, 1], to: [11, 10]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "1Th",
+                    chunks: [{from: [2, 1], to: [2, 8]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [12, 48], to: [12, 59]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [11, 9], to: [11, 13]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "1Th",
+                    chunks: [{from: [2, 9], to: [2, 14]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [13, 1], to: [13, 9]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [11, 14], to: [11, 23]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "1Th",
+                    chunks: [{from: [2, 14], to: [2, 19]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [13, 31], to: [13, 35]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [11, 23], to: [11, 26]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        },
+        {
+            texts: [
+                {
+                    book: "2Co",
+                    chunks: [{from: [8, 1], to: [8, 5]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 37], to: [9, 43]}]
+                },
+                {
+                    book: "Lk",
+                    chunks: [{from: [8, 16], to: [8, 21]}],
+                    flags: ["oldBysant"]
+                }
+            ]
+        }
     ],
     [
         {
