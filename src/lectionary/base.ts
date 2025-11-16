@@ -3170,32 +3170,25 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "1Th", chunks: [{from: [2, 20], to: [3, 8]}]},
-                {book: "Lk", chunks: [{from: [20, 27], to: [20, 44]}]}
+                {book: "Lk", chunks: [{from: [11, 29], to: [11, 33]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [3, 9], to: [3, 13]}]},
-                {book: "Lk", chunks: [{from: [21, 12], to: [21, 19]}]}
+                {book: "Lk", chunks: [{from: [11, 34], to: [11, 41]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [4, 1], to: [4, 12]}]},
-                {
-                    book: "Lk",
-                    chunks: [
-                        {from: [21, 5], to: [21, 7]},
-                        {from: [21, 10], to: [21, 11]},
-                        {from: [21, 20], to: [21, 24]}
-                    ]
-                }
+                {book: "Lk", chunks: [{from: [11, 42], to: [11, 46]}]}
             ]
         },
         {
             texts: [
                 {book: "1Th", chunks: [{from: [5, 1], to: [5, 8]}]},
-                {book: "Lk", chunks: [{from: [21, 28], to: [21, 33]}]}
+                {book: "Lk", chunks: [{from: [11, 47], to: [12, 1]}]}
             ]
         },
         {
@@ -3213,7 +3206,7 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "2Co", chunks: [{from: [11, 1], to: [11, 6]}]},
-                {book: "Lk", chunks: [{from: [13, 18], to: [13, 19]}]}
+                {book: "Lk", chunks: [{from: [9, 1], to: [9, 6]}]}
             ]
         }
     ],
@@ -3222,7 +3215,7 @@ export const paschaCycle: [
             label: "24. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Eph", chunks: [{from: [2, 14], to: [2, 22]}]},
-                {book: "Lk", chunks: [{from: [13, 10], to: [13, 17]}]}
+                {book: "Lk", chunks: [{from: [8, 41], to: [8, 56]}]}
             ]
         },
         {
