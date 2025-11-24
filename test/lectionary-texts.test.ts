@@ -2,6 +2,7 @@ import {getLectionaryTexts} from "@/lectionary/lectionary-logic"
 import assert from "assert"
 import {
     dateSpecificItems,
+    exaltationOfTheCrossSundayAfter,
     nativityCycle,
     paschaCycle,
     sundayOfZachary,
@@ -144,13 +145,47 @@ describe("Lectionary", () => {
         // assert.deepStrictEqual(res.labelledItems, [paschaCycle[0][0]])
     })
 
-    it("should get special texts the first liturgy after the exhaltatino of the cross", () => {
-        const res = getLectionaryTexts(2025, 9, 21)
+    // it("should get special texts the first liturgy after the exhaltatino of the cross", () => {
+    //     const res = getLectionaryTexts(2025, 9, 21)
 
-        assert.ok(res)
-        assert.ok(res.dailyReadings)
-        assert.ok(res.dailyReadings.liturgyTexts)
+    //     assert.ok(res)
+    //     assert.ok(res.dailyReadings)
+    //     assert.ok(res.dailyReadings.liturgyTexts)
 
-        assert.ok(res.labelledItems)
+    //     assert.ok(res.labelledItems)
+    // })
+
+    it("should get exhaltation of the cross when on sunday", () => {
+        ;(() => {
+            const res = getLectionaryTexts(2025, 9, 14)
+            assert.ok(res)
+            assert.ok(!res.dailyReadings)
+            assert.ok(res.labelledItems)
+            assert.deepStrictEqual(res.labelledItems.length, 1)
+            assert.deepStrictEqual(res.labelledItems[0].label, "Korsets opphøyelse")
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2025, 9, 21)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.deepStrictEqual(res.labelledItems, [exaltationOfTheCrossSundayAfter])
+        })()
+    })
+
+    it("should get exhaltation of the cross when not on sunday", () => {
+        ;(() => {
+            const res = getLectionaryTexts(2024, 9, 14)
+            assert.ok(res)
+            assert.ok(!res.dailyReadings)
+            assert.ok(res.labelledItems)
+            assert.deepStrictEqual(res.labelledItems.length, 1)
+            assert.deepStrictEqual(res.labelledItems[0].label, "Korsets opphøyelse")
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2024, 9, 15)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.deepStrictEqual(res.labelledItems, [exaltationOfTheCrossSundayAfter])
+        })()
     })
 })
