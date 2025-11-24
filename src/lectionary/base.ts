@@ -236,6 +236,7 @@ export const DAILY_READING_FLAGS = {
 export type DailyReading = {
     book: keyof typeof bookNames
     chunks: {from: [number, number]; to: [number, number]}[]
+    // TODO: Remove, replaced with WIP exaltationOfTheCrossCycle
     flags?: (keyof typeof DAILY_READING_FLAGS)[]
 }
 
@@ -2490,37 +2491,37 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "Gal", chunks: [{from: [4, 28], to: [5, 10]}]},
-                {book: "Lk", chunks: [{from: [3, 19], to: [3, 22]}]}
+                {book: "Mk", chunks: [{from: [6, 54], to: [7, 8]}]}
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [5, 11], to: [5, 21]}]},
-                {book: "Lk", chunks: [{from: [3, 23], to: [4, 1]}]}
+                {book: "Mk", chunks: [{from: [7, 5], to: [7, 16]}]}
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [6, 2], to: [6, 10]}]},
-                {book: "Lk", chunks: [{from: [4, 1], to: [4, 15]}]}
+                {book: "Mk", chunks: [{from: [7, 14], to: [7, 24]}]}
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [1, 1], to: [1, 9]}]},
-                {book: "Lk", chunks: [{from: [4, 16], to: [4, 22]}]}
+                {book: "Mk", chunks: [{from: [7, 24], to: [7, 30]}]}
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [1, 7], to: [1, 17]}]},
-                {book: "Lk", chunks: [{from: [4, 22], to: [4, 30]}]}
+                {book: "Mk", chunks: [{from: [8, 1], to: [8, 10]}]}
             ]
         },
         {
             texts: [
                 {book: "1Co", chunks: [{from: [10, 23], to: [10, 28]}]},
-                {book: "Lk", chunks: [{from: [4, 31], to: [4, 36]}]}
+                {book: "Mt", chunks: [{from: [24, 33], to: [24, 44]}]}
             ]
         }
     ],
@@ -3221,13 +3222,19 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "2Th", chunks: [{from: [1, 1], to: [1, 10]}]},
-                {book: "Mk", chunks: [{from: [8, 11], to: [8, 21]}]}
+                {
+                    book: "Lk",
+                    chunks: [
+                        {from: [12, 13], to: [12, 15]},
+                        {from: [12, 22], to: [12, 31]}
+                    ]
+                }
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [1, 10], to: [2, 2]}]},
-                {book: "Mk", chunks: [{from: [8, 22], to: [8, 26]}]}
+                {book: "Lk", chunks: [{from: [12, 42], to: [12, 48]}]}
             ]
         },
         {
@@ -3829,3 +3836,174 @@ export const paschaCycle: [
 //         {book: "Lk", chunks: [{from: [17, 20], to: [17, 25]}], flags: ["oldBysant"]}
 //     ]
 // ]
+
+export const exaltationOfTheCrossCycle: [
+    // The sunday after the exaltation of the cross starts a cycle that
+    // begins with a 6-day precursor to what's called the 1st sunday after
+    // the exaltation of the cross, but really is the 1st sunday after the
+    // 1st sunday after the exaltation of the cross.
+    [
+        null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null
+    ],
+    ...[
+        (DailyReading & {label: string}) | {label: string},
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null,
+        DailyReading | null
+    ][]
+] = [
+    [
+        null,
+        {
+            book: "Lk",
+            chunks: [{from: [3, 19], to: [3, 22]}]
+        },
+        {book: "Lk", chunks: [{from: [3, 23], to: [4, 1]}]},
+        {book: "Lk", chunks: [{from: [4, 1], to: [4, 15]}]},
+        {book: "Lk", chunks: [{from: [4, 16], to: [4, 22]}]},
+        {book: "Lk", chunks: [{from: [4, 22], to: [4, 30]}]},
+        {book: "Lk", chunks: [{from: [4, 31], to: [4, 36]}]}
+    ],
+    [
+        {
+            label: "1. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "2. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "3. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "4. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "5. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "6. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "7. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "8. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "9. søndag etter Korsets Opphøyelse",
+            book: "Lk",
+            chunks: [{from: [12, 16], to: [12, 21]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [17, 20], to: [17, 25]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [17, 26], to: [17, 37]}]
+        },
+        {
+            book: "Lk",
+            chunks: [
+                {from: [18, 15], to: [18, 17]},
+                {from: [18, 26], to: [18, 30]}
+            ]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [18, 31], to: [18, 34]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [19, 12], to: [19, 28]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [10, 19], to: [10, 21]}]
+        }
+    ],
+    [
+        {
+            label: "10. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+    ]
+]

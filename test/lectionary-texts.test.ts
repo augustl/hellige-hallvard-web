@@ -188,4 +188,40 @@ describe("Lectionary", () => {
             assert.deepStrictEqual(res.labelledItems, [exaltationOfTheCrossSundayAfter])
         })()
     })
+
+    it.only("should start exhaltation of the cross reading series following sunday after", () => {
+        ;(() => {
+            const res = getLectionaryTexts(2024, 9, 15)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.deepStrictEqual(res.labelledItems, [exaltationOfTheCrossSundayAfter])
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2024, 9, 16)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.deepStrictEqual(res.dailyReadings.texts, [
+                {book: "2Co", chunks: [{from: [8, 7], to: [8, 15]}]},
+                {book: "Mk", chunks: [{from: [3, 6], to: [3, 12]}]},
+                {book: "Lk", chunks: [{from: [3, 19], to: [3, 22]}], flags: ["oldBysant"]}
+            ])
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2025, 9, 21)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.deepStrictEqual(res.labelledItems, [exaltationOfTheCrossSundayAfter])
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2025, 9, 22)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.ok(res.dailyReadings.texts)
+            assert.deepStrictEqual(res.dailyReadings.texts, [
+                {book: "Gal", chunks: [{from: [4, 28], to: [5, 10]}]},
+                {book: "Mk", chunks: [{from: [6, 54], to: [7, 8]}]},
+                {book: "Lk", chunks: [{from: [3, 19], to: [3, 22]}], flags: ["oldBysant"]}
+            ])
+        })()
+    })
 })

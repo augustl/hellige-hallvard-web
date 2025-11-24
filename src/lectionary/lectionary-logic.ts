@@ -1,7 +1,9 @@
 import {DateTime} from "luxon"
 import {
+    DailyReading,
     DailyReadings,
     dateSpecificItems,
+    exaltationOfTheCrossCycle,
     exaltationOfTheCrossSundayAfter,
     lectionaryYearParams,
     nativityCycle,
@@ -155,7 +157,11 @@ export const getLectionaryTexts = (
     return {dailyReadings: getDailyReadingsFromCycle(y, m, d)}
 }
 
-export const getDailyReadingsFromCycle = (y: number, m: number, d: number) => {
+export const getDailyReadingsFromCycle = (
+    y: number,
+    m: number,
+    d: number
+): {label?: string} & DailyReadings => {
     const date = DateTime.fromJSDate(new Date(y, m - 1, d))
 
     const {currentPaschaDate, nextPaschaDate} = getCurrentAndNextPaschaDates(date)
@@ -178,7 +184,33 @@ export const getDailyReadingsFromCycle = (y: number, m: number, d: number) => {
         )
     }
 
-    return dayItems
+    const expectedSundayAfterExaltationOfTheCross = getExpectedSundayAfterExaltationOfTheCross(y)
+    const daysSinceStartofExaltationOfTheCrossCycle = Math.floor(
+        date.diff(expectedSundayAfterExaltationOfTheCross, "days").days
+    )
+    const currentExaltationOfTheCrossCycleWeek = Math.floor(
+        daysSinceStartofExaltationOfTheCrossCycle / 7
+    )
+
+    const exaltationOfTheCrossCycleText =
+        exaltationOfTheCrossCycle[currentExaltationOfTheCrossCycleWeek][
+            daysSinceStartofExaltationOfTheCrossCycle % 7
+        ]
+
+    return {
+        ...dayItems,
+        texts: [
+            ...(dayItems.texts ?? []),
+            ...(exaltationOfTheCrossCycleText
+                ? [
+                      {
+                          ...(exaltationOfTheCrossCycleText as DailyReading),
+                          flags: ["oldBysant" as const]
+                      }
+                  ]
+                : [])
+        ]
+    }
 }
 
 const getCurrentAndNextPaschaDates = (

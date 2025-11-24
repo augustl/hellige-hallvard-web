@@ -23,6 +23,7 @@ export default async function DagensTeksterList({y, m, d}: {y: string; m: string
 export async function DagensTeksterListData({y, m, d}: {y: string; m: string; d: string}) {
     try {
         const texts = getLectionaryTexts(parseInt(y), parseInt(m), parseInt(d))
+        console.log(JSON.stringify(texts))
 
         return (
             <div>
