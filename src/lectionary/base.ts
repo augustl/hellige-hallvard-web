@@ -4009,7 +4009,9 @@ export const exaltationOfTheCrossCycle: [
     ],
     [
         {
-            label: "10. søndag etter Korsets Opphøyelse"
+            label: "10. søndag etter Korsets Opphøyelse",
+            book: "Lk",
+            chunks: [{from: [18, 18], to: [18, 27]}]
         },
         null,
         null,

@@ -192,24 +192,50 @@ export const getDailyReadingsFromCycle = (
         daysSinceStartofExaltationOfTheCrossCycle / 7
     )
 
-    const exaltationOfTheCrossCycleText =
-        exaltationOfTheCrossCycle[currentExaltationOfTheCrossCycleWeek][
+    let exaltationOfTheCrossCycleText: undefined | object = {
+        ...exaltationOfTheCrossCycle[currentExaltationOfTheCrossCycleWeek]?.[
             daysSinceStartofExaltationOfTheCrossCycle % 7
         ]
+    }
+
+    if (exaltationOfTheCrossCycleText) {
+        exaltationOfTheCrossCycleText = {...exaltationOfTheCrossCycleText}
+        delete (exaltationOfTheCrossCycleText as any)["label"]
+
+        if (Object.keys(exaltationOfTheCrossCycleText).length === 0) {
+            exaltationOfTheCrossCycleText = undefined
+        }
+    }
 
     return {
         ...dayItems,
-        texts: [
-            ...(dayItems.texts ?? []),
-            ...(exaltationOfTheCrossCycleText
-                ? [
-                      {
-                          ...(exaltationOfTheCrossCycleText as DailyReading),
-                          flags: ["oldBysant" as const]
-                      }
+        ...(dayItems.liturgyTexts
+            ? {
+                  liturgyTexts: [
+                      ...dayItems.liturgyTexts,
+                      ...(exaltationOfTheCrossCycleText
+                          ? [
+                                {
+                                    ...(exaltationOfTheCrossCycleText as DailyReading),
+                                    flags: ["oldBysant" as const]
+                                }
+                            ]
+                          : [])
                   ]
-                : [])
-        ]
+              }
+            : {
+                  texts: [
+                      ...(dayItems.texts ?? []),
+                      ...(exaltationOfTheCrossCycleText
+                          ? [
+                                {
+                                    ...(exaltationOfTheCrossCycleText as DailyReading),
+                                    flags: ["oldBysant" as const]
+                                }
+                            ]
+                          : [])
+                  ]
+              })
     }
 }
 

@@ -189,7 +189,7 @@ describe("Lectionary", () => {
         })()
     })
 
-    it.only("should start exhaltation of the cross reading series following sunday after", () => {
+    it("should start exhaltation of the cross reading series following sunday after", () => {
         ;(() => {
             const res = getLectionaryTexts(2024, 9, 15)
             assert.ok(res)
@@ -221,6 +221,19 @@ describe("Lectionary", () => {
                 {book: "Gal", chunks: [{from: [4, 28], to: [5, 10]}]},
                 {book: "Mk", chunks: [{from: [6, 54], to: [7, 8]}]},
                 {book: "Lk", chunks: [{from: [3, 19], to: [3, 22]}], flags: ["oldBysant"]}
+            ])
+        })()
+    })
+
+    it("should include exaltation of the cross as part of liturgy texts on sundays", () => {
+        ;(() => {
+            const res = getLectionaryTexts(2025, 11, 30)
+            assert.ok(res)
+            assert.ok(res.dailyReadings)
+            assert.deepStrictEqual(res.dailyReadings.liturgyTexts, [
+                {book: "Eph", chunks: [{from: [4, 1], to: [4, 6]}]},
+                {book: "Lk", chunks: [{from: [10, 25], to: [10, 37]}]},
+                {book: "Lk", chunks: [{from: [18, 18], to: [18, 27]}], flags: ["oldBysant"]}
             ])
         })()
     })
