@@ -3279,7 +3279,7 @@ export const paschaCycle: [
             label: "25. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Col", chunks: [{from: [3, 4], to: [3, 11]}]},
-                {book: "Lk", chunks: [{from: [10, 35], to: [10, 37]}]}
+                {book: "Lk", chunks: [{from: [10, 25], to: [10, 37]}]}
             ]
         },
         {
