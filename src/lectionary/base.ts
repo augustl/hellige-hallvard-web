@@ -3240,25 +3240,37 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "2Th", chunks: [{from: [2, 1], to: [2, 12]}]},
-                {book: "Mk", chunks: [{from: [8, 30], to: [8, 34]}]}
+                {
+                    book: "Lk",
+                    chunks: [{from: [12, 48], to: [12, 59]}]
+                }
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [2, 13], to: [3, 5]}]},
-                {book: "Mk", chunks: [{from: [9, 10], to: [9, 16]}]}
+                {
+                    book: "Lk",
+                    chunks: [{from: [13, 1], to: [13, 9]}]
+                }
             ]
         },
         {
             texts: [
                 {book: "2Th", chunks: [{from: [3, 6], to: [3, 18]}]},
-                {book: "Mk", chunks: [{from: [9, 33], to: [9, 41]}]}
+                {
+                    book: "Lk",
+                    chunks: [{from: [13, 31], to: [13, 35]}]
+                }
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [1, 3], to: [1, 10]}]},
-                {book: "Lk", chunks: [{from: [14, 1], to: [14, 11]}]}
+                {
+                    book: "Lk",
+                    chunks: [{from: [9, 37], to: [9, 43]}]
+                }
             ]
         }
     ],
@@ -3267,7 +3279,7 @@ export const paschaCycle: [
             label: "25. søndag etter Pinse",
             liturgyTexts: [
                 {book: "Col", chunks: [{from: [3, 4], to: [3, 11]}]},
-                {book: "Lk", chunks: [{from: [14, 16], to: [14, 24]}]}
+                {book: "Lk", chunks: [{from: [10, 35], to: [10, 37]}]}
             ]
         },
         {
