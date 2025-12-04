@@ -3285,13 +3285,13 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [1, 1], to: [1, 7]}]},
-                {book: "Mk", chunks: [{from: [9, 42], to: [10, 1]}]}
+                {book: "Lk", chunks: [{from: [14, 12], to: [14, 15]}]}
             ]
         },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [1, 8], to: [1, 14]}]},
-                {book: "Mk", chunks: [{from: [10, 2], to: [10, 12]}]}
+                {book: "Lk", chunks: [{from: [14, 25], to: [14, 35]}]}
             ]
         },
         {
@@ -3303,13 +3303,13 @@ export const paschaCycle: [
                         {from: [2, 8], to: [2, 15]}
                     ]
                 },
-                {book: "Mk", chunks: [{from: [10, 11], to: [10, 16]}]}
+                {book: "Lk", chunks: [{from: [15, 1], to: [15, 10]}]}
             ]
         },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [3, 1], to: [3, 13]}]},
-                {book: "Mk", chunks: [{from: [10, 17], to: [10, 27]}]}
+                {book: "Lk", chunks: [{from: [16, 1], to: [16, 9]}]}
             ]
         },
         {
@@ -3321,13 +3321,19 @@ export const paschaCycle: [
                         {from: [4, 16], to: [4, 16]}
                     ]
                 },
-                {book: "Mk", chunks: [{from: [10, 23], to: [10, 32]}]}
+                {
+                    book: "Lk",
+                    chunks: [
+                        {from: [16, 15], to: [16, 18]},
+                        {from: [17, 1], to: [17, 4]}
+                    ]
+                }
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [3, 8], to: [3, 12]}]},
-                {book: "Lk", chunks: [{from: [16, 10], to: [16, 15]}]}
+                {book: "Lk", chunks: [{from: [9, 57], to: [9, 62]}]}
             ]
         }
     ],
@@ -3336,14 +3342,10 @@ export const paschaCycle: [
             label: "26. søndag etter Pinse",
             liturgyTexts: [
                 {
-                    book: "Heb",
-                    chunks: [
-                        {from: [11, 9], to: [11, 10]},
-                        {from: [11, 17], to: [11, 23]},
-                        {from: [11, 32], to: [11, 40]}
-                    ]
+                    book: "Eph",
+                    chunks: [{from: [5, 8], to: [5, 19]}]
                 },
-                {book: "Mt", chunks: [{from: [1, 1], to: [1, 25]}]}
+                {book: "Lk", chunks: [{from: [12, 16], to: [12, 21]}]}
             ]
         },
         {
@@ -4012,6 +4014,37 @@ export const exaltationOfTheCrossCycle: [
             label: "10. søndag etter Korsets Opphøyelse",
             book: "Lk",
             chunks: [{from: [18, 18], to: [18, 27]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [19, 37], to: [19, 44]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [19, 45], to: [19, 48]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [20, 1], to: [20, 8]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [20, 9], to: [20, 18]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [20, 19], to: [20, 26]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [12, 32], to: [12, 40]}]
+        }
+    ],
+    [
+        {
+            label: "11. søndag etter Korsets Opphøyelse",
+            book: "Lk",
+            chunks: [{from: [13, 10], to: [13, 17]}]
         },
         null,
         null,
