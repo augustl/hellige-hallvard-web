@@ -31,8 +31,7 @@ describe("Lectionary", () => {
         assert.ok(!res.labelledItems)
         assert.deepStrictEqual(res.dailyReadings.texts, [
             {book: "1Ti", chunks: [{from: [6, 17], to: [6, 21]}]},
-            {book: "Mk", chunks: [{from: [11, 27], to: [11, 33]}]},
-            {book: "Lk", chunks: [{from: [18, 31], to: [18, 34]}], flags: ["oldBysant"]}
+            {book: "Lk", chunks: [{from: [18, 31], to: [18, 34]}]}
         ])
     })
 

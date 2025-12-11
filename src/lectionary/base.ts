@@ -3351,20 +3351,31 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [5, 1], to: [5, 10]}]},
-                {book: "Mk", chunks: [{from: [10, 46], to: [10, 52]}]}
+                {book: "Lk", chunks: [{from: [17, 20], to: [17, 25]}]}
             ]
         },
-        null,
-        null,
+        {
+            texts: [
+                {book: "1Ti", chunks: [{from: [5, 11], to: [5, 21]}]},
+                {book: "Lk", chunks: [{from: [17, 26], to: [17, 37]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Ti", chunks: [{from: [5, 22], to: [6, 11]}]},
+                {
+                    book: "Lk",
+                    chunks: [
+                        {from: [18, 15], to: [18, 17]},
+                        {from: [18, 26], to: [18, 30]}
+                    ]
+                }
+            ]
+        },
         {
             texts: [
                 {book: "1Ti", chunks: [{from: [6, 17], to: [6, 21]}]},
-                {book: "Mk", chunks: [{from: [11, 27], to: [11, 33]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [18, 31], to: [18, 34]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Lk", chunks: [{from: [18, 31], to: [18, 34]}]}
             ]
         },
         {
@@ -3376,23 +3387,13 @@ export const paschaCycle: [
                         {from: [1, 8], to: [1, 18]}
                     ]
                 },
-                {book: "Mk", chunks: [{from: [12, 1], to: [12, 12]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [14, 12], to: [14, 28]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Lk", chunks: [{from: [19, 12], to: [19, 28]}]}
             ]
         },
         {
             texts: [
                 {book: "Gal", chunks: [{from: [5, 22], to: [6, 2]}]},
-                {book: "Lk", chunks: [{from: [17, 3], to: [17, 10]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [10, 19], to: [10, 21]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Lk", chunks: [{from: [10, 19], to: [10, 21]}]}
             ]
         }
     ],
@@ -3403,12 +3404,7 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "2Ti", chunks: [{from: [2, 20], to: [2, 26]}]},
-                {book: "Mk", chunks: [{from: [3, 6], to: [3, 12]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [14, 37], to: [14, 44]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Mk", chunks: [{from: [3, 6], to: [3, 12]}]}
             ]
         },
         {
@@ -4046,11 +4042,33 @@ export const exaltationOfTheCrossCycle: [
             book: "Lk",
             chunks: [{from: [13, 10], to: [13, 17]}]
         },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        {
+            book: "Lk",
+            chunks: [{from: [20, 27], to: [20, 44]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [21, 12], to: [21, 19]}]
+        },
+        {
+            book: "Lk",
+            chunks: [
+                {from: [21, 5], to: [21, 7]},
+                {from: [21, 10], to: [21, 11]},
+                {from: [21, 20], to: [21, 24]}
+            ]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [21, 28], to: [21, 33]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [21, 37], to: [22, 8]}]
+        },
+        {
+            book: "Lk",
+            chunks: [{from: [13, 18], to: [13, 29]}]
+        }
     ]
 ]
