@@ -369,6 +369,16 @@ export const sundayOfZachary: {label: string} & DailyReadings = {
 }
 
 export const nativityCycle = {
+    secondSundayBeforeNativity: {
+        label: "Forfedrenes søndag",
+        liturgyTexts: [
+            {book: "Col", chunks: [{from: [3, 4], to: [3, 11]}]},
+            {book: "Lk", chunks: [{from: [14, 16], to: [14, 24]}]}
+        ] satisfies DailyReading[] as DailyReading[]
+    },
+    sundayBeforeBeforeNativity: {
+        label: "Slektstavlens søndag"
+    },
     satAfterNativity: {
         label: "Lørdag etter Kristi fødsel",
         liturgyTexts: [
@@ -378,7 +388,6 @@ export const nativityCycle = {
     },
     sunAfterNativity: {
         label: "Søndag etter Kristi fødsel",
-        includesDailyReadings: false,
         liturgyTexts: [
             {book: "Gal", chunks: [{from: [1, 11], to: [1, 19]}]},
             {book: "Mt", chunks: [{from: [2, 13], to: [2, 23]}]}

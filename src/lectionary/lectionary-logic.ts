@@ -138,6 +138,25 @@ export const getLectionaryTexts = (
     }
 
     if (m === 12) {
+        const nativityDate = DateTime.fromObject({year: y, month: 12, day: 25})
+        const sundayBeforeNativityDate = getSundayBeforeDate(nativityDate)
+        const secondSundayBeforeNativity = getSundayBeforeDate(sundayBeforeNativityDate)
+
+        if (secondSundayBeforeNativity.equals(date)) {
+            return {
+                labelledItems: [nativityCycle.secondSundayBeforeNativity]
+            }
+        }
+
+        if (sundayBeforeNativityDate.equals(date)) {
+            return {
+                labelledItems: [nativityCycle.sundayBeforeBeforeNativity]
+            }
+        }
+
+        if (date.weekday === 7) {
+        }
+
         if (d > 25) {
             if (date.weekday === 6) {
                 return {
@@ -334,5 +353,13 @@ const getSundayAfterDate = (date: DateTime): DateTime => {
         return date.plus({days: 7})
     } else {
         return date.plus({days: (7 - date.weekday) % 7})
+    }
+}
+
+const getSundayBeforeDate = (date: DateTime): DateTime => {
+    if (date.weekday === 7) {
+        return date.minus({days: 7})
+    } else {
+        return date.minus({days: date.weekday})
     }
 }

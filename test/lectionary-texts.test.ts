@@ -236,4 +236,23 @@ describe("Lectionary", () => {
             ])
         })()
     })
+
+    it("should get two sundays before nativity readings", () => {
+        ;(() => {
+            const res = getLectionaryTexts(2025, 12, 14)
+
+            assert.ok(res)
+            assert.ok(!res.dailyReadings)
+            assert.ok(res.labelledItems)
+            assert.deepStrictEqual(res.labelledItems[0], nativityCycle.secondSundayBeforeNativity)
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2024, 12, 15)
+
+            assert.ok(res)
+            assert.ok(!res.dailyReadings)
+            assert.ok(res.labelledItems)
+            assert.deepStrictEqual(res.labelledItems[0], nativityCycle.secondSundayBeforeNativity)
+        })()
+    })
 })
