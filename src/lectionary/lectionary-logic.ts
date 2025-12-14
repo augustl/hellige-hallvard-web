@@ -141,6 +141,13 @@ export const getLectionaryTexts = (
         const nativityDate = DateTime.fromObject({year: y, month: 12, day: 25})
         const sundayBeforeNativityDate = getSundayBeforeDate(nativityDate)
         const secondSundayBeforeNativity = getSundayBeforeDate(sundayBeforeNativityDate)
+        const saturdayBeforeNativity = sundayBeforeNativityDate.minus({days: 1})
+
+        if (saturdayBeforeNativity.equals(date)) {
+            return {
+                labelledItems: [nativityCycle.saturdayBeforeBeforeNativity]
+            }
+        }
 
         if (secondSundayBeforeNativity.equals(date)) {
             return {

@@ -377,7 +377,28 @@ export const nativityCycle = {
         ] satisfies DailyReading[] as DailyReading[]
     },
     sundayBeforeBeforeNativity: {
-        label: "Slektstavlens søndag"
+        label: "Slektstavlens søndag",
+        liturgyTexts: [
+            {
+                book: "Heb",
+                chunks: [
+                    {from: [11, 9], to: [11, 10]},
+                    {from: [11, 17], to: [11, 23]},
+                    {from: [11, 32], to: [11, 40]}
+                ]
+            },
+            {book: "Mt", chunks: [{from: [1, 1], to: [1, 25]}]}
+        ] satisfies DailyReading[] as DailyReading[]
+    },
+    saturdayBeforeBeforeNativity: {
+        label: "Lørdag før Kristi fødsel",
+        liturgyTexts: [
+            {
+                book: "Gal",
+                chunks: [{from: [3, 8], to: [3, 12]}]
+            },
+            {book: "Lk", chunks: [{from: [13, 18], to: [13, 29]}]}
+        ] satisfies DailyReading[] as DailyReading[]
     },
     satAfterNativity: {
         label: "Lørdag etter Kristi fødsel",
@@ -3413,43 +3434,35 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "2Ti", chunks: [{from: [2, 20], to: [2, 26]}]},
-                {book: "Mk", chunks: [{from: [3, 6], to: [3, 12]}]}
+                {book: "Lk", chunks: [{from: [19, 37], to: [19, 44]}]}
             ]
         },
         {
             texts: [
                 {book: "2Ti", chunks: [{from: [3, 16], to: [4, 4]}]},
-                {book: "Mk", chunks: [{from: [3, 13], to: [3, 19]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [14, 45], to: [14, 48]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Lk", chunks: [{from: [19, 45], to: [19, 48]}]}
             ]
         },
-        null,
+        {
+            texts: [
+                {book: "2Ti", chunks: [{from: [4, 9], to: [4, 22]}]},
+                {book: "Lk", chunks: [{from: [20, 1], to: [20, 8]}]}
+            ]
+        },
         {
             texts: [
                 {book: "Tts", chunks: [{from: [1, 5], to: [2, 1]}]},
-                {book: "Mk", chunks: [{from: [3, 28], to: [3, 35]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [20, 9], to: [20, 18]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Lk", chunks: [{from: [20, 9], to: [20, 18]}]}
             ]
         },
-        null,
         {
             texts: [
-                {book: "Eph", chunks: [{from: [1, 16], to: [1, 23]}]},
-                {book: "Mt", chunks: [{from: [22, 15], to: [22, 22]}]},
-                {
-                    book: "Lk",
-                    chunks: [{from: [12, 32], to: [12, 40]}],
-                    flags: ["oldBysant"]
-                }
+                {book: "Tts", chunks: [{from: [1, 15], to: [2, 10]}]},
+                {book: "Lk", chunks: [{from: [20, 19], to: [20, 26]}]}
             ]
+        },
+        {
+            texts: [{book: "Eph", chunks: [{from: [1, 16], to: [1, 23]}]}]
         }
     ],
     [
@@ -4079,5 +4092,33 @@ export const exaltationOfTheCrossCycle: [
             book: "Lk",
             chunks: [{from: [13, 18], to: [13, 29]}]
         }
+    ],
+    [
+        {
+            label: "12. søndag etter Korsets Opphøyelse",
+            book: "Lk",
+            chunks: [{from: [13, 10], to: [13, 17]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [8, 11], to: [8, 21]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [8, 22], to: [8, 26]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [8, 30], to: [8, 34]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [9, 10], to: [9, 16]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [9, 33], to: [9, 41]}]
+        },
+        null
     ]
 ]
