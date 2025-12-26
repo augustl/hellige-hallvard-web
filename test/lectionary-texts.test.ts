@@ -274,4 +274,24 @@ describe("Lectionary", () => {
             assert.deepStrictEqual(res.labelledItems[0], nativityCycle.saturdayBeforeBeforeNativity)
         })()
     })
+
+    it("should get saturday after nativity readings", () => {
+        ;(() => {
+            const res = getLectionaryTexts(2025, 12, 27)
+
+            assert.ok(res)
+            assert.ok(!res.dailyReadings)
+            assert.ok(res.labelledItems)
+            assert.deepStrictEqual(res.labelledItems[0], nativityCycle.satAfterNativity)
+            assert.deepStrictEqual(res.labelledItems.slice(1), dateSpecificItems["12-27"].items)
+        })()
+        ;(() => {
+            const res = getLectionaryTexts(2024, 12, 28)
+
+            assert.ok(res)
+            assert.ok(!res.dailyReadings)
+            assert.ok(res.labelledItems)
+            assert.deepStrictEqual(res.labelledItems[0], nativityCycle.satAfterNativity)
+        })()
+    })
 })

@@ -121,27 +121,16 @@ export const getLectionaryTexts = (
         }
     }
 
-    // Date specific items are special feast days. These will always either override the Pascha schedule
-    // completely, or optionally include the daily readings from the Pascha schedule.
-    // TODO: This is not always true. Some Pascha schedule items override date specific items. Figure out later
     const dateSpecificItem = dateSpecificItems[`${m}-${d}`]
-
-    if (dateSpecificItem) {
-        if (dateSpecificItem.includesDailyReadings) {
-            return {
-                dailyReadings: getDailyReadingsFromCycle(y, m, d),
-                labelledItems: dateSpecificItem.items
-            }
-        } else {
-            return {labelledItems: dateSpecificItem.items}
-        }
-    }
 
     if (m === 12) {
         const nativityDate = DateTime.fromObject({year: y, month: 12, day: 25})
         const sundayBeforeNativityDate = getSundayBeforeDate(nativityDate)
         const secondSundayBeforeNativity = getSundayBeforeDate(sundayBeforeNativityDate)
         const saturdayBeforeNativity = sundayBeforeNativityDate.minus({days: 1})
+        // TODO: finn ut hva som skjer når Kristi fødsel er på lørdag. Bortfaller da satAfterNativity?
+        const sunAfterNativity = getSundayAfterDate(nativityDate)
+        const satAfterNativity = sunAfterNativity.minus({days: 1})
 
         if (saturdayBeforeNativity.equals(date)) {
             return {
@@ -161,22 +150,55 @@ export const getLectionaryTexts = (
             }
         }
 
-        if (date.weekday === 7) {
+        if (satAfterNativity.equals(date)) {
+            return {
+                labelledItems: [
+                    nativityCycle.satAfterNativity,
+                    ...(dateSpecificItem ? dateSpecificItem.items : [])
+                ]
+            }
         }
 
-        if (d > 25) {
-            if (date.weekday === 6) {
-                return {
-                    dailyReadings: getDailyReadingsFromCycle(y, m, d),
-                    labelledItems: [nativityCycle.satAfterNativity]
-                }
+        if (sunAfterNativity.equals(date)) {
+            return {
+                labelledItems: [
+                    nativityCycle.sunAfterNativity,
+                    ...(dateSpecificItem ? dateSpecificItem.items : [])
+                ]
             }
+        }
 
-            if (date.weekday === 7) {
-                return {
-                    labelledItems: [nativityCycle.sunAfterNativity]
-                }
+        // if (date.weekday === 7) {
+        // }
+
+        // if (d > 25) {
+        //     if (date.weekday === 6) {
+        //         return {
+        //             dailyReadings: getDailyReadingsFromCycle(y, m, d),
+        //             labelledItems: [nativityCycle.satAfterNativity]
+        //         }
+        //     }
+
+        //     if (date.weekday === 7) {
+        //         return {
+        //             labelledItems: [nativityCycle.sunAfterNativity]
+        //         }
+        //     }
+        // }
+    }
+
+    // Date specific items are special feast days. These will always either override the Pascha schedule
+    // completely, or optionally include the daily readings from the Pascha schedule.
+    // TODO: This is not always true. Some Pascha schedule items override date specific items. Figure out later
+
+    if (dateSpecificItem) {
+        if (dateSpecificItem.includesDailyReadings) {
+            return {
+                dailyReadings: getDailyReadingsFromCycle(y, m, d),
+                labelledItems: dateSpecificItem.items
             }
+        } else {
+            return {labelledItems: dateSpecificItem.items}
         }
     }
 
