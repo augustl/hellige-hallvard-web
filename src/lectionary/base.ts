@@ -3469,41 +3469,46 @@ export const paschaCycle: [
         {
             label: "28. søndag etter Pinse"
         },
-        null,
+        {
+            texts: [
+                {
+                    book: "Heb",
+                    chunks: [
+                        {from: [3, 5], to: [3, 11]},
+                        {from: [3, 17], to: [3, 19]}
+                    ]
+                },
+                {book: "Lk", chunks: [{from: [20, 27], to: [20, 44]}]}
+            ]
+        },
         {
             texts: [
                 {book: "Heb", chunks: [{from: [4, 1], to: [4, 13]}]},
-                {book: "Mk", chunks: [{from: [4, 24], to: [4, 34]}]},
                 {
                     book: "Lk",
-                    chunks: [{from: [21, 12], to: [21, 19]}],
-                    flags: ["oldBysant"]
+                    chunks: [{from: [21, 12], to: [21, 19]}]
                 }
             ]
         },
         {
             texts: [
                 {book: "Heb", chunks: [{from: [5, 11], to: [6, 8]}]},
-                {book: "Mk", chunks: [{from: [4, 35], to: [4, 41]}]},
                 {
                     book: "Lk",
                     chunks: [
                         {from: [21, 5], to: [21, 7]},
                         {from: [21, 10], to: [21, 11]},
                         {from: [21, 20], to: [21, 24]}
-                    ],
-                    flags: ["oldBysant"]
+                    ]
                 }
             ]
         },
         {
             texts: [
                 {book: "Heb", chunks: [{from: [7, 1], to: [7, 6]}]},
-                {book: "Mk", chunks: [{from: [5, 1], to: [5, 20]}]},
                 {
                     book: "Lk",
-                    chunks: [{from: [21, 28], to: [21, 33]}],
-                    flags: ["oldBysant"]
+                    chunks: [{from: [21, 28], to: [21, 33]}]
                 }
             ]
         },
@@ -3511,27 +3516,17 @@ export const paschaCycle: [
             texts: [
                 {book: "Heb", chunks: [{from: [7, 18], to: [7, 25]}]},
                 {
-                    book: "Mk",
-                    chunks: [
-                        {from: [5, 22], to: [5, 24]},
-                        {from: [5, 35], to: [6, 1]}
-                    ]
-                },
-                {
                     book: "Lk",
-                    chunks: [{from: [21, 37], to: [22, 8]}],
-                    flags: ["oldBysant"]
+                    chunks: [{from: [21, 37], to: [22, 8]}]
                 }
             ]
         },
         {
             texts: [
                 {book: "Eph", chunks: [{from: [2, 11], to: [2, 13]}]},
-                {book: "Mt", chunks: [{from: [23, 1], to: [23, 12]}]},
                 {
                     book: "Lk",
-                    chunks: [{from: [13, 18], to: [13, 29]}],
-                    flags: ["oldBysant"]
+                    chunks: [{from: [13, 18], to: [13, 29]}]
                 }
             ]
         }
