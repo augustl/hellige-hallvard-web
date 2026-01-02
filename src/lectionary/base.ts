@@ -3696,7 +3696,7 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "Jam", chunks: [{from: [2, 14], to: [2, 26]}]},
-                {book: "Mk", chunks: [{from: [10, 146], to: [10, 52]}]}
+                {book: "Mk", chunks: [{from: [10, 46], to: [10, 52]}]}
             ]
         },
         {
@@ -3733,11 +3733,9 @@ export const paschaCycle: [
         {
             texts: [
                 {book: "1Th", chunks: [{from: [5, 14], to: [5, 23]}]},
-                {book: "Mt", chunks: [{from: [25, 1], to: [25, 13]}]},
                 {
                     book: "Lk",
-                    chunks: [{from: [17, 3], to: [17, 10]}],
-                    flags: ["oldBysant"]
+                    chunks: [{from: [17, 3], to: [17, 10]}]
                 }
             ]
         }
@@ -4126,6 +4124,126 @@ export const exaltationOfTheCrossCycle: [
             book: "Mk",
             chunks: [{from: [11, 23], to: [11, 26]}]
         },
+        null,
+        null,
+        null
+    ],
+    [
+        {
+            label: "15. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        null,
+        null,
+        {
+            book: "Mk",
+            chunks: [{from: [3, 28], to: [3, 35]}]
+        },
+        null,
+        {
+            book: "Mt",
+            chunks: [{from: [22, 15], to: [22, 22]}]
+        }
+    ],
+    [
+        {
+            label: "16. søndag etter Korsets Opphøyelse"
+        },
+        null,
+        {
+            book: "Mk",
+            chunks: [{from: [4, 24], to: [4, 34]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [4, 35], to: [4, 41]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [5, 1], to: [5, 20]}]
+        },
+        {
+            book: "Mk",
+            chunks: [
+                {from: [5, 22], to: [5, 24]},
+                {from: [5, 35], to: [6, 1]}
+            ]
+        },
+        {
+            book: "Mt",
+            chunks: [{from: [23, 1], to: [23, 12]}]
+        }
+    ],
+    [
+        {
+            label: "17. søndag etter Korsets Opphøyelse"
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [5, 24], to: [5, 34]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [6, 1], to: [6, 7]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [6, 7], to: [6, 13]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [6, 30], to: [6, 45]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [6, 45], to: [6, 53]}]
+        },
+        {
+            book: "Mt",
+            chunks: [{from: [24, 1], to: [24, 13]}]
+        }
+    ],
+    [
+        {
+            label: "18. søndag etter Korsets Opphøyelse",
+            book: "Lk",
+            chunks: [{from: [17, 12], to: [17, 19]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [6, 54], to: [7, 8]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [7, 5], to: [7, 16]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [7, 14], to: [7, 24]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [7, 24], to: [7, 30]}]
+        },
+        {
+            book: "Mk",
+            chunks: [{from: [8, 1], to: [8, 10]}]
+        },
+        {
+            book: "Mt",
+            chunks: [{from: [24, 33], to: [24, 44]}]
+        }
+    ],
+    [
+        {
+            label: "19. søndag etter Korsets Opphøyelse",
+            book: "Lk",
+            chunks: [{from: [19, 1], to: [19, 10]}]
+        },
+        // Ser ut som syklusen stopper her.
+        null,
+        null,
+        null,
         null,
         null,
         null
