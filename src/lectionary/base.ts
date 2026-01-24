@@ -211,12 +211,10 @@ export const dateSpecificItems: {
 export const lectionaryYearParams: {
     [key: string]: {paschaCycleStart: [number, number]}
 } = {
-    "2024": {paschaCycleStart: [2, 25]},
-    "2025": {paschaCycleStart: [2, 9]},
-    "2026": {paschaCycleStart: [2, 9]},
-    "2027": {paschaCycleStart: [2, 22]},
-    "2028": {paschaCycleStart: [2, 6]},
-    "2029": {paschaCycleStart: [1, 28]}
+    "2024": {paschaCycleStart: [2, 18]},
+    "2025": {paschaCycleStart: [2, 2]},
+    "2026": {paschaCycleStart: [1, 25]},
+    "2027": {paschaCycleStart: [2, 15]}
 }
 
 type PaschaCycleEntry = ({label?: string} & DailyReadings) | null
@@ -360,14 +358,6 @@ export const theophanyGreatBlessingsOfTheWaters: {
     ]
 }
 
-export const sundayOfZachary: {label: string} & DailyReadings = {
-    label: "Sakarjas søndag",
-    texts: [
-        {book: "Heb", chunks: [{from: [7, 7], to: [7, 17]}]},
-        {book: "Lk", chunks: [{from: [2, 22], to: [2, 40]}]}
-    ]
-}
-
 export const nativityCycle = {
     secondSundayBeforeNativity: {
         label: "Forfedrenes søndag",
@@ -425,6 +415,51 @@ export const paschaCycle: [
     PaschaCycleEntry,
     PaschaCycleEntry
 ][] = [
+    [
+        {
+            label: "Sakarjas søndag",
+            texts: [
+                {book: "1Ti", chunks: [{from: [4, 9], to: [4, 15]}]},
+                {book: "Lk", chunks: [{from: [19, 1], to: [19, 10]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Pt", chunks: [{from: [2, 21], to: [3, 9]}]},
+                {book: "Mk", chunks: [{from: [12, 13], to: [12, 17]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Pt", chunks: [{from: [3, 10], to: [3, 22]}]},
+                {book: "Mk", chunks: [{from: [12, 18], to: [12, 27]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Pt", chunks: [{from: [4, 1], to: [4, 11]}]},
+                {book: "Mk", chunks: [{from: [12, 28], to: [12, 37]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "1Pt", chunks: [{from: [4, 12], to: [5, 5]}]},
+                {book: "Mk", chunks: [{from: [12, 38], to: [12, 44]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Pt", chunks: [{from: [1, 1], to: [1, 10]}]},
+                {book: "Mk", chunks: [{from: [13, 1], to: [13, 8]}]}
+            ]
+        },
+        {
+            texts: [
+                {book: "2Ti", chunks: [{from: [2, 11], to: [2, 19]}]},
+                {book: "Lk", chunks: [{from: [18, 2], to: [18, 8]}]}
+            ]
+        }
+    ],
     [
         {
             label: "Tollerens og fariséerens søndag",

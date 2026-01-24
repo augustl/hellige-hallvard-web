@@ -46,7 +46,7 @@ describe("Lectionary", () => {
         const res = getLectionaryTexts(2024, 12, 28)
 
         assert.ok(res)
-        assert.ok(res.dailyReadings)
+        assert.ok(!res.dailyReadings)
         assert.ok(res.labelledItems)
         assert.deepStrictEqual(res.labelledItems[0], nativityCycle.satAfterNativity)
     })
@@ -126,12 +126,12 @@ describe("Lectionary", () => {
         assert.deepStrictEqual(res.labelledItems, [theophanySundayAfter])
     })
 
-    it("should get zachary sunday the sunday before pascha cycle starts", () => {
+    it("should get zachary sunday the sunday before pascha cycle starts (which is actually the day the cycle starts)", () => {
         const res = getLectionaryTexts(2025, 2, 2)
 
         assert.ok(res)
         assert.ok(res.dailyReadings)
-        assert.deepStrictEqual(res.labelledItems, [sundayOfZachary])
+        assert.deepStrictEqual(res.dailyReadings, paschaCycle[0][0])
     })
 
     it("should get first text of pascha cycle", () => {
