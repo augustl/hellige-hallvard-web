@@ -130,7 +130,7 @@ describe("Lectionary", () => {
 
         assert.ok(res)
         assert.ok(res.dailyReadings)
-        assert.deepStrictEqual(res.dailyReadings, paschaCycle[0][0])
+        assert.deepStrictEqual(res.dailyReadings, paschaCycle[1][0])
     })
 
     it("should get first text of pascha cycle", () => {
