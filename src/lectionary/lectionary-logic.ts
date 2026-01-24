@@ -8,7 +8,6 @@ import {
     lectionaryYearParams,
     nativityCycle,
     paschaCycle,
-    sundayOfZachary,
     teophanyRoyalHours,
     teophanySaturdayBefore,
     teophanySundayBefore,
@@ -37,13 +36,6 @@ export const getLectionaryTexts = (
     const thisYearsPaschaCycleStart = DateTime.fromJSDate(
         new Date(y, thisYearsPaschaCycleStartData[0] - 1, thisYearsPaschaCycleStartData[1])
     )
-
-    // if (thisYearsPaschaCycleStart.minus({days: 7}).equals(date)) {
-    //     return {
-    //         dailyReadings: getDailyReadingsFromCycle(y, m, d),
-    //         labelledItems: [sundayOfZachary]
-    //     }
-    // }
 
     if (m === 1 && d <= 7) {
         if (d === 7) {
