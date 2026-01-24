@@ -5,7 +5,6 @@ import {
     exaltationOfTheCrossSundayAfter,
     nativityCycle,
     paschaCycle,
-    sundayOfZachary,
     teophanyRoyalHours,
     teophanySaturdayBefore,
     teophanySundayBefore,
