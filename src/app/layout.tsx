@@ -64,7 +64,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
                 <main className="w-full px-5">{children}</main>
                 <footer className="mt-40 w-full px-5 bg-gray-600 dark:bg-black print:hidden">
                     <div className="mx-auto max-w-6xl py-20 text-white">
-                        <p>Hellige Hallvard ortdokse menighet</p>
+                        <p>Hellige Hallvard ortodokse menighet</p>
                         <p>Myrerveien 4, 0494 Oslo</p>
                     </div>
                 </footer>
