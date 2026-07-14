@@ -1,5 +1,5 @@
 import "server-only"
-import {NB88Line, tokenizeNB88Chapter} from "./nb88-parse-lib"
+import {NB88ChapterDataType, NB88Line, tokenizeNB88Chapter} from "./nb88-parse-lib"
 import {bookNames} from "./book-names"
 import {DagensTekstItems} from "@/types/dagenstekster"
 
@@ -33,9 +33,7 @@ export const fetchNB88Chapters = async (
                     continue
                 }
 
-                const url = `http://les.norsk-bibel.no/index_reader.php?res=${
-                    bookNames[dagensTekst.book].norskBibel
-                }:${chapterChunk.chapter}`
+                const url = `https://les.norsk-bibel.no/data/bm/chapters/${encodeURIComponent(bookNames[dagensTekst.book].norskBibel)}/${chapterChunk.chapter}.json`
                 const res = await fetch(url, {
                     headers: {
                         "X-Hei-Fra-Utvikler":
@@ -44,8 +42,8 @@ export const fetchNB88Chapters = async (
                     // Cache all NB88 responses
                     cache: "force-cache"
                 })
-                const html = await res.text()
-                nb88Chapters[chapterKey] = await tokenizeNB88Chapter(html)
+                const chapterData = (await res.json()) as NB88ChapterDataType
+                nb88Chapters[chapterKey] = await tokenizeNB88Chapter(chapterData)
             }
         }
     }
